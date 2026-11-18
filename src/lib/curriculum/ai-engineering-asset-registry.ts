@@ -1,0 +1,386 @@
+/**
+ * AI Engineering Academy — Upstream Source & Asset Manifest Registry
+ *
+ * Source: https://github.com/Asabeneh/30-Days-Of-AI-Engineering
+ * Pinned Commit: 391a9cc44add20cf19965e171c6e7fed3a183e67
+ *
+ * Legal / Redistribution Notice:
+ * The upstream repository README states:
+ * "This repository is intended to be free and open source. Add a license file before public release if you want a formal redistribution license."
+ * In accordance with our non-negotiable compliance rules:
+ * - Upstream binary images and raw text are NOT imported into the public web bundle (`approvedForPublic: false`).
+ * - Upstream lessons are linked as authoritative external reading references with full attribution.
+ * - Platform visuals are independent, clean educational SVG/Mermaid/interactive simulations.
+ */
+
+export interface UpstreamDaySource {
+  day: string;
+  title: string;
+  directory: string;
+  filename: string;
+  sourceUrl: string;
+  relevantPhases: string[];
+  keyTopicsUz: string[];
+  independentDiagramTitle: string;
+  independentDiagramType: "flowchart" | "architecture" | "state-machine" | "timeline";
+}
+
+export const PINNED_UPSTREAM_COMMIT = "391a9cc44add20cf19965e171c6e7fed3a183e67";
+export const UPSTREAM_REPO_URL = "https://github.com/Asabeneh/30-Days-Of-AI-Engineering";
+
+export const UPSTREAM_DAYS_REGISTRY: Record<string, UpstreamDaySource> = {
+  "00": {
+    day: "00",
+    title: "Getting Started",
+    directory: "day_00",
+    filename: "day_00_getting_started.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_00/day_00_getting_started.md`,
+    relevantPhases: ["02", "03", "11"],
+    keyTopicsUz: ["Python va TypeScript muhitini sozlash", "API kalitlar xavfsizligi", "Virtual environment"],
+    independentDiagramTitle: "Dasturlash Muhiti va Toolchain Arxitekturasi",
+    independentDiagramType: "architecture",
+  },
+  "01": {
+    day: "01",
+    title: "Introduction to AI Engineering",
+    directory: "day_01",
+    filename: "day_01_introduction_to_ai_engineering.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_01/day_01_introduction_to_ai_engineering.md`,
+    relevantPhases: ["01", "05"],
+    keyTopicsUz: ["AI Engineer vs ML Engineer", "AI ilovalar anatomiyasi", "Zamonaviy LLM ekotizimi"],
+    independentDiagramTitle: "AI Ilovasi Tarkibiy Qismlari (UI → API → LLM → Natija)",
+    independentDiagramType: "architecture",
+  },
+  "02": {
+    day: "02",
+    title: "How Large Language Models Work",
+    directory: "day_02",
+    filename: "day_02_how_large_language_models_work.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_02/day_02_how_large_language_models_work.md`,
+    relevantPhases: ["01", "04", "05", "11"],
+    keyTopicsUz: ["Transformer asoslari", "Pre-training va Fine-tuning (RLHF)", "Next-token prediction"],
+    independentDiagramTitle: "LLM O'qitish va Inference Ikki Yo'lakli Animatsiyasi",
+    independentDiagramType: "flowchart",
+  },
+  "03": {
+    day: "03",
+    title: "Tokens, Context Windows, and Embeddings",
+    directory: "day_03",
+    filename: "day_03_tokens_context_windows_and_embeddings.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_03/day_03_tokens_context_windows_and_embeddings.md`,
+    relevantPhases: ["04", "08", "09", "12"],
+    keyTopicsUz: ["Tokenizatsiya (BPE)", "Context window sig'imi", "Embeddings tushunchasi"],
+    independentDiagramTitle: "Matndan Vektor Fazosiga Qadar Oqim (Token → ID → Vector)",
+    independentDiagramType: "flowchart",
+  },
+  "04": {
+    day: "04",
+    title: "Prompt Engineering Fundamentals",
+    directory: "day_04",
+    filename: "day_04_prompt_engineering_fundamentals.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_04/day_04_prompt_engineering_fundamentals.md`,
+    relevantPhases: ["07"],
+    keyTopicsUz: ["System / User / Assistant rollari", "Zero-shot va Few-shot prompting", "Ko'rsatma ravshanligi"],
+    independentDiagramTitle: "Prompt Tuzilishi va Xabarlar Ierarxiyasi",
+    independentDiagramType: "flowchart",
+  },
+  "05": {
+    day: "05",
+    title: "Advanced Prompt Engineering",
+    directory: "day_05",
+    filename: "day_05_advanced_prompt_engineering.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_05/day_05_advanced_prompt_engineering.md`,
+    relevantPhases: ["07", "08", "09"],
+    keyTopicsUz: ["Chain-of-Thought (CoT)", "Directional stimulus", "Output formatlash shablonlari"],
+    independentDiagramTitle: "Chain-of-Thought Fikrlash Zanjiri Grafigi",
+    independentDiagramType: "flowchart",
+  },
+  "06": {
+    day: "06",
+    title: "LLM APIs",
+    directory: "day_06",
+    filename: "day_06_llm_apis.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_06/day_06_llm_apis.md`,
+    relevantPhases: ["03", "05", "06", "08"],
+    keyTopicsUz: ["REST API request/response", "HTTP clientlar", "SDK orqali integratsiya"],
+    independentDiagramTitle: "Mijoz Ilovasi va LLM API O'rtasidagi HTTP Hayotiy Sikli",
+    independentDiagramType: "timeline",
+  },
+  "07": {
+    day: "07",
+    title: "Mini Project: Prompt Helper",
+    directory: "day_07",
+    filename: "day_07_mini_project_prompt_helper.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_07/day_07_mini_project_prompt_helper.md`,
+    relevantPhases: ["07"],
+    keyTopicsUz: ["Prompt optimallashtiruvchi CLI", "Interaktiv foydalanuvchi interfeysi"],
+    independentDiagramTitle: "Prompt Helper Metodologik Oqimi",
+    independentDiagramType: "flowchart",
+  },
+  "08": {
+    day: "08",
+    title: "OpenAI API",
+    directory: "day_08",
+    filename: "day_08_openai_api.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_08/day_08_openai_api.md`,
+    relevantPhases: ["03", "05", "06"],
+    keyTopicsUz: ["OpenAI Python SDK", "Chat completions endpoint", "Xatoliklarni ushlash va qayta urinish (Retry)"],
+    independentDiagramTitle: "OpenAI SDK Chaqiriqlari va Xatolar Boshqaruvi",
+    independentDiagramType: "architecture",
+  },
+  "09": {
+    day: "09",
+    title: "Claude API",
+    directory: "day_09",
+    filename: "day_09_claude_api.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_09/day_09_claude_api.md`,
+    relevantPhases: ["03", "05", "06"],
+    keyTopicsUz: ["Anthropic Claude SDK", "Messages API", "System promptni ajratish"],
+    independentDiagramTitle: "Anthropic Messages API Arxitekturasi",
+    independentDiagramType: "architecture",
+  },
+  "10": {
+    day: "10",
+    title: "Structured Outputs",
+    directory: "day_10",
+    filename: "day_10_structured_outputs.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_10/day_10_structured_outputs.md`,
+    relevantPhases: ["08"],
+    keyTopicsUz: ["Pydantic model orqali JSON kafolati", "JSON Schema enforcement", "Validatsiya xatolari"],
+    independentDiagramTitle: "Strukturalashgan Chiqish va Pydantic Validatsiya Darvozasi",
+    independentDiagramType: "flowchart",
+  },
+  "11": {
+    day: "11",
+    title: "Tool Calling",
+    directory: "day_11",
+    filename: "day_11_tool_calling.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_11/day_11_tool_calling.md`,
+    relevantPhases: ["08", "17"],
+    keyTopicsUz: ["Tool ta'rifi (definition)", "Modelning tool chaqirish signali", "Natijani qaytarish"],
+    independentDiagramTitle: "Tool Calling 3 Bosqichli Sikli (Def → Call → Return)",
+    independentDiagramType: "flowchart",
+  },
+  "12": {
+    day: "12",
+    title: "Function Calling",
+    directory: "day_12",
+    filename: "day_12_function_calling.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_12/day_12_function_calling.md`,
+    relevantPhases: ["08", "17"],
+    keyTopicsUz: ["Bir nechta funksiyalar", "Parallel tool calling", "Xavfsizlik chegaralari"],
+    independentDiagramTitle: "Parallel Funksiya Chaqiriqlari Dispatcheri",
+    independentDiagramType: "state-machine",
+  },
+  "13": {
+    day: "13",
+    title: "Streaming Responses",
+    directory: "day_13",
+    filename: "day_13_streaming_responses.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_13/day_13_streaming_responses.md`,
+    relevantPhases: ["06", "08"],
+    keyTopicsUz: ["Server-Sent Events (SSE)", "Chunk-by-chunk generator", "Time-To-First-Token (TTFT)"],
+    independentDiagramTitle: "Server-Sent Events (SSE) Streaming Token Vaqt Chizig'i",
+    independentDiagramType: "timeline",
+  },
+  "14": {
+    day: "14",
+    title: "Mini AI Assistant",
+    directory: "day_14",
+    filename: "day_14_mini_ai_assistant.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_14/day_14_mini_ai_assistant.md`,
+    relevantPhases: ["01", "06"],
+    keyTopicsUz: ["Interaktiv CLI assistent", "Suhbat tarixi buferi", "Chiqishni formatlash"],
+    independentDiagramTitle: "Mini CLI AI Assistent Arxitekturasi",
+    independentDiagramType: "architecture",
+  },
+  "15": {
+    day: "15",
+    title: "Embeddings",
+    directory: "day_15",
+    filename: "day_15_embeddings.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_15/day_15_embeddings.md`,
+    relevantPhases: ["12"],
+    keyTopicsUz: ["Matn vektorlari", "Semantik o'xshashlik", "Cosine similarity va masofa"],
+    independentDiagramTitle: "Vektor Fazosi va Semantik Yaqinlik Klasteri",
+    independentDiagramType: "architecture",
+  },
+  "16": {
+    day: "16",
+    title: "Vector Databases",
+    directory: "day_16",
+    filename: "day_16_vector_databases.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_16/day_16_vector_databases.md`,
+    relevantPhases: ["12", "13"],
+    keyTopicsUz: ["ChromaDB / Qdrant", "ANN qidiruv (HNSW, IVF)", "Metadata filtrlash"],
+    independentDiagramTitle: "Vector DB Indeksatsiyasi va Top-K ANN Qidiruvi",
+    independentDiagramType: "flowchart",
+  },
+  "17": {
+    day: "17",
+    title: "RAG",
+    directory: "day_17",
+    filename: "day_17_rag.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_17/day_17_rag.md`,
+    relevantPhases: ["14", "15", "16"],
+    keyTopicsUz: ["RAG arxitekturasi", "Chunking va embedding", "Kengaytirilgan kontekst bilan javob berish"],
+    independentDiagramTitle: "To'liq RAG Konveyeri (Ingestion → Retrieval → Generation)",
+    independentDiagramType: "flowchart",
+  },
+  "18": {
+    day: "18",
+    title: "Hybrid Search",
+    directory: "day_18",
+    filename: "day_18_hybrid_search.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_18/day_18_hybrid_search.md`,
+    relevantPhases: ["15", "16"],
+    keyTopicsUz: ["BM25 kalit so'z qidiruvi", "Dense vektor qidiruvi", "Reciprocal Rank Fusion (RRF)"],
+    independentDiagramTitle: "Gibrid Qidiruv va RRF Birlashtirish Mexanizmi",
+    independentDiagramType: "flowchart",
+  },
+  "19": {
+    day: "19",
+    title: "Memory",
+    directory: "day_19",
+    filename: "day_19_memory.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_19/day_19_memory.md`,
+    relevantPhases: ["09"],
+    keyTopicsUz: ["Qisqa muddatli xotira (Sliding window)", "Xotirani siqish (Summarization)", "Token limiti boshqaruvi"],
+    independentDiagramTitle: "Kontekst Xotirasini Siqish va Saralash Oqimi",
+    independentDiagramType: "state-machine",
+  },
+  "20": {
+    day: "20",
+    title: "Long-Term Memory",
+    directory: "day_20",
+    filename: "day_20_long_term_memory.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_20/day_20_long_term_memory.md`,
+    relevantPhases: ["09"],
+    keyTopicsUz: ["Semantik xotirani saqlash", "Epizodik va shaxsiyat profili", "Retrieval orqali eslash"],
+    independentDiagramTitle: "Uzoq Muddatli Xotirani Qidirish va Tiklash",
+    independentDiagramType: "architecture",
+  },
+  "21": {
+    day: "21",
+    title: "Knowledge Assistant Project",
+    directory: "day_21",
+    filename: "day_21_knowledge_assistant_project.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_21/day_21_knowledge_assistant_project.md`,
+    relevantPhases: ["14", "15", "16"],
+    keyTopicsUz: ["Hujjatlar bilan ishlovchi assistent", "Citations va aniq manbalar", "No-answer holatini boshqarish"],
+    independentDiagramTitle: "Bilimlar Bazasi Assistentining Ishlash Zanjiri",
+    independentDiagramType: "flowchart",
+  },
+  "22": {
+    day: "22",
+    title: "What are AI Agents?",
+    directory: "day_22",
+    filename: "day_22_what_are_ai_agents.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_22/day_22_what_are_ai_agents.md`,
+    relevantPhases: ["17"],
+    keyTopicsUz: ["Agent tushunchasi", "ReAct asosiy sikli (Reason + Act)", "Tashqi muhit bilan o'zaro ta'sir"],
+    independentDiagramTitle: "ReAct Agent State Machine (Fikr → Amal → Kuzatuv)",
+    independentDiagramType: "state-machine",
+  },
+  "23": {
+    day: "23",
+    title: "Planning",
+    directory: "day_23",
+    filename: "day_23_planning.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_23/day_23_planning.md`,
+    relevantPhases: ["17"],
+    keyTopicsUz: ["Reja tuzish (Plan-and-solve)", "Vazifani maydalash (Subtask decomposition)", "Xatolardan qaytish (Self-correction)"],
+    independentDiagramTitle: "Agentning Rejalashtirish va Vazifalarni Bo'lish Daraxti",
+    independentDiagramType: "flowchart",
+  },
+  "24": {
+    day: "24",
+    title: "Multi-Agent Systems",
+    directory: "day_24",
+    filename: "day_24_multi_agent_systems.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_24/day_24_multi_agent_systems.md`,
+    relevantPhases: ["17", "18"],
+    keyTopicsUz: ["Ko'p agentli hamkorlik", "Orkestrator va mutaxassis agentlar", "Xabarlar almashinuvi"],
+    independentDiagramTitle: "Ko'p Agentli Tizim Arxitekturasi (Coordinator & Workers)",
+    independentDiagramType: "architecture",
+  },
+  "25": {
+    day: "25",
+    title: "Model Context Protocol (MCP)",
+    directory: "day_25",
+    filename: "day_25_model_context_protocol_mcp.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_25/day_25_model_context_protocol_mcp.md`,
+    relevantPhases: ["18"],
+    keyTopicsUz: ["MCP standarti", "Host, Client va Server", "Tools, Resources va Prompts"],
+    independentDiagramTitle: "Model Context Protocol (MCP) Arxitekturaviy Bog'lanishi",
+    independentDiagramType: "architecture",
+  },
+  "26": {
+    day: "26",
+    title: "LangChain",
+    directory: "day_26",
+    filename: "day_26_langchain.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_26/day_26_langchain.md`,
+    relevantPhases: ["17"],
+    keyTopicsUz: ["LangChain ekotizimi", "Chains va Runnables (LCEL)", "Modular abstraksiyalar"],
+    independentDiagramTitle: "LangChain LCEL Pipeline Oqimi",
+    independentDiagramType: "flowchart",
+  },
+  "27": {
+    day: "27",
+    title: "Evaluation",
+    directory: "day_27",
+    filename: "day_27_evaluation.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_27/day_27_evaluation.md`,
+    relevantPhases: ["07", "16", "17", "19"],
+    keyTopicsUz: ["LLM-as-a-Judge", "RAG Triad (Faithfulness, Relevance, Groundedness)", "Test to'plamlari va regresiya"],
+    independentDiagramTitle: "AI Evaluation va Sifat Baholash Matritsasi",
+    independentDiagramType: "flowchart",
+  },
+  "28": {
+    day: "28",
+    title: "Guardrails",
+    directory: "day_28",
+    filename: "day_28_guardrails.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_28/day_28_guardrails.md`,
+    relevantPhases: ["04", "10", "17", "18"],
+    keyTopicsUz: ["Prompt Injection himoyasi", "Kirish va chiqish filtrlari", "Xavfsizlik darvozalari (Llama Guard, NeMo)"],
+    independentDiagramTitle: "Trust Boundary va Xavfsizlik Darvozalari (Guardrails)",
+    independentDiagramType: "flowchart",
+  },
+  "29": {
+    day: "29",
+    title: "Deployment",
+    directory: "day_29",
+    filename: "day_29_deployment.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_29/day_29_deployment.md`,
+    relevantPhases: ["03", "19"],
+    keyTopicsUz: ["Docker konteynerizatsiyasi", "Bulutli deploy", "Monitoring va loglar"],
+    independentDiagramTitle: "AI Servislarini Production Deploy Qilish Quvuri",
+    independentDiagramType: "flowchart",
+  },
+  "30": {
+    day: "30",
+    title: "Capstone Project",
+    directory: "day_30",
+    filename: "day_30_capstone_project.md",
+    sourceUrl: `${UPSTREAM_REPO_URL}/blob/${PINNED_UPSTREAM_COMMIT}/day_30/day_30_capstone_project.md`,
+    relevantPhases: ["01", "19", "20"],
+    keyTopicsUz: ["Yakuniy AI Knowledge Assistant", "Full-stack integratsiya", "Portfolio README va demo"],
+    independentDiagramTitle: "Yakuniy AI Knowledge Assistant Capstone Arxitekturasi",
+    independentDiagramType: "architecture",
+  },
+};
+
+/**
+ * Returns the primary upstream reference for a given AI Engineer phase (01..20)
+ */
+export function getUpstreamReferenceForPhase(phaseId: string): UpstreamDaySource | undefined {
+  const normPhase = phaseId.padStart(2, "0");
+  for (const daySource of Object.values(UPSTREAM_DAYS_REGISTRY)) {
+    if (daySource.relevantPhases.includes(normPhase)) {
+      return daySource;
+    }
+  }
+  return undefined;
+}

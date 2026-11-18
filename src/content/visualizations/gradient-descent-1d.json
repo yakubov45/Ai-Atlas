@@ -1,0 +1,39 @@
+{
+  "id": "gradient-descent-1d",
+  "type": "gradient-descent",
+  "title": "1D Gradient Tushish Optimizatori va Manim Animatsiyasi",
+  "description": "Kvadratik yo'qotish funksiyasi L(x) = (x - 3)^2 ustida analitik optimizatsiya qadamlari, o'rganish tezligi (learning rate) ta'siri va Manim matematik animatsiyasi.",
+  "status": "published",
+  "synthetic": false,
+  "sources": ["goodfellow-2016", "kingma-2014"],
+  "relatedLessons": ["gradient-descent", "optimizers", "loss-functions", "learning-rate", "backpropagation"],
+  "config": {
+    "expressions": [
+      {
+        "id": "loss",
+        "label": "Yo'qotish funksiyasi L(x) = (x - 3)^2",
+        "expr": "(x - 3)^2",
+        "color": "violet"
+      }
+    ],
+    "parameters": [],
+    "xDomain": [0, 8],
+    "yDomain": [0, 22],
+    "samples": 240,
+    "xLabel": "Parametr (x)",
+    "yLabel": "Yo'qotish L(x)",
+    "videoSrc": "/animations/gradient-descent/gradient_descent.mp4",
+    "descent": {
+      "expression": "loss",
+      "start": 7.0,
+      "learningRate": {
+        "min": 0.01,
+        "max": 1.15,
+        "step": 0.02,
+        "default": 0.25
+      },
+      "maxIterations": 50,
+      "stepDurationMs": 350
+    }
+  }
+}

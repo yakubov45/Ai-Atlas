@@ -1,0 +1,106 @@
+---
+id: batch-normalization
+title: "Batch Normalization"
+slug: batch-normalization
+description: "Batch Normalization (BN) — 2015-yilda Sergey Ioffe va Christian Szegedy (ICML 2015, PMLR 37:448–456; ICML 2025 Test of Time Award sovrindori) tomonidan taklif etilgan, har bir o'quv mini-batchi bo'yicha qatlam kirishlarini (activations) markazlashtirish va masshtablash hamda o'rganiladigan gamma..."
+category: deep-learning
+difficulty: advanced
+order: 8
+tags: ["ai","deep-learning","training","batch-normalization","batchnorm","bn"]
+prerequisites: ["mean","standard-deviation","backpropagation"]
+related: ["cnn","transformers","learning-rate","sgd"]
+visualizations: ["neural-network-explorer"]
+sources: ["lecun-1998","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1928–1999"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Batch Normalization (BN) — 2015-yilda Sergey Ioffe va Christian Szegedy (ICML 2015, PMLR 37:448–456; ICML 2025 Test of Time Award sovrindori) tomonidan taklif etilgan, har bir o'quv mini-batchi bo'yicha qatlam kirishlarini (activations) markazlashtirish va masshtablash hamda o'rganiladigan $\gamma$ va $\beta$ parametrlari bilan ifodalash quvvatini tiklash orqali chuqur tarmoqlarni o'qitishni tezlashtiruvchi differensiallanuvchi transformatsiya.
+
+## 2. Nima uchun kerak?
+Ioffe va Szegedy (2015, Section 2) o'qitish davomida tarmoq parametrlari o'zgarishi tufayli ichki tarmoq aktivatsiyalari taqsimotining o'zgarishini Internal Covariate Shift deb ta'riflaganlar. Ilmiy adabiyotda (LeCun et al., 1998b; Wiesler & Ney, 2011) kirish ma'lumotlari oqartirilsa (whitened — ya'ni nol o'rtacha va birlik dispersiyaga chiziqli keltirilsa), tarmoq tezroq yaqinlashishi ma'lum edi. Biroq har bir qatlamni butun o'quv to'plami bo'yicha to'liq oqartirish kovariatsiya matritsasi, uning teskari kvadrat ildizi va hosilalarini hisoblashni talab qilib, juda qimmatga tushadi. Shuningdek, agar normalizatsiya gradient tushish qadamidan tashqarida amalga oshirilsa (masalan, $x = u + b$ ga $\hat{x} = x - \mathbb{E}[x]$ qo'llanilsa va gradient qadami $\mathbb{E}[x]$ ning $b$ ga bog'liqligini hisobga olmasa), $b \leftarrow b + \Delta b$ yangilanishi keyingi normalizatsiyada qisqarib ketadi:
+
+$$
+u + (b + \Delta b) - \mathbb{E}[u + (b + \Delta b)] = u + b - \mathbb{E}[u + b]
+$$
+
+Ya'ni qatlam chiqishi ham, yo'qotish funksiyasi ham umuman o'zgarmaydi, parametr b esa cheksiz o'sib ketaveradi. Batch Normalization har bir skalyar aktivatsiyani mini-batch statistikasi yordamida modelning ichida, differensiallanuvchi tarzda normalizatsiya qiladi, natijada gradient ushbu normalizatsiyani to'liq hisobga oladi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Agar mini-batch hajmi 32 bo'lsa, har bir iteratsiyada 32 ta namuna tarmoqdan o'tadi. Batch Normalization har bir xususiyat (feature) uchun shu 32 ta namunaning o'rtacha qiymatini ($\mu_{\mathcal{B}}$) va standart chetlanishini ($\sigma_{\mathcal{B}}$) hisoblab, qiymatlarni o'rtachasi 0 va dispersiyasi 1 bo'lgan standart diapazonga keltiradi. So'ngra tarmoq o'zining nochiziqli ifodalash quvvatini yo'qotmasligi uchun natijani o'rganiladigan $\gamma$ (scale) ga ko'paytirib, $\beta$ (shift) ni qo'shadi.
+
+## 4. Matematik asoslari va Algoritm 1 (Level 2 & Level 3)
+### 4.1. Batch Normalizing Transform (Algorithm 1 — Ioffe & Szegedy, 2015)
+Mini-batch $\mathcal{B} = \{x_1, \dots, x_m\}$ ustida har bir aktivatsiya uchun:
+
+1. **Mini-batch o'rtachasi ([Mean](/learn/mean)):**
+   $$ \mu_{\mathcal{B}} \leftarrow \frac{1}{m} \sum_{i=1}^m x_i $$
+
+2. **Mini-batch dispersiyasi ([Standard Deviation](/learn/standard-deviation) kvadrati):**
+   $$ \sigma_{\mathcal{B}}^2 \leftarrow \frac{1}{m} \sum_{i=1}^m (x_i - \mu_{\mathcal{B}})^2 $$
+
+3. **Normalizatsiya:**
+   $$ \hat{x}_i \leftarrow \frac{x_i - \mu_{\mathcal{B}}}{\sqrt{\sigma_{\mathcal{B}}^2 + \epsilon}} $$
+   *(bu yerda $\epsilon$ — dispersiya nolga teng bo'lganda nolga bo'lishning oldini oluvchi sonli barqarorlik o'zgarmasi)*.
+
+4. **Scale and Shift:**
+   $$ y_i \leftarrow \gamma \hat{x}_i + \beta \equiv \operatorname{BN}_{\gamma, \beta}(x_i) $$
+
+Agar optimal bo'lsa, tarmoq $\gamma = \sqrt{\operatorname{Var}[x]}$ va $\beta = \mathbb{E}[x]$ ni o'rganib, dastlabki aktivatsiyalarni (identity transform) tiklay oladi.
+### 4.2. Training vs. Inference va Convolutional BN
+Training (O'qitish): Mini-batch (m > 1) statistikasi ishlatiladi.
+Inference (Ishlatish): Mini-batchga bog'liqlik inference vaqtida na zarur va na maqsadga muvofiqdir — chiqish faqat kirishning o'ziga deterministik bog'liq bo'lishi shart. Shu sababli o'qitishdan so'ng batch statistikasi o'rniga populyatsiya baholari (population estimates) qo'yiladi va transformatsiya qat'iy affin akslantirishga (fixed affine map) aylanadi.
+Convolutional Layers: [CNN](/learn/cnn) qatlamlarida statistikalar mini-batch va bitta feature map ning barcha fazoviy pozitsiyalari bo'yicha birgalikda jamlanadi (har bir feature map uchun bitta $\gamma$ va bitta $\beta$).
+### 4.3. ImageNet Eksperimental Natijalari va Ilmiy Munozaralar
+14x Tezlanish va BN-x5 Retsepti: Boshlang'ich learning rate 0.0015 bo'lgan Baseline Inception 72.2% single-crop aniqlikka 31.0 million qadamda yetgan. Faqat BN qo'shishning o'zi buni 13.3 million qadamga tushirgan. 2.1 million qadam (14 marta kam qadam) natijasiga esa BN-x5 retseptida — ya'ni BN bilan birga learning rate ni 5 baravar oshirish, Dropout ni olib tashlash, L_2 vazn jarimasini 5 baravar kamaytirish, learning rate decay ni 6 marta tezlashtirish, local response normalization ni olib tashlash va o'quv misollarini yaxshiroq aralashtirish (shuffling — validatsiyada ~1% qo'shgan) orqali erishilgan (BN-x5 da ReLU o'rniga sigmoid qo'yilganda 69.8% maksimal aniqlikka erishilgan, BN siz sigmoid esa tasodifiy taxmin darajasida qolib ketgan).
+Ensemble Natijasi: BN-Inception ansambli ImageNet da 4.9% top-5 validation error (50,000 tasvirda, oldingi Deep Image ansamblining 5.98% natijasiga nisbatan) va 4.82% top-5 test error ko'rsatib, inson baholovchilar aniqligidan o'zib ketgan.
+Ilmiy munozara va Kichik Batch Cheklovi: BN ning muvaffaqiyati faqat "Internal Covariate Shift" kamayishi bilan bog'liqligi keyingi ishlarda munozaraga sabab bo'lgan (u optimallashtirishni silliqlashi va batch shovqini orqali regulyarizatsiya berishi ta'kidlanadi). Shuningdek, batch hajmi kichik yoki mustaqil bo'lmaganda (masalan, detection va segmentation da har bir GPU da atigi bir nechta rasm bo'lganda) BN aniqligi pasayadi (Ioffe, 2017 — Batch Renormalization; Wu & He, 2018 — Group Normalization).
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch import torch.nn as nn
+
+CNN uchun 2D Batch Normalization (6 ta feature map, har biriga bitta gamma va beta)
+bn2d = nn.BatchNorm2d(num_features=6, eps=1e-5)
+
+Training mode: mini-batch m=4, C=6, H=14, W=14
+bn2d.train() x_batch = torch.randn(4, 6, 14, 14) out_train = bn2d(x_batch)
+
+Inference mode: deterministik, bitta namuna (m=1) bilan ham ishlaydi
+bn2d.eval() out_eval = bn2d(x_batch[:1])
+
+print("Gamma shape:", bn2d.weight.shape) # torch.Size([6]) print("Beta shape:", bn2d.bias.shape) # torch.Size([6]) print("Eval output shape:", out_eval.shape) # torch.Size([1, 6, 14, 14])
+```
+
+
+## 6. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Mean](/learn/mean)
+- [Standard Deviation](/learn/standard-deviation)
+- [Backpropagation](/learn/backpropagation)
+
+**Keyingi mavzular:**
+- [CNN](/learn/cnn)
+- [Transformers](/learn/transformers)
+
+**Bog'liq:**
+- [Learning Rate](/learn/learning-rate)
+- [SGD](/learn/sgd)
+
+## 7. Tekshirilgan manbalar
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. Proceedings of the 32nd International Conference on Machine Learning (ICML 2015), PMLR 37:448–456. arXiv:1502.03167.
+
+Bo'lim F: Mathematics for Deep Learning
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+

@@ -1,0 +1,68 @@
+---
+id: llm
+title: "LLM"
+slug: llm
+description: "Large Language Model (LLM) — Transformers arxitekturasiga asoslangan, matn bo'laklaridan (tokenlardan) keyingi so'z yoki tokenni bashorat qilish (next-token prediction) maqsadida o'qitilgan yirik neyron tarmoq (masalan, 124 million parametrli GPT-2 yoki ko'p milliard parametrli GPT-3)."
+category: llms-rag
+difficulty: intermediate
+order: 3
+tags: ["ai","llm","deep-learning","large","katta"]
+prerequisites: ["transformers","tokenization","embeddings"]
+related: ["prompt-engineering","rag","ai-agent","probability","adam"]
+visualizations: ["self-attention-explorer"]
+sources: ["vaswani-2017","kingma-2014","sanderson-2017","karpathy-2023"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 963–1012"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Large Language Model (LLM) — [Transformers](/learn/transformers) arxitekturasiga asoslangan, matn bo'laklaridan (tokenlardan) keyingi so'z yoki tokenni bashorat qilish (next-token prediction) maqsadida o'qitilgan yirik neyron tarmoq (masalan, 124 million parametrli GPT-2 yoki ko'p milliard parametrli GPT-3).
+
+## 2. Nima uchun kerak?
+Avvalgi ketma-ketlik modellari (masalan, 380M parametrli 2 ta LSTM yoki 130M parametrli GRU asosidagi tarjima tizimlari) rekurrentlik tufayli parallel o'qitishda cheklangan va maxsus vazifalarga bog'langan edi. Transformer asosidagi LLM lar parallel o'qitish hisobiga juda katta korpuslarda o'qitilib, matn generatsiya qilish, tarjima va kod yozish kabi vazifalarni yagona auto-regressive mexanizm orqali bajaradi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+LLM matn parchasi berilganda keyingi so'zni bashorat qiladi. Buning uchun matn avval kichik bo'laklarga — tokenlarga ([Tokenization](/learn/tokenization)) ajratiladi. Har bir token o'z ma'nosini va pozitsiyasini kodlovchi yuqori o'lchamli raqamlar ro'yxati ([Embeddings](/learn/embeddings)) bilan bog'lanadi. [Transformers](/learn/transformers) ichidagi diqqat bloklari ushbu embeddinglarni kontekst asosida boyitadi va ketma-ketlikdagi oxirgi vektor asosida keyingi tokenning ehtimolliklari hisoblanadi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+3Blue1Brown (2024) va Andrej Karpathy (nanoGPT, 2023) tahlillariga asosan, LLM ning ichki ishlash oqimi quyidagicha:
+
+Tokenization va Embedding: Kirish matni tokenlarga bo'linib, har bir token yuqori o'lchamli vektorga (masalan, GPT-3 da 12,288 o'lchamli embeddingga) aylantiriladi va pozitsion ma'lumot qo'shiladi.
+Contextual Refinement (Attention + Feed-Forward): Har bir Transformer bloki (masalan, GPT-3 da 96 ta parallel attention head) boshqa tokenlardan kontekstual ma'noni ko'chirib olib, har bir pozitsiya uchun o'zgarish vektorini (\Delta e) dastlabki embeddingga qo'shadi.
+Training vs. Inference:
+Training (O'qitish): Ma'lumotlar yuklanib, model parallel ravishda keyingi tokenni bashorat qilishga o'qitiladi; bunda yo'qotish funksiyasi (loss) kamayishi va perplexity yaxshilanishi kuzatiladi.
+Inference (Generatsiya): Model auto-regressive ishlaydi — har bir qadamda oldingi yaratilgan tokenlarni qo'shimcha kirish sifatida iste'mol qilib, ketma-ketlikdagi oxirgi vektor asosida bitta yangi token generatsiya qiladi.
+## 5. Matematik va Muhandislik Asoslari (Level 3 — Advanced)
+Auto-regressive model har bir $t$ qadamda oldingi tokenlar ($y_1, \dots, y_{t-1}$) berilganda keyingi token $y_t$ ning ehtimollik taqsimotini $\text{softmax}$ orqali baholaydi va xarajatlarni (cost function) minimallashtirish uchun ko'p sonli parametrlarni sozlaydi. Andrej Karpathy'ning nanoGPT loyihasi ko'rsatganidek, kichik tajribalar (masalan, Shekspir asarlarida o'qitish) bitta GPU da taxminan 3 daqiqada yoki MacBook (Metal Performance Shaders) da bajarilishi mumkin bo'lsa, aynan shu ~600 qatorli arxitektura (300 qator model tavsifi + 300 qator o'qitish sikli) 124 million parametrli to'liq GPT-2 modelini qayta tiklash (reproduce) uchun masshtablanadi.
+
+Izoh (Manba maqomi): Auto-regressive generatsiya, oxirgi vektordan bashorat olish, perplexity kuzatuvi va GPT-2/GPT-3 arxitekturaviy ko'rsatkichlari Vaswani et al. (2017), 3Blue1Brown (2024) va Karpathy (2023) asosida tasdiqlangan. Hallucinations va tashqi qidiruv bilan bog'liq masalalar [RAG](/learn/rag) va [AI Agent](/learn/ai-agent) konspektlarida yoritilgan.
+
+## 6. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Transformers](/learn/transformers)
+[Tokenization](/learn/tokenization)
+[Embeddings](/learn/embeddings)
+Keyingi mavzular:
+
+[Prompt Engineering](/learn/prompt-engineering)
+[RAG](/learn/rag)
+[AI Agent](/learn/ai-agent)
+Bog'liq:
+
+[Probability](/learn/probability)
+[Adam](/learn/adam)
+## 7. Tekshirilgan manbalar
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+Karpathy, A. (2023). Let's build GPT: from scratch, in code, spelled out. YouTube. https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="self-attention-explorer" />
+

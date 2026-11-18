@@ -1,0 +1,56 @@
+---
+id: rag
+title: "RAG"
+slug: rag
+description: "Retrieval-Augmented Generation (RAG) — Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni va hammualliflar (May 2020, \"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks\", arXiv:2005.11401) tomonidan bilimga asoslangan (knowledge-intensive) NLP vazifalari uchun taklif etil..."
+category: llms-rag
+difficulty: advanced
+order: 6
+tags: ["ai","rag","llm","retrieval","retrieval-augmented"]
+prerequisites: ["embeddings","vector","transformers","llm"]
+related: ["ai-agent","memory","probability"]
+visualizations: ["rag-pipeline-flow"]
+sources: ["lewis-2020"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1203–1240"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Retrieval-Augmented Generation (RAG) — Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni va hammualliflar (May 2020, "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks", arXiv:2005.11401) tomonidan bilimga asoslangan (knowledge-intensive) NLP vazifalari uchun taklif etilgan, qidiruv (retrieval) va matn generatsiyasini (generation) birlashtiruvchi arxitektura.
+
+## 2. Nima uchun kerak?
+Standart [LLM](/learn/llm) va [Transformers](/learn/transformers) modellari bilimlarni faqat o'z parametrlarida saqlaydi. Bilimga asoslangan murakkab NLP vazifalarida modelga tashqi hujjatlar bazasidan tegishli ma'lumotlarni vektor yaqinligi ([Embeddings](/learn/embeddings), [Vector](/learn/vector)) orqali qidirib topish va javobni shu ma'lumotlar asosida generatsiya qilish talab etiladi.
+
+## 3. Arxitekturaviy Komponentlar va Manba Maqomi (Level 1 — Level 3)
+RAG tizimlari [Embeddings](/learn/embeddings) (yuqori o'lchamli semantik vektorlar), skalyar ko'paytma (dot product similarity) va [Transformers](/learn/transformers) generatorlariga tayanadi:
+
+Embedding va Yaqinlik Qidiruvi: Matn bo'laklari va so'rovlar [Embeddings](/learn/embeddings) fazosiga o'tkazilib, ular orasidagi o'xshashlik [Vector](/learn/vector) skalyar ko'paytmasi orqali hisoblanadi.
+Sequence Transduction / Generation: Topilgan kontekst [Transformers](/learn/transformers) asosidagi auto-regressive modelga uzatiladi.
+Izoh (Manba maqomi): Lewis et al. (2020) maqolasining sarlavhasi, mualliflari, nashr sanasi (May 2020) va DOI (10.48550/arXiv.2005.11401) ko'rsatkichlari to'liq tasdiqlangan. Biroq ushbu maqolaning to'liq ichki matni, shuningdek, document ingestion, chunking overlap, vector databases, hybrid search, reranking va retrieval evaluation bo'yicha maxsus tajriba raqamlari joriy manbalar to'plamida mavjud emasligi sababli, manba tekshiruvi siyosatiga (Section 3) muvofiq Tasdiqlanmagan deb belgilandi va to'qima formulalar kiritilmadi.
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Embeddings](/learn/embeddings)
+[Vector](/learn/vector)
+[Transformers](/learn/transformers)
+[LLM](/learn/llm)
+Keyingi mavzular:
+
+[AI Agent](/learn/ai-agent)
+[Memory](/learn/memory)
+Bog'liq:
+
+[Probability](/learn/probability)
+## 5. Tekshirilgan manbalar
+Lewis, P., Perez, E., Piktus, A., Petroni, F., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. arXiv:2005.11401. DOI: 10.48550/arXiv.2005.11401. (Bibliografik metama'lumot tasdiqlangan).
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="rag-pipeline-flow" />
+

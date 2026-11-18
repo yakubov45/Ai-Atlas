@@ -1,0 +1,68 @@
+---
+id: tensor
+title: "Tensor"
+slug: tensor
+description: "Tensor — skalyar (0D), Vector (1D) va Matrix (2D) tushunchalarini ko'p o'lchamli massivlarga umumlashtiruvchi ma'lumotlar tuzilmasi bo'lib, PyTorch kabi kutubxonalarda mini-batchlar, tasvir feature map lari va multi-head attention proyeksiyalarini GPU da parallel hisoblash uchun xizmat qiladi."
+category: math
+difficulty: intermediate
+order: 5
+tags: ["ai","math","linear-algebra","pytorch","tenzor","tensors"]
+prerequisites: ["vector","matrix","matrix-operations"]
+related: ["cnn","transformers","batch-normalization","backpropagation"]
+visualizations: []
+sources: ["vaswani-2017","lecun-1998","ioffe-2015","karpathy-2023"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2207–2257"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Tensor — skalyar (0D), [Vector](/learn/vector) (1D) va [Matrix](/learn/matrix) (2D) tushunchalarini ko'p o'lchamli massivlarga umumlashtiruvchi ma'lumotlar tuzilmasi bo'lib, PyTorch kabi kutubxonalarda mini-batchlar, tasvir feature map lari va multi-head attention proyeksiyalarini GPU da parallel hisoblash uchun xizmat qiladi.
+
+## 2. Nima uchun kerak?
+Chuqur o'rganish modellarida ma'lumotlar bir vaqtning o'zida bir nechta o'lcham bo'yicha guruhlanadi:
+
+[CNN](/learn/cnn) va [Batch Normalization](/learn/batch-normalization): Mini-batchdagi m ta tasvirning C ta feature map i va H \times W fazoviy pozitsiyalari 4-tartibli tenzor (m, C, H, W) sifatida qayta ishlanadi (masalan, LeNet-5 C1 chiqishi m x 6 x 28 x 28).
+[Transformers](/learn/transformers): Multi-Head Attention da h = 8 ta parallel bosh (har biri d_k = 64 o'lchamli) (batch_size, num_heads, seq_len, d_k) o'lchamli tenzor sifatida GPU da tezlashtiriladi.
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+Transformer batch: batch_size=2, seq_len=5, d_model=512
+x = torch.randn(2, 5, 512, device=device)
+
+8 ta parallel attention head (d_k = 64) ga ajratish:
+(2, 5, 512) -> (2, 5, 8, 64) -> (2, 8, 5, 64)
+x_heads = x.view(2, 5, 8, 64).transpose(1, 2) print("Device:", device) print("Multi-head tensor shape:", x_heads.shape) # torch.Size([2, 8, 5, 64])
+```
+
+
+## 4. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Vector](/learn/vector)
+- [Matrix](/learn/matrix)
+- [Matrix Operations](/learn/matrix-operations)
+
+**Keyingi mavzular:**
+- [CNN](/learn/cnn)
+- [Transformers](/learn/transformers)
+- [Batch Normalization](/learn/batch-normalization)
+
+**Bog'liq:**
+- [Backpropagation](/learn/backpropagation)
+
+## 5. Tekshirilgan manbalar
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+- LeCun, Y., et al. (1998). *Gradient-Based Learning Applied to Document Recognition*. Proceedings of the IEEE, 86(11), 2278–2324.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization*. ICML 2015.
+- Karpathy, A. (2023). *Let's build GPT: from scratch, in code, spelled out*. YouTube. https://www.youtube.com/watch?v=kCc8FmEb1nY
+

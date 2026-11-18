@@ -1,0 +1,69 @@
+---
+id: artificial-intelligence
+title: "Artificial Intelligence"
+slug: artificial-intelligence
+description: "Artificial Intelligence (AI) — murakkab axborotni qayta ishlash, belgilarni tanib olish, tabiiy tilni tahlil qilish va qaror qabul qilish kabi intellektual vazifalarni bajaruvchi hisoblash tizimlarini yaratishga qaratilgan kompyuter fanlari sohasi."
+category: fundamentals
+difficulty: beginner
+order: 1
+tags: ["ai","fundamentals","sun","artificial"]
+prerequisites: ["math-for-deep-learning"]
+related: ["machine-learning","deep-learning","llm","ai-agent"]
+visualizations: []
+sources: ["lecun-1998","rumelhart-1986","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 645–699"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Artificial Intelligence (AI) — murakkab axborotni qayta ishlash, belgilarni tanib olish, tabiiy tilni tahlil qilish va qaror qabul qilish kabi intellektual vazifalarni bajaruvchi hisoblash tizimlarini yaratishga qaratilgan kompyuter fanlari sohasi.
+
+## 2. Nima uchun kerak?
+An'anaviy dasturlashda muhandis barcha qoidalarni va xususiyatlarni oldindan qo'lda yozib chiqishi shart. Ammo qo'lyozma hujjatlarni o'qish yoki tabiiy tildagi matnlarni tarjima qilish kabi vazifalarda shakl va kontekst o'zgaruvchanligi (variability) juda yuqori bo'lib, ularni qo'lda yasalgan qoidalar (hand-crafted rules/features) bilan to'liq qamrab olish qiyin. AI tizimlari ushbu murakkablikni avtomatlashtirilgan algoritmlar va ma'lumotlardan o'rganish orqali hal qiladi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Tasavvur qiling, siz bank cheklaridagi qo'lyozma raqamlarni o'qiydigan dastur tuzmoqchisiz. Har bir inson "3" yoki "7" raqamini turlicha qiyalik va o'lchamda yozadi. Agar siz har bir chiziq va burchak uchun qat'iy mantiqiy qoidalarni qo'lda tuzib chiqsangiz, bu klassik qoidalarga asoslangan (Symbolic / Hand-Crafted) yondashuv bo'ladi. Agar tizimga minglab tayyor chek namunalarini ko'rsatib, muhim belgilarni piksellardan o'zi o'rganishiga imkon bersangiz, bu [Machine Learning](/learn/machine-learning) va [Deep Learning](/learn/deep-learning) ga asoslangan zamonaviy AI hisoblanadi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Sun'iy intellekt tizimlari tarixiy va arxitekturaviy jihatdan ikki yirik yondashuvga ajratiladi:
+
+Symbolic AI va Hand-Crafted Features: Tizim ekspertlar tomonidan oldindan belgilangan qoidalar va qo'lda yasalgan belgilar ustida ishlaydi. Masalan, LeCun et al. (1998) ta'kidlaganidek, an'anaviy hujjatlarni tanib olish tizimlari alohida-alohida qo'lda sozlangan modullardan (maydonni ajratish, segmentatsiya, belgini tanish va til modeli) iborat bo'lgan.
+Statistical Learning va Connectionist (Neyron) yondashuv: Tizim minimal ishlov berilgan xom ma'lumotlardan (masalan, piksellar yoki matn tokenlaridan) ichki tasvirlarni (internal representations) gradientga asoslangan o'rganish orqali o'zi shakllantiradi.
+AI, ML, DL va Generative AI o'rtasidagi munosabat
+[Artificial Intelligence](/learn/artificial-intelligence): Eng keng tushuncha bo'lib, ham qoidalarga asoslangan, ham ma'lumotlardan o'rganuvchi tizimlarni o'z ichiga oladi.
+[Machine Learning](/learn/machine-learning): AI ning qismi bo'lib, ma'lumotlar ustida xatolik funksiyasini minimallashtiruvchi algoritmlardir.
+[Deep Learning](/learn/deep-learning): ML ning qismi bo'lib, ko'p qatlamli neyron tarmoqlar va [Backpropagation](/learn/backpropagation) yordamida ichki belgilarni (representations) avtomatik o'rganadi.
+Generative AI: [Deep Learning](/learn/deep-learning) (xususan, [Transformers](/learn/transformers) va [LLM](/learn/llm)) ustiga qurilgan, ketma-ketliklar yoki tasvirlarni yangidan generatsiya qiluvchi (masalan, auto-regressive) tizimlardir.
+## 5. Matematik va Arxitekturaviy Asoslari (Level 3 — Advanced)
+LeCun et al. (1998) bo'yicha, o'rganuvchi AI tizimi kirish namunasi Z_p ni o'rganiladigan parametrlar W yordamida bashorat Y_p = F(Z_p, W) ga akslantiradi. Murakkab ko'p modulli tizimlarda (masalan, Graph Transformer Networks da) har bir modulni alohida sozlash o'rniga, barcha modullar yo'naltirilgan graf sifatida birlashtirilib, global unumdorlik o'lchovi (global loss function) bo'yicha gradient yordamida birgalikda optimallashtiriladi.
+
+Izoh (Manba maqomi): Qo'lda yasalgan belgilar va gradientga asoslangan connectionist yondashuvlar farqi LeCun et al. (1998) va Rumelhart et al. (1986) asosida tasdiqlangan; ammo Symbolic AI ning 1950–1970-yillardagi tarixiy konferensiyalari tafsilotlari joriy manbalar to'plamida mavjud emasligi sababli Tasdiqlanmagan deb belgilandi.
+
+## 6. Ko'p uchraydigan xatolar va yanglish tushunchalar
+Xato 1: "Qo'lda yasalgan belgilar (hand-crafted features) har doim xom ma'lumotlardan o'rganishdan ustun." — LeCun et al. (1998) yetarli ma'lumot va hisoblash quvvati bo'lganda piksellardan bevosita o'rganilgan belgilar ([CNN](/learn/cnn)) qo'lda yasalgan usullardan ustun kelishini ko'rsatdi.
+Xato 2: "Neyron tarmoqlardagi neyronlar miya hujayrasining aniq biologik nusxasidir." — Yo'q, 3Blue1Brown ta'kidlaganidek, sun'iy neyron shunchaki raqamli qiymatni (activation, masalan, 0 va 1 orasidagi sonni) saqlovchi hisoblash birligidir.
+## 7. Real-world applications
+Bank cheklari va hujjatlarni avtomatik o'qish tizimlari (kuniga millionlab cheklarni qayta ishlagan tijoriy GTN/LeNet tizimlari).
+Mashina tarjimasi va sintaktik tahlil (English constituency parsing).
+Vizual qidiruv, tibbiy tasvirlar tahlili va agentik hujjat qayta ishlash tizimlari.
+## 8. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Math for Deep Learning](/learn/math-for-deep-learning)
+Keyingi mavzular:
+
+[Machine Learning](/learn/machine-learning)
+[Deep Learning](/learn/deep-learning)
+Bog'liq:
+
+[LLM](/learn/llm)
+[AI Agent](/learn/ai-agent)
+## 9. Tekshirilgan manbalar
+LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-Based Learning Applied to Document Recognition. Proceedings of the IEEE, 86(11), 2278–2324. DOI: 10.1109/5.726791.
+Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536. DOI: 10.1038/323533a0.
+Sanderson, G. [3Blue1Brown]. (2017). But what is a neural network? | Deep learning, chapter 1. YouTube. https://www.youtube.com/watch?v=aircAruvnKk

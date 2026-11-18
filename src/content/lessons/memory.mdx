@@ -1,0 +1,92 @@
+---
+id: memory
+title: "Memory"
+slug: memory
+description: "Sun'iy intellekt va neyron tarmoqlarda Memory (Xotira) axborotni vaqt qadamlari davomida saqlash mexanizmi bo'lib, Hochreiter va Schmidhuber (1997) tomonidan qisqa muddatli xotira (short-term memory — aktivatsiyalar) va uzoq muddatli xotira (long-term memory — sekin o'zgaruvchan vaznlar) sifatida..."
+category: llms-rag
+difficulty: intermediate
+order: 5
+tags: ["ai","agents","memory","deep-learning","short-term"]
+prerequisites: ["rnn","lstm","transformers"]
+related: ["rag","ai-agent","embeddings","llm"]
+visualizations: ["rag-pipeline-flow"]
+sources: ["vaswani-2017","rumelhart-1986","hochreiter-1997","kingma-2014","lewis-2020","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1241–1315"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Sun'iy intellekt va neyron tarmoqlarda Memory (Xotira) axborotni vaqt qadamlari davomida saqlash mexanizmi bo'lib, Hochreiter va Schmidhuber (1997) tomonidan qisqa muddatli xotira (short-term memory — aktivatsiyalar) va uzoq muddatli xotira (long-term memory — sekin o'zgaruvchan vaznlar) sifatida formallashtirilgan. Zamonaviy [LLM](/learn/llm) muhandisligida bunga joriy kontekst oynasi va tashqi qidiruv ([RAG](/learn/rag)) xotirasi ham qo'shiladi.
+
+## 2. Nima uchun kerak?
+Ketma-ketliklarni qayta ishlashda (masalan, 1000 qadamdan ortiq vaqt oraliqlariga ega vazifalarda) tarmoq oldingi kirish hodisalarini eslab qolishi shart. Agar qisqa muddatli xotira tezda o'chib ketsa (vanishing gradient tufayli), tizim uzoq vaqt oraliqlarini bog'lay olmaydi.
+
+## 3. Xotira Turlarining Aniq Texnik Farqlanishi (Level 1 — Level 3)
+Xotira turi
+
+Texnik joylashuvi
+
+Yangilanish mexanizmi
+
+Tasdiqlangan manba va arxitektura
+
+## 1. Short-Term Memory (Qisqa muddatli aktivatsiyalar)
+
+Rekurrent bog'lanishlar orqali saqlanuvchi ichki aktivatsiyalar va holatlar ($s_{c_j}(t)$)
+
+Har bir vaqt qadamida (forward pass) yangi kirish hodisalari bilan yangilanadi
+
+Hochreiter & Schmidhuber (1997): [RNN](/learn/rnn) va [LSTM](/learn/lstm) Constant Error Carousel
+
+## 2. Long-Term Memory (Uzoq muddatli model vaznlari)
+
+Tarmoqning o'rganiladigan vazn matritsalari (W)
+
+[Backpropagation](/learn/backpropagation) va [Gradient Descent](/learn/gradient-descent) orqali sekin o'zgaradi (slowly changing weights)
+
+Hochreiter & Schmidhuber (1997); Rumelhart et al. (1986)
+
+## 3. Contextual Sequence Representation (Kontekst oynasi)
+
+[Transformers](/learn/transformers) dagi ketma-ketlik tokenlarining boyitilgan embeddinglari
+
+Self-Attention orqali pozitsiyalararo axborot almashish
+
+Vaswani et al. (2017); 3Blue1Brown (2024)
+
+## 4. External Retrieval / Application Memory
+
+Tashqi bilimlar bazasi va ilova xotirasi
+
+[RAG](/learn/rag) va [AI Agent](/learn/ai-agent) qidiruv mexanizmlari
+
+Lewis et al. (2020) (bibliografik); persistent application memory detallari Tasdiqlanmagan
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[RNN](/learn/rnn)
+[LSTM](/learn/lstm)
+[Transformers](/learn/transformers)
+Keyingi mavzular:
+
+[RAG](/learn/rag)
+[AI Agent](/learn/ai-agent)
+Bog'liq:
+
+[Embeddings](/learn/embeddings)
+[LLM](/learn/llm)
+## 5. Tekshirilgan manbalar
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735.
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="rag-pipeline-flow" />
+

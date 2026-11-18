@@ -1,0 +1,126 @@
+{
+  "id": "rag-pipeline-flow",
+  "type": "flow-diagram",
+  "title": "RAG quvuri oqim diagrammasi",
+  "description": "Sinov maydoni: Retrieval-Augmented Generation tizimining bosqichma-bosqich ishlash sxemasi.",
+  "status": "draft",
+  "synthetic": true,
+  "config": {
+    "layout": "auto-horizontal",
+    "stepDurationMs": 1800,
+    "nodes": [
+      {
+        "id": "user-query",
+        "label": "Foydalanuvchi so'rovi",
+        "sublabel": "Query Input",
+        "kind": "input",
+        "description": "Foydalanuvchi tomonidan kiritilgan tabiiy tildagi savol."
+      },
+      {
+        "id": "query-embed",
+        "label": "Embedding modeli",
+        "sublabel": "Dense Encoder",
+        "kind": "model",
+        "description": "So'rovni yuqori o'lchovli vektorga aylantiradi."
+      },
+      {
+        "id": "vector-db",
+        "label": "Vektor bazasi",
+        "sublabel": "Vector Search / ANN",
+        "kind": "data",
+        "description": "Hujjat bo'laklari (chunks) indekslangan va kosinus o'xshashligi bo'yicha qidiriladi."
+      },
+      {
+        "id": "prompt-builder",
+        "label": "Prompt konstruktori",
+        "sublabel": "Context Augmentation",
+        "kind": "process",
+        "description": "Topilgan tegishli hujjatlar va dastlabki so'rovni birlashtiradi."
+      },
+      {
+        "id": "llm-generator",
+        "label": "Generativ LLM",
+        "sublabel": "Language Model",
+        "kind": "model",
+        "description": "Boyitilgan kontekst asosida aniq va faktik javob hosil qiladi."
+      },
+      {
+        "id": "final-answer",
+        "label": "Yakuniy javob",
+        "sublabel": "Response Output",
+        "kind": "output",
+        "description": "Foydalanuvchiga taqdim etiladigan manbalarga tayangan javob."
+      }
+    ],
+    "edges": [
+      {
+        "id": "q-to-emb",
+        "source": "user-query",
+        "target": "query-embed",
+        "label": "text"
+      },
+      {
+        "id": "emb-to-db",
+        "source": "query-embed",
+        "target": "vector-db",
+        "label": "vector"
+      },
+      {
+        "id": "db-to-prompt",
+        "source": "vector-db",
+        "target": "prompt-builder",
+        "label": "chunks"
+      },
+      {
+        "id": "q-to-prompt",
+        "source": "user-query",
+        "target": "prompt-builder",
+        "label": "raw query"
+      },
+      {
+        "id": "prompt-to-llm",
+        "source": "prompt-builder",
+        "target": "llm-generator",
+        "label": "augmented prompt"
+      },
+      {
+        "id": "llm-to-out",
+        "source": "llm-generator",
+        "target": "final-answer",
+        "label": "answer"
+      }
+    ],
+    "steps": [
+      {
+        "title": "1. So'rov qabul qilish",
+        "description": "Foydalanuvchi tizimga savol yuboradi.",
+        "nodes": ["user-query"],
+        "edges": []
+      },
+      {
+        "title": "2. Vektorlashtirish",
+        "description": "Matnli savol embedding vektoriga aylantiriladi.",
+        "nodes": ["user-query", "query-embed"],
+        "edges": ["q-to-emb"]
+      },
+      {
+        "title": "3. O'xshash bo'laklarni qidirish",
+        "description": "Vektor bazasidan kosinus o'xshashligi yuqori bo'lgan hujjatlar topiladi.",
+        "nodes": ["query-embed", "vector-db"],
+        "edges": ["emb-to-db"]
+      },
+      {
+        "title": "4. Kontekstni birlashtirish",
+        "description": "Topilgan bilimlar va so'rov yagona kengaytirilgan promptga jamlanadi.",
+        "nodes": ["vector-db", "prompt-builder"],
+        "edges": ["db-to-prompt", "q-to-prompt"]
+      },
+      {
+        "title": "5. Generatsiya",
+        "description": "LLM berilgan kontekst asosida gallyutsinatsiyalarsiz javob shakllantiradi.",
+        "nodes": ["prompt-builder", "llm-generator", "final-answer"],
+        "edges": ["prompt-to-llm", "llm-to-out"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,3881 @@
+{
+  "repository": "https://github.com/Asabeneh/30-Days-Of-AI-Engineering",
+  "branch": "main",
+  "commit": null,
+  "note": "Proposed day-to-lesson mapping from verified README roadmap and existing curriculum. Candidate days are not verified exact sections. Do not publish citations/assets until reviewed and licensed. No images downloaded.",
+  "days": [
+    {
+      "day": "00",
+      "title": "Getting Started",
+      "directory": "day_00/"
+    },
+    {
+      "day": "01",
+      "title": "Introduction to AI Engineering",
+      "directory": "day_01/"
+    },
+    {
+      "day": "02",
+      "title": "How Large Language Models Work",
+      "directory": "day_02/"
+    },
+    {
+      "day": "03",
+      "title": "Tokens, Context Windows, and Embeddings",
+      "directory": "day_03/"
+    },
+    {
+      "day": "04",
+      "title": "Prompt Engineering Fundamentals",
+      "directory": "day_04/"
+    },
+    {
+      "day": "05",
+      "title": "Advanced Prompt Engineering",
+      "directory": "day_05/"
+    },
+    {
+      "day": "06",
+      "title": "LLM APIs",
+      "directory": "day_06/"
+    },
+    {
+      "day": "07",
+      "title": "Mini Project: Prompt Helper",
+      "directory": "day_07/"
+    },
+    {
+      "day": "08",
+      "title": "OpenAI API",
+      "directory": "day_08/"
+    },
+    {
+      "day": "09",
+      "title": "Claude API",
+      "directory": "day_09/"
+    },
+    {
+      "day": "10",
+      "title": "Structured Outputs",
+      "directory": "day_10/"
+    },
+    {
+      "day": "11",
+      "title": "Tool Calling",
+      "directory": "day_11/"
+    },
+    {
+      "day": "12",
+      "title": "Function Calling",
+      "directory": "day_12/"
+    },
+    {
+      "day": "13",
+      "title": "Streaming Responses",
+      "directory": "day_13/"
+    },
+    {
+      "day": "14",
+      "title": "Mini AI Assistant",
+      "directory": "day_14/"
+    },
+    {
+      "day": "15",
+      "title": "Embeddings",
+      "directory": "day_15/"
+    },
+    {
+      "day": "16",
+      "title": "Vector Databases",
+      "directory": "day_16/"
+    },
+    {
+      "day": "17",
+      "title": "RAG",
+      "directory": "day_17/"
+    },
+    {
+      "day": "18",
+      "title": "Hybrid Search",
+      "directory": "day_18/"
+    },
+    {
+      "day": "19",
+      "title": "Memory",
+      "directory": "day_19/"
+    },
+    {
+      "day": "20",
+      "title": "Long-Term Memory",
+      "directory": "day_20/"
+    },
+    {
+      "day": "21",
+      "title": "Knowledge Assistant Project",
+      "directory": "day_21/"
+    },
+    {
+      "day": "22",
+      "title": "What are AI Agents?",
+      "directory": "day_22/"
+    },
+    {
+      "day": "23",
+      "title": "Planning",
+      "directory": "day_23/"
+    },
+    {
+      "day": "24",
+      "title": "Multi-Agent Systems",
+      "directory": "day_24/"
+    },
+    {
+      "day": "25",
+      "title": "Model Context Protocol (MCP)",
+      "directory": "day_25/"
+    },
+    {
+      "day": "26",
+      "title": "LangChain",
+      "directory": "day_26/"
+    },
+    {
+      "day": "27",
+      "title": "Evaluation",
+      "directory": "day_27/"
+    },
+    {
+      "day": "28",
+      "title": "Guardrails",
+      "directory": "day_28/"
+    },
+    {
+      "day": "29",
+      "title": "Deployment",
+      "directory": "day_29/"
+    },
+    {
+      "day": "30",
+      "title": "Capstone Project",
+      "directory": "day_30/"
+    }
+  ],
+  "phases": [
+    {
+      "phase": "01",
+      "type": "Core (Majburiy)",
+      "title": "AI Engineer kasbi va individual yo‘l",
+      "originalSource": "1. Introduction",
+      "miniProject": "Kasbiy yo‘nalish tanlovi va shaxsiy yo‘l xaritasi",
+      "visualLab": "AI ilovasi tarkibiy qismlari (UI → Backend → Model → Natija) vizual xaritasi",
+      "supplementNote": "AGI, kasbiy rollar va ta'lim yo'li tafsilotlarini kerak bo'lsa alohida tekshirish.",
+      "lessons": [
+        {
+          "id": "01.01",
+          "status": "planned",
+          "title": "AI Engineer nimalar yaratadi?",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.02",
+          "status": "planned",
+          "title": "AI Engineer va ML Engineer farqi",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.03",
+          "status": "planned",
+          "title": "AI, ML, Deep Learning va Generative AI o‘rtasidagi aloqa",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.04",
+          "status": "planned",
+          "title": "Narrow AI va AGI nima?",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.05",
+          "status": "planned",
+          "title": "Model, dataset va application farqi",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.06",
+          "status": "planned",
+          "title": "Training nima?",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.07",
+          "status": "planned",
+          "title": "Inference nima?",
+          "candidateRepoDays": [
+            "01",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.08",
+          "status": "planned",
+          "title": "Token nima?",
+          "candidateRepoDays": [
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.09",
+          "status": "planned",
+          "title": "Context window nimani anglatadi?",
+          "candidateRepoDays": [
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.10",
+          "status": "planned",
+          "title": "Latency, cost va sifat nima?",
+          "candidateRepoDays": [
+            "03",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.11",
+          "status": "planned",
+          "title": "LLM, RAG, Agent, Vector DB bir-biriga qanday ulanadi?",
+          "candidateRepoDays": [
+            "01",
+            "14",
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "01.12",
+          "status": "planned",
+          "title": "O‘z maqsadim uchun yo‘nalish tanlash",
+          "candidateRepoDays": [
+            "01",
+            "14",
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "02",
+      "type": "Core (Majburiy)",
+      "title": "Python / TypeScript dasturlash poydevori",
+      "originalSource": "2. Pre-requisites",
+      "miniProject": "JSON faylini o‘qib, tekshiradigan va natijani yozadigan CLI",
+      "visualLab": "Kodning ishlash oqimi: input → function → output; async event timeline",
+      "supplementNote": "Python Academy / TypeScript poydevori; repo Day 0 faqat boshlang‘ich yo‘naltiruvchi manba.",
+      "lessons": [
+        {
+          "id": "02.01",
+          "status": "planned",
+          "title": "O‘zgaruvchi va data type",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.02",
+          "status": "planned",
+          "title": "List va dictionary",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.03",
+          "status": "planned",
+          "title": "Shart operatori",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.04",
+          "status": "planned",
+          "title": "Loop",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.05",
+          "status": "planned",
+          "title": "Funksiya va parametr",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.06",
+          "status": "planned",
+          "title": "Return qiymati",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.07",
+          "status": "planned",
+          "title": "Exception va xatolarni ushlash",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.08",
+          "status": "planned",
+          "title": "File bilan ishlash",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.09",
+          "status": "planned",
+          "title": "JSONni o‘qish va yozish",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.10",
+          "status": "planned",
+          "title": "Class va object",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.11",
+          "status": "planned",
+          "title": "Module, package va dependency",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.12",
+          "status": "planned",
+          "title": "Virtual environment va pip/npm",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.13",
+          "status": "planned",
+          "title": "Type hint va TypeScript type",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.14",
+          "status": "planned",
+          "title": "Async/await tushunchasi",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "02.15",
+          "status": "planned",
+          "title": "Kichik algoritmni funksiyalarga ajratish",
+          "candidateRepoDays": [
+            "00"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "03",
+      "type": "Core (Majburiy)",
+      "title": "Backend, API, Git va ma’lumotlar bazasi",
+      "originalSource": "2. Pre-requisites",
+      "miniProject": "FastAPI da validatsiyali kichik REST servis",
+      "visualLab": "Interaktiv HTTP request lifecycle va status code xaritasi",
+      "supplementNote": "SQL, Git va backend asoslari uchun alohida manba; Day 6/14 faqat integratsiya konteksti.",
+      "lessons": [
+        {
+          "id": "03.01",
+          "status": "planned",
+          "title": "Client va server farqi",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.02",
+          "status": "planned",
+          "title": "HTTP request/response",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.03",
+          "status": "planned",
+          "title": "GET/POST/PUT/DELETE",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.04",
+          "status": "planned",
+          "title": "JSON body, header, status code",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.05",
+          "status": "planned",
+          "title": "REST endpoint nima?",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.06",
+          "status": "planned",
+          "title": "FastAPI minimal endpoint",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.07",
+          "status": "planned",
+          "title": "Pydantic schema va validation",
+          "candidateRepoDays": [
+            "00",
+            "06",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.08",
+          "status": "planned",
+          "title": "Async API chaqiruv",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.09",
+          "status": "planned",
+          "title": "Timeout va retry",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.10",
+          "status": "planned",
+          "title": "Environment variable",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.11",
+          "status": "planned",
+          "title": "API kalitini serverda saqlash",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.12",
+          "status": "planned",
+          "title": "SQL jadval va row",
+          "candidateRepoDays": [
+            "00",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.13",
+          "status": "planned",
+          "title": "Oddiy SELECT/INSERT",
+          "candidateRepoDays": [
+            "00",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.14",
+          "status": "planned",
+          "title": "Git commit/branch/pull request",
+          "candidateRepoDays": [
+            "00",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "03.15",
+          "status": "planned",
+          "title": "API testing va error handling",
+          "candidateRepoDays": [
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "04",
+      "type": "Core (Majburiy)",
+      "title": "AI va LLM qanday ishlaydi?",
+      "originalSource": "1. Introduction; 3. Pre-trained Models & Working with LLMs",
+      "miniProject": "Tokenization va context hajmini ko‘rsatadigan vizual mini-ilova",
+      "visualLab": "Token → ID → embedding → output oqimi va training/inference ikki yo‘lakli animatsiya",
+      "supplementNote": "Training, gradient, backpropagation, transformer turlari bo'yicha qamrovni tekshirish.",
+      "lessons": [
+        {
+          "id": "04.01",
+          "status": "planned",
+          "title": "Input → tokenization → model → output",
+          "candidateRepoDays": [
+            "02",
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.02",
+          "status": "planned",
+          "title": "Token va so‘z bir xil emas",
+          "candidateRepoDays": [
+            "02",
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.03",
+          "status": "planned",
+          "title": "Token IDs va vocabulary",
+          "candidateRepoDays": [
+            "02",
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.04",
+          "status": "planned",
+          "title": "Context window chegarasi",
+          "candidateRepoDays": [
+            "02",
+            "03"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.05",
+          "status": "planned",
+          "title": "Model weights nima?",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.06",
+          "status": "planned",
+          "title": "Pre-training nima?",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.07",
+          "status": "planned",
+          "title": "Instruction tuning tushunchasi (overview)",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.08",
+          "status": "planned",
+          "title": "Forward pass nima?",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.09",
+          "status": "planned",
+          "title": "Loss haqida sezgi",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.10",
+          "status": "planned",
+          "title": "Gradient va backpropagation (overview)",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.11",
+          "status": "planned",
+          "title": "Training va inference farqi",
+          "candidateRepoDays": [
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.12",
+          "status": "planned",
+          "title": "Hallucination tushunchasi",
+          "candidateRepoDays": [
+            "02",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.13",
+          "status": "planned",
+          "title": "Transformer nima?",
+          "candidateRepoDays": [
+            "02",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "04.14",
+          "status": "planned",
+          "title": "Encoder-only, decoder-only, encoder–decoder (overview)",
+          "candidateRepoDays": [
+            "02",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "05",
+      "type": "Core (Majburiy)",
+      "title": "Tayyor modellar, model tanlash va ekotizim",
+      "originalSource": "3. Pre-trained Models & Working with LLMs",
+      "miniProject": "3 vazifa uchun model tanlash jadvali va asoslantirish",
+      "visualLab": "Model tanlash qaror daraxti; sifat–xarajat–latency trade-off slayderlari (faqat illustrativ)",
+      "supplementNote": "Open-weight oilalari, maxfiylik va model versiyalari bo‘yicha alohida rasmiy manbalar.",
+      "lessons": [
+        {
+          "id": "05.01",
+          "status": "planned",
+          "title": "Pre-trained model nimani anglatadi?",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.02",
+          "status": "planned",
+          "title": "Closed model nima?",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.03",
+          "status": "planned",
+          "title": "Open-weight va open-source farqi",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.04",
+          "status": "planned",
+          "title": "GPT, Claude, Gemini, Cohere — xizmat sifatida model",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.05",
+          "status": "planned",
+          "title": "Llama, Mistral, DeepSeek, Gemma, Qwen — model oilalari",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.06",
+          "status": "planned",
+          "title": "Model ID va version",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.07",
+          "status": "planned",
+          "title": "Kontekst cheklovi",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.08",
+          "status": "planned",
+          "title": "Matn va multimodal imkoniyat",
+          "candidateRepoDays": [
+            "01",
+            "02",
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.09",
+          "status": "planned",
+          "title": "Latency",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.10",
+          "status": "planned",
+          "title": "Narx va token budjeti",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.11",
+          "status": "planned",
+          "title": "Maxfiylik va ma’lumot rezidentligi",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.12",
+          "status": "planned",
+          "title": "Benchmark va o‘z test dataseti farqi",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "05.13",
+          "status": "planned",
+          "title": "Vazifaga mos modelni tanlash",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "06",
+      "type": "Core (Majburiy)",
+      "title": "LLM API, SDK va lokal bo‘lmagan inference",
+      "originalSource": "3. Pre-trained Models & Working with LLMs",
+      "miniProject": "Bir nechta provayderni almashtira oladigan xavfsiz backend endpoint",
+      "visualLab": "Request lifecycle va streaming token oqimi",
+      "supplementNote": "Hugging Face va providerlar uchun rasmiy docs tekshirilsin.",
+      "lessons": [
+        {
+          "id": "06.01",
+          "status": "planned",
+          "title": "API kalit va ruxsat",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.02",
+          "status": "planned",
+          "title": "SDK nima?",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.03",
+          "status": "planned",
+          "title": "Chat/generation request tuzilishi",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.04",
+          "status": "planned",
+          "title": "System va user xabarlar",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.05",
+          "status": "planned",
+          "title": "Response parsing",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.06",
+          "status": "planned",
+          "title": "Error response",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.07",
+          "status": "planned",
+          "title": "Timeout",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.08",
+          "status": "planned",
+          "title": "Retry va exponential backoff",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.09",
+          "status": "planned",
+          "title": "Rate limit",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.10",
+          "status": "planned",
+          "title": "Usage/token hisoblash",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.11",
+          "status": "planned",
+          "title": "Streaming javob",
+          "candidateRepoDays": [
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.12",
+          "status": "planned",
+          "title": "Provider abstraction",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.13",
+          "status": "planned",
+          "title": "OpenAI-compatible interface",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "06.14",
+          "status": "planned",
+          "title": "Hugging Face Hub / inference asoslari",
+          "candidateRepoDays": [
+            "06",
+            "08",
+            "09",
+            "14"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "07",
+      "type": "Core (Majburiy)",
+      "title": "Prompt Engineering asoslari",
+      "originalSource": "4. Prompt Engineering & Context Engineering",
+      "miniProject": "Uch uslubdagi prompt uchun regression test to‘plami",
+      "visualLab": "Bir xil modelga turli promptlarning javob formatini solishtirish (real API yoki oldindan belgilangan namuna)",
+      "supplementNote": "Repo bo‘limlari bilan aniq moslikni tekshirish.",
+      "lessons": [
+        {
+          "id": "07.01",
+          "status": "planned",
+          "title": "Prompt va instruction",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.02",
+          "status": "planned",
+          "title": "System/Developer/User rol farqi",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.03",
+          "status": "planned",
+          "title": "Goal va constraint",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.04",
+          "status": "planned",
+          "title": "Zero-shot",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.05",
+          "status": "planned",
+          "title": "Few-shot",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.06",
+          "status": "planned",
+          "title": "Misol tanlash",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.07",
+          "status": "planned",
+          "title": "Output formatni aniq so‘rash",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.08",
+          "status": "planned",
+          "title": "Delimiters va ma’lumotni ko‘rsatmadan ajratish",
+          "candidateRepoDays": [
+            "04",
+            "05",
+            "07"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.09",
+          "status": "planned",
+          "title": "CoT prompting konsepti (shaxsiy reasoningni talab qilmasdan)",
+          "candidateRepoDays": [
+            "05",
+            "22",
+            "23"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.10",
+          "status": "planned",
+          "title": "ReAct pattern tushunchasi",
+          "candidateRepoDays": [
+            "05",
+            "22",
+            "23"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.11",
+          "status": "planned",
+          "title": "Prompt test case",
+          "candidateRepoDays": [
+            "07",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.12",
+          "status": "planned",
+          "title": "Prompt versiyalash",
+          "candidateRepoDays": [
+            "07",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "07.13",
+          "status": "planned",
+          "title": "Prompt failure misollar",
+          "candidateRepoDays": [
+            "07",
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "08",
+      "type": "Core (Majburiy)",
+      "title": "Inference parametrlari, Structured Output, Tools",
+      "originalSource": "4. Prompt Engineering & Context Engineering",
+      "miniProject": "Schema-validatsiyali JSON generator va bitta calculator tool",
+      "visualLab": "Sampling distribution slayderi va tool-call state diagrammasi",
+      "supplementNote": "Top-k, repetition penalty, prompt caching qamrovi provayderga qarab tekshirilsin.",
+      "lessons": [
+        {
+          "id": "08.01",
+          "status": "planned",
+          "title": "Temperature nima?",
+          "candidateRepoDays": [
+            "05",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.02",
+          "status": "planned",
+          "title": "Top-p (nucleus sampling)",
+          "candidateRepoDays": [
+            "05",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.03",
+          "status": "planned",
+          "title": "Top-k (model qo‘llasa)",
+          "candidateRepoDays": [
+            "05",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.04",
+          "status": "planned",
+          "title": "Repetition penalty",
+          "candidateRepoDays": [
+            "05",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.05",
+          "status": "planned",
+          "title": "Temperature ≠ sifat kafolati",
+          "candidateRepoDays": [
+            "05",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.06",
+          "status": "planned",
+          "title": "JSON mode va schema validation",
+          "candidateRepoDays": [
+            "10"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.07",
+          "status": "planned",
+          "title": "JSON Schema va Pydantic",
+          "candidateRepoDays": [
+            "10"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.08",
+          "status": "planned",
+          "title": "Structured output error",
+          "candidateRepoDays": [
+            "10"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.09",
+          "status": "planned",
+          "title": "Function calling nima?",
+          "candidateRepoDays": [
+            "11",
+            "12"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.10",
+          "status": "planned",
+          "title": "Tool schema",
+          "candidateRepoDays": [
+            "11",
+            "12"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.11",
+          "status": "planned",
+          "title": "Tool arguments tekshiruvi",
+          "candidateRepoDays": [
+            "11",
+            "12"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.12",
+          "status": "planned",
+          "title": "Streaming bilan UI state",
+          "candidateRepoDays": [
+            "13"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.13",
+          "status": "planned",
+          "title": "Prompt caching tushunchasi",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "19"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "08.14",
+          "status": "planned",
+          "title": "Token narxini hisoblash",
+          "candidateRepoDays": [
+            "03",
+            "06",
+            "19"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "09",
+      "type": "Core (Majburiy)",
+      "title": "Context Engineering va xotira",
+      "originalSource": "4. Prompt Engineering & Context Engineering",
+      "miniProject": "Cheklangan context uchun xavfsiz tarix qisqartirish prototipi",
+      "visualLab": "Context window uchun token budjeti vizual bar; history compaction steps",
+      "supplementNote": "Compaction, isolation va state uchun qo‘shimcha tekshiruv.",
+      "lessons": [
+        {
+          "id": "09.01",
+          "status": "planned",
+          "title": "Prompt vs context engineering",
+          "candidateRepoDays": [
+            "03",
+            "05",
+            "17"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.02",
+          "status": "planned",
+          "title": "Context window token budget",
+          "candidateRepoDays": [
+            "03",
+            "05",
+            "17"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.03",
+          "status": "planned",
+          "title": "System instructions va user data",
+          "candidateRepoDays": [
+            "03",
+            "05",
+            "17"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.04",
+          "status": "planned",
+          "title": "Retrieval context",
+          "candidateRepoDays": [
+            "03",
+            "05",
+            "17"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.05",
+          "status": "planned",
+          "title": "Conversation history",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.06",
+          "status": "planned",
+          "title": "Short-term va long-term memory",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.07",
+          "status": "planned",
+          "title": "Context compaction",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.08",
+          "status": "planned",
+          "title": "Chunk-based context",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.09",
+          "status": "planned",
+          "title": "Context isolation",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.10",
+          "status": "planned",
+          "title": "Relevant/irrelevant context",
+          "candidateRepoDays": [
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.11",
+          "status": "planned",
+          "title": "Lost-in-the-middle fenomeni (ehtiyotkor talqin)",
+          "candidateRepoDays": [
+            "03",
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.12",
+          "status": "planned",
+          "title": "State management",
+          "candidateRepoDays": [
+            "03",
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.13",
+          "status": "planned",
+          "title": "Context failure modes",
+          "candidateRepoDays": [
+            "03",
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "09.14",
+          "status": "planned",
+          "title": "Prompt caching arxitekturada",
+          "candidateRepoDays": [
+            "03",
+            "19",
+            "20"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "10",
+      "type": "Core (Majburiy)",
+      "title": "AI Safety, Ethics va Privacy",
+      "originalSource": "5. AI Safety and Ethics",
+      "miniProject": "Ruxsatsiz tool action’ni bloklaydigan agent guardrail testi",
+      "visualLab": "Trust boundary oqimi va prompt injection xavfsiz demonstratsiyasi",
+      "supplementNote": "Repo bo‘limlari bilan aniq moslikni tekshirish.",
+      "lessons": [
+        {
+          "id": "10.01",
+          "status": "planned",
+          "title": "AI xavfsizligi nimani qamrab oladi?",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.02",
+          "status": "planned",
+          "title": "Hallucination va noto‘g‘ri ishonch",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.03",
+          "status": "planned",
+          "title": "Prompt injection nima?",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.04",
+          "status": "planned",
+          "title": "Data vs instruction trust boundary",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.05",
+          "status": "planned",
+          "title": "Indirect prompt injection",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.06",
+          "status": "planned",
+          "title": "Input validation",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.07",
+          "status": "planned",
+          "title": "Output schema validation",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.08",
+          "status": "planned",
+          "title": "Content moderation",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.09",
+          "status": "planned",
+          "title": "Adversarial testing / red-team",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.10",
+          "status": "planned",
+          "title": "Privacy va PII",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.11",
+          "status": "planned",
+          "title": "Loggingda maxfiy ma’lumot",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.12",
+          "status": "planned",
+          "title": "Bias va fairness",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.13",
+          "status": "planned",
+          "title": "Foydalanuvchi identifikatori va ma’lumot minimizatsiyasi",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.14",
+          "status": "planned",
+          "title": "Threat model",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "10.15",
+          "status": "planned",
+          "title": "Human-in-the-loop va muhim operatsiyalar uchun ruxsat",
+          "candidateRepoDays": [
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "11",
+      "type": "Advanced (Chuqur)",
+      "title": "Open-weight modellar va lokal inference",
+      "originalSource": "3. Pre-trained Models & Working with LLMs",
+      "miniProject": "Ollama API bilan lokal oddiy chatbot (imkon bo‘lsa)",
+      "visualLab": "Model → quantization → memory grafiklari; prefill/decode animatsiyasi",
+      "supplementNote": "Repo roadmapida lokal inference, GGUF, CUDA/MPS/TPU uchun alohida kun yo‘q; rasmiy hujjatlar zarur.",
+      "lessons": [
+        {
+          "id": "11.01",
+          "status": "planned",
+          "title": "Hugging Face Hub",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.02",
+          "status": "planned",
+          "title": "Model checkpoint va tokenizer",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.03",
+          "status": "planned",
+          "title": "GGUF tushunchasi",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.04",
+          "status": "planned",
+          "title": "Quantization nima?",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.05",
+          "status": "planned",
+          "title": "Model o‘lchami va RAM/VRAM",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.06",
+          "status": "planned",
+          "title": "Ollama o‘rnatish va servis",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.07",
+          "status": "planned",
+          "title": "LM Studio’dan foydalanish",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.08",
+          "status": "planned",
+          "title": "Lokal modelga API chaqirish",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.09",
+          "status": "planned",
+          "title": "CPU, GPU farqi",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.10",
+          "status": "planned",
+          "title": "NVIDIA CUDA (overview)",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.11",
+          "status": "planned",
+          "title": "Apple Metal/MPS (overview)",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.12",
+          "status": "planned",
+          "title": "TPU/XLA (overview)",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.13",
+          "status": "planned",
+          "title": "Prefill va decode",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.14",
+          "status": "planned",
+          "title": "Tokens/second va latency",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "11.15",
+          "status": "planned",
+          "title": "Local vs cloud qaror",
+          "candidateRepoDays": [
+            "00",
+            "02",
+            "06"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "12",
+      "type": "Core (Majburiy)",
+      "title": "Embeddings va vektor matematikasi",
+      "originalSource": "6. Embeddings & Vector Databases",
+      "miniProject": "Oddiy 3 ta gap uchun embedding qidiruvi (model bo‘lmasa sonli demo deb belgilansin)",
+      "visualLab": "2D vektor chizish, dot product va cosine similarity real hisoblash",
+      "supplementNote": "Vektor matematikasining formulalari tekshirilsin; 2D projection real embedding deb berilmasin.",
+      "lessons": [
+        {
+          "id": "12.01",
+          "status": "planned",
+          "title": "Koordinata nima?",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.02",
+          "status": "published",
+          "title": "2D vektor",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.03",
+          "status": "planned",
+          "title": "Vektor o‘lchami/dimension",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.04",
+          "status": "published",
+          "title": "Vektor uzunligi (norm)",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.05",
+          "status": "published",
+          "title": "Dot product",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.06",
+          "status": "planned",
+          "title": "O‘xshashlik nima?",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.07",
+          "status": "published",
+          "title": "Cosine similarity",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.08",
+          "status": "planned",
+          "title": "Euclidean distance",
+          "candidateRepoDays": [
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.09",
+          "status": "planned",
+          "title": "Embedding nima?",
+          "candidateRepoDays": [
+            "03",
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.10",
+          "status": "planned",
+          "title": "Token/so‘z/gap embedding farqi (overview)",
+          "candidateRepoDays": [
+            "03",
+            "15"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.11",
+          "status": "planned",
+          "title": "Semantic search nima?",
+          "candidateRepoDays": [
+            "15",
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.12",
+          "status": "planned",
+          "title": "Embedding model tanlash",
+          "candidateRepoDays": [
+            "15",
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.13",
+          "status": "planned",
+          "title": "Multilingual embedding",
+          "candidateRepoDays": [
+            "15",
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "12.14",
+          "status": "planned",
+          "title": "Embedding qiymatlarini plot qilishdagi cheklovlar",
+          "candidateRepoDays": [
+            "15",
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "13",
+      "type": "Core (Majburiy)",
+      "title": "Vector Database va ANN Search",
+      "originalSource": "6. Embeddings & Vector Databases",
+      "miniProject": "Qdrant yoki Chroma bilan indekslash va qidirish API",
+      "visualLab": "Vektor fazosida query, nearest neighbors va top-k highlight",
+      "supplementNote": "Qdrant/Chroma/FAISS rasmiy hujjatlari kerak bo‘lishi mumkin.",
+      "lessons": [
+        {
+          "id": "13.01",
+          "status": "planned",
+          "title": "Oddiy database vs vector database",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.02",
+          "status": "planned",
+          "title": "Document ID va metadata",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.03",
+          "status": "planned",
+          "title": "Embeddingni saqlash",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.04",
+          "status": "planned",
+          "title": "Exact nearest neighbor",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.05",
+          "status": "planned",
+          "title": "Approximate nearest neighbor — ANN",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.06",
+          "status": "planned",
+          "title": "Index nima?",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.07",
+          "status": "planned",
+          "title": "Cosine / dot / L2 metric",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.08",
+          "status": "planned",
+          "title": "Filter + similarity",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.09",
+          "status": "planned",
+          "title": "Top-k nima?",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.10",
+          "status": "planned",
+          "title": "Chroma va Qdrant asoslari",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.11",
+          "status": "planned",
+          "title": "FAISS va alternativalar (overview)",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.12",
+          "status": "planned",
+          "title": "Metadata filters",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.13",
+          "status": "planned",
+          "title": "Update/upsert/delete",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.14",
+          "status": "planned",
+          "title": "Index latency va retrieval quality",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "13.15",
+          "status": "planned",
+          "title": "Dimension mismatch xatosi",
+          "candidateRepoDays": [
+            "16"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "14",
+      "type": "Core (Majburiy)",
+      "title": "RAG: hujjat tayyorlash va indexing",
+      "originalSource": "7. RAGs",
+      "miniProject": "Bir kichik Markdown hujjatni chunk va index qilish",
+      "visualLab": "Document → chunks → embedding → VDB interaktiv animatsiya",
+      "supplementNote": "Parsing formatlari va incremental update alohida tekshirilsin.",
+      "lessons": [
+        {
+          "id": "14.01",
+          "status": "planned",
+          "title": "RAG qanday muammoni yechadi?",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.02",
+          "status": "planned",
+          "title": "External knowledge nima?",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.03",
+          "status": "planned",
+          "title": "Ingestion pipeline",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.04",
+          "status": "planned",
+          "title": "PDF/TXT/MD parsing",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.05",
+          "status": "planned",
+          "title": "Document cleaning",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.06",
+          "status": "published",
+          "title": "Chunk nima?",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.07",
+          "status": "planned",
+          "title": "Chunk size",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.08",
+          "status": "planned",
+          "title": "Chunk overlap",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.09",
+          "status": "planned",
+          "title": "Heading-aware chunking",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.10",
+          "status": "planned",
+          "title": "Metadata va source link",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.11",
+          "status": "planned",
+          "title": "Embedding generation",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.12",
+          "status": "planned",
+          "title": "Batch indexing",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.13",
+          "status": "planned",
+          "title": "Incremental update tushunchasi",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "14.14",
+          "status": "planned",
+          "title": "Ingestiondagi error handling",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "15",
+      "type": "Core (Majburiy)",
+      "title": "RAG: retrieval, generation, citation",
+      "originalSource": "7. RAGs",
+      "miniProject": "Manbali savol-javob API, topilgan hujjatni ko‘rsatish",
+      "visualLab": "Query → top-k chunks → context → answer; source highlight",
+      "supplementNote": "Repo bo‘limlari bilan aniq moslikni tekshirish.",
+      "lessons": [
+        {
+          "id": "15.01",
+          "status": "planned",
+          "title": "Question embedding",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.02",
+          "status": "planned",
+          "title": "Similarity retrieval",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.03",
+          "status": "planned",
+          "title": "Top-k search",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.04",
+          "status": "planned",
+          "title": "Metadata filter",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.05",
+          "status": "planned",
+          "title": "Context construction",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.06",
+          "status": "planned",
+          "title": "Promptga manba qo‘shish",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.07",
+          "status": "planned",
+          "title": "Grounded generation",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.08",
+          "status": "published",
+          "title": "Citation va source provenance",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.09",
+          "status": "planned",
+          "title": "No-answer siyosati",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.10",
+          "status": "planned",
+          "title": "Retrieval miss",
+          "candidateRepoDays": [
+            "17",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.11",
+          "status": "planned",
+          "title": "Lexical vs semantic search (overview)",
+          "candidateRepoDays": [
+            "18"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.12",
+          "status": "planned",
+          "title": "Hybrid retrieval (ixtiyoriy kengaytma)",
+          "candidateRepoDays": [
+            "18"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.13",
+          "status": "planned",
+          "title": "Query rewrite tushunchasi",
+          "candidateRepoDays": [
+            "18"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "15.14",
+          "status": "planned",
+          "title": "RAG vs Fine-tuning farqi",
+          "candidateRepoDays": [
+            "17",
+            "02"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "16",
+      "type": "Core (Majburiy)",
+      "title": "RAG sifatini tekshirish va optimallashtirish",
+      "originalSource": "7. RAGs; 9. Evaluation & Observability",
+      "miniProject": "10+ tekshiruv savolli RAG evaluation hisobot",
+      "visualLab": "Retrieval natijalari va manbalarga moslik interaktiv tekshiruvi",
+      "supplementNote": "Hit@k, MRR va boshqa metrikalar ta’riflarini rasmiy manbalardan tasdiqlash.",
+      "lessons": [
+        {
+          "id": "16.01",
+          "status": "planned",
+          "title": "Test savollar dataset",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.02",
+          "status": "planned",
+          "title": "Ground truth / reference answer",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.03",
+          "status": "planned",
+          "title": "Retrieval Hit@k",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.04",
+          "status": "planned",
+          "title": "MRR tushunchasi",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.05",
+          "status": "planned",
+          "title": "Recall va precision intuisiya",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.06",
+          "status": "planned",
+          "title": "Faithfulness",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.07",
+          "status": "planned",
+          "title": "Answer relevance",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.08",
+          "status": "planned",
+          "title": "No-answer evaluation",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.09",
+          "status": "planned",
+          "title": "Chunk size experiment",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.10",
+          "status": "planned",
+          "title": "Top-k experiment",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.11",
+          "status": "planned",
+          "title": "Embedding model taqqoslash",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.12",
+          "status": "planned",
+          "title": "Failure case classification",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.13",
+          "status": "planned",
+          "title": "Latency va token cost",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.14",
+          "status": "planned",
+          "title": "RAGAS va DeepEval (overview)",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "16.15",
+          "status": "planned",
+          "title": "RAG regression testing",
+          "candidateRepoDays": [
+            "27",
+            "17",
+            "18",
+            "21"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "17",
+      "type": "Core (Majburiy)",
+      "title": "AI Agents, Tools va workflow",
+      "originalSource": "8. AI Agents & Model Context Protocol (MCP)",
+      "miniProject": "2 ta tool bilan boshqariladigan agent, failure va approval ssenariylari",
+      "visualLab": "Agent state machine: plan/act/observe/stop; step-through tool calls",
+      "supplementNote": "Repo bo‘limlari bilan aniq moslikni tekshirish.",
+      "lessons": [
+        {
+          "id": "17.01",
+          "status": "planned",
+          "title": "Chatbot va agent farqi",
+          "candidateRepoDays": [
+            "11",
+            "12",
+            "22"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.02",
+          "status": "planned",
+          "title": "Tool / function nima?",
+          "candidateRepoDays": [
+            "11",
+            "12",
+            "22"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.03",
+          "status": "planned",
+          "title": "Tool schema",
+          "candidateRepoDays": [
+            "11",
+            "12",
+            "22"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.04",
+          "status": "planned",
+          "title": "Tool permission",
+          "candidateRepoDays": [
+            "11",
+            "12",
+            "22"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.05",
+          "status": "planned",
+          "title": "ReAct loop",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.06",
+          "status": "planned",
+          "title": "Action → observation → next action",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.07",
+          "status": "planned",
+          "title": "Agent state",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.08",
+          "status": "planned",
+          "title": "Stop condition",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.09",
+          "status": "planned",
+          "title": "Max steps / budget",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.10",
+          "status": "planned",
+          "title": "Human approval",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.11",
+          "status": "planned",
+          "title": "Tool failure va recovery",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.12",
+          "status": "planned",
+          "title": "Parallel vs sequential tools",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "24",
+            "26"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.13",
+          "status": "planned",
+          "title": "Deterministic workflow vs agent",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "24",
+            "26"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.14",
+          "status": "planned",
+          "title": "Manual agent loop",
+          "candidateRepoDays": [
+            "22",
+            "23",
+            "24",
+            "26"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "17.15",
+          "status": "planned",
+          "title": "Agent tracing",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "18",
+      "type": "Core (Majburiy)",
+      "title": "MCP va agentlarni kengaytirish",
+      "originalSource": "8. AI Agents & Model Context Protocol (MCP)",
+      "miniProject": "Bitta xavfsiz read-only MCP tool bilan integratsiya",
+      "visualLab": "MCP Host → Client → Server → Tool request animatsiyasi",
+      "supplementNote": "MCP transport va auth uchun amaldagi MCP specification tekshirilsin.",
+      "lessons": [
+        {
+          "id": "18.01",
+          "status": "planned",
+          "title": "MCP nima?",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.02",
+          "status": "planned",
+          "title": "Host vazifasi",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.03",
+          "status": "planned",
+          "title": "Client vazifasi",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.04",
+          "status": "planned",
+          "title": "Server vazifasi",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.05",
+          "status": "planned",
+          "title": "Tool, resource, prompt tushunchalari",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.06",
+          "status": "planned",
+          "title": "Transport: local stdio",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.07",
+          "status": "planned",
+          "title": "Transport: HTTP",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.08",
+          "status": "planned",
+          "title": "Serverni ro‘yxatdan o‘tkazish",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.09",
+          "status": "planned",
+          "title": "Tool discovery",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.10",
+          "status": "planned",
+          "title": "Tool schema va validation",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.11",
+          "status": "planned",
+          "title": "Auth va permission",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.12",
+          "status": "planned",
+          "title": "Client-server so‘rov oqimi",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.13",
+          "status": "planned",
+          "title": "MCP server test",
+          "candidateRepoDays": [
+            "25"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.14",
+          "status": "planned",
+          "title": "Multi-agent (overview)",
+          "candidateRepoDays": [
+            "24"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "18.15",
+          "status": "planned",
+          "title": "Agent va tashqi tizim audit log",
+          "candidateRepoDays": [
+            "25",
+            "27",
+            "28"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "19",
+      "type": "Core (Majburiy)",
+      "title": "Evaluation, Observability va Production",
+      "originalSource": "9. Evaluation & Observability; 1. Introduction",
+      "miniProject": "Kichik production AI servis uchun log/eval dashboard va testlar",
+      "visualLab": "Request trace timeline, latency va cost breakdown (faqat real metrikalar)",
+      "supplementNote": "p50/p95, log redaction, tracing vendor docs bilan tekshirilsin.",
+      "lessons": [
+        {
+          "id": "19.01",
+          "status": "planned",
+          "title": "AI tizimni qanday o‘lchaymiz?",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.02",
+          "status": "planned",
+          "title": "Deterministic eval",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.03",
+          "status": "planned",
+          "title": "Model-based eval",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.04",
+          "status": "planned",
+          "title": "Human eval",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.05",
+          "status": "planned",
+          "title": "Evaluation dataset",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.06",
+          "status": "planned",
+          "title": "Regression testing",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.07",
+          "status": "planned",
+          "title": "Request trace nima?",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.08",
+          "status": "planned",
+          "title": "Token usage",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.09",
+          "status": "planned",
+          "title": "Cost calculation",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.10",
+          "status": "planned",
+          "title": "Latency p50/p95",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.11",
+          "status": "planned",
+          "title": "Failure rate",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.12",
+          "status": "planned",
+          "title": "Log redaction",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.13",
+          "status": "planned",
+          "title": "Langfuse / LangSmith (tanlov)",
+          "candidateRepoDays": [
+            "27"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.14",
+          "status": "planned",
+          "title": "Alerting va monitoring",
+          "candidateRepoDays": [
+            "27",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.15",
+          "status": "planned",
+          "title": "Prompt/model version",
+          "candidateRepoDays": [
+            "27",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.16",
+          "status": "planned",
+          "title": "Caching / rate limit / fallback",
+          "candidateRepoDays": [
+            "27",
+            "29"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.17",
+          "status": "planned",
+          "title": "Deployment va rollback",
+          "candidateRepoDays": [
+            "29",
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "19.18",
+          "status": "planned",
+          "title": "Production checklist",
+          "candidateRepoDays": [
+            "29",
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    },
+    {
+      "phase": "20",
+      "type": "Advanced (Chuqur)",
+      "title": "Multimodal AI va yakuniy amaliy loyiha",
+      "originalSource": "10. Multimodal AI; Xaritani Amaliy O‘zlashtirish Tartibi",
+      "miniProject": "RAG + Tool Agent + Evaluation + (ixtiyoriy) Vision/STT/TTS yakuniy loyiha",
+      "visualLab": "Image/audio/text → model → result; modality routing oqimi",
+      "supplementNote": "Multimodal AI uchun alohida kun roadmapda ko‘rsatilmagan; 20.01–20.13 uchun qo‘shimcha rasmiy manbalar, 20.14–20.17 uchun Day 30.",
+      "lessons": [
+        {
+          "id": "20.01",
+          "status": "planned",
+          "title": "Multimodal model nima?",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.02",
+          "status": "planned",
+          "title": "Image understanding",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.03",
+          "status": "planned",
+          "title": "Visual Q&A",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.04",
+          "status": "planned",
+          "title": "Image generation (overview)",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.05",
+          "status": "planned",
+          "title": "Vision model API integratsiyasi",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.06",
+          "status": "planned",
+          "title": "Speech-to-text",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.07",
+          "status": "planned",
+          "title": "Text-to-speech",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.08",
+          "status": "planned",
+          "title": "Audio pipeline",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.09",
+          "status": "planned",
+          "title": "Video understanding (overview)",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.10",
+          "status": "planned",
+          "title": "Hugging Face multimodal modellar",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.11",
+          "status": "planned",
+          "title": "Multimodal RAG (overview)",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.12",
+          "status": "planned",
+          "title": "Matn/rasm/audio arxitektura",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.13",
+          "status": "planned",
+          "title": "Multimodal privacy va consent",
+          "candidateRepoDays": [],
+          "mappingStatus": "supplement_required",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.14",
+          "status": "planned",
+          "title": "Loyiha talablarini belgilash",
+          "candidateRepoDays": [
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.15",
+          "status": "planned",
+          "title": "Capstone arxitektura",
+          "candidateRepoDays": [
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.16",
+          "status": "planned",
+          "title": "Capstone evaluation",
+          "candidateRepoDays": [
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        },
+        {
+          "id": "20.17",
+          "status": "planned",
+          "title": "Capstone demo va hujjat",
+          "candidateRepoDays": [
+            "30"
+          ],
+          "mappingStatus": "needs_section_review",
+          "sourceRefs": [],
+          "visualAssetIds": []
+        }
+      ]
+    }
+  ]
+}

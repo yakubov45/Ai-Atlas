@@ -1,0 +1,18 @@
+{
+  "id": "neural-network-explorer",
+  "type": "neural-network",
+  "title": "Neyron Tarmoqda To'g'ri Tarqalish (Forward Pass) va Aktivatsiya",
+  "description": "2-qatlamli neyron tarmoq (Input -> Hidden -> Output) arxitekturasi, skalyar ko'paytmalar z = W·x + b, nochiziqli aktivatsiyalar va Manim animatsiyasi.",
+  "status": "published",
+  "synthetic": false,
+  "sources": ["rumelhart-1986", "goodfellow-2016", "karpathy-2023"],
+  "relatedLessons": ["deep-learning", "backpropagation", "cnn"],
+  "config": {
+    "inputCount": 2,
+    "hiddenCount": 3,
+    "outputCount": 1,
+    "hiddenActivation": "relu",
+    "outputActivation": "sigmoid",
+    "videoSrc": "/animations/neural-network/neural_network.mp4"
+  }
+}

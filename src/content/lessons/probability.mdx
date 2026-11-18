@@ -1,0 +1,62 @@
+---
+id: probability
+title: "Probability"
+slug: probability
+description: "Probability (Ehtimollik) — tasodifiy hodisalar yoki model bashoratlarining ishonchlilik taqsimotini [0, 1] oraliqda (yig'indisi 1 ga teng bo'lgan holda) ifodalovchi matematik nazariya."
+category: math
+difficulty: beginner
+order: 10
+tags: ["ai","math","probability","ehtimollik","softmax"]
+prerequisites: ["math-for-deep-learning","vector"]
+related: ["mean","standard-deviation","loss-functions","transformers","llm","rag"]
+visualizations: []
+sources: ["vaswani-2017","kingma-2014","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2436–2483"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Probability (Ehtimollik) — tasodifiy hodisalar yoki model bashoratlarining ishonchlilik taqsimotini [0, 1] oraliqda (yig'indisi 1 ga teng bo'lgan holda) ifodalovchi matematik nazariya.
+
+## 2. Nima uchun kerak?
+[Transformers](/learn/transformers) va [LLM](/learn/llm): Scaled Dot-Product Attention da so'rov va kalitlar ko'paytmasi $\sqrt{d_k}$ ga bo'lingach, Softmax funksiyasi yordamida normalizatsiya qilinib, qiymatlar ($V$) ustida ehtimollik vaznlari (attention pattern) olinadi (Vaswani et al., 2017; 3Blue1Brown, 2024).
+Tasodifiy O'zgaruvchilar Tahlili: Vazn initsializatsiyasi va attention masshtablashda kirish komponentlari o'rtacha qiymati 0 va dispersiyasi 1 ga teng bo'lgan o'zaro mustaqil tasodifiy o'zgaruvchilar (independent random variables) sifatida modellashtiriladi (Vaswani et al., 2017, Footnote 4).
+## 3. Softmax Formulasi va Qadam-baqadam Sonli Misol (Level 1 — Level 3)
+$K$ ta elementdan iborat vektor $s = [s_1, \dots, s_K]^T$ uchun Softmax ehtimolligi:
+
+$$
+\text{softmax}(s)_i = \frac{e^{s_i}}{\sum_{j=1}^{K} e^{s_j}}
+$$
+
+### Qadam-baqadam Sonli Misol
+Berilgan: $s = [0.0, 1.0, 2.0]$.
+
+- Eksponentalar: $e^{0.0} = 1.0000$, $e^{1.0} \approx 2.7183$, $e^{2.0} \approx 7.3891$.
+- Yig'indi: $1.0000 + 2.7183 + 7.3891 = 11.1074$.
+- Ehtimolliklar:
+  - $P(1) = \frac{1.0000}{11.1074} \approx 0.0900$ (9.0%)
+  - $P(2) = \frac{2.7183}{11.1074} \approx 0.2447$ (24.5%)
+  - $P(3) = \frac{7.3891}{11.1074} \approx 0.6652$ (66.5%)
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Math for Deep Learning](/learn/math-for-deep-learning)
+[Vector](/learn/vector)
+Keyingi mavzular:
+
+[Mean](/learn/mean)
+[Standard Deviation](/learn/standard-deviation)
+[Loss Functions](/learn/loss-functions)
+[Transformers](/learn/transformers)
+Bog'liq:
+
+[LLM](/learn/llm)
+[RAG](/learn/rag)
+## 5. Tekshirilgan manbalar
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc

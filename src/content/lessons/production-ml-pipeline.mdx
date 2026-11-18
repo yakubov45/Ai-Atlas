@@ -1,0 +1,55 @@
+---
+id: production-ml-pipeline
+title: "Real Production ML Pipeline Arxitektura va Ish Jarayoni"
+slug: production-ml-pipeline
+description: "Production ML Pipeline — ko'p modulli mashinali o'rganish tizimini global maqsad funksiyasi bo'yicha end-to-end o'qitish, deterministik inference rejimida ishga tushirish va kirish ma'lumotlari taqsimoti o'zgarishini (covariate shift) boshqarish jarayoni."
+category: production-ml
+difficulty: advanced
+order: 3
+tags: ["ai","mlops","production-pipeline","production","end-to-end","real"]
+prerequisites: ["production-ready-ml-structure","batch-normalization","loss-functions"]
+related: ["cnn","rag","ai-agent"]
+visualizations: []
+sources: ["lecun-1998","ioffe-2015"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2785–2826"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Production ML Pipeline — ko'p modulli mashinali o'rganish tizimini global maqsad funksiyasi bo'yicha end-to-end o'qitish, deterministik inference rejimida ishga tushirish va kirish ma'lumotlari taqsimoti o'zgarishini (covariate shift) boshqarish jarayoni.
+
+## 2. Tasdiqlangan Production Arxitektura Tamoyillari (Level 1 — Level 3)
+### 2.1. Ko'p Modulli Tizimlarni Global O'qitish: Graph Transformer Networks (LeCun et al., 1998)
+LeCun, Bottou, Bengio va Haffner (1998) ko'rsatganidek, haqiqiy sanoat tizimlari (masalan, tijoriy ravishda ishga tushirilib, kuniga millionlab bank cheklarini rekord aniqlikda o'qigan tizim) shunchaki "bitta rasm klassifikatori" emas, balki ko'p bosqichli konveyerdir (pipeline):
+
+Field extraction (Maydonni ajratish)
+Segmentation (Bo'laklarga ajratish)
+Character / word recognition (Harf va so'zlarni tanib olish)
+Language modeling (Til modeli)
+An'anaviy ravishda har bir modul alohida loyihalanib va alohida sozlangan. LeCun et al. (1998) Graph Transformer Networks (GTNs) paradigmasi orqali bunday ko'p modulli tizimlarni yagona umumiy unumdorlik o'lchovi (global loss function) yordamida gradient usullari bilan global ravishda birgalikda o'qitishni (end-to-end differentiable pipelines) kiritdilar. Bunda segmentatsiya kabi yashirin o'zgaruvchilar (latent variables) interpretatsiya grafidagi eng qisqa yo'lni topish orqali barcha modullar bilan birgalikda moslashadi (co-adapt).
+
+### 2.2. Deterministik Model Serving va Covariate Shift (Ioffe & Szegedy, 2015)
+Deterministik Inference: Production serving vaqtida model chiqishi mini-batchdagi boshqa so'rovlarga bog'liq bo'lmasligi, balki faqat kirishning o'ziga deterministik bog'liq bo'lishi shart. [Batch Normalization](/learn/batch-normalization) da buning uchun o'qitishdan keyin batch statistikasi populyatsiya baholari bilan almashtirilib, qat'iy affin akslantirishga (fixed affine map) biriktiriladi.
+Covariate Shift va Amaliy Cheklovlar: O'qitish va test/production bosqichlari orasida kirish belgilari statistik taqsimotining o'zgarishi (covariate shift) hamda xotira sarfi, o'qitish vaqti va tasniflash vaqti (classification time) production klassifikatorini tanlashda asosiy muhandislik cheklovlari hisoblanadi (LeCun et al., 1998; Ioffe & Szegedy, 2015).
+Izoh (Manba maqomi): GTN tijoriy bank cheklarini o'qish konveyeri (LeCun et al., 1998), deterministik inference va covariate shift (Ioffe & Szegedy, 2015) birlamchi manbalar bilan tasdiqlangan. Zamonaviy bulutli CI/CD, concept drift alerting, logging va observability vositalari bo'yicha spetsifikatsiyalar joriy manbalar to'plamida mavjud emasligi sababli Tasdiqlanmagan deb belgilandi.
+
+## 3. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Production-Ready ML Loyihasi Tuzilmasi](/learn/production-ready-ml-structure)
+[Batch Normalization](/learn/batch-normalization)
+[Loss Functions](/learn/loss-functions)
+Bog'liq:
+
+[CNN](/learn/cnn)
+[RAG](/learn/rag)
+[AI Agent](/learn/ai-agent)
+## 4. Tekshirilgan manbalar
+LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-Based Learning Applied to Document Recognition. Proceedings of the IEEE, 86(11), 2278–2324. DOI: 10.1109/5.726791.
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015, PMLR 37:448–456.
+Bo'lim H: Additional Learning Resources

@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# testing
+/coverage
+
+# generated content reports
+/reports/
+
+# env
+.env*.local
+.env
+
+# misc
+.DS_Store
+*.log
+.cache/
+.manim-media/
+desktop.ini

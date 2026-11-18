@@ -1,0 +1,16 @@
+{
+  "id": "self-attention-explorer",
+  "type": "attention-matrix",
+  "title": "Self-Attention: Q, K, V va Scaled Dot-Product Mini-Laboratoriya",
+  "description": "Query (Q), Key (K) va Value (V) vektorlari orqali attention vaznlarini (Softmax %) va yakuniy kontekst qiymatini interaktiv hisoblash.",
+  "status": "published",
+  "synthetic": true,
+  "sources": ["vaswani-2017", "bahdanau-2014", "karpathy-2023"],
+  "relatedLessons": ["transformers", "llm", "embeddings", "tokenization"],
+  "config": {
+    "defaultMode": "mini-lab",
+    "defaultQuery": 1.0,
+    "dk": 1.0,
+    "videoSrc": "/animations/attention/self_attention.mp4"
+  }
+}

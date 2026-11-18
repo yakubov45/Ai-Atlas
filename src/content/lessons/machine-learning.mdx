@@ -1,0 +1,89 @@
+---
+id: machine-learning
+title: "Machine Learning"
+slug: machine-learning
+description: "Machine Learning (ML) — kompyuter tizimlariga aniq qoidalar yozmasdan, o'quv ma'lumotlari (training data) ustida xatolik funksiyasini minimallashtirish orqali murakkab qaror qabul qilish sirtlarini (decision surfaces) sintez qilish va yangi ma'lumotlar bo'yicha bashorat berish imkonini yaratuvchi..."
+category: fundamentals
+difficulty: beginner
+order: 2
+tags: ["ai","machine-learning","fundamentals","ml","mashinali","machine"]
+prerequisites: ["artificial-intelligence","vector","matrix","probability"]
+related: ["deep-learning","loss-functions","gradient-descent","sgd","adam"]
+visualizations: []
+sources: ["lecun-1998","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 700–775"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Machine Learning (ML) — kompyuter tizimlariga aniq qoidalar yozmasdan, o'quv ma'lumotlari (training data) ustida xatolik funksiyasini minimallashtirish orqali murakkab qaror qabul qilish sirtlarini (decision surfaces) sintez qilish va yangi ma'lumotlar bo'yicha bashorat berish imkonini yaratuvchi algoritmlar sohasi.
+
+## 2. Nima uchun kerak?
+Yuqori o'lchamli kirish ma'lumotlarida (masalan, 28x28 o'lchamli tasvirdagi 784 ta pikselda) kirish va chiqish o'rtasidagi bog'liqlikni inson qo'lda formula ko'rinishida yoza olmaydi. LeCun et al. (1998) ko'rsatganidek, arxitektura vazifaga mos tanlanganda, gradientga asoslangan mashinali o'rganish minimal dastlabki ishlov berish (minimal preprocessing) bilan yuqori o'lchamli kirishlar uchun murakkab klassifikatorlarni qura oladi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Yosh bolaga raqamlarni tanishni o'rgatganda, unga murakkab geometrik formulalarni yodlatmaysiz. Unga ko'plab raqam namunalarini ko'rsatib, to'g'ri javobni aytasiz. Bola xato qilsa, tuzatasiz va u asta-sekin muhim belgilarni o'zi ajratib oladi. Machine Learning ham xuddi shunday: modelga kirish namunasi (Z_p) va kerakli javob (D_p) beriladi, model esa o'zining ichki parametrlarini (W) xatolarni kamaytirish uchun moslashtiradi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Mashinali o'rganish vazifalari va algoritmlari quyidagi yo'nalishlarda qo'llaniladi:
+
+Supervised Learning (Nazorat ostida o'rganish): Har bir kirish namunasi Z_p uchun aniq kerakli javob (desired label) D_p beriladi. Qo'lyozma raqamlarni tasniflash (MNIST), L_2-regulyarizatsiyalangan ko'p sinfli logistik regressiya, Support Vector Machines (SVM), k-Nearest Neighbors (kNN) va Multilayer Perceptron (MLP) bunga misol bo'ladi.
+Unsupervised / Self-Supervised Representation Learning: Maxsus qo'lda belgilangan sinf yorliqlarisiz ma'lumotlarning taqsimlangan vektor tasvirlarini o'rganish (masalan, Mikolov et al., 2013 dagi Skip-gram va negative sampling yordamida iboralar vektorlarini o'rganish yoki [LLM](/learn/llm) larda keyingi tokenni bashorat qilish).
+Online va Stochastic Learning: Ma'lumotlar oqimi yoki mini-batchlar ustida nostatsionar (non-stationary) maqsad funksiyalarini ketma-ket optimallashtirish (Kingma & Ba, 2015).
+(Eslatma: Reinforcement Learning — muhitda mukofot signali asosida harakat siyosatini o'rganish paradigmasi bo'lib, uning maxsus Bellman tenglamalari joriy birlamchi manbalar to'plamida keltirilmagani sababli Tasdiqlanmagan deb qayd etiladi; agentik harakat va mulohaza integratsiyasi uchun [AI Agent](/learn/ai-agent) ga qarang).
+
+## 5. Matematik asoslari (Level 3 — Advanced)
+LeCun et al. (1998) formallashtirganidek, gradientga asoslangan ML tizimi quyidagi matematik komponentlardan tashkil topadi:
+
+Model funksiyasi: Y_p = F(Z_p, W) Bu yerda:
+Z_p — p-chi kirish namunasi (input pattern),
+W — barcha o'rganiladigan parametrlar (weights) to'plami,
+Y_p — modelning bashorati (predicted label/output).
+Namuna bo'yicha xatolik funksiyasi (Per-sample Loss): E_p = D\left(D_p, F(Z_p, W)\right) Bu yerda D_p — kerakli (desired) chiqish, D(\cdot, \cdot) esa bashorat va haqiqiy qiymat o'rtasidagi tafovutni o'lchovchi funksiya ([Loss Functions](/learn/loss-functions)).
+Amaliy cheklovlar va Generalization: LeCun et al. (1998) ta'kidlaganidek, katta va yuqori o'lchamli real vazifalarda klassifikator tanlashda faqatgina umumiy xatolik foizi emas, balki o'qitish vaqti (training time), xotira sarfi (memory usage) va tasniflash tezligi (classification time) hal qiluvchi cheklov bo'lib xizmat qiladi. Shuningdek, o'quv va test ma'lumotlari taqsimoti o'zgarganda (covariate shift) model aniqligi pasayadi.
+## 6. Amaliy misol va Python kodi
+Quyidagi illyustrativ misolda NumPy yordamida oddiy chiziqli modelning Y_p = F(Z_p, W) bashorati va kvadratik xatoligi hisoblanishi ko'rsatilgan (Eslatma: Kod o'quv maqsadida keltirilgan, ishchi muhitda bajarilmagan):python import numpy as np
+
+## 1. Kirish ma'lumotlari (3 ta namuna, 2 ta belgi/feature) - Shape: (3, 2)
+Z = np.array(1.0, 2.0], [2.0, 1.0], [3.0, 4.0)
+
+Haqiqiy nishon qiymatlar (desired targets D_p) - Shape: (3, 1)
+D_target = np.array(5.0], [4.0], [11.0)
+
+## 2. Parametrlar (Weights W) - Shape: (2, 1)
+W = np.array(1.0], [2.0)
+
+## 3. Forward pass: Y = Z @ W - Shape: (3, 1)
+Y_pred = Z @ W
+
+## 4. O'rtacha kvadratik xatolik (Discrepancy E_p)
+loss = np.mean((D_target - Y_pred) 2) print("Bashoratlar:\n", Y_pred) print("O'rtacha kvadratik xatolik (Loss):", loss)
+
+Kutilgan natija: Y_pred = 5.], [4.], [11., Loss = 0.0
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Artificial Intelligence](/learn/artificial-intelligence)
+- [Vector](/learn/vector)
+- [Matrix](/learn/matrix)
+- [Probability](/learn/probability)
+
+**Keyingi mavzular:**
+- [Deep Learning](/learn/deep-learning)
+- [Loss Functions](/learn/loss-functions)
+- [Gradient Descent](/learn/gradient-descent)
+
+**Bog'liq:**
+- [SGD](/learn/sgd)
+- [Adam](/learn/adam)
+
+## 8. Tekshirilgan manbalar
+- LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-Based Learning Applied to Document Recognition*. Proceedings of the IEEE, 86(11), 2278–2324. DOI: 10.1109/5.726791.
+- Kingma, D. P., & Ba, J. (2015). *Adam: A Method for Stochastic Optimization*. ICLR 2015. arXiv:1412.6980.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. ICML 2015, PMLR 37:448–456.
+

@@ -1,0 +1,101 @@
+---
+id: lstm
+title: "LSTM"
+slug: lstm
+description: "Long Short-Term Memory (LSTM) — 1997-yilda Sepp Hochreiter va Jürgen Schmidhuber (Neural Computation, 9(8):1735–1780) tomonidan RNN lardagi xatolikning orqaga oqimi (error backflow — vanishing va exploding gradients) muammolarini hal qilish uchun taklif etilgan, maxsus xotira katakchalari ichidag..."
+category: architectures
+difficulty: advanced
+order: 3
+tags: ["ai","deep-learning","lstm","architectures","long","cec"]
+prerequisites: ["rnn","chain-rule","hosila"]
+related: ["transformers","memory","backpropagation","gradient-descent"]
+visualizations: ["neural-network-explorer"]
+sources: ["vaswani-2017","hochreiter-1997","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1493–1566"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Long Short-Term Memory (LSTM) — 1997-yilda Sepp Hochreiter va Jürgen Schmidhuber (Neural Computation, 9(8):1735–1780) tomonidan [RNN](/learn/rnn) lardagi xatolikning orqaga oqimi (error backflow — vanishing va exploding gradients) muammolarini hal qilish uchun taklif etilgan, maxsus xotira katakchalari ichidagi Constant Error Carousel (CEC) orqali o'zgarmas xatolik oqimini ta'minlovchi rekurrent neyron tarmoq arxitekturasi va gradientga asoslangan o'qitish algoritmi.
+
+## 2. Nima uchun kerak?
+Oddiy rekurrent tarmoqlar va adaptiv ketma-ketlik bo'laklovchilar (chunker systems) shovqin darajasi oshganda va kirish ketma-ketliklari siqilmaydigan (incompressible) bo'lganda uzoq vaqt oraliqlarini bog'lay olmaydi. LSTM esa qisqa vaqt oraliqlaridagi qobiliyatini yo'qotmagan holda, shovqinli va siqilmaydigan kirish ketma-ketliklarida ham 1000 diskret vaqt qadamidan ortiq (in excess of 1000 discrete-time steps) minimal vaqt kechikishlarini bog'lashni o'rgana oladi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Oddiy RNN da xotira har qadamda nochiziqli funksiyadan va vaznlardan o'tib, o'z kuchini yo'qotadi. LSTM esa har bir xotira katakchasi markaziga chiziqli aylanma halqa — Constant Error Carousel (CEC) o'rnatadi. Bu halqaning o'z-o'ziga ulanish vazni qat'iy 1.0 ga teng bo'lgani uchun ichidagi ma'lumot va xatolik signali vaqt o'tishi bilan na ko'payib ketadi (exploding), na kamayib ketadi (vanishing). Katakchaga faqat Input Gate ruxsat bergan ma'lumot kiradi va undan faqat Output Gate ruxsat bergan ma'lumot tashqariga chiqadi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Hochreiter va Schmidhuber (1997, Section 3 & 4) bo'yicha LSTM arxitekturasining ichki komponentlari:
+
+Constant Error Carousel (CEC): Har bir $j$-birlikda xatolik oqimi o'zgarmas bo'lishi uchun aktivatsiya funksiyasi chiziqli bo'lishi va birlik aktivatsiyasi o'zgarmas qolishi kerak: $y_j(t+1) = f_j\left(\text{net}_j(t+1)\right) = f_j\left(w_{jj} y_j(t)\right) = y_j(t)$. Tajribalarda bunga ayniyat funksiyasi $f_j(x) = x, \forall x$ ni tanlash va o'z-o'ziga ulanish vaznini $w_{jj} = 1.0$ deb belgilash orqali erishiladi. Bu Constant Error Carousel (CEC) deb ataladi va LSTM ning markaziy xususiyati hisoblanadi.
+Input Gate ($\text{in}_j$) va Output Gate ($\text{out}_j$): Har bir $c_j$ xotira katakchasi markaziy chiziqli birlik (CEC) atrofida quriladi. $\text{net}_{c_j}$ kirishidan tashqari, $c_j$ ikkita ko'paytiruvchi birlikdan — Output Gate ($\text{out}_j$) va Input Gate ($\text{in}_j$) dan signal oladi.
+Memory Cell Blocks: Bir xil Input Gate va bir xil Output Gate ni o'zaro bo'lishuvchi S ta xotira katakchalari "S o'lchamli xotira katakchalari bloki" (memory cell block of size S) ni hosil qiladi; bu taqsimlangan kirishlarni saqlashni osonlashtiradi.
+Truncated Gradient (Kesilgan gradient): Xatolik signali CEC ichida o'zgarmas oqadi; faqatgina xatolik xotira katakchasidan Input Gate va $g$ funksiyasi orqali tashqariga chiqqandagina, u Input Gate aktivatsiyasi va $g'$ ga ko'paytiriladi, kiruvchi vaznlarni o'zgartirish uchun xizmat qiladi va so'ngra arxitekturaning maxsus nuqtalarida kesiladi (truncated — bu uzoq muddatli xatolik oqimiga zarar yetkazmaydi).
+## 5. Matematik asoslari (Level 3 — Advanced)
+Hochreiter & Schmidhuber (1997, Section 4) formulasiga ko'ra, $t$ vaqt qadamida $c_j$ xotira katakchasining ichki holati $s_{c_j}(t)$ va chiqishi $y^{c_j}(t)$ quyidagicha hisoblanadi:
+
+$$
+s_{c_j}(0) = 0, \quad s_{c_j}(t) = s_{c_j}(t-1) + y^{\text{in}_j}(t) \, g\left(\text{net}_{c_j}(t)\right) \quad (t > 0 \text{ uchun})
+$$
+$$
+y^{c_j}(t) = y^{\text{out}_j}(t) \, h\left(s_{c_j}(t)\right)
+$$
+
+Bu yerda:
+
+- $s_{c_j}(t)$ — xotira katakchasining ichki holati (internal state / CEC),
+- $y^{\text{in}_j}(t)$ — Input Gate ning $t$-vaqtdagi chiqish aktivatsiyasi,
+- $y^{\text{out}_j}(t)$ — Output Gate ning $t$-vaqtdagi chiqish aktivatsiyasi,
+- $g(\cdot)$ — $\text{net}_{c_j}$ kirishini siquvchi (squashes) differensiallanuvchi funksiya,
+- $h(\cdot)$ — ichki holat $s_{c_j}$ dan hisoblangan katakcha chiqishini masshtablovchi (scales) differensiallanuvchi funksiya.
+Tarixiy va freymvork eslatmasi: Original 1997-yilgi maqolada ichki holat yuqoridagi formulada ko'rsatilganidek $s_{c_j}(t-1)$ ga qo'shib borilgan (unda Forget Gate bo'lmagan). Zamonaviy PyTorch nn.LSTM implementatsiyasi esa keyingi tadqiqotlarda kiritilgan Forget Gate bilan ishlaydi. Shuningdek, 2016–2017 yillarda mashina tarjimasida 380M parametrli ikki qismli (Encoder-Decoder) LSTM modellari (1-encoder qatlami bidirectional, qolgan 7 ta encoder va 8 ta decoder qatlami unidirectional) o'n yil davomida ishlab chiqilgan statistik yondashuvlardan ustun kelgan, keyinchalik esa parallelizm tufayli o'rnini [Transformers](/learn/transformers) ga bo'shatib bergan.
+
+## 6. Python / PyTorch Amaliy Misoli
+Quyida original 1997-yilgi LSTM katakchasining ($s_{c_j}(t)$ va $y^{c_j}(t)$) PyTorch tenzorlarida bevosita ifodalanishi ko'rsatilgan:
+
+```python
+import torch
+
+Original 1997-yilgi LSTM katakchasining bitta vaqt qadami:
+s_c(t) = s_c(t-1) + y_in(t) * g(net_c(t))
+y_c(t) = y_out(t) * h(s_c(t))
+s_prev = torch.tensor([0.5]) # s_{c_j}(t-1) net_c = torch.tensor([1.2]) # net_{c_j}(t) y_in = torch.sigmoid(torch.tensor([0.8])) # Input gate activation y_out = torch.sigmoid(torch.tensor([1.5])) # Output gate activation
+
+g_net = torch.tanh(net_c) # Squashing function g s_curr = s_prev + y_in * g_net # CEC internal state update (w_jj = 1.0) y_c = y_out * torch.tanh(s_curr) # Cell output with scaling function h
+
+print("Updated internal state s_c(t):", round(s_curr.item(), 4)) print("Cell output y_c(t):", round(y_c.item(), 4))
+```
+
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [RNN](/learn/rnn)
+- [Chain Rule](/learn/chain-rule)
+- [Hosila](/learn/hosila)
+
+**Keyingi mavzular:**
+- [Transformers](/learn/transformers)
+- [Memory](/learn/memory)
+
+**Bog'liq:**
+- [Backpropagation](/learn/backpropagation)
+- [Gradient Descent](/learn/gradient-descent)
+
+## 8. Tekshirilgan manbalar
+- Hochreiter, S., & Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735.
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+
+Bo'lim E: Model Training (va Bo'lim F bilan Kanonik Integratsiya)
+Chuqur neyron tarmoqlarni o'qitishni tezlashtirish va barqarorlashtirishda Ioffe va Szegedy (2015) tomonidan kiritilgan Batch Normalization muhim burilish yasadi. Shu bilan birga, maqoladagi tajriba natijalarini tahlil qilishda faqatgina BN qatlamini qo'shish (BN-Baseline) hamda o'rganish tezligini 5 baravarga oshirib, regulyarizatsiyani o'zgartirish (BN-x5) o'rtasidagi farqni aniq ko'rsatish talab etiladi. Quyidagi grafikda Ioffe va Szegedy (2015) ning ImageNet bo'yicha rasmiy tajriba ko'rsatkichlari taqqoslangan.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+

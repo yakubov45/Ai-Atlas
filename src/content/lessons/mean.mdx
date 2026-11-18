@@ -1,0 +1,49 @@
+---
+id: mean
+title: "Mean"
+slug: mean
+description: "Mean (E[x] yoki mu) — tasodifiy o'zgaruvchining matematik kutilmasi (expected value) yoki ma'lumotlar to'plamining arifmetik o'rtacha qiymati (1st moment)."
+category: math
+difficulty: beginner
+order: 11
+tags: ["ai","math","statistics","expected","first","mean"]
+prerequisites: ["probability","vector"]
+related: ["standard-deviation","batch-normalization","adam","transformers"]
+visualizations: []
+sources: ["ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2484–2522"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Mean ($\mathbb{E}[x]$ yoki $\mu$) — tasodifiy o'zgaruvchining matematik kutilmasi (expected value) yoki ma'lumotlar to'plamining arifmetik o'rtacha qiymati (1st moment).
+
+## 2. Nima uchun kerak?
+[Batch Normalization](/learn/batch-normalization) (Ioffe & Szegedy, 2015): Har bir qatlam aktivatsiyasi mini-batch o'rtachasi $\mu_{\mathcal{B}}$ yordamida markazlashtiriladi:
+$$
+\mu_{\mathcal{B}} = \frac{2.0 + 4.0 + 6.0 + 8.0}{4} = \frac{20.0}{4} = 5.0
+$$
+
+Markazlashtirilgan qiymatlar ($\hat{x}_i = x_i - \mu_{\mathcal{B}}$): [-3.0, -1.0, 1.0, 3.0] (yangi o'rtacha qiymat 0.0 ga teng).
+
+## 3. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Probability](/learn/probability)
+[Vector](/learn/vector)
+Keyingi mavzular:
+
+[Standard Deviation](/learn/standard-deviation)
+[Batch Normalization](/learn/batch-normalization)
+[Adam](/learn/adam)
+Bog'liq:
+
+[Transformers](/learn/transformers)
+## 4. Tekshirilgan manbalar
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015, PMLR 37:448–456.
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015. arXiv:1412.6980.

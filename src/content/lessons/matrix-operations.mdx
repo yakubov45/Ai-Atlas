@@ -1,0 +1,91 @@
+---
+id: matrix-operations
+title: "Matrix Operations"
+slug: matrix-operations
+description: "Matrix Operations — matritsalarni ko'paytirish (A B), transponirlash (K^T), chiziqli transformatsiya (W x + b) va birlashtirish (concatenation) kabi chiziqli algebra amallari bo'lib, neyron tarmoqlarda barcha qatlam hisoblashlarini GPU da parallel bajarish imkonini beradi."
+category: math
+difficulty: intermediate
+order: 4
+tags: ["ai","math","linear-algebra","matritsa","matrix"]
+prerequisites: ["vector","matrix"]
+related: ["tensor","transformers","cnn","deep-learning"]
+visualizations: []
+sources: ["vaswani-2017","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2151–2206"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Matrix Operations — matritsalarni ko'paytirish (A B), transponirlash (K^T), chiziqli transformatsiya (W x + b) va birlashtirish (concatenation) kabi chiziqli algebra amallari bo'lib, neyron tarmoqlarda barcha qatlam hisoblashlarini GPU da parallel bajarish imkonini beradi.
+
+## 2. Nima uchun kerak?
+[Transformers](/learn/transformers) dagi Scaled Dot-Product Attention formulasida ($\operatorname{softmax}\!\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$) barcha so'rovlar va barcha kalitlar orasidagi skalyar ko'paytmalarni hisoblash uchun $Q$ matritsasi $K$ matritsasining transponirlanganiga ($K^T$) ko'paytiriladi, so'ngra hosil bo'lgan vaznlar matritsasi $V$ matritsasiga ko'paytiriladi.
+
+## 3. Matematik Formulalar va Qadam-baqadam Sonli Misol (Level 1 — Level 3)
+
+$Q \in \mathbb{R}^{n \times d_k}$ va $K \in \mathbb{R}^{m \times d_k}$ matritsalari berilgan bo'lsin:
+
+- **Transponirlash** ($K^T \in \mathbb{R}^{d_k \times m}$): $K$ ning satrlari ustunlarga aylanadi: $[K^T]_{ri} = K_{ir}$.
+- **Matritsalarni ko'paytirish** ($S = Q K^T \in \mathbb{R}^{n \times m}$):
+$$
+S_{ij} = \sum_{r=1}^{d_k} Q_{ir} [K^T]_{rj} = \sum_{r=1}^{d_k} Q_{ir} K_{jr}
+$$
+
+### Qadam-baqadam Sonli Misol ($Q K^T$ hisoblash)
+
+Berilgan:
+$$
+Q = \begin{bmatrix} 1 & 2 \\ 3 & 0 \end{bmatrix}, \quad K = \begin{bmatrix} 2 & 1 \\ 0 & 4 \end{bmatrix}
+$$
+
+1. **1-qadam ($K^T$ ni topish):**
+$$
+K^T = \begin{bmatrix} 2 & 0 \\ 1 & 4 \end{bmatrix}
+$$
+
+2. **2-qadam ($S = Q K^T$ elementlarini hisoblash):**
+- $S_{11} = (1 \times 2) + (2 \times 1) = 2 + 2 = 4$
+- $S_{12} = (1 \times 0) + (2 \times 4) = 0 + 8 = 8$
+- $S_{21} = (3 \times 2) + (0 \times 1) = 6 + 0 = 6$
+- $S_{22} = (3 \times 0) + (0 \times 4) = 0 + 0 = 0$
+
+Natija:
+$$
+Q K^T = \begin{bmatrix} 4 & 8 \\ 6 & 0 \end{bmatrix}
+$$
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+Q = torch.tensor(1.0, 2.0], [3.0, 0.0) K = torch.tensor(2.0, 1.0], [0.0, 4.0)
+
+S = torch.matmul(Q, K.T) print("Q @ K^T:\n", S)
+
+Kutilgan natija: tensor(4., 8.], [6., 0.)
+```
+
+
+## 5. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Vector](/learn/vector)
+- [Matrix](/learn/matrix)
+
+**Keyingi mavzular:**
+- [Tensor](/learn/tensor)
+- [Transformers](/learn/transformers)
+- [CNN](/learn/cnn)
+
+**Bog'liq:**
+- [Deep Learning](/learn/deep-learning)
+
+## 6. Tekshirilgan manbalar
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+

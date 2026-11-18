@@ -1,0 +1,104 @@
+---
+id: backpropagation
+title: "Backpropagation"
+slug: backpropagation
+description: "Backpropagation (Xatoliklarni orqaga tarqatish) — tarmoqning haqiqiy chiqish vektori va kerakli (desired) chiqish vektori o'rtasidagi farq o'lchovini minimallashtirish uchun ulanish vaznlarini qayta-qayta moslashtiruvchi, chiqishdan kirishga qarab Chain Rule bo'yicha hosilalarni hisoblovchi algor..."
+category: deep-learning
+difficulty: advanced
+order: 4
+tags: ["ai","deep-learning","training","backpropagation","backprop","error"]
+prerequisites: ["hosila","partial-derivative","chain-rule"]
+related: ["gradient-descent","optimizers","batch-normalization","deep-learning","lstm"]
+visualizations: ["neural-network-explorer"]
+sources: ["lecun-1998","rumelhart-1986","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1660–1732"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Backpropagation (Xatoliklarni orqaga tarqatish) — tarmoqning haqiqiy chiqish vektori va kerakli (desired) chiqish vektori o'rtasidagi farq o'lchovini minimallashtirish uchun ulanish vaznlarini qayta-qayta moslashtiruvchi, chiqishdan kirishga qarab [Chain Rule](/learn/chain-rule) bo'yicha hosilalarni hisoblovchi algoritm (Rumelhart, Hinton, & Williams, 1986).
+
+## 2. Nima uchun kerak?
+Ilk bir qatlamli Perceptron o'qitish usullari yashirin birliklarda (hidden units) yangi foydali belgilarni (features) yarata olmagan. Rumelhart et al. (1986, Nature 323, pp. 533–536; maqolaning o'zida David Parker va Yann LeCun tomonidan mustaqil qayta kashf etilgani ham qayd etilgan) ko'rsatganidek, Backpropagation yashirin birliklarga oldindan nishon (target) bermasdan, faqat chiqish maqsadidan kelib chiqib vazifa sohasining muhim ichki tasvirlarini (internal representations) o'rganish imkonini beradi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Ikki kirish, ikki yashirin birlik va ikki chiqishga ega tarmoqni tasavvur qiling. Yashirin qatlamdagi har bir neyron ikkala chiqish bashoratiga ham ta'sir qiladi. Demak, xatolik orqaga qaytayotganda, har bir yashirin neyron ikkala chiqishdan kelgan xatolik hissalarining yig'indisini qabul qilib oladi. Faqat bitta yo'lni tanlash gradientning bir qismini yo'qotib qo'yadi; teskari o'tish (reverse pass) haqiqiy hisoblash grafidagi barcha yo'llarni jamlaydi va aynan shu xususiyat algoritmga yuqori hisoblash samaradorligini beradi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Rumelhart et al. (1986) bo'yicha jarayon quyidagi qadamlardan iborat:
+
+Forward Computation (Oldinga hisoblash): Qatlamli feed-forward tarmoqda har bir kirish bo'lmagan birlik oldingi birliklarning vaznli chiqishlarini qo'shadi (z_j, original maqolada x_j deb belgilangan) va sigmoid funksiyasini qo'llaydi. Siljish (bias) doimiy 1 ga mahkamlangan qo'shimcha birlikdan keluvchi ulanish sifatida ifodalanishi mumkin. Har qanday hosila hisoblanishidan oldin tarmoq chiqishi aniqlanadi.
+Output Derivative (Chiqish qatlami hosilasi): Chiqish qatlami boshlang'ich hosilani beradi.
+Reverse Recurrence (Yashirin birliklar uchun yig'indi): Har bir yashirin birlik o'zidan signal olgan barcha keyingi (downstream) iste'molchi birliklar bo'yicha hosilalar yig'indisini oladi.
+Weight Update: Differensiallash davomida aynan bir xil forward vaznlari ishlatiladi, so'ngra alohida qadamda parametrlar yangilanadi.
+## 5. Matematik asoslari va Finite Differences Tekshiruvi (Level 3 — Advanced)
+
+**Oldinga o'tish (Forward pass):**
+$$ z_j = \sum_{i} w_{ji} a_i + b_j, \quad a_j = \sigma(z_j) = \frac{1}{1 + e^{-z_j}} $$
+
+**Teskari rekursiya (Reverse recurrence):**
+Chiqish qatlamidagi $k$-birliklar uchun $\delta_k = \frac{\partial E}{\partial z_k}$ topilgach, yashirin qatlamdagi $j$-birlik barcha $k$ iste'molchilaridan kelgan hissalarni qo'shadi:
+$$ \frac{\partial E}{\partial a_j} = \sum_{k} \delta_k w_{kj}, \quad \delta_j = \frac{\partial E}{\partial z_j} = \sigma'(z_j) \sum_{k} \delta_k w_{kj} $$
+
+**Vazn va bias hosilalari:**
+$$ \frac{\partial E}{\partial w_{ji}} = \delta_j a_i, \quad \frac{\partial E}{\partial b_j} = \delta_j $$
+
+### Qarama-qarshi ishorali yo'llarning qisqarishi (Path Cancellation)
+Ikki chiqishli tarmoqda bitta yashirin birlik birinchi chiqishdan musbat, ikkinchi chiqishdan manfiy gradient ulushi olishi mumkin. Bu qarama-qarshi ishorali yo'llar yig'indida bir-birini qisman qisqartirishi (partly cancel) mumkin. Biroq yig'indining kichik chiqishi har bir alohida ta'sir kichik degani emas va hech bir yo'lni e'tiborsiz qoldirib bo'lmaydi.
+
+### Finite Differences (Chekli ayirmalar bilan tekshirish)
+Har bir vazn va bias hosilasining to'g'riligini tekshirish uchun parametrni $\pm \varepsilon$ ga siljitib, ikkita mustaqil forward pass orqali chekli ayirma hisoblanadi:
+
+$$ \frac{\partial E}{\partial \theta} \approx \frac{E(\theta + \varepsilon) - E(\theta - \varepsilon)}{2\varepsilon} $$
+
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import numpy as np
+
+def sigmoid(z): return 1.0 / (1.0 + np.exp(-z))
+
+def forward_loss(x, w1, b1, w2, b2, targets): z_h = w1 * x + b1 a_h = sigmoid(z_h) z_out = w2 * a_h + b2 a_out = sigmoid(z_out) loss = 0.5 * np.sum((a_out - targets) 2) return loss, a_h, a_out
+
+x = 1.2 w1, b1 = 0.5, -0.1 w2 = np.array([0.8, -0.6]) # 2 ta chiqish (musbat va manfiy yo'l) b2 = np.array([0.1, 0.2]) targets = np.array([1.0, 0.0])
+```
+
+
+## 1. Analitik Backpropagation
+loss, a_h, a_out = forward_loss(x, w1, b1, w2, b2, targets) delta_out = (a_out - targets) * (a_out * (1.0 - a_out)) delta_h = np.sum(delta_out * w2) * (a_h * (1.0 - a_h)) # Ikkala chiqish yig'indisi grad_w1_analytic = delta_h * x
+
+## 2. Finite Difference Check
+eps = 1e-5 loss_plus, _, _ = forward_loss(x, w1 + eps, b1, w2, b2, targets) loss_minus, _, _ = forward_loss(x, w1 - eps, b1, w2, b2, targets) grad_w1_fd = (loss_plus - loss_minus) / (2.0 * eps)
+
+print("Analitik grad_w1:", round(grad_w1_analytic, 7)) print("Finite difference grad_w1:", round(grad_w1_fd, 7))
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Hosila](/learn/hosila)
+- [Partial Derivative](/learn/partial-derivative)
+- [Chain Rule](/learn/chain-rule)
+
+**Keyingi mavzular:**
+- [Gradient Descent](/learn/gradient-descent)
+- [Optimizers](/learn/optimizers)
+- [Batch Normalization](/learn/batch-normalization)
+
+**Bog'liq:**
+- [Deep Learning](/learn/deep-learning)
+- [LSTM](/learn/lstm)
+
+## 8. Tekshirilgan manbalar
+- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature, 323, 533–536. DOI: 10.1038/323533a0.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+

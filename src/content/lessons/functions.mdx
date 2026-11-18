@@ -1,0 +1,111 @@
+---
+id: functions
+title: "Funksiyalar va Qaytish Qiymatlari"
+slug: functions
+description: "Python'da def, parametrlar, return va print o'rtasidagi farq, scope (LEGB qoidasi) va lambda ifodalari."
+category: python
+difficulty: beginner
+order: 2
+tags: ["python","functions","return","scope","def","algorithms"]
+prerequisites: ["python-basics"]
+related: ["python-basics","vector","gradient-descent"]
+visualizations: []
+sources: ["python-docs-2024"]
+origin:
+  - document: "deep research 1.md"
+    section: "Python Developer Foundation"
+    note: "Funksiyalar va modulli dasturlash"
+status: published
+locale: uz
+---
+
+> [!IMPORTANT]
+> **🚀 Diqqat! Funksiyalar bo'yicha to'liq amaliy ta'lim Python Academy mikro-darslariga ko'chirildi.**
+> Funksiyalar, parametrlar, scope, lambda va rekursiya bo'yicha interaktiv kod yozish va testlarni topshirish uchun [Python Academy — 6-Faza: Funksiyalar](/roadmap?tab=python-dev&lesson=py-06-01) sahifasiga o'ting.
+
+## 1. Qisqacha ta'rif
+Funksiya — bu bitta aniq mantiqiy vazifani bajaruvchi, kiruvchi ma'lumotlarni (argumentlarni) qabul qilib, hisoblangan natijani `return` operatori orqali qaytaruvchi qayta ishlatiladigan kod blokidir. Funksiyalar dastur kodini modullarga bo'lish, o'qilishini soddalashtirish va xatolarni kamaytirish uchun xizmat qiladi.
+
+## 2. Nima uchun kerak va return vs print farqi
+Dasturlashda eng ko'p uchraydigan yanglishishlardan biri — `return` va `print()` ni bir xil deb hisoblashdir:
+
+1. **`print()` vazifasi:** Qiymatni faqat foydalanuvchiga ko'rsatish uchun terminal/konsol ekraniga chiqaradi. U xotirada hech narsa saqlamaydi va funksiya sukut bo'yicha `None` qaytaradi.
+2. **`return` vazifasi:** Funksiya ichida hisoblangan natijani uni chaqirgan o'zgaruvchiga qaytaradi. Natijada siz ushbu qiymat ustida keyingi arifmetik amallarni zanjir shaklida davom ettira olasiz.
+3. **Kodni takrorlamaslik (DRY - Don't Repeat Yourself):** Har bir algoritmik formulani alohida funksiya ichiga jamlab, istalgan joydan qayta chaqirish mumkin.
+
+```python
+# 1. Xatoli usul: faqat print qilish
+def qoshish_print(a, b):
+    print(a + b)
+
+res1 = qoshish_print(2, 3)  # Ekranga 5 chiqadi, lekin res1 = None bo'ladi!
+# res1 * 2  -> TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+
+# 2. To'g'ri usul: return qilish
+def qoshish_return(a, b):
+    return a + b
+
+res2 = qoshish_return(2, 3)  # res2 = 5
+yakuniy = res2 * 2           # 10 (muammosiz ishlaydi!)
+```
+
+## 3. Parametrlar, Default Qiymatlar va LEGB Scope (Level 1 — Level 3)
+
+### Standart Parametrlar (Default Arguments)
+Funksiya argumentlariga sukut bo'yicha qiymat berish mumkin:
+```python
+def xabar_yuborish(foydalanuvchi: str, rol: str = "talaba") -> str:
+    return f"Salom {foydalanuvchi}, sizning rolingiz: {rol}"
+
+print(xabar_yuborish("Ali"))            # rol="talaba"
+print(xabar_yuborish("Vali", "admin"))  # rol="admin"
+```
+
+> **Ehtiyot bo'ling (Mutable Default Trap):** Standart qiymat sifatida hech qachon bo'sh ro'yxat `[]` yoki lug'at `{}` bermang! Funksiya bir marta e'lon qilinganda xotirada yaratilgan ro'yxat barcha chaqiriqlar uchun umumiy bo'lib qoladi. Har doim `items=None` deb yozib, funksiya ichida tekshiring.
+
+### O'zgaruvchilar Ko'rinish Sohasi (LEGB Scope)
+Python o'zgaruvchilarni quyidagi qat'iy tartibda qidiradi:
+- **L (Local):** Funksiya ichida e'lon qilingan o'zgaruvchilar.
+- **E (Enclosing):** Ichma-ich joylashgan funksiyalarda tashqi o'rab turgan funksiya sohasi.
+- **G (Global):** Fayl/modul darajasidagi umumiy o'zgaruvchilar.
+- **B (Built-in):** Pythonning o'ziga o'rnatilgan tayyor funksiyalari (`sum`, `len`, `range`, `print`).
+
+```python
+x = 100  # Global
+
+def tashqi():
+    x = 50  # Enclosing
+    def ichki():
+        x = 10  # Local
+        print(f"Ichki x: {x}")  # 10
+    ichki()
+    print(f"Tashqi x: {x}")     # 50
+
+tashqi()
+print(f"Global x: {x}")         # 100
+```
+
+## 4. Call Stack va Rekursiv Funksiyalar (Kod Tatbiqi)
+
+Funksiya o'zini o'zi chaqirganda rekursiya yuzaga keladi. Kompyuter har bir chaqiriqni xotiradagi **Call Stack** (chaqiriqlar ustuni) qavatiga joylaydi:
+
+```python
+def factorial(n: int) -> int:
+    # 1. Base case (To'xtash sharti)
+    if n <= 1:
+        return 1
+    # 2. Rekursiv qadam (Call stackka yangi frame qo'shiladi)
+    return n * factorial(n - 1)
+
+print(factorial(4))  # 4 * 3 * 2 * 1 = 24
+```
+
+Har bir `factorial(n)` chaqirig'i bolalar natijasini kutib turadi (`PUSH`), va `n=1` ga yetganda pastdan yuqoriga qarab qiymatlar ko'paytirilib qaytariladi (`POP`).
+
+## 5. Bog'liq tushunchalar va Keyingi Qadamlar
+Oldin o'rganish:
+- [Python Dasturlash Asoslari](/learn/python-basics)
+
+Keyingi mavzular:
+- [Vektorlar va Kosinus O'xshashligi](/learn/vector)
+- [Gradient Tushishi va Optimizatsiya](/learn/gradient-descent)

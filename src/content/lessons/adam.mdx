@@ -1,0 +1,106 @@
+---
+id: adam
+title: "Adam"
+slug: adam
+description: "Adam — Diederik P. Kingma va Jimmy Ba (ICLR 2015, arXiv:1412.6980) tomonidan taklif etilgan, stoxastik maqsad funksiyalarini quyi tartibli momentlarning (1-tartibli o'rtacha m_t va 2-tartibli markazlashmagan dispersiya v_t) adaptiv baholari asosida birinchi tartibli gradient yordamida optimallash..."
+category: deep-learning
+difficulty: advanced
+order: 7
+tags: ["ai","math","optimization","training","adaptive","adamw"]
+prerequisites: ["gradient-descent","mean","standard-deviation","sgd"]
+related: ["optimizers","transformers","llm","learning-rate"]
+visualizations: ["gradient-descent-1d"]
+sources: ["kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2622–2695"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Adam — Diederik P. Kingma va Jimmy Ba (ICLR 2015, arXiv:1412.6980) tomonidan taklif etilgan, stoxastik maqsad funksiyalarini quyi tartibli momentlarning (1-tartibli o'rtacha $m_t$ va 2-tartibli markazlashmagan dispersiya $v_t$) adaptiv baholari asosida birinchi tartibli gradient yordamida optimallashtiruvchi algoritm. AdamW esa Ilya Loshchilov va Frank Hutter (ICLR 2019, arXiv:1711.05101) tomonidan kiritilgan, vaznlarning so'nishini (weight decay) Adam ning adaptiv gradient mexanizmidan ajratuvchi variantdir.
+
+## 2. Nima uchun kerak?
+Kingma va Ba (2015) ko'rsatganidek, Adam quyidagi muhim afzalliklarga ega:
+
+Parametr yangilanishlarining miqdori gradientni diagonal qayta masshtablashga (rescaling) nisbatan invariantdir.
+Qadam kattaligi (stepsize) $\alpha$ giperparametri bilan taxminiy chegaralangan.
+Statsionar maqsad funksiyasini talab qilmaydi va siyrak (sparse) gradientlar bilan ishlaydi.
+Signal-shovqin nisbati ($\text{SNR} = m_t / \sqrt{v_t}$) orqali optimum yaqinida qadam kattaligini tabiiy ravishda kichraytiradi (step size annealing).
+
+## 3. Matematik Asoslari (Level 1 — Level 3)
+### 3.1. Original Adam Algoritmi va Bias Correction (Kingma & Ba, 2015, Section 2 & 3)
+Algoritm gradientning ($m_t$) va kvadratik gradientning ($v_t$) eksponensial sirpanuvchi o'rtachalarini yangilab boradi, bu yerda $\beta_1, \beta_2 \in [0, 1)$ giperparametrlari ushbu sirpanuvchi o'rtachalarning eksponensial so'nish tezligini boshqaradi:
+
+$$ g_t = \nabla_\theta f_t(\theta_{t-1}) $$
+$$ m_t = \beta_1 m_{t-1} + (1 - \beta_1) g_t \quad \text{(1-moment — mean)} $$
+$$ v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2 \quad \text{(2-xom moment — uncentered variance)} $$
+
+**Initialisation Bias Correction:** $m_0 = 0$ va $v_0 = 0$ bilan initsializatsiya qilingani sababli, dastlabki qadamlarda moment baholari nolga qarab siljigan (biased towards zero) bo'ladi. Ayniqsa siyrak gradientlarda ishonchli baho olish uchun $1 - \beta_2$ kichik (masalan, $\beta_2 = 0.999$) tanlanganda, bias correction yo'qligi dastlabki qadamlarning juda katta bo'lib ketishiga olib keladi. Shu sababli siljish tuzatiladi:
+
+$$ \hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t} $$
+
+Parametrlarni yangilash:
+$$ \theta_t = \theta_{t-1} - \alpha \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $$
+
+Konvergensiya Tahlili (Theorem 4.1): Chegaralangan gradientlar ($\|\nabla f_t(\theta)\|_2 \le G, \|\nabla f_t(\theta)\|_\infty \le G_\infty$) va parametrlar orasidagi masofa chegaralangan ($\|\theta_n - \theta_m\|_2 \le D, \|\theta_m - \theta_n\|_\infty \le D_\infty$) bo'lganda hamda $\alpha_t = \alpha / \sqrt{t}$ va $\beta_{1,t}$ eksponensial kamayganda, Adam barcha $T \ge 1$ uchun $O(\sqrt{T})$ regret chegarasiga erishadi.
+
+### 3.2. Proposition 2 va AdamW (Loshchilov & Hutter, 2019, Section 2)
+Proposition 2: Prekonditsioner matritsasi $M_t \neq k I$ bo'lgan adaptiv optimizator $\mathcal{O}$ ($\theta_{t+1} \leftarrow \theta_t - \alpha M_t \nabla f_t(\theta_t)$) uchun $L_2$ regulyarizatsiya bilan decoupled weight decay bir xil emas.
+
+Decoupled Weight Decay (AdamW, Algorithm 2): Vazn so'nishi qadamini adaptiv gradient mexanizmidan ajratadi va barcha vaznlarni bir xil $\lambda$ tezlikda regulyarizatsiya qiladi:
+$$ \theta_{t+1} = (1 - \lambda)\theta_t - \alpha \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $$
+
+## 4. Qadam-baqadam Sonli Misol ($t=1$ qadamda Bias Correction va AdamW)
+Berilgan: $\theta_0 = 2.0$, $g_1 = 0.5$, $\alpha = 0.1$, $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$, decoupled weight decay $\lambda = 0.01$:
+
+1. $m_1 = 0.9(0) + 0.1(0.5) = 0.05$
+2. $v_1 = 0.999(0) + 0.001(0.5^2) = 0.00025$
+3. **Bias correction:**
+   $$ \hat{m}_1 = \frac{0.05}{1 - 0.9^1} = 0.5, \quad \hat{v}_1 = \frac{0.00025}{1 - 0.999^1} = 0.25 $$
+4. **Adaptiv gradient qadami:**
+   $$ \alpha \frac{\hat{m}_1}{\sqrt{\hat{v}_1} + \epsilon} \approx 0.1 \times \frac{0.5}{0.5} = 0.1 $$
+5. **Decoupled weight decay qadami** ($\lambda \theta_0 = 0.01 \times 2.0 = 0.02$) bilan yangi parametr:
+   $$ \theta_1 = 2.0 - 0.1 - 0.02 = 1.88 $$
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+theta = torch.nn.Parameter(torch.tensor([2.0])) optimizer = torch.optim.AdamW([theta], lr=0.1, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.1)
+
+Eslatma: PyTorch AdamW da weight_decay lr ga ko'paytiriladi (lr * wd = 0.1 * 0.1 = 0.01 = lambda)
+theta.grad = torch.tensor([0.5]) optimizer.step() print("Updated theta (AdamW):", round(theta.item(), 4)) # 1.88
+```
+
+
+## 6. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Gradient Descent](/learn/gradient-descent)
+- [Mean](/learn/mean)
+- [Standard Deviation](/learn/standard-deviation)
+- [SGD](/learn/sgd)
+
+**Keyingi mavzular:**
+- [Optimizers](/learn/optimizers)
+- [Transformers](/learn/transformers)
+- [LLM](/learn/llm)
+
+**Bog'liq:**
+- [Learning Rate](/learn/learning-rate)
+
+## 7. Tekshirilgan manbalar
+- Kingma, D. P., & Ba, J. (2015). *Adam: A Method for Stochastic Optimization*. International Conference on Learning Representations (ICLR 2015). arXiv:1412.6980.
+- Loshchilov, I., & Hutter, F. (2019). *Decoupled Weight Decay Regularization*. International Conference on Learning Representations (ICLR 2019). arXiv:1711.05101.
+
+Bo'lim G: Software Architecture and Knowledge Management
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

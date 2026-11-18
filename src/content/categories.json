@@ -1,0 +1,58 @@
+[
+  {
+    "id": "python",
+    "title": "Python Dasturlash Poydevori",
+    "description": "AI, Machine Learning va Data Science uchun Python: sintaksis, funksiyalar, xotira modeli, OOP va rekursiya",
+    "order": 1,
+    "icon": "file-code"
+  },
+  {
+    "id": "fundamentals",
+    "title": "Sun'iy Intellekt Asoslari",
+    "description": "AI, Machine Learning va Deep Learning paradigmalari hamda asosiy tushunchalar",
+    "order": 2,
+    "icon": "brain"
+  },
+  {
+    "id": "math",
+    "title": "AI Uchun Matematika",
+    "description": "Chiziqli algebra, ko'p o'zgaruvchili hisob, ehtimollar nazariyasi va optimizatsiya",
+    "order": 3,
+    "icon": "sigma"
+  },
+  {
+    "id": "deep-learning",
+    "title": "Deep Learning Nazariyasi",
+    "description": "Gradient tushish, teskari tarqalish, yo'qotish funksiyalari va optimizatorlar",
+    "order": 4,
+    "icon": "network"
+  },
+  {
+    "id": "architectures",
+    "title": "Neyron Tarmoq Arxitekturalari",
+    "description": "CNN, RNN, LSTM va Transformer poydevor tuzilmalari",
+    "order": 5,
+    "icon": "cpu"
+  },
+  {
+    "id": "llms-rag",
+    "title": "Katta Til Modellari va RAG",
+    "description": "Tokenizatsiya, kontekstual embeddinglar, prompt injiniringi va tashqi xotira",
+    "order": 6,
+    "icon": "sparkles"
+  },
+  {
+    "id": "ai-agents",
+    "title": "Avtonom AI Agentlar",
+    "description": "ReAct tsikli, funksiyalar chaqiruvi (Tool Use) va avtonom boshqaruv",
+    "order": 7,
+    "icon": "bot"
+  },
+  {
+    "id": "production-ml",
+    "title": "Production ML va MLOps",
+    "description": "Loyihalar tuzilmasi, real ishlab chiqarish quvurlari va resurslar",
+    "order": 8,
+    "icon": "layers"
+  }
+]

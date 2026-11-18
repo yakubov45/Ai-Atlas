@@ -1,0 +1,15 @@
+{
+  "id": "rag-sandbox-explorer",
+  "type": "rag-pipeline",
+  "title": "Phase 14–16: RAG Chunking, Similarity Retrieval, Citation va Hit@k Baholash",
+  "description": "Hujjatlarni chunk size va overlap bilan bo'laklash, Cosine Similarity asosida Top-k qidirish, manbali javob (Citation), No-Answer siyosati hamda Hit@k va MRR hisobi.",
+  "status": "published",
+  "synthetic": false,
+  "sources": ["lewis-2020", "vaswani-2017"],
+  "relatedLessons": ["rag", "embeddings", "tokenization", "llm"],
+  "config": {
+    "defaultChunkSize": 28,
+    "defaultOverlap": 6,
+    "defaultTopK": 2
+  }
+}

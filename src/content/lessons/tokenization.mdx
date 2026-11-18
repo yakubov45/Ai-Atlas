@@ -1,0 +1,75 @@
+---
+id: tokenization
+title: "Tokenization"
+slug: tokenization
+description: "Tokenization — kirish matnini til modeli qayta ishlay oladigan kichikroq matn bo'laklariga (tokenlarga — so'zlar, subword birliklar yoki belgilarga) ajratish va ularni butun sonli identifikatorlarga (Token IDs) o'tkazish jarayoni."
+category: llms-rag
+difficulty: beginner
+order: 1
+tags: ["ai","llm","tokenization","tokenizer","subword"]
+prerequisites: ["machine-learning"]
+related: ["embeddings","transformers","llm","prompt-engineering"]
+visualizations: ["self-attention-explorer"]
+sources: ["sanderson-2017","karpathy-2023"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1071–1121"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Tokenization — kirish matnini til modeli qayta ishlay oladigan kichikroq matn bo'laklariga (tokenlarga — so'zlar, subword birliklar yoki belgilarga) ajratish va ularni butun sonli identifikatorlarga (Token IDs) o'tkazish jarayoni.
+
+## 2. Nima uchun kerak?
+[Transformers](/learn/transformers) va [LLM](/learn/llm) lar matnni bevosita satr sifatida emas, balki diskret tokenlar ketma-ketligi sifatida qabul qiladi va har bir tokenni [Embeddings](/learn/embeddings) vektori bilan bog'laydi. Sennrich et al. (2015) ("Neural Machine Translation of Rare Words with Subword Units", arXiv:1508.07909) ko'rsatganidek, kamyob so'zlarni (rare words) subword birliklar orqali ifodalash neyron mashina tarjimasida muhim ahamiyatga ega.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Matnni modelga uzatishdan oldin uni bo'laklarga ajratish kerak. Masalan, uzun va kam uchraydigan so'zni butunligicha noma'lum deb tashlab ketish o'rniga, uni kichikroq ma'noli bo'laklarga (subword units) ajratsak, model har bir bo'lakning embedding vektoridan foydalanib umumiy ma'noni tushuna oladi.
+
+## 4. Qanday ishlaydi va Muhandislik Qo'llanilishi (Level 2 & Level 3)
+Har bir token o'zining lug'atdagi tartib raqami (Token ID) orqali yuqori o'lchamli embedding vektoriga bog'lanadi (3Blue1Brown, 2024).
+Andrej Karpathy'ning nanoGPT (2023) o'quv dasturida ko'rsatilganidek, kichik o'quv tajribalarida (masalan, Shekspir dialoglarida) belgi darajasidagi (character-level) oddiy tokenizatsiya bilan modelni tezda ishga tushirish mumkin bo'lsa, 124M parametrli GPT-2 modelini qayta tiklashda subword tokenlardan foydalaniladi.
+Izoh (Manba maqomi): Tokenlarning embeddinglar bilan bog'lanishi (3Blue1Brown, 2024), nanoGPT amaliyoti (Karpathy, 2023) hamda Sennrich et al. (2015, arXiv:1508.07909) maqolasining bibliografik ma'lumotlari tasdiqlangan; biroq arXiv:1508.07909 maqolasining to'liq ichki matni joriy qidiruv natijalarida ochilmaganligi sababli, BPE birlashtirishning ichki statistik detallari Tasdiqlanmagan deb belgilandi.
+
+## 5. Python Amaliy Misoli
+Quyida nanoGPT uslubidagi oddiy character-level tokenizator (satrni butun sonli Token ID larga o'tkazish va qaytarish) keltirilgan 
+## Python / PyTorch Amaliy Misoli
+
+```python
+text = "salom ai" chars = sorted(list(set(text)))
+
+Belgidan ID ga (stoi) va ID dan belgiga (itos) lug'atlar
+stoi = {ch: i for i, ch in enumerate(chars)} itos = {i: ch for i, ch in enumerate(chars)}
+
+encode = lambda s: [stoi[c] for c in s] decode = lambda l: ''.join([itos[i] for i in l])
+
+token_ids = encode("salom") print("Token IDs:", token_ids) print("Decoded:", decode(token_ids))
+```
+
+
+## 6. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Machine Learning](/learn/machine-learning)
+
+**Keyingi mavzular:**
+- [Embeddings](/learn/embeddings)
+- [Transformers](/learn/transformers)
+- [LLM](/learn/llm)
+
+**Bog'liq:**
+- [Prompt Engineering](/learn/prompt-engineering)
+
+## 7. Tekshirilgan manbalar
+- Sennrich, R., et al. (2015). *Neural Machine Translation of Rare Words with Subword Units*. arXiv:1508.07909. *(Bibliografik metama'lumot tasdiqlangan)*.
+- Sanderson, G. [3Blue1Brown]. (2024). *Attention in transformers, step-by-step | Deep Learning Chapter 6*. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+- Karpathy, A. (2023). *Let's build GPT: from scratch, in code, spelled out*. YouTube. https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="self-attention-explorer" />
+

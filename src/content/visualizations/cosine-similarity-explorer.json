@@ -1,0 +1,17 @@
+{
+  "id": "cosine-similarity-explorer",
+  "type": "embedding-space",
+  "title": "Phase 12: 2D Vektor, Dot Product, Norm va Cosine Similarity (12.07)",
+  "description": "2D koordinata tekisligida A va B vektorlarining skalyar ko'paytmasi (dot product), uzunligi (norm) va burchak kosinusini (cosine similarity) interaktiv hisoblash.",
+  "status": "published",
+  "synthetic": true,
+  "sources": ["sanderson-2017", "goodfellow-2016"],
+  "relatedLessons": ["vector", "matrix-operations", "embeddings", "rag"],
+  "config": {
+    "ax": 1.0,
+    "ay": 0.0,
+    "bx": 1.0,
+    "by": 1.0,
+    "videoSrc": "/animations/vectors/cosine_similarity.mp4"
+  }
+}

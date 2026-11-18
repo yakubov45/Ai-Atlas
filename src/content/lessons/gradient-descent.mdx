@@ -1,0 +1,134 @@
+---
+id: gradient-descent
+title: "Gradient Descent"
+slug: gradient-descent
+description: "Gradient Descent — differensiallanuvchi yo'qotish funksiyasi E_p = D(D_p, F(Z_p, W)) ni minimallashtirish uchun birinchi tartibli iterativ optimallashtirish algoritmi bo'lib, model parametrlarini (theta yoki W) funksiyaning gradientiga (Gradient) qarama-qarshi yo'nalishda qadam-baqadam yangilab b..."
+category: deep-learning
+difficulty: intermediate
+order: 2
+tags: ["ai","deep-learning","training","optimization","math","gradient"]
+prerequisites: ["hosila","partial-derivative","gradient"]
+related: ["backpropagation","sgd","adam","optimizers","learning-rate","loss-functions"]
+visualizations: ["gradient-descent-1d"]
+sources: ["lecun-1998","rumelhart-1986","hochreiter-1997","ioffe-2015","kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1567–1659"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Gradient Descent — differensiallanuvchi yo'qotish funksiyasi $E_p = D(D_p, F(Z_p, W))$ ni minimallashtirish uchun birinchi tartibli iterativ optimallashtirish algoritmi bo'lib, model parametrlarini ($\theta$ yoki $W$) funksiyaning gradientiga ([Gradient](/learn/gradient)) qarama-qarshi yo'nalishda qadam-baqadam yangilab boradi.
+
+## 2. Nima uchun kerak?
+Hochreiter va Schmidhuber (1997) ta'kidlaganidek, tasodifiy vaznlarni taxmin qilish (simple weight guessing) faqat juda oddiy o'yinchoq muammolarni yecha oladi; ko'p erkin parametrlarga (masalan, kirish vaznlariga) yoki yuqori vazn aniqligiga ega bo'lgan real vazifalarda tasodifiy taxmin qilish mutlaqo imkonsiz (completely infeasible) bo'lib qoladi. Gradient Descent vaznlarni xatolik kamayadigan yo'nalishda maqsadli yangilash imkonini beradi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Qalin tumanda tog' yonbag'rida turibsiz va eng pastdagi vodiyga (xatolik eng kam bo'lgan nuqtaga) tushmoqchisiz. Oyog'ingiz ostidagi yer qaysi tomonga eng tik ko'tarilayotganini sezishingiz mumkin — bu [Gradient](/learn/gradient) yo'nalishidir. Pastga tushish uchun gradientga qarama-qarshi (manfiy) yo'nalishda qadam tashlaysiz. Qadamingizning kattaligi esa [Learning Rate](/learn/learning-rate) ($\alpha$) hisoblanadi.
+
+## 4. Matematik asoslari (Level 3 — Mathematical Foundations)
+Faraz qilaylik, $\theta_t \in \mathbb{R}^d$ — $t$-qadamdagi parametrlar vektori, $f_t(\theta_t)$ — $t$-qadamdagi maqsad (loss) funksiyasi va $\nabla f_t(\theta_t)$ — uning gradienti, $\alpha$ esa o'rganish tezligi bo'lsin. Standart Gradient Descent yangilanish tenglamasi:
+
+$$
+\theta_{t+1} = \theta_t - \alpha \nabla f_t(\theta_t)
+$$
+
+Weight decay ($\lambda$) bilan kengaytirilgan holda:
+$$
+\theta_{t+1} = (1 - \lambda)\theta_t - \alpha \nabla f_t(\theta_t)
+$$
+
+### Qadam-baqadam Sonli Misol (Worked Numerical Example)
+Faraz qilaylik, bitta parametrli kvadratik yo'qotish funksiyasi berilgan:
+
+$$
+f(\theta) = (\theta - 3)^2
+$$
+
+Boshlang'ich qiymat $\theta_0 = 7.0$ va o'rganish tezligi $\alpha = 0.25$ bo'lsin ($\lambda = 0$).
+
+1. **1-qadam (Hosila formulasini topish):**
+$$
+\frac{df(\theta)}{d\theta} = 2(\theta - 3)
+$$
+
+2. **2-qadam ($\theta_0 = 7.0$ nuqtadagi gradientni hisoblash):**
+$$
+\nabla f(7.0) = 2(7.0 - 3) = 2(4.0) = 8.0 \quad \implies \quad f(7.0) = (7.0 - 3)^2 = 16.0
+$$
+
+3. **3-qadam (Parametrni yangilash):**
+$$
+\theta_1 = \theta_0 - \alpha \nabla f(\theta_0) = 7.0 - 0.25 \times 8.0 = 7.0 - 2.0 = 5.0
+$$
+*(Yangi xatolik: $f(5.0) = (5.0 - 3)^2 = 4.0$ — xatolik 16.0 dan 4.0 ga tushdi).*
+
+4. **4-qadam (Ikkinchi iteratsiya):**
+$$
+\nabla f(5.0) = 2(5.0 - 3) = 4.0 \quad \implies \quad \theta_2 = 5.0 - 0.25 \times 4.0 = 4.0
+$$
+*(Yangi xatolik: $f(4.0) = (4.0 - 3)^2 = 1.0$).*
+## 5. Muhandislik Implementatsiyasi: Mini-Batches va GPU (Level 2 & Level 3)
+Ioffe va Szegedy (2015, Section 1) tahliliga ko'ra, $N$ ta namunadan iborat o'quv to'plamida har qadamda $m$ ta namunadan iborat mini-batch $(x_1, \dots, x_m)$ ishlatiladi:
+
+$$ \frac{1}{m} \sum_{i=1}^{m} \frac{\partial \ell(x_i, \Theta)}{\partial \Theta} $$
+
+Mini-batch yondashuvining ikkita fundamental muhandislik sababi bor:
+
+Mini-batch bo'yicha hisoblangan gradient o'quv to'plami ustidagi haqiqiy gradientning bahosi (estimate) bo'lib, batch hajmi m kattalashgani sari uning sifati yaxshilanadi.
+Zamonaviy hisoblash platformalarida (GPU larda) bitta mini-batch ustida hisoblashni bajarish alohida namunalar uchun m marta hisoblash bajarishdan ko'ra ancha samaralidir.
+Muhim Muhandislik Cheklovlari (Rumelhart et al., 1986)
+Differensiallash (backward pass) davomida aynan bir xil forward pass vaznlaridan foydalaniladi va barcha parametr hosilalari hisoblab bo'lingandan so'nggina alohida qadamda parametrlar yangilanadi.
+To'g'ri hisoblangan gradient ma'lum bir yangilanish jadvali global optimumga yetishishini kafolatlamaydi: gradient qiyin, yomon shartlangan (poorly conditioned) yoki lokal jihatdan noqulay optimallashtirish landshafti bo'ylab yo'nalgan bo'lishi mumkin.
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+Yuqoridagi sonli misolni PyTorch Autograd bilan tekshirish: f(theta) = (theta - 3)^2
+theta = torch.tensor([7.0], requires_grad=True) lr = 0.25
+
+for step in range(1, 3): # 1. Forward pass loss = (theta - 3.0) 2
+
+# 2. Backward pass (gradientni hisoblash) loss.backward()
+
+print(f"Qadam {step}: theta = {theta.item():.2f}, loss = {loss.item():.2f}, grad = {theta.grad.item():.2f}")
+
+# 3. Parameter update (differensiallash tugagach, alohida qadamda) with torch.no_grad(): theta -= lr * theta.grad
+
+# 4. Keyingi qadam uchun gradientni nolga tushirish theta.grad.zero_()
+```
+
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Hosila](/learn/hosila)
+- [Partial Derivative](/learn/partial-derivative)
+- [Gradient](/learn/gradient)
+
+**Keyingi mavzular:**
+- [Backpropagation](/learn/backpropagation)
+- [SGD](/learn/sgd)
+- [Adam](/learn/adam)
+- [Optimizers](/learn/optimizers)
+
+**Bog'liq:**
+- [Learning Rate](/learn/learning-rate)
+- [Loss Functions](/learn/loss-functions)
+
+## 8. Tekshirilgan manbalar
+- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature, 323, 533–536. DOI: 10.1038/323533a0.
+- LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-Based Learning Applied to Document Recognition*. Proceedings of the IEEE, 86(11), 2278–2324.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. ICML 2015, PMLR 37:448–456.
+- Loshchilov, I., & Hutter, F. (2019). *Decoupled Weight Decay Regularization*. ICLR 2019. arXiv:1711.05101.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

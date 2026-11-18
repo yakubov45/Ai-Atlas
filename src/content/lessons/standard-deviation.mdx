@@ -1,0 +1,59 @@
+---
+id: standard-deviation
+title: "Standard Deviation"
+slug: standard-deviation
+description: "Variance (Var[x] = sigma^2) — qiymatlarning o'rtacha qiymat mu atrofida o'rtacha kvadratik tarqoqligi; Standard Deviation (sigma = sqrt{Var[x]}) esa dispersiyaning kvadrat ildizidir."
+category: math
+difficulty: intermediate
+order: 12
+tags: ["ai","math","statistics","standart","variance","dispersiya"]
+prerequisites: ["probability","mean"]
+related: ["batch-normalization","transformers","adam","loss-functions"]
+visualizations: []
+sources: ["vaswani-2017","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2523–2563"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Variance ($\operatorname{Var}[x] = \sigma^2$) — qiymatlarning o'rtacha qiymat $\mu$ atrofida o'rtacha kvadratik tarqoqligi; Standard Deviation ($\sigma = \sqrt{\operatorname{Var}[x]}$) esa dispersiyaning kvadrat ildizidir.
+
+## 2. Nima uchun kerak?
+[Batch Normalization](/learn/batch-normalization) (Ioffe & Szegedy, 2015): Mini-batch dispersiyasi $\sigma_{\mathcal{B}}^2 = \frac{1}{m}\sum_{i=1}^m (x_i - \mu_{\mathcal{B}})^2$ hisoblanib, aktivatsiyalar $\sqrt{\sigma_{\mathcal{B}}^2 + \epsilon}$ ga bo'linadi va birlik dispersiyaga (unit variance) keltiriladi.
+[Transformers](/learn/transformers) Attention Scaling (Vaswani et al., 2017, Footnote 4): O'rtachasi 0 va dispersiyasi 1 bo'lgan $d_k$ ta mustaqil tasodifiy komponentlarning skalyar ko'paytmasi $q \cdot k$ dispersiyasi $d_k$ ga (standart chetlanishi $\sqrt{d_k}$ ga) teng bo'ladi; shu bois natija $\sqrt{d_k}$ ga bo'linadi.
+[Adam](/learn/adam) 2nd Raw Moment (Kingma & Ba, 2015): Gradientning ikkinchi markazlashmagan momenti (uncentered variance $\mathbb{E}[g_t^2]$) $v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2$ orqali kuzatilib, parametr yangilanishi $\sqrt{\hat{v}_t} + \epsilon$ ga bo'linadi.
+
+### Qadam-baqadam Sonli Misol
+Berilgan mini-batch: $x = [2.0, 4.0, 6.0, 8.0]$ ($m = 4, \mu_{\mathcal{B}} = 5.0$):
+
+- Chetlanishlar kvadrati: $(-3)^2 = 9$, $(-1)^2 = 1$, $1^2 = 1$, $3^2 = 9$.
+- Dispersiya:
+$$
+\sigma_{\mathcal{B}}^2 = \frac{9 + 1 + 1 + 9}{4} = \frac{20}{4} = 5.0
+$$
+- Standart chetlanish:
+$$
+\sigma_{\mathcal{B}} = \sqrt{5.0} \approx 2.2361
+$$
+## 3. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Probability](/learn/probability)
+[Mean](/learn/mean)
+Keyingi mavzular:
+
+[Batch Normalization](/learn/batch-normalization)
+[Transformers](/learn/transformers)
+[Adam](/learn/adam)
+Bog'liq:
+
+[Loss Functions](/learn/loss-functions)
+## 4. Tekshirilgan manbalar
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015, PMLR 37:448–456.
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015. arXiv:1412.6980.

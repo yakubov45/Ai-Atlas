@@ -1,0 +1,55 @@
+{
+  "id": "function-explorer",
+  "type": "function-plot",
+  "title": "Interaktiv Matematik Funksiyalar va Aktivatsiya Tadqiqotchisi",
+  "description": "Chiziqli, kvadratik, ReLU, Sigmoid va Tanh funksiyalari grafigi, parametr slayderlari, analitik hosilalar va Manim animatsiyasi.",
+  "status": "published",
+  "synthetic": false,
+  "sources": ["sanderson-2017", "goodfellow-2016"],
+  "relatedLessons": ["math-for-deep-learning", "hosila", "deep-learning"],
+  "config": {
+    "expressions": [
+      {
+        "id": "func",
+        "label": "f(x) = a * x^2 + b * x + c",
+        "expr": "a * x^2 + b * x + c",
+        "color": "cyan"
+      }
+    ],
+    "parameters": [
+      {
+        "id": "a",
+        "label": "Kvadratik koeffitsiyent a",
+        "min": -3,
+        "max": 3,
+        "step": 0.1,
+        "default": 1.0,
+        "description": "Parabolaning egrilik darajasi"
+      },
+      {
+        "id": "b",
+        "label": "Chiziqli koeffitsiyent b",
+        "min": -5,
+        "max": 5,
+        "step": 0.1,
+        "default": -2.0,
+        "description": "Minimumning gorizontal siljishi"
+      },
+      {
+        "id": "c",
+        "label": "Erkin had c",
+        "min": -5,
+        "max": 5,
+        "step": 0.1,
+        "default": 1.0,
+        "description": "Vertikal siljish"
+      }
+    ],
+    "xDomain": [-6, 6],
+    "yDomain": [-4, 12],
+    "samples": 300,
+    "xLabel": "x",
+    "yLabel": "f(x)",
+    "videoSrc": "/animations/functions/function_explorer.mp4"
+  }
+}

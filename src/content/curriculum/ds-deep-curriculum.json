@@ -1,0 +1,5740 @@
+{
+  "schemaVersion": "1.0",
+  "curriculumId": "data-scientist-deep-dive-2026",
+  "title": "Data Scientist Deep Dive — extension of existing ML/Data Science learning path",
+  "purpose": "planned topic nodes and deduplicated references; NOT fully authored lessons",
+  "source": {
+    "file": "Вставленный текст(6).txt",
+    "status": "user_provided_unverified",
+    "sections": 8,
+    "workflowStages": 5
+  },
+  "phaseCount": 20,
+  "nodeCount": 309,
+  "existingContentRefs": 152,
+  "newPlannedContentEntries": 157,
+  "targetTrack": "data-scientist",
+  "priorityByTrack": {
+    "data-scientist": "core/advanced (per phase)",
+    "ml-engineer": "supporting for experimentation/econometrics",
+    "ai-engineer": "overview except shared foundations"
+  },
+  "integration": {
+    "existingCurriculum": "ML_DataScience_Curriculum.json",
+    "existingCurriculumId": "ml-ds-2026",
+    "policy": "attach as an extension view of data-scientist track; DO NOT replace prior track or IDs",
+    "reuseContentRefWhenPresent": true,
+    "doNotAutoMergeProposedConcepts": "curator must review semantic equivalence before deduplication",
+    "progressPolicy": "map existing contentRef to existing completion state; new contentRef begins incomplete",
+    "sourcePolicy": "resource names are copied as research leads; URLs not provided and not independently verified",
+    "lessonPublicationPolicy": "do not publish until authored, fact-checked, and reviewed"
+  },
+  "phases": [
+    {
+      "id": "dsx-01",
+      "order": 1,
+      "title": "Data Scientist kasbi va ma’lumotdan qarorgacha",
+      "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+      "prerequisitePhaseIds": [],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Role, workflow, portfolio",
+      "visualizationConcept": "Data Scientist pipeline: Question → Data → EDA → Experiment/Model → Report",
+      "miniProject": "Mini-brief: biznes savoli, metrika va tekshiriladigan gipoteza",
+      "resourceIds": [
+        "roadmap"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-01-n001",
+          "title": "AI, ML va Deep Learning orasidagi munosabat",
+          "contentRef": "mlds-01-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-01-n002",
+          "title": "Data Scientist nima bilan shug‘ullanadi?",
+          "contentRef": "mlds-01-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-01-n003",
+          "title": "AI Engineer va ML Engineer farqi",
+          "contentRef": "mlds-01-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-01-n004",
+          "title": "Dataset, feature, label va model nima?",
+          "contentRef": "mlds-01-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-01-n005",
+          "title": "ML workflow: problem → data → model → evaluation → deploy",
+          "contentRef": "mlds-01-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-01-n006",
+          "title": "Biznes savoli bilan ML masalasi farqi",
+          "contentRef": "dsx-01-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n007",
+          "title": "Savolni o‘lchanadigan tadqiqot savoliga aylantirish",
+          "contentRef": "dsx-01-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n008",
+          "title": "Maqsad, metrika va muvaffaqiyat mezonini ajratish",
+          "contentRef": "dsx-01-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n009",
+          "title": "Ma’lumotga tayangan xulosa nima?",
+          "contentRef": "dsx-01-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n010",
+          "title": "Sof korrelyatsion xulosadan ehtiyot bo‘lish",
+          "contentRef": "dsx-01-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n011",
+          "title": "Tadqiqot rejasini kichik bosqichlarga bo‘lish",
+          "contentRef": "dsx-01-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n012",
+          "title": "Dastlabki ma’lumotlar ehtiyoji ro‘yxati",
+          "contentRef": "dsx-01-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-01-n013",
+          "title": "Portfolioda metod va cheklovlarni ko‘rsatish",
+          "contentRef": "dsx-01-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-02",
+      "order": 2,
+      "title": "Python bilan takrorlanadigan analitika",
+      "sourceSection": "4. Coding",
+      "prerequisitePhaseIds": [
+        "dsx-01"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Python/Pandas/NumPy",
+      "visualizationConcept": "DataFrame → transform → grafik stepper",
+      "miniProject": "Python notebook: ma’lumotni yuklash, qayta ishlash, grafik va natija",
+      "resourceIds": [
+        "kaggle-python",
+        "google-python-class"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-02-n001",
+          "title": "Variable va data type",
+          "contentRef": "mlds-02-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n002",
+          "title": "if / elif / else",
+          "contentRef": "mlds-02-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n003",
+          "title": "Funksiya, parametr va return",
+          "contentRef": "mlds-02-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n004",
+          "title": "Fayl o‘qish va yozish",
+          "contentRef": "mlds-02-15",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n005",
+          "title": "Nega NumPy kerak?",
+          "contentRef": "mlds-04-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n006",
+          "title": "ndarray yaratish",
+          "contentRef": "mlds-04-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n007",
+          "title": "DataFrame nima?",
+          "contentRef": "mlds-05-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ]
+        },
+        {
+          "id": "dsx-02-n008",
+          "title": "Notebookni tajriba daftariga aylantirish",
+          "contentRef": "dsx-02-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n009",
+          "title": "Reproducible analysis deganda nimani tushunamiz?",
+          "contentRef": "dsx-02-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n010",
+          "title": "Bir xil natija olish uchun random seed",
+          "contentRef": "dsx-02-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n011",
+          "title": "Toza funksiyalar bilan tahlil bo‘laklari",
+          "contentRef": "dsx-02-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n012",
+          "title": "Pandas va NumPy natijasini solishtirish",
+          "contentRef": "dsx-02-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n013",
+          "title": "Ma’lumotni o‘qish va natijani saqlash",
+          "contentRef": "dsx-02-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n014",
+          "title": "Script va notebook qachon ishlatiladi?",
+          "contentRef": "dsx-02-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-02-n015",
+          "title": "Oddiy ma’lumot analizi uchun loyiha papkasi",
+          "contentRef": "dsx-02-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "kaggle-python",
+            "google-python-class"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-03",
+      "order": 3,
+      "title": "SQL: analitik savoldan natijaga",
+      "sourceSection": "4. Coding",
+      "prerequisitePhaseIds": [
+        "dsx-02"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "SQL, data structures",
+      "visualizationConcept": "JOIN card: qatorlar soni va guruhlangan ko‘rsatkichlar",
+      "miniProject": "SQL mini-loyiha: retention yoki conversion uchun analitik hisob",
+      "resourceIds": [
+        "sql-tutorial"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-03-n001",
+          "title": "Branch va merge asoslari",
+          "contentRef": "mlds-03-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n002",
+          "title": "Repository va README",
+          "contentRef": "mlds-03-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n003",
+          "title": "Relational database: table, row, column",
+          "contentRef": "mlds-03-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n004",
+          "title": "Primary key va foreign key",
+          "contentRef": "mlds-03-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n005",
+          "title": "SELECT va WHERE",
+          "contentRef": "mlds-03-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n006",
+          "title": "ORDER BY va LIMIT",
+          "contentRef": "mlds-03-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n007",
+          "title": "GROUP BY va aggregate",
+          "contentRef": "mlds-03-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n008",
+          "title": "JOIN tushunchasi",
+          "contentRef": "mlds-03-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "4. Coding",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sql-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-03-n009",
+          "title": "Biznes metrikani SQL so‘rovga ajratish",
+          "contentRef": "dsx-03-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n010",
+          "title": "Jadvaldagi granularity nima?",
+          "contentRef": "dsx-03-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n011",
+          "title": "JOIN natijasida satr ko‘payishi muammosi",
+          "contentRef": "dsx-03-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n012",
+          "title": "COUNT va COUNT DISTINCT qachon farqlanadi?",
+          "contentRef": "dsx-03-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n013",
+          "title": "CTR uchun numerator va denominatorni to‘g‘ri hisoblash",
+          "contentRef": "dsx-03-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n014",
+          "title": "Window funksiyali natijani oddiy guruhlashdan farqlash",
+          "contentRef": "dsx-03-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-03-n015",
+          "title": "SQL query yakunini tekshirish",
+          "contentRef": "dsx-03-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "4. Coding",
+          "sourceRefs": [
+            "sql-tutorial"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-04",
+      "order": 4,
+      "title": "Matematika I: vektor, matritsa va chiziqli algebra",
+      "sourceSection": "1. Mathematics",
+      "prerequisitePhaseIds": [
+        "dsx-02"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Linear algebra, SVD",
+      "visualizationConcept": "2D vector manipulator: matrix transform",
+      "miniProject": "Qo‘lda 2×2 matritsa ko‘paytmasini hisoblash va grafikka chiqarish",
+      "resourceIds": [
+        "khan-linear-algebra",
+        "math-for-ml"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-04-n001",
+          "title": "Scalar nima?",
+          "contentRef": "mlds-09-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n002",
+          "title": "Vektor nima?",
+          "contentRef": "mlds-09-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n003",
+          "title": "Vektor dimension",
+          "contentRef": "mlds-09-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n004",
+          "title": "Scalar multiplication",
+          "contentRef": "mlds-09-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n005",
+          "title": "Vector length / norm",
+          "contentRef": "mlds-09-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n006",
+          "title": "Matrix shape va dimension",
+          "contentRef": "mlds-09-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n007",
+          "title": "Matrix addition",
+          "contentRef": "mlds-09-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n008",
+          "title": "Determinant intuitiv ma’nosi",
+          "contentRef": "mlds-10-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n009",
+          "title": "Linear dependence",
+          "contentRef": "mlds-10-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ]
+        },
+        {
+          "id": "dsx-04-n010",
+          "title": "Bir o‘lchamli son va ko‘p o‘lchamli ma’lumot farqi",
+          "contentRef": "dsx-04-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n011",
+          "title": "Vektorlar yo‘nalishining intuitiv ma’nosi",
+          "contentRef": "dsx-04-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n012",
+          "title": "Matritsa ma’lumot jadvali sifatida",
+          "contentRef": "dsx-04-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n013",
+          "title": "Vektordan chiziqli kombinatsiya hosil qilish",
+          "contentRef": "dsx-04-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n014",
+          "title": "Chiziqli almashtirishning geometrik tasviri",
+          "contentRef": "dsx-04-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n015",
+          "title": "Inverse nima uchun kerak bo‘lishi mumkin?",
+          "contentRef": "dsx-04-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-04-n016",
+          "title": "SVD qaysi g‘oyani ifodalaydi?",
+          "contentRef": "dsx-04-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "khan-linear-algebra",
+            "math-for-ml"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-05",
+      "order": 5,
+      "title": "Matematika II: hosila, gradient va optimizatsiya",
+      "sourceSection": "1. Mathematics",
+      "prerequisitePhaseIds": [
+        "dsx-04"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Calculus, differentiation",
+      "visualizationConcept": "Gradient descent playground with exact curve",
+      "miniProject": "Loss grafigi: hosila va optimizatsiya qadamlarini taqqoslash",
+      "resourceIds": [
+        "essence-calculus",
+        "coursera-differential"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-05-n001",
+          "title": "Funksiya va grafik",
+          "contentRef": "mlds-11-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n002",
+          "title": "Slope nima?",
+          "contentRef": "mlds-11-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n003",
+          "title": "Limit intuitiv ma’nosi",
+          "contentRef": "mlds-11-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n004",
+          "title": "Derivative intuitiv ma’nosi",
+          "contentRef": "mlds-11-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n005",
+          "title": "Derivative of x²",
+          "contentRef": "mlds-11-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n006",
+          "title": "Chain rule nima?",
+          "contentRef": "mlds-11-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n007",
+          "title": "Jacobian matrix nima?",
+          "contentRef": "mlds-11-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n008",
+          "title": "Hessian matrix nima?",
+          "contentRef": "mlds-11-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "1. Mathematics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ]
+        },
+        {
+          "id": "dsx-05-n009",
+          "title": "Hosilani taxminiy farqlar bilan ko‘rish",
+          "contentRef": "dsx-05-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n010",
+          "title": "Bir o‘zgaruvchili funksiyada minimumni topish",
+          "contentRef": "dsx-05-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n011",
+          "title": "Partial derivative uchun oddiy misol",
+          "contentRef": "dsx-05-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n012",
+          "title": "Gradient vektori qaysi tomonga ko‘rsatadi?",
+          "contentRef": "dsx-05-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n013",
+          "title": "Loss va parametr o‘zgarishi qanday bog‘langan?",
+          "contentRef": "dsx-05-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n014",
+          "title": "Learning rate juda katta bo‘lsa nima bo‘ladi?",
+          "contentRef": "dsx-05-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-05-n015",
+          "title": "Gradient hisobini NumPy orqali tekshirish",
+          "contentRef": "dsx-05-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "1. Mathematics",
+          "sourceRefs": [
+            "essence-calculus",
+            "coursera-differential"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-06",
+      "order": 6,
+      "title": "Ehtimollik, Bayes va tanlanma olish",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-04"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Probability, sampling",
+      "visualizationConcept": "Probability tree + Bayes probability slider",
+      "miniProject": "Illustrativ sample: selection bias ta’sirini ko‘rsatish",
+      "resourceIds": [
+        "khan-statistics",
+        "openintro-statistics"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-06-n001",
+          "title": "Ehtimollikni 0–1 oralig‘ida tushunish",
+          "contentRef": "mlds-12-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n002",
+          "title": "Sample space va event",
+          "contentRef": "mlds-12-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n003",
+          "title": "Independent vs dependent events",
+          "contentRef": "mlds-12-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n004",
+          "title": "Conditional probability",
+          "contentRef": "mlds-12-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n005",
+          "title": "Bayes theorem intuitiv",
+          "contentRef": "mlds-12-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n006",
+          "title": "Bayes rule raqamli misoli",
+          "contentRef": "mlds-12-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n007",
+          "title": "Population va sample",
+          "contentRef": "mlds-13-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n008",
+          "title": "Sampling bias",
+          "contentRef": "mlds-13-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n009",
+          "title": "Random sampling",
+          "contentRef": "mlds-13-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ]
+        },
+        {
+          "id": "dsx-06-n010",
+          "title": "Tasodifiy hodisani model qilish",
+          "contentRef": "dsx-06-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-06-n011",
+          "title": "Sakkizta natijadan ehtimollik qanday olinadi?",
+          "contentRef": "dsx-06-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-06-n012",
+          "title": "Shartli ehtimollikni daraxt diagrammada ko‘rish",
+          "contentRef": "dsx-06-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-06-n013",
+          "title": "Bayes yangilashini raqamli misolda hisoblash",
+          "contentRef": "dsx-06-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-06-n014",
+          "title": "Sample qanday noto‘g‘ri tanlanishi mumkin?",
+          "contentRef": "dsx-06-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-06-n015",
+          "title": "Tanlanmaning vakillik masalasi",
+          "contentRef": "dsx-06-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "khan-statistics",
+            "openintro-statistics"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-07",
+      "order": 7,
+      "title": "Statistika: taqsimot, standard error va CLT",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-06"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "CLT, descriptive/inferential statistics",
+      "visualizationConcept": "CLT Monte Carlo simulator: sample size and repeated means",
+      "miniProject": "CLT demo: simulyatsiya va sampling distribution",
+      "resourceIds": [
+        "stanford-intro-statistics",
+        "statquest"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-07-n001",
+          "title": "Population va sample",
+          "contentRef": "mlds-13-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n002",
+          "title": "Estimator nima?",
+          "contentRef": "mlds-13-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n003",
+          "title": "Sampling distribution",
+          "contentRef": "mlds-13-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n004",
+          "title": "Standard error",
+          "contentRef": "mlds-13-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n005",
+          "title": "Central Limit Theorem",
+          "contentRef": "mlds-13-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n006",
+          "title": "Confidence interval",
+          "contentRef": "mlds-13-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n007",
+          "title": "CDF intuitiv",
+          "contentRef": "mlds-12-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n008",
+          "title": "Binomial distribution",
+          "contentRef": "mlds-12-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-07-n009",
+          "title": "Population va sampling distributionni ajratish",
+          "contentRef": "dsx-07-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n010",
+          "title": "O‘rtacha va median qanday turlicha xulosa beradi?",
+          "contentRef": "dsx-07-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n011",
+          "title": "Qaysi vaziyatda taqsimot qiyshiq bo‘ladi?",
+          "contentRef": "dsx-07-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n012",
+          "title": "Standard deviation va standard error farqi",
+          "contentRef": "dsx-07-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n013",
+          "title": "CLT tajribasida sample size o‘zgartirish",
+          "contentRef": "dsx-07-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n014",
+          "title": "Confidence intervalni vizual talqin qilish",
+          "contentRef": "dsx-07-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-07-n015",
+          "title": "Confidence interval haqida keng tarqalgan noto‘g‘ri tushuncha",
+          "contentRef": "dsx-07-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "stanford-intro-statistics",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-08",
+      "order": 8,
+      "title": "Gipoteza, p-value va statistik testlar",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-07"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Hypothesis testing",
+      "visualizationConcept": "Null distribution + p-value shaded region",
+      "miniProject": "Synthetic example: ikkita guruhni t-test yoki chi-square bilan tekshirish",
+      "resourceIds": [
+        "sas-hypothesis",
+        "statquest"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-08-n001",
+          "title": "Null/alternative hypothesis",
+          "contentRef": "mlds-13-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n002",
+          "title": "p-value nimani anglatadi?",
+          "contentRef": "mlds-13-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n003",
+          "title": "Type I error",
+          "contentRef": "mlds-13-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n004",
+          "title": "Type II error",
+          "contentRef": "mlds-13-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n005",
+          "title": "Statistical power tushunchasi",
+          "contentRef": "mlds-13-13",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n006",
+          "title": "t-test qachon ishlatiladi?",
+          "contentRef": "mlds-13-14",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n007",
+          "title": "Chi-square test nima?",
+          "contentRef": "mlds-13-15",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n008",
+          "title": "Statistical vs practical significance",
+          "contentRef": "mlds-13-17",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ]
+        },
+        {
+          "id": "dsx-08-n009",
+          "title": "H0 va H1 ni kundalik misolda yozish",
+          "contentRef": "dsx-08-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n010",
+          "title": "p-value nimani aytadi va nimani aytmaydi?",
+          "contentRef": "dsx-08-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n011",
+          "title": "Alpha oldindan tanlash nima uchun kerak?",
+          "contentRef": "dsx-08-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n012",
+          "title": "Test statistikasi va kritik soha",
+          "contentRef": "dsx-08-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n013",
+          "title": "T-test uchun sodda guruh solishtirish",
+          "contentRef": "dsx-08-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n014",
+          "title": "Chi-square uchun kategorial jadval misoli",
+          "contentRef": "dsx-08-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-08-n015",
+          "title": "Statistik va amaliy ahamiyatni farqlash",
+          "contentRef": "dsx-08-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "sas-hypothesis",
+            "statquest"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-09",
+      "order": 9,
+      "title": "EDA: datasetni tahlil qilish",
+      "sourceSection": "5. Exploratory Data Analysis — EDA",
+      "prerequisitePhaseIds": [
+        "dsx-02",
+        "dsx-06"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Data understanding, visualization",
+      "visualizationConcept": "EDA workbench: missing values/outlier slider and plots",
+      "miniProject": "EDA report: sifat auditi, 5 ta grafik, cheklovlar",
+      "resourceIds": [
+        "pandas-guide",
+        "ibm-eda"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-09-n001",
+          "title": "EDA maqsadi",
+          "contentRef": "mlds-08-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n002",
+          "title": "Ma’lumot jadvalining schema auditi",
+          "contentRef": "mlds-08-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n003",
+          "title": "Numerical vs categorical columns",
+          "contentRef": "mlds-08-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n004",
+          "title": "Mean, median va mode farqi",
+          "contentRef": "mlds-08-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n005",
+          "title": "Variance va standard deviation",
+          "contentRef": "mlds-08-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n006",
+          "title": "Boxplotni o‘qish",
+          "contentRef": "mlds-08-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n007",
+          "title": "Correlation nima?",
+          "contentRef": "mlds-08-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n008",
+          "title": "Missing values nima?",
+          "contentRef": "mlds-07-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n009",
+          "title": "Missing count va foiz",
+          "contentRef": "mlds-07-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ]
+        },
+        {
+          "id": "dsx-09-n010",
+          "title": "Dataset haqida savollar ro‘yxatini tuzish",
+          "contentRef": "dsx-09-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n011",
+          "title": "Missing data sababini tekshirish",
+          "contentRef": "dsx-09-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n012",
+          "title": "Outlier topilganida darhol o‘chirmaslik",
+          "contentRef": "dsx-09-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n013",
+          "title": "Korrelyatsiya jadvali va grafikni birga o‘qish",
+          "contentRef": "dsx-09-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n014",
+          "title": "Alohida segmentlar uchun taqsimotni ko‘rish",
+          "contentRef": "dsx-09-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n015",
+          "title": "EDA xulosasini modellashtirish rejasiga aylantirish",
+          "contentRef": "dsx-09-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-09-n016",
+          "title": "Reproduksiya uchun notebook yakunini tuzish",
+          "contentRef": "dsx-09-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "5. Exploratory Data Analysis — EDA",
+          "sourceRefs": [
+            "pandas-guide",
+            "ibm-eda"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-10",
+      "order": 10,
+      "title": "Eksperiment I: A/A va A/B test asoslari",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-08",
+        "dsx-09"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "A/A, A/B, lift, FPR",
+      "visualizationConcept": "A/B lab: conversion count → lift, CI, p-value",
+      "miniProject": "A/B analysis plan: experiment sheet and example interpretation",
+      "resourceIds": [
+        "ab-guide-vk",
+        "ab-intro-tds"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-10-n001",
+          "title": "A/B testing nima?",
+          "contentRef": "mlds-14-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n002",
+          "title": "Control va treatment",
+          "contentRef": "mlds-14-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n003",
+          "title": "Randomization",
+          "contentRef": "mlds-14-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n004",
+          "title": "Randomization unit",
+          "contentRef": "mlds-14-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n005",
+          "title": "Primary metric",
+          "contentRef": "mlds-14-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n006",
+          "title": "Guardrail metric",
+          "contentRef": "mlds-14-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n007",
+          "title": "Absolute va relative lift",
+          "contentRef": "mlds-14-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n008",
+          "title": "p-value va A/B natija",
+          "contentRef": "mlds-14-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n009",
+          "title": "Confidence interval va lift",
+          "contentRef": "mlds-14-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ]
+        },
+        {
+          "id": "dsx-10-n010",
+          "title": "Product experiment qachon kerak?",
+          "contentRef": "dsx-10-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n011",
+          "title": "A/A test bilan randomizatsiyani sinash",
+          "contentRef": "dsx-10-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n012",
+          "title": "Variantlar uchun primary metric yozish",
+          "contentRef": "dsx-10-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n013",
+          "title": "Guardrail metric nega kerak?",
+          "contentRef": "dsx-10-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n014",
+          "title": "A/B testga kirish mezonlari",
+          "contentRef": "dsx-10-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n015",
+          "title": "Absolute lift va relative liftni qo‘lda hisoblash",
+          "contentRef": "dsx-10-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-10-n016",
+          "title": "Natijani xulosa va keyingi qarorga aylantirish",
+          "contentRef": "dsx-10-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "ab-guide-vk",
+            "ab-intro-tds"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-11",
+      "order": 11,
+      "title": "Eksperiment II: MDE, sample size va power",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-10"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "MDE, power, FPR",
+      "visualizationConcept": "Power vs sample-size interactive plot",
+      "miniProject": "MDE hisobidan eksperiment rejasini tanlash",
+      "resourceIds": [
+        "mde-splitmetrics"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-11-n001",
+          "title": "Sample size tushunchasi",
+          "contentRef": "mlds-14-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n002",
+          "title": "Minimum Detectable Effect — MDE",
+          "contentRef": "mlds-14-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n003",
+          "title": "Power bilan test rejalashtirish",
+          "contentRef": "mlds-14-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n004",
+          "title": "Statistical power tushunchasi",
+          "contentRef": "mlds-13-13",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n005",
+          "title": "Type I error",
+          "contentRef": "mlds-13-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n006",
+          "title": "Type II error",
+          "contentRef": "mlds-13-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n007",
+          "title": "Sensitivity va MDE aloqasi",
+          "contentRef": "mlds-15-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ]
+        },
+        {
+          "id": "dsx-11-n008",
+          "title": "Qanday kichik effectni ko‘rmoqchimiz?",
+          "contentRef": "dsx-11-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n009",
+          "title": "MDE, alpha va beta rolini ajratish",
+          "contentRef": "dsx-11-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n010",
+          "title": "Traffic yetmasa test qanday muammoga uchraydi?",
+          "contentRef": "dsx-11-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n011",
+          "title": "False positive va false negative misollari",
+          "contentRef": "dsx-11-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n012",
+          "title": "Test davomiyligi bilan kuzatuv sonini farqlash",
+          "contentRef": "dsx-11-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n013",
+          "title": "Early stopping va peeking xavfi",
+          "contentRef": "dsx-11-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-11-n014",
+          "title": "Power curve qanday talqin qilinadi?",
+          "contentRef": "dsx-11-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "mde-splitmetrics"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-12",
+      "order": 12,
+      "title": "Eksperiment III: CUPED orqali variance reduction",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-10",
+        "dsx-11"
+      ],
+      "coreOrSupporting": "advanced",
+      "teachingFocus": "CUPED variance reduction",
+      "visualizationConcept": "CUPED before/after scatter with theta and effect",
+      "miniProject": "Synthetic CUPED demo: adjusted outcome va variance farqi",
+      "resourceIds": [
+        "cuped-booking"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-12-n001",
+          "title": "Variance reduction nima uchun?",
+          "contentRef": "mlds-15-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cuped-booking"
+          ]
+        },
+        {
+          "id": "dsx-12-n002",
+          "title": "Covariate nima?",
+          "contentRef": "mlds-15-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cuped-booking"
+          ]
+        },
+        {
+          "id": "dsx-12-n003",
+          "title": "Pre-experiment covariate",
+          "contentRef": "mlds-15-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cuped-booking"
+          ]
+        },
+        {
+          "id": "dsx-12-n004",
+          "title": "CUPED g‘oyasi",
+          "contentRef": "mlds-15-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cuped-booking"
+          ]
+        },
+        {
+          "id": "dsx-12-n005",
+          "title": "CUPED adjustment bosqichlari",
+          "contentRef": "mlds-15-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cuped-booking"
+          ]
+        },
+        {
+          "id": "dsx-12-n006",
+          "title": "Nega kovariat tajriba natijasiga yordam beradi?",
+          "contentRef": "dsx-12-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n007",
+          "title": "Pre-period metric qachon yaroqli kovariat?",
+          "contentRef": "dsx-12-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n008",
+          "title": "Pooled mean yordamida X ni markazlash",
+          "contentRef": "dsx-12-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n009",
+          "title": "Covariance va variance nima uchun kerak?",
+          "contentRef": "dsx-12-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n010",
+          "title": "Theta koeffitsiyentini hisoblash",
+          "contentRef": "dsx-12-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n011",
+          "title": "Y_adjusted = Y - theta(X - mean(X)) qadami",
+          "contentRef": "dsx-12-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n012",
+          "title": "Adjusted mean farqini to‘g‘ri talqin qilish",
+          "contentRef": "dsx-12-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n013",
+          "title": "CUPED muvaffaqiyatli bo‘lmagan vaziyatlar",
+          "contentRef": "dsx-12-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n014",
+          "title": "Kovariat treatment ta’sirida bo‘lsa muammo",
+          "contentRef": "dsx-12-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-12-n015",
+          "title": "Natijani dastur bilan qayta hisoblash",
+          "contentRef": "dsx-12-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cuped-booking"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-13",
+      "order": 13,
+      "title": "Eksperiment IV: CUPAC va Stratification",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-12"
+      ],
+      "coreOrSupporting": "advanced",
+      "teachingFocus": "CUPAC, stratification",
+      "visualizationConcept": "Stratification dashboard, stratum weights and weighted effect",
+      "miniProject": "Stratified synthetic experiment worksheet",
+      "resourceIds": [
+        "cupac-doordash",
+        "stratification-netflix"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-13-n001",
+          "title": "CUPAC g‘oyasi",
+          "contentRef": "mlds-15-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ]
+        },
+        {
+          "id": "dsx-13-n002",
+          "title": "Covariate model prediction",
+          "contentRef": "mlds-15-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ]
+        },
+        {
+          "id": "dsx-13-n003",
+          "title": "Stratification nima?",
+          "contentRef": "mlds-15-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ]
+        },
+        {
+          "id": "dsx-13-n004",
+          "title": "Stratified sampling",
+          "contentRef": "mlds-15-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ]
+        },
+        {
+          "id": "dsx-13-n005",
+          "title": "Stratum weighted estimate",
+          "contentRef": "mlds-15-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ]
+        },
+        {
+          "id": "dsx-13-n006",
+          "title": "CUPAC bilan oddiy CUPED farqi",
+          "contentRef": "dsx-13-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n007",
+          "title": "Kovariatni model prediction bilan qurish g‘oyasi",
+          "contentRef": "dsx-13-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n008",
+          "title": "Predicted covariate va treatment leakage",
+          "contentRef": "dsx-13-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n009",
+          "title": "Strata tushunchasini rangli guruhlar bilan ko‘rish",
+          "contentRef": "dsx-13-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n010",
+          "title": "Strata ichidagi randomization g‘oyasi",
+          "contentRef": "dsx-13-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n011",
+          "title": "Weighted estimate nima uchun ishlatiladi?",
+          "contentRef": "dsx-13-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n012",
+          "title": "Stratification yaxshi ishlaydigan sharoitlar",
+          "contentRef": "dsx-13-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n013",
+          "title": "Strata kam qolsa qanday muammo tug‘iladi?",
+          "contentRef": "dsx-13-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-13-n014",
+          "title": "CUPAC/CUPED natijalarini shaffof taqqoslash",
+          "contentRef": "dsx-13-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "cupac-doordash",
+            "stratification-netflix"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-14",
+      "order": 14,
+      "title": "Eksperiment V: Ratio Metrics va Delta Method",
+      "sourceSection": "2. Statistics",
+      "prerequisitePhaseIds": [
+        "dsx-10",
+        "dsx-13"
+      ],
+      "coreOrSupporting": "advanced",
+      "teachingFocus": "Ratio metrics, Delta method",
+      "visualizationConcept": "Ratio metrics lab: numerator/denominator & delta variance",
+      "miniProject": "Synthetic CTR experiment: metrikaning to‘g‘ri denominatorini tanlash",
+      "resourceIds": [
+        "delta-microsoft"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-14-n001",
+          "title": "Ratio metric nima?",
+          "contentRef": "mlds-15-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "delta-microsoft"
+          ]
+        },
+        {
+          "id": "dsx-14-n002",
+          "title": "User-level ratio va aggregated ratio",
+          "contentRef": "mlds-15-13",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "delta-microsoft"
+          ]
+        },
+        {
+          "id": "dsx-14-n003",
+          "title": "Delta method boshlang‘ich",
+          "contentRef": "mlds-15-14",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "delta-microsoft"
+          ]
+        },
+        {
+          "id": "dsx-14-n004",
+          "title": "Ratio metric variance interpretatsiyasi",
+          "contentRef": "mlds-15-15",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "delta-microsoft"
+          ]
+        },
+        {
+          "id": "dsx-14-n005",
+          "title": "Eksperiment xulosasining cheklovlari",
+          "contentRef": "mlds-15-16",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "2. Statistics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "delta-microsoft"
+          ]
+        },
+        {
+          "id": "dsx-14-n006",
+          "title": "CTR nima: impression denominator, click numerator",
+          "contentRef": "dsx-14-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n007",
+          "title": "Ratio of sums va mean of ratios farqi",
+          "contentRef": "dsx-14-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n008",
+          "title": "Denominator nol bo‘lsa nima qilamiz?",
+          "contentRef": "dsx-14-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n009",
+          "title": "Ratio hisoblashda unit of analysis",
+          "contentRef": "dsx-14-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n010",
+          "title": "Ratio metrikada dispersion qayerdan keladi?",
+          "contentRef": "dsx-14-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n011",
+          "title": "Delta Method uchun birinchi tartibli yaqinlashuv g‘oyasi",
+          "contentRef": "dsx-14-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n012",
+          "title": "Delta Method bilan variance talqin qilish",
+          "contentRef": "dsx-14-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n013",
+          "title": "Natija va interval uchun audit checklist",
+          "contentRef": "dsx-14-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-14-n014",
+          "title": "Metric definition contract yozish",
+          "contentRef": "dsx-14-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "2. Statistics",
+          "sourceRefs": [
+            "delta-microsoft"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-15",
+      "order": 15,
+      "title": "Ekonometrika va sabab-oqibat tahlili",
+      "sourceSection": "3. Econometrics",
+      "prerequisitePhaseIds": [
+        "dsx-08",
+        "dsx-10"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Econometrics & causal inference",
+      "visualizationConcept": "Confounding DAG-style interactive cause diagram",
+      "miniProject": "Biznes ma’lumotlaridagi correlation va causal inference tavsifi",
+      "resourceIds": [
+        "econometrics-robinson",
+        "mit-econometrics"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-15-n001",
+          "title": "Econometrics nima?",
+          "contentRef": "mlds-24-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ]
+        },
+        {
+          "id": "dsx-15-n002",
+          "title": "Correlation va causation farqi",
+          "contentRef": "mlds-24-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ]
+        },
+        {
+          "id": "dsx-15-n003",
+          "title": "Regression inference aloqasi",
+          "contentRef": "mlds-24-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ]
+        },
+        {
+          "id": "dsx-15-n004",
+          "title": "Linear regression formula",
+          "contentRef": "mlds-17-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ]
+        },
+        {
+          "id": "dsx-15-n005",
+          "title": "Multiple testing boshlang‘ich",
+          "contentRef": "mlds-13-16",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ]
+        },
+        {
+          "id": "dsx-15-n006",
+          "title": "Correlation sabab-oqibatni isbotlamasligi",
+          "contentRef": "dsx-15-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n007",
+          "title": "Ehtimoliy confounderlarni ajratish",
+          "contentRef": "dsx-15-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n008",
+          "title": "Econometric regression nimani tushuntiradi?",
+          "contentRef": "dsx-15-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n009",
+          "title": "Model farazlarini ochiq yozish",
+          "contentRef": "dsx-15-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n010",
+          "title": "Regression coefficient talqini",
+          "contentRef": "dsx-15-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n011",
+          "title": "Observational va randomized evidence farqi",
+          "contentRef": "dsx-15-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n012",
+          "title": "Ekonometrika natijasidagi noaniqlik",
+          "contentRef": "dsx-15-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-15-n013",
+          "title": "Causal claimlar uchun ehtiyotkor xulosa yozish",
+          "contentRef": "dsx-15-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "econometrics-robinson",
+            "mit-econometrics"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-16",
+      "order": 16,
+      "title": "Time Series: trend, seasonality va ARIMA",
+      "sourceSection": "3. Econometrics",
+      "prerequisitePhaseIds": [
+        "dsx-07",
+        "dsx-09"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "ARIMA, time series",
+      "visualizationConcept": "ARIMA decomposition and autocorrelation chart",
+      "miniProject": "Bike rentals forecasting: time-aware evaluation",
+      "resourceIds": [
+        "kaggle-time-series",
+        "arima-tutorial"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-16-n001",
+          "title": "Time series nima?",
+          "contentRef": "mlds-24-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n002",
+          "title": "Timestamp va frequency",
+          "contentRef": "mlds-24-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n003",
+          "title": "Time-ordered train/test",
+          "contentRef": "mlds-24-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n004",
+          "title": "Trend nima?",
+          "contentRef": "mlds-24-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n005",
+          "title": "Seasonality nima?",
+          "contentRef": "mlds-24-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n006",
+          "title": "Stationarity intuitiv",
+          "contentRef": "mlds-24-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n007",
+          "title": "Autocorrelation tushunchasi",
+          "contentRef": "mlds-24-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n008",
+          "title": "ARIMA nomi nimani anglatadi?",
+          "contentRef": "mlds-24-14",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n009",
+          "title": "ARIMA components",
+          "contentRef": "mlds-24-15",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n010",
+          "title": "Forecast error va backtesting",
+          "contentRef": "mlds-24-17",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "3. Econometrics",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ]
+        },
+        {
+          "id": "dsx-16-n011",
+          "title": "Time series qatordagi vaqt indeksini tekshirish",
+          "contentRef": "dsx-16-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n012",
+          "title": "Trendni mavsumiylikdan farqlash",
+          "contentRef": "dsx-16-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n013",
+          "title": "Stasionarlikni oddiy grafikda ko‘rish",
+          "contentRef": "dsx-16-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n014",
+          "title": "Lag va autocorrelationni qo‘lda hisoblash",
+          "contentRef": "dsx-16-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n015",
+          "title": "AR qismi: oldingi qiymat bilan bog‘lanish",
+          "contentRef": "dsx-16-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n016",
+          "title": "I qismi: differencing intuitivasi",
+          "contentRef": "dsx-16-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n017",
+          "title": "MA qismi: xatoliklar qoldig‘i intuitivasi",
+          "contentRef": "dsx-16-c017",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n018",
+          "title": "ARIMA (p,d,q) parametrlarini tushunish",
+          "contentRef": "dsx-16-c018",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n019",
+          "title": "Train/testda vaqt tartibini buzmaslik",
+          "contentRef": "dsx-16-c019",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n020",
+          "title": "Forecast va actualni plotda taqqoslash",
+          "contentRef": "dsx-16-c020",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-16-n021",
+          "title": "Forecast xulosasida noaniqlikni ko‘rsatish",
+          "contentRef": "dsx-16-c021",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "3. Econometrics",
+          "sourceRefs": [
+            "kaggle-time-series",
+            "arima-tutorial"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-17",
+      "order": 17,
+      "title": "Klassik ML va modellarning sifatini baholash",
+      "sourceSection": "6. Machine Learning",
+      "prerequisitePhaseIds": [
+        "dsx-09",
+        "dsx-08"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Classic ML and ensembles",
+      "visualizationConcept": "Confusion matrix, threshold, model comparison",
+      "miniProject": "Regression/classification baseline va explanatory report",
+      "resourceIds": [
+        "mlcourse-ai",
+        "andrew-ng-ml"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-17-n001",
+          "title": "Supervised learning nima?",
+          "contentRef": "mlds-17-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n002",
+          "title": "Regression qachon kerak?",
+          "contentRef": "mlds-17-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n003",
+          "title": "Classification nima?",
+          "contentRef": "mlds-18-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n004",
+          "title": "Binary vs multiclass",
+          "contentRef": "mlds-18-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n005",
+          "title": "Confusion Matrix kataklari",
+          "contentRef": "mlds-19-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n006",
+          "title": "Accuracy nima?",
+          "contentRef": "mlds-19-05",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n007",
+          "title": "Precision nima?",
+          "contentRef": "mlds-19-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n008",
+          "title": "Recall nima?",
+          "contentRef": "mlds-19-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n009",
+          "title": "F1-score nima?",
+          "contentRef": "mlds-19-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n010",
+          "title": "K-Fold cross-validation",
+          "contentRef": "mlds-20-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n011",
+          "title": "Bagging nima?",
+          "contentRef": "mlds-21-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n012",
+          "title": "Boosting nima?",
+          "contentRef": "mlds-21-08",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "6. Machine Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ]
+        },
+        {
+          "id": "dsx-17-n013",
+          "title": "Biznes savoliga qaysi ML vazifa mos?",
+          "contentRef": "dsx-17-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n014",
+          "title": "Baseline bilan murakkab modelni taqqoslash",
+          "contentRef": "dsx-17-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n015",
+          "title": "Train/test leakage qanday yuz beradi?",
+          "contentRef": "dsx-17-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n016",
+          "title": "Business metric va ML metric farqi",
+          "contentRef": "dsx-17-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n017",
+          "title": "Ensemble yondashuvini intuitiv tushunish",
+          "contentRef": "dsx-17-c017",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n018",
+          "title": "Xato turlarini segmentlarga ajratish",
+          "contentRef": "dsx-17-c018",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-17-n019",
+          "title": "Model tanlashdagi trade-offni yozib chiqish",
+          "contentRef": "dsx-17-c019",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "6. Machine Learning",
+          "sourceRefs": [
+            "mlcourse-ai",
+            "andrew-ng-ml"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-18",
+      "order": 18,
+      "title": "Deep Learningni Data Scientist darajasida o‘rganish",
+      "sourceSection": "7. Deep Learning",
+      "prerequisitePhaseIds": [
+        "dsx-05",
+        "dsx-17"
+      ],
+      "coreOrSupporting": "supporting",
+      "teachingFocus": "NN, CNN, RNN, Transformer",
+      "visualizationConcept": "Forward/backprop and attention visual modules reuse",
+      "miniProject": "Transfer-learning natijasini baseline bilan taqqoslash",
+      "resourceIds": [
+        "deep-learning-book",
+        "illustrated-transformer"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-18-n001",
+          "title": "Neuron va perceptron",
+          "contentRef": "mlds-25-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n002",
+          "title": "Input, weight va bias",
+          "contentRef": "mlds-25-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n003",
+          "title": "Weighted sum",
+          "contentRef": "mlds-25-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n004",
+          "title": "Sigmoid",
+          "contentRef": "mlds-25-06",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n005",
+          "title": "Autograd nima?",
+          "contentRef": "mlds-26-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n006",
+          "title": "Convolution nima?",
+          "contentRef": "mlds-27-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n007",
+          "title": "RNN hidden state",
+          "contentRef": "mlds-28-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n008",
+          "title": "Transformer umumiy arxitektura",
+          "contentRef": "mlds-29-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "7. Deep Learning",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ]
+        },
+        {
+          "id": "dsx-18-n009",
+          "title": "Data Scientist uchun qachon neural network kerak?",
+          "contentRef": "dsx-18-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n010",
+          "title": "Perceptron input/outputni 2 o‘lchamda ko‘rish",
+          "contentRef": "dsx-18-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n011",
+          "title": "Forward pass nima?",
+          "contentRef": "dsx-18-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n012",
+          "title": "Backpropagation qanday gradient beradi?",
+          "contentRef": "dsx-18-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n013",
+          "title": "CNN qayerda foydali?",
+          "contentRef": "dsx-18-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n014",
+          "title": "RNN va Transformer nimasi bilan farq qiladi?",
+          "contentRef": "dsx-18-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n015",
+          "title": "Pretrained model va transfer learning qachon yordam beradi?",
+          "contentRef": "dsx-18-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-18-n016",
+          "title": "Model murakkabligi uchun izoh yozish",
+          "contentRef": "dsx-18-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "7. Deep Learning",
+          "sourceRefs": [
+            "deep-learning-book",
+            "illustrated-transformer"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-19",
+      "order": 19,
+      "title": "MLOps, deployment va kuzatuvchanlik",
+      "sourceSection": "8. MLOps",
+      "prerequisitePhaseIds": [
+        "dsx-17",
+        "dsx-18"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "MLOps, CI/CD",
+      "visualizationConcept": "ML lifecycle: training → evaluation → deploy → monitor",
+      "miniProject": "Kichik model servis + monitoring specification",
+      "resourceIds": [
+        "mlops-coursera"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-19-n001",
+          "title": "Notebook vs production code",
+          "contentRef": "mlds-31-01",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n002",
+          "title": "Training va inference pipeline",
+          "contentRef": "mlds-31-02",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n003",
+          "title": "Model serialization",
+          "contentRef": "mlds-31-03",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n004",
+          "title": "FastAPI model endpoint",
+          "contentRef": "mlds-31-04",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n005",
+          "title": "Docker image",
+          "contentRef": "mlds-31-07",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n006",
+          "title": "Dataset/version tracking",
+          "contentRef": "mlds-31-09",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n007",
+          "title": "Model version tracking",
+          "contentRef": "mlds-31-10",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n008",
+          "title": "CI basics",
+          "contentRef": "mlds-31-12",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n009",
+          "title": "Automated validation",
+          "contentRef": "mlds-31-14",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n010",
+          "title": "Model performance monitoring",
+          "contentRef": "mlds-31-15",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "8. MLOps",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "mlops-coursera"
+          ]
+        },
+        {
+          "id": "dsx-19-n011",
+          "title": "Modelni notebookdan servisga olib chiqish",
+          "contentRef": "dsx-19-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n012",
+          "title": "Training va inference kodlarini ajratish",
+          "contentRef": "dsx-19-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n013",
+          "title": "Dataset va model versionini bog‘lash",
+          "contentRef": "dsx-19-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n014",
+          "title": "CI bosqichida qaysi testlar ishlaydi?",
+          "contentRef": "dsx-19-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n015",
+          "title": "Monitoring uchun maqsad metrikalar",
+          "contentRef": "dsx-19-c015",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n016",
+          "title": "Model ishlashining vaqt bo‘yicha buzilishi",
+          "contentRef": "dsx-19-c016",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n017",
+          "title": "Re-training qarori oldidan tekshiruv",
+          "contentRef": "dsx-19-c017",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-19-n018",
+          "title": "Reproducible deployment checklist",
+          "contentRef": "dsx-19-c018",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "8. MLOps",
+          "sourceRefs": [
+            "mlops-coursera"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    },
+    {
+      "id": "dsx-20",
+      "order": 20,
+      "title": "Capstone: biznesga tushunarli Data Science loyihasi",
+      "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+      "prerequisitePhaseIds": [
+        "dsx-19"
+      ],
+      "coreOrSupporting": "core",
+      "teachingFocus": "Workflow, portfolio",
+      "visualizationConcept": "Portfolio dashboard: EDA → test → conclusion → deployment",
+      "miniProject": "Portfolio capstone: bir dataset, EDA, hypothesis, model/experiment, report",
+      "resourceIds": [
+        "roadmap"
+      ],
+      "lessonNodes": [
+        {
+          "id": "dsx-20-n001",
+          "title": "Experiment tracking",
+          "contentRef": "mlds-31-11",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-20-n002",
+          "title": "Data drift nima?",
+          "contentRef": "mlds-31-16",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-20-n003",
+          "title": "Concept drift nima?",
+          "contentRef": "mlds-31-17",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-20-n004",
+          "title": "Retraining trigger",
+          "contentRef": "mlds-31-18",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-20-n005",
+          "title": "ML & DS capstone kriteriylari",
+          "contentRef": "mlds-31-20",
+          "contentPolicy": "reuse-existing",
+          "status": "linked-to-existing-planned-content",
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "depthPolicy": "inherit-existing",
+          "sourceRefs": [
+            "roadmap"
+          ]
+        },
+        {
+          "id": "dsx-20-n006",
+          "title": "Capstone savoli, datasetsiz qanday boshlanadi?",
+          "contentRef": "dsx-20-c006",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n007",
+          "title": "Data contract va mavjud manbalar",
+          "contentRef": "dsx-20-c007",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n008",
+          "title": "EDA natijasidan tekshiriladigan gipoteza",
+          "contentRef": "dsx-20-c008",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n009",
+          "title": "Eksperiment yoki ML tanlash asoslari",
+          "contentRef": "dsx-20-c009",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n010",
+          "title": "Statistik test yoki model evaluation natijasi",
+          "contentRef": "dsx-20-c010",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n011",
+          "title": "Natijaning cheklovi va ehtiyotkor xulosa",
+          "contentRef": "dsx-20-c011",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n012",
+          "title": "Stakeholder uchun 1-betlik report",
+          "contentRef": "dsx-20-c012",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n013",
+          "title": "Kod, model va ma’lumot provenance ro‘yxati",
+          "contentRef": "dsx-20-c013",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        },
+        {
+          "id": "dsx-20-n014",
+          "title": "Productionga chiqarish uchun ready checklist",
+          "contentRef": "dsx-20-c014",
+          "contentPolicy": "proposed-extension",
+          "status": "planned",
+          "targetDepths": [
+            "overview",
+            "understand",
+            "master"
+          ],
+          "publishedDepths": [],
+          "sourceSection": "Data Scientist Ish Jarayoni va O‘rganish Bosqichlari",
+          "sourceRefs": [
+            "roadmap"
+          ],
+          "claimedSourceText": false
+        }
+      ]
+    }
+  ],
+  "resourceIndex": {
+    "khan-linear-algebra": {
+      "id": "khan-linear-algebra",
+      "title": "Linear Algebra",
+      "provider": "Khan Academy",
+      "format": "Course",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "math-for-ml": {
+      "id": "math-for-ml",
+      "title": "Mathematics for Machine Learning",
+      "provider": "Deisenroth, Faisal, Ong",
+      "format": "Book (PDF)",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "essence-calculus": {
+      "id": "essence-calculus",
+      "title": "Essence of Calculus",
+      "provider": "3Blue1Brown",
+      "format": "Video playlist",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "coursera-differential": {
+      "id": "coursera-differential",
+      "title": "Algebra and Differential Calculus for Data Science",
+      "provider": "Coursera — CU Boulder",
+      "format": "Course",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "stanford-intro-statistics": {
+      "id": "stanford-intro-statistics",
+      "title": "Introduction to Statistics",
+      "provider": "Coursera — Stanford Online",
+      "format": "Course",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "khan-statistics": {
+      "id": "khan-statistics",
+      "title": "Statistics and Probability",
+      "provider": "Khan Academy",
+      "format": "Course",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "openintro-statistics": {
+      "id": "openintro-statistics",
+      "title": "OpenIntro Statistics",
+      "provider": "OpenIntro",
+      "format": "Book",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "statquest": {
+      "id": "statquest",
+      "title": "StatQuest with Josh Starmer",
+      "provider": "YouTube",
+      "format": "Video channel",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "sas-hypothesis": {
+      "id": "sas-hypothesis",
+      "title": "Introduction to Statistical Analysis: Hypothesis Testing",
+      "provider": "Coursera — SAS",
+      "format": "Course",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "ab-guide-vk": {
+      "id": "ab-guide-vk",
+      "title": "Practitioner’s Guide to Statistical Tests",
+      "provider": "VK Team Medium",
+      "format": "Article",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "ab-intro-tds": {
+      "id": "ab-intro-tds",
+      "title": "A/B Testing 101 with Examples",
+      "provider": "Towards Data Science",
+      "format": "Article",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "mde-splitmetrics": {
+      "id": "mde-splitmetrics",
+      "title": "Minimum Detectable Effect — MDE",
+      "provider": "SplitMetrics",
+      "format": "Article",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "cuped-booking": {
+      "id": "cuped-booking",
+      "title": "How Booking.com Increases the Power of Online Experiments with CUPED",
+      "provider": "Booking.ai",
+      "format": "Article",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "cupac-doordash": {
+      "id": "cupac-doordash",
+      "title": "Improving Experimental Power through Control Using Predictions as Covariate — CUPAC",
+      "provider": "DoorDash Engineering",
+      "format": "Article",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "stratification-netflix": {
+      "id": "stratification-netflix",
+      "title": "Improving the Sensitivity of Online Controlled Experiments: Case Studies at Netflix",
+      "provider": "ResearchGate",
+      "format": "Paper",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "delta-microsoft": {
+      "id": "delta-microsoft",
+      "title": "Applying the Delta Method in Metric Analytics: A Practical Guide with Novel Ideas",
+      "provider": "Microsoft — arXiv",
+      "format": "Paper",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "econometrics-robinson": {
+      "id": "econometrics-robinson",
+      "title": "10 Fundamental Theorems for Econometrics",
+      "provider": "Thomas S. Robinson — Bookdown",
+      "format": "Book",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "mit-econometrics": {
+      "id": "mit-econometrics",
+      "title": "Econometrics 14.382",
+      "provider": "MIT OpenCourseWare",
+      "format": "Course",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "kaggle-time-series": {
+      "id": "kaggle-time-series",
+      "title": "Kaggle Learn: Time Series",
+      "provider": "Kaggle",
+      "format": "Course",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "arima-tutorial": {
+      "id": "arima-tutorial",
+      "title": "How to Create an ARIMA Model for Time Series Forecasting in Python",
+      "provider": "Machine Learning Mastery",
+      "format": "Tutorial",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "kaggle-python": {
+      "id": "kaggle-python",
+      "title": "Learn Python",
+      "provider": "Kaggle Learn",
+      "format": "Course",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "google-python-class": {
+      "id": "google-python-class",
+      "title": "Google’s Python Class",
+      "provider": "Google Developers",
+      "format": "Course",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "sql-tutorial": {
+      "id": "sql-tutorial",
+      "title": "SQL Tutorial — Hands-on Examples & Quizzes",
+      "provider": "sqltutorial.org",
+      "format": "Course",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "pandas-guide": {
+      "id": "pandas-guide",
+      "title": "pandas User Guide: Essential Basic Functionality",
+      "provider": "pandas",
+      "format": "Documentation",
+      "sourceSection": "5. Exploratory Data Analysis — EDA",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "ibm-eda": {
+      "id": "ibm-eda",
+      "title": "Exploratory Data Analysis for Machine Learning",
+      "provider": "Coursera — IBM",
+      "format": "Course",
+      "sourceSection": "5. Exploratory Data Analysis — EDA",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "mlcourse-ai": {
+      "id": "mlcourse-ai",
+      "title": "Open Machine Learning Course",
+      "provider": "Open Data Science",
+      "format": "Course",
+      "sourceSection": "6. Machine Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "andrew-ng-ml": {
+      "id": "andrew-ng-ml",
+      "title": "Machine Learning Specialization",
+      "provider": "Coursera — Andrew Ng",
+      "format": "Course",
+      "sourceSection": "6. Machine Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "deep-learning-book": {
+      "id": "deep-learning-book",
+      "title": "Deep Learning Book",
+      "provider": "Goodfellow, Bengio, Courville",
+      "format": "Book",
+      "sourceSection": "7. Deep Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "illustrated-transformer": {
+      "id": "illustrated-transformer",
+      "title": "The Illustrated Transformer",
+      "provider": "Jay Alammar",
+      "format": "Article",
+      "sourceSection": "7. Deep Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "mlops-coursera": {
+      "id": "mlops-coursera",
+      "title": "Machine Learning in Production — MLOps Specialization",
+      "provider": "Coursera",
+      "format": "Course",
+      "sourceSection": "8. MLOps",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "roadmap": {
+      "id": "roadmap",
+      "title": "AI and Data Scientist Roadmap",
+      "provider": "roadmap.sh/ai-data-scientist",
+      "format": "Roadmap",
+      "sourceSection": "Across sections",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "imperial-math-ml": {
+      "id": "imperial-math-ml",
+      "title": "Mathematics for Machine Learning Specialization",
+      "provider": "Coursera — Imperial College London",
+      "format": "Course",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "khan-multivariable": {
+      "id": "khan-multivariable",
+      "title": "Multivariable Calculus",
+      "provider": "Khan Academy",
+      "format": "Course",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "linear-algebra-done-right": {
+      "id": "linear-algebra-done-right",
+      "title": "Linear Algebra Done Right",
+      "provider": "Sheldon Axler",
+      "format": "Book",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "3blue1brown-site": {
+      "id": "3blue1brown-site",
+      "title": "The Essence of Calculus",
+      "provider": "3b1b.com",
+      "format": "Video",
+      "sourceSection": "1. Mathematics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "london-probability": {
+      "id": "london-probability",
+      "title": "Probability and Statistics: To p or not to p?",
+      "provider": "Coursera — University of London",
+      "format": "Course",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "coursera-statistics-python": {
+      "id": "coursera-statistics-python",
+      "title": "Statistics with Python Specialization",
+      "provider": "Coursera",
+      "format": "Course",
+      "sourceSection": "2. Statistics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "erasmus-econometrics": {
+      "id": "erasmus-econometrics",
+      "title": "Econometrics: Methods and Applications",
+      "provider": "Coursera — Erasmus University",
+      "format": "Course",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "bike-rentals": {
+      "id": "bike-rentals",
+      "title": "Forecasting Task with Solution — Bike Rentals Time Series Take-Home",
+      "provider": "GitHub",
+      "format": "Open-source exercise",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "econ-network-notes": {
+      "id": "econ-network-notes",
+      "title": "Lecture Notes and Short Texts in Econometrics",
+      "provider": "Economics Network",
+      "format": "Lecture notes",
+      "sourceSection": "3. Econometrics",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "leetcode-explore": {
+      "id": "leetcode-explore",
+      "title": "Algorithmic Exercises — LeetCode Explore Learn",
+      "provider": "LeetCode",
+      "format": "Tutorial / challenges",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "coursera-python-ds": {
+      "id": "coursera-python-ds",
+      "title": "Python for Data Science, AI & Development",
+      "provider": "Coursera",
+      "format": "Course",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "harvard-data-science-python": {
+      "id": "harvard-data-science-python",
+      "title": "Introduction to Data Science with Python",
+      "provider": "Harvard University",
+      "format": "University course",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "python-data-science-handbook": {
+      "id": "python-data-science-handbook",
+      "title": "Python Data Science Handbook",
+      "provider": "Jake VanderPlas",
+      "format": "Book / notebooks",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "python-official-tutorial": {
+      "id": "python-official-tutorial",
+      "title": "The Python Official Tutorial",
+      "provider": "docs.python.org",
+      "format": "Documentation",
+      "sourceSection": "4. Coding",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "coursera-eda-pandas": {
+      "id": "coursera-eda-pandas",
+      "title": "Exploratory Data Analysis with Python and Pandas",
+      "provider": "Coursera",
+      "format": "Course",
+      "sourceSection": "5. Exploratory Data Analysis — EDA",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "prml-bishop": {
+      "id": "prml-bishop",
+      "title": "Pattern Recognition and Machine Learning",
+      "provider": "Christopher M. Bishop — Microsoft Research",
+      "format": "Book PDF",
+      "sourceSection": "6. Machine Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "prml-notes": {
+      "id": "prml-notes",
+      "title": "PRML Notes & Python Code Repository",
+      "provider": "GitHub — gerdm/prml",
+      "format": "Repository",
+      "sourceSection": "6. Machine Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "roadmap-machine-learning": {
+      "id": "roadmap-machine-learning",
+      "title": "Dedicated Machine Learning Roadmap",
+      "provider": "roadmap.sh/machine-learning",
+      "format": "Roadmap",
+      "sourceSection": "6. Machine Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "dl-specialization": {
+      "id": "dl-specialization",
+      "title": "Deep Learning Specialization",
+      "provider": "Coursera — DeepLearning.AI",
+      "format": "Course",
+      "sourceSection": "7. Deep Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "attention-all-you-need": {
+      "id": "attention-all-you-need",
+      "title": "Attention Is All You Need — Original Transformer Paper",
+      "provider": "arXiv",
+      "format": "Research paper",
+      "sourceSection": "7. Deep Learning",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    },
+    "roadmap-mlops": {
+      "id": "roadmap-mlops",
+      "title": "Dedicated MLOps Roadmap",
+      "provider": "roadmap.sh/mlops",
+      "format": "Roadmap",
+      "sourceSection": "8. MLOps",
+      "url": null,
+      "urlStatus": "not-in-paste-unverified"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+---
+id: prompt-engineering
+title: "Prompt Engineering"
+slug: prompt-engineering
+description: "Prompt Engineering — LLM parametrlarini qayta o'qitmasdan, kirish matnini (prompt) strukturaviy shakllantirish orqali modelning diqqat (attention) mexanizmini va keyingi token bashoratini boshqarish usuli."
+category: llms-rag
+difficulty: beginner
+order: 4
+tags: ["ai","llm","prompt-engineering","prompting","in-context","prompt"]
+prerequisites: ["llm","transformers","tokenization"]
+related: ["ai-agent","rag","tools","memory"]
+visualizations: ["self-attention-explorer"]
+sources: ["vaswani-2017","kingma-2014","yao-2022","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1122–1161"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Prompt Engineering — [LLM](/learn/llm) parametrlarini qayta o'qitmasdan, kirish matnini (prompt) strukturaviy shakllantirish orqali modelning diqqat (attention) mexanizmini va keyingi token bashoratini boshqarish usuli.
+
+## 2. Nima uchun kerak?
+[Transformers](/learn/transformers) ga asoslangan til modelining maqsadi matndagi keyingi so'zni bashorat qilishdir (3Blue1Brown, 2024). Modelning oxirgi pozitsiyadagi vektori oldingi barcha tokenlarning embeddinglaridan diqqat (attention) orqali ma'lumot yig'adi. Shu sababli kirish kontekstida berilgan ko'rsatmalar, misollar va mantiqiy mulohaza qadamlari (masalan, Yao et al., 2022 dagi ReAct: Synergizing Reasoning and Acting in Language Models) modelning chiqish ehtimolliklarini bevosita o'zgartiradi.
+
+## 3. Qanday ishlaydi va Cheklovlari (Level 1 — Level 3)
+Kontekstual Diqqat Yangilanishi (3Blue1Brown, 2024): Promptdagi har bir token Key va Value matritsalari orqali keyingi tokenlarning embeddinglarini boyitishda qatnashadi.
+Reasoning va Acting Uyg'unligi: Yao et al. (2022, arXiv:2210.03629) til modellarida mantiqiy mulohaza yuritish (reasoning) va harakat qilishni (acting) birlashtirish yondashuvini taqdim etgan.
+Arxitekturaviy Cheklovlar: Standart Self-Attention da hisoblash va xotira xarajatlari ketma-ketlik uzunligi bo'yicha kvadratik o'sadi (Vaswani et al., 2017), shu bois prompt uzunligini cheksiz oshirib bo'lmaydi.
+Izoh (Manba maqomi): Transformerlarda kontekst tokenlarining diqqat mexanizmi orqali keyingi token bashoratiga ta'siri (3Blue1Brown, 2024; Vaswani et al., 2017) va Yao et al. (2022, arXiv:2210.03629) bibliografiyasi tasdiqlangan. Biroq arXiv:2210.03629 ning to'liq matni va boshqa prompt shablonlari joriy manbalar to'plamida ochilmaganligi sababli, maxsus prompting evristikalari Tasdiqlanmagan deb belgilandi.
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[LLM](/learn/llm)
+[Transformers](/learn/transformers)
+[Tokenization](/learn/tokenization)
+Keyingi mavzular:
+
+[AI Agent](/learn/ai-agent)
+[RAG](/learn/rag)
+Bog'liq:
+
+[Tools](/learn/tools)
+[Memory](/learn/memory)
+## 5. Tekshirilgan manbalar
+Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629. (Bibliografik metama'lumot tasdiqlangan).
+Bo'lim C: AI Agents and Retrieval
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="self-attention-explorer" />
+

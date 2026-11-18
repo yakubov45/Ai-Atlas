@@ -1,0 +1,3060 @@
+{
+  "schema_version": "1.0",
+  "language": "uz",
+  "lesson_count": 344,
+  "phase_count": 20,
+  "phases": [
+    {
+      "id": "PY-01",
+      "order": 1,
+      "track": "Core (Asosiy)",
+      "title_uz": "Python muhiti va ilk dastur",
+      "lesson_count": 12,
+      "assessment": {
+        "title_uz": "Birinchi Python CLI — input → output",
+        "requirements_uz": "Ism va shahar so‘ra; terminalda vizitka chiqar; comment bilan oqimni tushuntir.",
+        "acceptance_cases_uz": "Ali/Toshkent → Salom Ali, Toshkent; Vali/Samarqand → mos vizitka; input matn sifatida saqlansin.",
+        "constraints_uz": "Faqat print, input, assignment va comment; shart/sikl kerak emas."
+      },
+      "lessons": [
+        {
+          "id": "py-01-01",
+          "source_status": "planned",
+          "title_uz": "Python nima va qaysi vazifalarda ishlatiladi?",
+          "theory_uz": "Python umumiy maqsadli til; avtomatlashtirish, web, data science va AI uchun ishlatiladi. Interpreter kodni bajaradi.",
+          "example_uz": "`print(\"Python\")`",
+          "practice_uz": "Uchta real muammoni yoz va qaysi kirish, qayta ishlash, chiqish kerakligini tushuntir."
+        },
+        {
+          "id": "py-01-02",
+          "source_status": "planned",
+          "title_uz": "Interpreter va .py fayli nima?",
+          "theory_uz": "Interpreter Python kodini bajaruvchi dastur; .py oddiy matnli manba fayli.",
+          "example_uz": "`hello.py` ichida `print(\"Salom\")`; terminalda `python hello.py`",
+          "practice_uz": "Ikki .py fayl yarat, har birida boshqa xabar chiqar; fayl bilan interpreter vazifasini ajrat."
+        },
+        {
+          "id": "py-01-03",
+          "source_status": "planned",
+          "title_uz": "Python versiyasini tekshirish",
+          "theory_uz": "Versiya sintaksis va kutubxona mosligini belgilaydi.",
+          "example_uz": "`python --version` (Windows: `py --version`); macOS/Linux: `python3 --version`",
+          "practice_uz": "Kompyuteringdagi versiyani top va Python 3 ekanligini tekshir."
+        },
+        {
+          "id": "py-01-04",
+          "source_status": "planned",
+          "title_uz": "Terminal va shell nima?",
+          "theory_uz": "Terminal buyruq kiritish interfeysi, shell esa buyruqlarni talqin qiladi.",
+          "example_uz": "`cd` va Windows `dir` yoki Unix `ls`",
+          "practice_uz": "Terminaldan yangi loyiha papkasiga o‘t, ichidagi fayllarni ko‘rsat va joriy manzilni top."
+        },
+        {
+          "id": "py-01-05",
+          "source_status": "planned",
+          "title_uz": "REPL va .py skript farqi",
+          "theory_uz": "REPL kodni interaktiv bajaradi; skript saqlanadi va qayta ishga tushiriladi.",
+          "example_uz": "`python` ichida `2 + 3`; chiqish uchun `exit()`",
+          "practice_uz": "Bir xil ifodani REPL va .py faylida bajar; nima uchun skriptda print kerakligini kuzat."
+        },
+        {
+          "id": "py-01-06",
+          "source_status": "planned",
+          "title_uz": "Python faylini ishga tushirish",
+          "theory_uz": "Skriptni bajarish uchun interpreterga fayl yo‘li beriladi.",
+          "example_uz": "`python hello.py`",
+          "practice_uz": "Boshqa papkadan skriptni to‘liq yoki nisbiy yo‘l bilan ishga tushir; noto‘g‘ri nomda nima bo‘lishini kuzat."
+        },
+        {
+          "id": "py-01-07",
+          "source_status": "planned",
+          "title_uz": "print() bilan natija chiqarish",
+          "theory_uz": "print() qiymatlarni stdout ga chiqaradi; sep ajratuvchi, end yakun belgisidir.",
+          "example_uz": "`print(\"A\", \"B\", sep=\"-\")` → `A-B`",
+          "practice_uz": "Uchta qatorli terminal vizitka yarat; bitta qatorda so‘zlarni / bilan ajrat."
+        },
+        {
+          "id": "py-01-08",
+          "source_status": "planned",
+          "title_uz": "input() orqali foydalanuvchi ma’lumotini olish",
+          "theory_uz": "input() foydalanuvchi kiritgan matnni str sifatida qaytaradi.",
+          "example_uz": "`name = input(\"Ism: \")`; `print(\"Salom\", name)`",
+          "practice_uz": "Ism, shahar va sevimli mashg‘ulotni so‘rab, bitta tushunarli xabar chiqar."
+        },
+        {
+          "id": "py-01-09",
+          "source_status": "planned",
+          "title_uz": "Indentation nima?",
+          "theory_uz": "Indentation kod bloklarini belgilaydi; odatda 4 bo‘sh joy ishlatiladi.",
+          "example_uz": "`if True:` ostida 4 bo‘sh joy bilan `print(\"OK\")` (if batafsil PY-04 da)",
+          "practice_uz": "Tayyor blokdagi noto‘g‘ri joylashgan printni tuzat; yangi shart yozish shart emas."
+        },
+        {
+          "id": "py-01-10",
+          "source_status": "planned",
+          "title_uz": "SyntaxError bilan tanishish",
+          "theory_uz": "SyntaxError kod sintaksisi noto‘g‘ri ekanini bildiradi; interpreter xato joyini ko‘rsatadi.",
+          "example_uz": "`print(\"Salom\"` → SyntaxError",
+          "practice_uz": "Uchta xato: yopilmagan qavs, yopilmagan qo‘shtirnoq, noto‘g‘ri if sintaksisini top va tuzat."
+        },
+        {
+          "id": "py-01-11",
+          "source_status": "planned",
+          "title_uz": "Comment yozish (#)",
+          "theory_uz": "# belgisi satr oxirigacha komment boshlaydi; interpreter uni bajarmaydi.",
+          "example_uz": "`# Salomlashish` keyin `print(\"Salom\")`",
+          "practice_uz": "Kichik skriptga nima uchun yozilganini tushuntiruvchi 2 izoh qo‘sh; kodni aynan takrorlovchi izoh yozma."
+        },
+        {
+          "id": "py-01-12",
+          "source_status": "planned",
+          "title_uz": "Kichik Hello World CLI ni yig‘ish",
+          "theory_uz": "CLI — terminal orqali ishlaydigan dastur; input → processing → output oqimi.",
+          "example_uz": "`name = input(\"Ism: \")`; `print(\"Xush kelibsiz,\", name)`",
+          "practice_uz": "Ism va shahar so‘rab foydalanuvchiga shaxsiy terminal kartasini chiqar; ikki xil kirish bilan tekshir."
+        }
+      ]
+    },
+    {
+      "id": "PY-02",
+      "order": 2,
+      "track": "Core (Asosiy)",
+      "title_uz": "O‘zgaruvchilar va sodda turlar",
+      "lesson_count": 16,
+      "assessment": {
+        "title_uz": "Kalkulyator: ism, yosh va qiymatlar",
+        "requirements_uz": "Ism, yosh, ikkita son va narx; casting, yig‘indi, keyingi yosh va formatlangan chiqish.",
+        "acceptance_cases_uz": "Ali,20,2,3.5 → yosh 21 va summa 5.5; 0 va manfiy sonlar; noto‘g‘ri castingni tahlil qil.",
+        "constraints_uz": "Exception handling hali shart emas; invalid inputni qabul qilmaslik hujjatlashtirilsin."
+      },
+      "lessons": [
+        {
+          "id": "py-02-01",
+          "source_status": "planned",
+          "title_uz": "Variable va assignment nima?",
+          "theory_uz": "Assignment nomni obyektga bog‘laydi; = matematik tenglik emas.",
+          "example_uz": "`score = 10`; `score = 15`; `print(score)` → 15",
+          "practice_uz": "Uchta qiymatni nomla, birini o‘zgartir va natijani oldindan ayt."
+        },
+        {
+          "id": "py-02-02",
+          "source_status": "planned",
+          "title_uz": "O‘zgaruvchiga nom berish qoidalari",
+          "theory_uz": "Nom harf yoki underscore bilan boshlanadi, raqam keyin kelishi mumkin; keyword ishlatilmaydi.",
+          "example_uz": "`user_age = 20`; `2age = 20` xato",
+          "practice_uz": "`user-name`, `class`, `2price`, `total_price` nomlarini tekshir va yaroqsizlarini tuzat."
+        },
+        {
+          "id": "py-02-03",
+          "source_status": "planned",
+          "title_uz": "int turi nima?",
+          "theory_uz": "int butun son turi, manfiy va katta butun sonlarni ham saqlaydi.",
+          "example_uz": "`count = 120`; `print(type(count))`",
+          "practice_uz": "3 ta butun son saqla, ularning turlarini chiqar va manfiy sonni ham tekshir."
+        },
+        {
+          "id": "py-02-04",
+          "source_status": "planned",
+          "title_uz": "float turi nima?",
+          "theory_uz": "float kasr sonlarni ikkilik yaqinlashuv bilan ifodalaydi.",
+          "example_uz": "`price = 12.5`; `print(type(price))`",
+          "practice_uz": "Harorat, vazn va narxni float sifatida belgilab chiqar; `12` va `12.0` turlarini solishtir."
+        },
+        {
+          "id": "py-02-05",
+          "source_status": "planned",
+          "title_uz": "bool turi nima?",
+          "theory_uz": "bool mantiqiy True yoki False qiymatga ega.",
+          "example_uz": "`is_active = True`; `print(type(is_active))`",
+          "practice_uz": "Uchta xizmat holatini bool bilan ifodala; True bilan \"True\" bir xil tip emasligini ko‘rsat."
+        },
+        {
+          "id": "py-02-06",
+          "source_status": "planned",
+          "title_uz": "str turi nima?",
+          "theory_uz": "str Unicode matn; qo‘shtirnoq yoki birtirnoq bilan yoziladi.",
+          "example_uz": "`city = \"Toshkent\"`; `print(city)`",
+          "practice_uz": "Ism ichidagi apostrofni to‘g‘ri yoz, ko‘p qatorli matn ham yarat."
+        },
+        {
+          "id": "py-02-07",
+          "source_status": "planned",
+          "title_uz": "None va NoneType",
+          "theory_uz": "None qiymat yo‘qligini ifodalaydi; 0, False va bo‘sh matndan farq qiladi.",
+          "example_uz": "`result = None`; `print(type(result))`",
+          "practice_uz": "Telefon raqami noma’lum foydalanuvchi uchun None, ma’lum foydalanuvchi uchun matn saqla."
+        },
+        {
+          "id": "py-02-08",
+          "source_status": "planned",
+          "title_uz": "type() va isinstance() farqi",
+          "theory_uz": "type() aniq turni qaytaradi; isinstance() meros turlarini ham hisobga oladi.",
+          "example_uz": "`print(type(True) is bool, isinstance(True, int))` → True True (is keyinroq o‘tiladi)",
+          "practice_uz": "`3`, `3.0`, `\"3\"`, `None` uchun type va isinstance bilan natijani tekshir."
+        },
+        {
+          "id": "py-02-09",
+          "source_status": "planned",
+          "title_uz": "Bir qatorda assignment",
+          "theory_uz": "Bir qatorda bir nechta nomga qiymat berish yoki qiymatlarni almashtirish mumkin.",
+          "example_uz": "`a, b = 1, 2`; `a, b = b, a`",
+          "practice_uz": "Uch nomdagi qiymatlarni a→b→c→a siklik almashtir; vaqtinchalik nom ishlatma."
+        },
+        {
+          "id": "py-02-10",
+          "source_status": "planned",
+          "title_uz": "O‘zgaruvchi qiymatini yangilash",
+          "theory_uz": "Yangilash eski nomga yangi qiymat bog‘laydi.",
+          "example_uz": "`points = 5`; `points = points + 2` → 7",
+          "practice_uz": "Boshlang‘ich ball 10: ikki marta oshir va bir marta kamaytir; har bosqichni chiqar."
+        },
+        {
+          "id": "py-02-11",
+          "source_status": "planned",
+          "title_uz": "String concatenation",
+          "theory_uz": "+ ikkita str ni birlashtiradi; str va int bevosita qo‘shilmaydi.",
+          "example_uz": "`\"Ali\" + \" \" + \"Vali\"`",
+          "practice_uz": "Ism, familiya, shahar orqali formatlangan bir qator yoz; sonni hozircha matn sifatida ol."
+        },
+        {
+          "id": "py-02-12",
+          "source_status": "planned",
+          "title_uz": "f-string orqali formatlash",
+          "theory_uz": "F-string {} ichidagi ifodalarni matnga joylaydi.",
+          "example_uz": "`name = \"Ali\"`; `print(f\"Salom, {name}\")`",
+          "practice_uz": "Mahsulot nomi va narxini f-string orqali terminal chekiga aylantir; kasrni 2 xona chiqar (`:.2f`)."
+        },
+        {
+          "id": "py-02-13",
+          "source_status": "planned",
+          "title_uz": "str metodlari bilan ishlash",
+          "theory_uz": "Str metodlari yangi matn qaytaradi, asl string o‘zgarmaydi.",
+          "example_uz": "`\"  SaLoM  \".strip().lower()` → `salom`",
+          "practice_uz": "Keraksiz bo‘sh joylarni olib tashla, registrni kichraytir va bo‘sh joylarni `_` bilan almashtir."
+        },
+        {
+          "id": "py-02-14",
+          "source_status": "planned",
+          "title_uz": "Index va slice",
+          "theory_uz": "Index 0 dan boshlanadi; slice [start:stop:step] stopni olmaydi.",
+          "example_uz": "`\"Python\"[-1]` → n; `\"Python\"[1:4]` → yth",
+          "practice_uz": "Parolning birinchi va oxirgi belgisini, teskari matnini va har ikkinchi belgisini chiqar."
+        },
+        {
+          "id": "py-02-15",
+          "source_status": "planned",
+          "title_uz": "int(), float(), str() casting",
+          "theory_uz": "Casting qiymatni boshqa turga o‘tkazadi; input odatda str bo‘ladi.",
+          "example_uz": "`int(\"42\")`; `float(\"3.5\")`; `str(42)`",
+          "practice_uz": "Ikki sonni input orqali olib, int ga aylantir va yig‘indisini chiqar; kasr uchun float sinovi qil."
+        },
+        {
+          "id": "py-02-16",
+          "source_status": "planned",
+          "title_uz": "Noto‘g‘ri casting va ValueError",
+          "theory_uz": "Noto‘g‘ri qiymat castingda ValueError; int(float) kasrni nol tomonga kesadi.",
+          "example_uz": "`int(\"abc\")` → ValueError; `int(-3.9)` → -3",
+          "practice_uz": "`\"12\"`, `\"12.5\"`, `\"abc\"` ni int va float bilan alohida sinab, xatolar jadvalini tuz; try hali shart emas."
+        }
+      ]
+    },
+    {
+      "id": "PY-03",
+      "order": 3,
+      "track": "Core (Asosiy)",
+      "title_uz": "Operatorlar va ifodalar",
+      "lesson_count": 14,
+      "assessment": {
+        "title_uz": "Chegirma va QQS kalkulyatori",
+        "requirements_uz": "Narx, miqdor, chegirma va QQS stavkasidan subtotal → chegirma → soliq → total.",
+        "acceptance_cases_uz": "100000×2,10% chegirma,12% QQS → 201600 (mashq stavkasi); 0% chegirma; 100% chegirma → 0.",
+        "constraints_uz": "Formula tartibini yoz; pul qiymatini butun tiyin yoki yaxlitlash siyosati bilan boshqar; haqiqiy soliq stavkasi deb talqin qilma."
+      },
+      "lessons": [
+        {
+          "id": "py-03-01",
+          "source_status": "planned",
+          "title_uz": "Qo‘shish va ayirish operatorlari",
+          "theory_uz": "+ va - sonlar yig‘indisi va ayirmasini hisoblaydi.",
+          "example_uz": "`100 + 25 - 10` → 115",
+          "practice_uz": "Boshlang‘ich balans, ikkita kirim va chiqimdan yakuniy balans hisobla."
+        },
+        {
+          "id": "py-03-02",
+          "source_status": "planned",
+          "title_uz": "Ko‘paytirish va oddiy bo‘lish",
+          "theory_uz": "* ko‘paytiradi, / haqiqiy bo‘lish natijasini float beradi.",
+          "example_uz": "`7 * 3` → 21; `7 / 2` → 3.5",
+          "practice_uz": "Xonaga kerakli plitka umumiy narxini va to‘rt kishiga bo‘lingan ulushni hisobla."
+        },
+        {
+          "id": "py-03-03",
+          "source_status": "planned",
+          "title_uz": "Butun bo‘lish //",
+          "theory_uz": "// natijani manfiy cheksizlik tomon yaxlitlaydi.",
+          "example_uz": "`7 // 3` → 2; `-7 // 3` → -3",
+          "practice_uz": "137 ta buyumni 12 talik qutilarga joyla; nechta to‘liq quti chiqishini hisobla."
+        },
+        {
+          "id": "py-03-04",
+          "source_status": "planned",
+          "title_uz": "Qoldiq olish %",
+          "theory_uz": "% bo‘lish qoldig‘ini qaytaradi; a = (a//b)*b + a%b.",
+          "example_uz": "`137 % 12` → 5",
+          "practice_uz": "Sekundni soat, minut va sekundga ajrat; 3661 uchun 1:1:1 chiqsin."
+        },
+        {
+          "id": "py-03-05",
+          "source_status": "planned",
+          "title_uz": "Daraja operatori **",
+          "theory_uz": "** darajaga ko‘taradi; kasr daraja ildizni ham ifodalashi mumkin.",
+          "example_uz": "`2 ** 5` → 32; `81 ** 0.5` → 9.0",
+          "practice_uz": "Kub hajmi va kvadrat diagonali uchun formulalarni hisobla."
+        },
+        {
+          "id": "py-03-06",
+          "source_status": "planned",
+          "title_uz": "Taqqoslash operatorlari == va !=",
+          "theory_uz": "== qiymatlar tengligini, != teng emasligini tekshiradi.",
+          "example_uz": "`3 == 3.0` → True; `3 != 4` → True",
+          "practice_uz": "Inputdan ikki kod olib, aynan mos yoki mos emasligini bool ko‘rinishda chiqar."
+        },
+        {
+          "id": "py-03-07",
+          "source_status": "planned",
+          "title_uz": "> va < taqqoslashlari",
+          "theory_uz": ">, <, >=, <= sonlarni tartib bo‘yicha taqqoslaydi.",
+          "example_uz": "`18 <= 20 < 65` → True",
+          "practice_uz": "Harorat ruxsat oralig‘idami va chegaraga tengmi degan alohida natijalarni chiqar."
+        },
+        {
+          "id": "py-03-08",
+          "source_status": "planned",
+          "title_uz": "and, or, not operatorlari",
+          "theory_uz": "and ikkala, or kamida bitta, not inkor; and/or qisqa tutash bilan operand qaytarishi mumkin.",
+          "example_uz": "`True and not False` → True; `0 or 7` → 7",
+          "practice_uz": "Kirish uchun yosh va ruxsat belgisidan mantiqiy ifoda tuz; to‘rt kombinatsiyani tekshir."
+        },
+        {
+          "id": "py-03-09",
+          "source_status": "planned",
+          "title_uz": "Operator precedence",
+          "theory_uz": "Daraja, unary operatorlar, ko‘paytirish/bo‘lish, qo‘shish/ayirish va taqqoslashlarning bajarilish tartibi bor.",
+          "example_uz": "`2 + 3 * 4` → 14; `-2**2` → -4",
+          "practice_uz": "`2+3*4**2` va `10-6//4*2` ni qog‘ozda hisoblab tekshir."
+        },
+        {
+          "id": "py-03-10",
+          "source_status": "planned",
+          "title_uz": "Qavs bilan bajarilish tartibi",
+          "theory_uz": "Qavs ichidagi ifoda ustunlikni aniq qiladi.",
+          "example_uz": "`(2 + 3) * 4` → 20",
+          "practice_uz": "2, 3, 4 sonlari va +, * yordamida qavs joyini almashtirib 14 va 20 hosil qil."
+        },
+        {
+          "id": "py-03-11",
+          "source_status": "planned",
+          "title_uz": "Truthiness nima?",
+          "theory_uz": "Bo‘sh matn, None, 0 va bo‘sh kolleksiyalar falsy; boshqa ko‘p qiymatlar truthy.",
+          "example_uz": "`bool(\"\")` → False; `bool(\"False\")` → True",
+          "practice_uz": "`0`, `-1`, `\"0\"`, `\" \"`, `None` uchun bool natijasini avval taxmin qil."
+        },
+        {
+          "id": "py-03-12",
+          "source_status": "planned",
+          "title_uz": "in va not in operatorlari",
+          "theory_uz": "in a’zolikni, not in yo‘qligini tekshiradi; str uchun substring qidiradi.",
+          "example_uz": "`\"py\" in \"python\"` → True",
+          "practice_uz": "Emailda @ belgisi borligini va bo‘sh joy yo‘qligini tekshiradigan ifoda yoz (to‘liq validatsiya emas)."
+        },
+        {
+          "id": "py-03-13",
+          "source_status": "sample-authored",
+          "title_uz": "is va == farqi",
+          "theory_uz": "== qiymat tengligi, is obyekt identity; None bilan is ishlatish odatiy.",
+          "example_uz": "`a = None`; `print(a is None)` → True",
+          "practice_uz": "`a = [1]`, `b = [1]` tayyor misolida `a == b` va `a is b` ni tekshir; list batafsil keyin."
+        },
+        {
+          "id": "py-03-14",
+          "source_status": "planned",
+          "title_uz": "Floating-point aniqlik cheklovi",
+          "theory_uz": "Float o‘nlik kasrni har doim aniq saqlamaydi; taqqoslashda tolerance kerak.",
+          "example_uz": "`0.1 + 0.2 == 0.3` → False; `abs(0.1+0.2-0.3) < 1e-9` → True",
+          "practice_uz": "0.1 ni 3 marta qo‘shish va 0.3 ni solishtir; pul hisobida butun tiyin bilan alternativ yarat."
+        }
+      ]
+    },
+    {
+      "id": "PY-04",
+      "order": 4,
+      "track": "Core (Asosiy)",
+      "title_uz": "Shart operatorlari va sikllar",
+      "lesson_count": 16,
+      "assessment": {
+        "title_uz": "Mini viktorina CLI",
+        "requirements_uz": "5 savolli CLI, har to‘g‘ri javob uchun ball, yakuniy foiz va qayta urinish menyusi.",
+        "acceptance_cases_uz": "5/5→100%; 0/5→0%; 3/5→60%; noma’lum menyu buyrug‘i.",
+        "constraints_uz": "if/elif/else, loop, break; murakkab kolleksiya yoki class majburiy emas."
+      },
+      "lessons": [
+        {
+          "id": "py-04-01",
+          "source_status": "planned",
+          "title_uz": "if qachon ishlaydi?",
+          "theory_uz": "if shart truthy bo‘lsa blokni bajaradi.",
+          "example_uz": "`if age >= 18: print(\"Ruxsat\")` (age oldindan beriladi)",
+          "practice_uz": "Yosh 18 dan katta yoki teng bo‘lsa xabar chiqar; 17 va 18 ni tekshir."
+        },
+        {
+          "id": "py-04-02",
+          "source_status": "planned",
+          "title_uz": "else orqali alternativ yo‘l",
+          "theory_uz": "else if sharti bajarilmagan holatda ishlaydi.",
+          "example_uz": "`if n % 2 == 0: print(\"Juft\")` va `else: print(\"Toq\")`",
+          "practice_uz": "Son musbatmi yoki musbat emasmi aniqlovchi dastur, nolni ham tekshir."
+        },
+        {
+          "id": "py-04-03",
+          "source_status": "planned",
+          "title_uz": "elif yordamida bir nechta holat",
+          "theory_uz": "elif shartlarni yuqoridan pastga tekshiradi; birinchi mos blok tanlanadi.",
+          "example_uz": "`if score >= 90: ...` / `elif score >= 70: ...` / `else: ...`",
+          "practice_uz": "0–100 ballni 5 darajaga ajrat; chegaraviy 59, 60, 89, 90 ni sinab ko‘r."
+        },
+        {
+          "id": "py-04-04",
+          "source_status": "planned",
+          "title_uz": "Nested if va indentatsiya",
+          "theory_uz": "Nested if ichki shartni faqat tashqi shart o‘tganda tekshiradi.",
+          "example_uz": "Yosh ruxsatidan keyin `if has_ticket:` bilan chipta tekshirish.",
+          "practice_uz": "Bankomat: avval PIN, keyin balansni tekshir; har xatoga boshqa xabar chiqar."
+        },
+        {
+          "id": "py-04-05",
+          "source_status": "planned",
+          "title_uz": "match-case qayerda qulay?",
+          "theory_uz": "match-case (Python 3.10+) qiymat yoki pattern bo‘yicha yo‘nalish tanlaydi; case _ fallback.",
+          "example_uz": "`match command:` ostida `case \"start\": print(\"OK\")` va `case _: print(\"?\")`",
+          "practice_uz": "add, help, exit buyruqlarini ajratadigan menyu yoz; noma’lum buyruqni ham tut."
+        },
+        {
+          "id": "py-04-06",
+          "source_status": "planned",
+          "title_uz": "for loop nimani takrorlaydi?",
+          "theory_uz": "for iterable elementlari bo‘ylab yuradi.",
+          "example_uz": "`for ch in \"abc\": print(ch)`",
+          "practice_uz": "Matndagi har bir belgini alohida chiqar; a harflari sonini sanagich bilan top."
+        },
+        {
+          "id": "py-04-07",
+          "source_status": "planned",
+          "title_uz": "range() bilan ketma-ketlik",
+          "theory_uz": "range(start, stop, step) stopga yetmasdan sonlar beradi.",
+          "example_uz": "`for n in range(2, 10, 2): print(n)` → 2,4,6,8",
+          "practice_uz": "1–100 orasidagi 3 ga karrali sonlar yig‘indisini hisobla."
+        },
+        {
+          "id": "py-04-08",
+          "source_status": "planned",
+          "title_uz": "while loop va condition",
+          "theory_uz": "while shart rost bo‘lguncha takrorlanadi; shartni yangilash zarur.",
+          "example_uz": "`n = 3`; `while n > 0: print(n); n -= 1`",
+          "practice_uz": "Sonni 2 ga butun bo‘lib, 0 bo‘lguncha necha qadam ketishini top."
+        },
+        {
+          "id": "py-04-09",
+          "source_status": "planned",
+          "title_uz": "break operatori",
+          "theory_uz": "break eng ichki sikldan darhol chiqadi.",
+          "example_uz": "`for n in range(10):` ichida `if n == 4: break`",
+          "practice_uz": "To‘g‘ri PIN topilguncha, ko‘pi bilan 3 urinishga ruxsat ber."
+        },
+        {
+          "id": "py-04-10",
+          "source_status": "planned",
+          "title_uz": "continue operatori",
+          "theory_uz": "continue joriy iteratsiyaning qolganini tashlab keyingisiga o‘tadi.",
+          "example_uz": "`for n in range(6):` ichida juft bo‘lsa `continue`, aks holda print.",
+          "practice_uz": "1–50 ichida 3 ga bo‘linadi, ammo 5 ga bo‘linmaydigan sonlarni chiqar."
+        },
+        {
+          "id": "py-04-11",
+          "source_status": "planned",
+          "title_uz": "Loop bilan list elementlarini ko‘rish",
+          "theory_uz": "for listdagi elementlarni ketma-ket beradi; list sintaksisi hozir tayanch misol sifatida.",
+          "example_uz": "`for score in [10, 20, 30]: print(score)`",
+          "practice_uz": "Tayyor `[7, 2, 9, 4]` ro‘yxatidagi eng kattasini maxsiz top."
+        },
+        {
+          "id": "py-04-12",
+          "source_status": "planned",
+          "title_uz": "enumerate() qanday ishlaydi?",
+          "theory_uz": "enumerate indeks va element juftligini beradi, start ixtiyoriy.",
+          "example_uz": "`for i, ch in enumerate(\"ABC\", start=1): print(i, ch)`",
+          "practice_uz": "Matnda birinchi unlining pozitsiyasini top; bo‘lmasa -1 chiqar."
+        },
+        {
+          "id": "py-04-13",
+          "source_status": "planned",
+          "title_uz": "zip() orqali parallel yurish",
+          "theory_uz": "zip bir necha iterable ni parallel yuradi; odatda eng qisqasida to‘xtaydi.",
+          "example_uz": "`for name, score in zip([\"Ali\", \"Vali\"], [80, 90]): print(name, score)`",
+          "practice_uz": "Ikki tayyor ro‘yxatdagi narx va sonni juftlab jami to‘lovni hisobla; uzunlik farqini kuzat."
+        },
+        {
+          "id": "py-04-14",
+          "source_status": "planned",
+          "title_uz": "Cheksiz siklni aniqlash",
+          "theory_uz": "Cheksiz sikl shart hech qachon yolg‘on bo‘lmaganda yuz beradi.",
+          "example_uz": "`while True: ...` ataylab yoki yangilanmagan counter tufayli.",
+          "practice_uz": "`i=0` va `while i<5: print(i)` kodini ishga tushirmasdan tahlil qilib tuzat."
+        },
+        {
+          "id": "py-04-15",
+          "source_status": "planned",
+          "title_uz": "Loop xatolarini debug qilish",
+          "theory_uz": "Loop debug: boshlanish, to‘xtash, update va off-by-one ni tekshirish.",
+          "example_uz": "`range(1, 5)` 5 ni olmaydi.",
+          "practice_uz": "1 dan 10 gacha sonlar yig‘indisini xato yozilgan range(1,10) bilan solishtir; 55 chiqishi kerak."
+        },
+        {
+          "id": "py-04-16",
+          "source_status": "planned",
+          "title_uz": "Mini viktorina natijasini hisoblash",
+          "theory_uz": "Viktorina uchun har javobni shart bilan tekshir va ballni yangila.",
+          "example_uz": "`score = 0`; `if input(\"2+2?\") == \"4\": score += 1`",
+          "practice_uz": "3 savolli viktorina tuz, to‘g‘ri javoblar 0–3 va foizini chiqar; noto‘g‘ri input ham tekshir."
+        }
+      ]
+    },
+    {
+      "id": "PY-05",
+      "order": 5,
+      "track": "Core (Asosiy)",
+      "title_uz": "List, Tuple, Set va Dictionary",
+      "lesson_count": 19,
+      "assessment": {
+        "title_uz": "Telefon kontaktlar CLI",
+        "requirements_uz": "In-memory kontaktlar: ADD, SEARCH, UPDATE, DELETE, LIST, EXIT.",
+        "acceptance_cases_uz": "Ali qo‘sh → search topadi; Ali yangila → yangi tel; yo‘q ism → aniq xabar; takroriy ism siyosati.",
+        "constraints_uz": "Dict asosiy saqlash; telefon string; kontaktlar restartdan so‘ng saqlanishi shart emas."
+      },
+      "lessons": [
+        {
+          "id": "py-05-01",
+          "source_status": "planned",
+          "title_uz": "List yaratish",
+          "theory_uz": "List tartibli, o‘zgaruvchan kolleksiya; takroriy qiymatlar mumkin.",
+          "example_uz": "`items = [\"olma\", \"anor\", \"olma\"]`",
+          "practice_uz": "5 mahsulot ro‘yxatini yarat, uzunligini va elementlarini chiqar."
+        },
+        {
+          "id": "py-05-02",
+          "source_status": "planned",
+          "title_uz": "List indexing va negative index",
+          "theory_uz": "Index 0 dan, manfiy index oxirdan boshlanadi; diapazondan chiqish IndexError.",
+          "example_uz": "`[10,20,30][-2]` → 20",
+          "practice_uz": "7 elementli listning o‘rtasi, birinchi va oxirgi elementini indeks orqali top."
+        },
+        {
+          "id": "py-05-03",
+          "source_status": "planned",
+          "title_uz": "List slicing",
+          "theory_uz": "Slice listning tanlangan qismini yangi sayoz list qilib beradi.",
+          "example_uz": "`[1,2,3,4,5][::2]` → [1,3,5]",
+          "practice_uz": "Listni ikki teng qismga ajrat, teskari nusxa yarat, originalni o‘zgartirma."
+        },
+        {
+          "id": "py-05-04",
+          "source_status": "planned",
+          "title_uz": "append, extend va insert",
+          "theory_uz": "append bitta element, extend iterable elementlari, insert joyga element qo‘shadi.",
+          "example_uz": "`a=[1]; a.extend([2,3]); a.insert(1,9)` → [1,9,2,3]",
+          "practice_uz": "Savatchaga 2 ta mahsulotni birgalikda qo‘sh, ustuvor mahsulotni boshiga joyla."
+        },
+        {
+          "id": "py-05-05",
+          "source_status": "planned",
+          "title_uz": "remove, pop va del",
+          "theory_uz": "remove qiymatni, pop indeksni o‘chirib qaytaradi, del indeks/sliceni o‘chiradi.",
+          "example_uz": "`a=[4,2,4]; a.remove(4); a.pop()` → 4, a=[2]",
+          "practice_uz": "Takroriy qiymatli ro‘yxatdan birinchi mos qiymatni va oxirgi elementni o‘chir; mavjud bo‘lmagan qiymatni tekshir."
+        },
+        {
+          "id": "py-05-06",
+          "source_status": "planned",
+          "title_uz": "List sort va sorted farqi",
+          "theory_uz": "sort() listni joyida tartiblaydi va None qaytaradi; sorted yangi list beradi.",
+          "example_uz": "`a=[3,1,2]; b=sorted(a)` → b=[1,2,3], a o‘zgarmaydi.",
+          "practice_uz": "Ballarni o‘suvchi va kamayuvchi tartibda chiqar; originalni saqla."
+        },
+        {
+          "id": "py-05-07",
+          "source_status": "planned",
+          "title_uz": "Tuple nima va nima uchun kerak?",
+          "theory_uz": "Tuple tartibli, immutable kolleksiya; elementlarining o‘zi mutable bo‘lishi mumkin.",
+          "example_uz": "`point=(3,4); single=(3,)`",
+          "practice_uz": "Koordinata va RGB rangni tuple sifatida ifodala; bitta elementli tuple turini tekshir."
+        },
+        {
+          "id": "py-05-08",
+          "source_status": "planned",
+          "title_uz": "Tuple unpacking",
+          "theory_uz": "Unpacking elementlarni mos nomlarga ajratadi; * qolganlarini listga oladi.",
+          "example_uz": "`first, *middle, last = (1,2,3,4)`",
+          "practice_uz": "Koordinata juftligini x va y ga, 5 elementli tuple bosh/o‘rta/oxirga ajrat."
+        },
+        {
+          "id": "py-05-09",
+          "source_status": "planned",
+          "title_uz": "Set va unique values",
+          "theory_uz": "Set takrorlanmaydigan hashable elementlar to‘plami; tartibiga tayanilmaydi.",
+          "example_uz": "`set([1,2,1])` → {1,2}",
+          "practice_uz": "Ikki guruhdan takroriy student IDlarni olib tashla va noyob sonini hisobla."
+        },
+        {
+          "id": "py-05-10",
+          "source_status": "planned",
+          "title_uz": "Set union/intersection/difference",
+          "theory_uz": "Union barcha, intersection umumiy, difference farqli elementlarni topadi.",
+          "example_uz": "`{1,2}.intersection({2,3})` → {2}",
+          "practice_uz": "A va B kurslariga yozilganlardan ikkalasida, faqat A da va kamida bittasida bo‘lganlarni top."
+        },
+        {
+          "id": "py-05-11",
+          "source_status": "planned",
+          "title_uz": "Dict: key/value juftligi",
+          "theory_uz": "Dict hashable kalitni qiymatga bog‘laydi; kalitlar unique.",
+          "example_uz": "`user={\"name\":\"Ali\",\"age\":20}`",
+          "practice_uz": "3 mahsulot nomini kalit, narxni qiymat qilib saqla va bittasini chiqar."
+        },
+        {
+          "id": "py-05-12",
+          "source_status": "planned",
+          "title_uz": "Dictga qiymat qo‘shish va yangilash",
+          "theory_uz": "Dictda d[key]=value yangi kalit qo‘shadi yoki eski qiymatni yangilaydi.",
+          "example_uz": "`d={\"a\":1}; d[\"a\"]=2; d[\"b\"]=3`",
+          "practice_uz": "Ombor qoldiqlarini kirim va chiqim bilan yangila; mavjud bo‘lmagan mahsulotni qo‘sh."
+        },
+        {
+          "id": "py-05-13",
+          "source_status": "planned",
+          "title_uz": "Dict orqali qidirish",
+          "theory_uz": "in dictning kalitlarini tekshiradi; kalit orqali qiymat olinadi.",
+          "example_uz": "`\"Ali\" in {\"Ali\":\"123\"}` → True",
+          "practice_uz": "Kontakt qidiruvi yoz; ism mavjud bo‘lsa raqamni, aks holda xabar chiqar."
+        },
+        {
+          "id": "py-05-14",
+          "source_status": "planned",
+          "title_uz": "get() va KeyError",
+          "theory_uz": "get mavjud bo‘lmagan kalit uchun default qaytaradi; [] KeyError chiqaradi.",
+          "example_uz": "`{\"a\":1}.get(\"b\",0)` → 0",
+          "practice_uz": "Matndagi harflar chastotasini get yordamida hisobla; yangi harf uchun 0 dan boshla."
+        },
+        {
+          "id": "py-05-15",
+          "source_status": "planned",
+          "title_uz": "Dict items(), keys(), values()",
+          "theory_uz": "keys, values, items dictning kalit, qiymat va juftlik view larini beradi.",
+          "example_uz": "`for k,v in {\"a\":1}.items(): print(k,v)`",
+          "practice_uz": "Mahsulotlar narxidan umumiy summa va eng qimmat mahsulotni top."
+        },
+        {
+          "id": "py-05-16",
+          "source_status": "planned",
+          "title_uz": "Nested collections",
+          "theory_uz": "Kolleksiyalar ichma-ich bo‘lishi mumkin; kerakli qiymatga ketma-ket index/key orqali boriladi.",
+          "example_uz": "`users=[{\"name\":\"Ali\",\"scores\":[90,80]}]; users[0][\"scores\"][1]` → 80",
+          "practice_uz": "3 student uchun ballar saqla; har birining o‘rtacha ballini chiqar."
+        },
+        {
+          "id": "py-05-17",
+          "source_status": "sample-authored",
+          "title_uz": "Mutable va immutable farqi",
+          "theory_uz": "Mutable obyekt joyida o‘zgaradi; immutable o‘zgartirish yangi obyekt yaratadi.",
+          "example_uz": "`a=[1]; a.append(2)`; `s=\"a\"; s=s+\"b\"`",
+          "practice_uz": "List, dict, tuple va stringdan qaysilari joyida o‘zgarishini misollar bilan tekshir."
+        },
+        {
+          "id": "py-05-18",
+          "source_status": "sample-authored",
+          "title_uz": "Reference va shallow copy tushunchasi",
+          "theory_uz": "Assignment reference ulashadi; shallow copy faqat tashqi kolleksiyani nusxalaydi.",
+          "example_uz": "`a=[[1]]; b=a.copy(); b[0].append(2)` → a=[[1,2]]",
+          "practice_uz": "Nested listning ichki qiymatini o‘zgartirib alias va shallow copy farqini aniqlab, mustaqil ichki list nusxasini yarat."
+        },
+        {
+          "id": "py-05-19",
+          "source_status": "planned",
+          "title_uz": "Kolleksiya tanlash trade-off",
+          "theory_uz": "List tartib/index uchun, tuple doimiy tuzilma, set a’zolik, dict kalitli qidiruv uchun qulay.",
+          "example_uz": "Kontaktlar dict, navbat list, noyob ID set.",
+          "practice_uz": "Kontaktlar, koordinata, buyurtmalar va takrorlanmas taglar uchun strukturani tanla; har tanlovning sababini yoz."
+        }
+      ]
+    },
+    {
+      "id": "PY-06",
+      "order": 6,
+      "track": "Core (Asosiy)",
+      "title_uz": "Funksiyalar, scope va exceptions",
+      "lesson_count": 20,
+      "assessment": {
+        "title_uz": "Funksiyali CLI calculator",
+        "requirements_uz": "add/sub/mul/div funksiyalari, input parser, CLI menu, aniq exceptions.",
+        "acceptance_cases_uz": "8/2→4; 8/0→xabar; abc→xabar; chiqish buyrug‘i ishlaydi.",
+        "constraints_uz": "Hisoblash va input/output alohida; xatoni yashirma; global state shart emas."
+      },
+      "lessons": [
+        {
+          "id": "py-06-01",
+          "source_status": "planned",
+          "title_uz": "def bilan funksiya yaratish",
+          "theory_uz": "def qayta chaqiriladigan kod blokini yaratadi; tanani faqat chaqirilganda bajaradi.",
+          "example_uz": "`def hello():` ostida `print(\"Salom\")`; `hello()`",
+          "practice_uz": "3 marta bir xil menyu chiqaradigan funksiya yoz; takroriy printlarni olib tashla."
+        },
+        {
+          "id": "py-06-02",
+          "source_status": "planned",
+          "title_uz": "Parametr va argument farqi",
+          "theory_uz": "Parametr ta’rifdagi nom, argument chaqiruvdagi qiymat.",
+          "example_uz": "`def greet(name): print(name)`; `greet(\"Ali\")`",
+          "practice_uz": "Ikki parametrli funksiya orqali ism va shaharni formatla; ikki xil argument bilan chaqir."
+        },
+        {
+          "id": "py-06-03",
+          "source_status": "planned",
+          "title_uz": "return nima qiladi?",
+          "theory_uz": "return qiymatni chaqiruvchiga beradi va funksiyani tugatadi.",
+          "example_uz": "`def add(a,b): return a+b`",
+          "practice_uz": "Narx va miqdordan summani qaytar; natijani boshqa hisobda ishlat, print bilan aralashtirma."
+        },
+        {
+          "id": "py-06-04",
+          "source_status": "planned",
+          "title_uz": "None qaytarish",
+          "theory_uz": "return yo‘q yoki bo‘sh return bo‘lsa, funksiya None qaytaradi.",
+          "example_uz": "`def f(): print(1)`; `x=f()` → x=None",
+          "practice_uz": "Print qiluvchi va qiymat qaytaruvchi funksiyani yoz; natijalaridagi farqni tekshir."
+        },
+        {
+          "id": "py-06-05",
+          "source_status": "planned",
+          "title_uz": "Positional argument",
+          "theory_uz": "Positional argument parametrlar tartibiga mos bog‘lanadi.",
+          "example_uz": "`def sub(a,b): return a-b`; `sub(7,2)` → 5",
+          "practice_uz": "Ayirish funksiyasida argumentlarni almashtirib natijani tahlil qil."
+        },
+        {
+          "id": "py-06-06",
+          "source_status": "planned",
+          "title_uz": "Keyword argument",
+          "theory_uz": "Keyword argument parametr nomi orqali bog‘lanadi.",
+          "example_uz": "`sub(b=2,a=7)` → 5",
+          "practice_uz": "To‘rt parametrli buyurtma funksiyasini nomlangan argumentlar bilan turli tartibda chaqir."
+        },
+        {
+          "id": "py-06-07",
+          "source_status": "sample-authored",
+          "title_uz": "Default parametr va mutable default ehtiyoti",
+          "theory_uz": "Default parametr bir marta ta’rif vaqtida hisoblanadi; mutable default holatni chaqiruvlar orasida ulashadi.",
+          "example_uz": "`def add(x, items=None):` ostida `if items is None: items=[]`, keyin append va return.",
+          "practice_uz": "`items=[]` default ishlatilgan funksiyani ikki marta chaqir; None orqali xatoni tuzat."
+        },
+        {
+          "id": "py-06-08",
+          "source_status": "planned",
+          "title_uz": "*args va **kwargs kirish",
+          "theory_uz": "*args ortiqcha positional argumentlarni tuple, **kwargs keywordlarni dict qiladi.",
+          "example_uz": "`def total(*nums): return sum(nums)`",
+          "practice_uz": "Istalgan sondagi ballni oladigan total; **kwargs bilan profil ma’lumotlarini chiqaruvchi funksiya yoz."
+        },
+        {
+          "id": "py-06-09",
+          "source_status": "planned",
+          "title_uz": "Multiple return va tuple unpacking",
+          "theory_uz": "Bir nechta qiymat return qilinsa tuple qaytadi; unpacking ajratadi.",
+          "example_uz": "`def bounds(a): return min(a),max(a)`; `lo,hi=bounds([3,9])`",
+          "practice_uz": "Sonlar listidan minimum, maksimum va o‘rtachani qaytar; uch nomga ajrat."
+        },
+        {
+          "id": "py-06-10",
+          "source_status": "planned",
+          "title_uz": "Local variable",
+          "theory_uz": "Local variable funksiya ichida bog‘langan nom, tashqaridagi nom bilan bir xil bo‘lishi shart emas.",
+          "example_uz": "`x=5`; `def f(): x=2; return x`",
+          "practice_uz": "Bir xil nomdagi local va global qiymatni chiqarib ajrat; tashqaridagi qiymatni o‘zgartirma."
+        },
+        {
+          "id": "py-06-11",
+          "source_status": "planned",
+          "title_uz": "Global variable tushunchasi",
+          "theory_uz": "Global nom modul darajasida; global kalit so‘zi funksiya ichidagi qayta assignment uchun ishlatiladi.",
+          "example_uz": "`count=0`; `def inc():` ostida `global count; count += 1`",
+          "practice_uz": "Global sanagichni ikki marta chaqir, keyin global ishlatmay parametr/return bilan qayta yoz."
+        },
+        {
+          "id": "py-06-12",
+          "source_status": "planned",
+          "title_uz": "nonlocal scope tushunchasi",
+          "theory_uz": "nonlocal eng yaqin enclosing funksiya nomini qayta bog‘laydi.",
+          "example_uz": "Tashqi `count=0`; ichki `inc()` da `nonlocal count` va `count += 1`.",
+          "practice_uz": "Ichki funksiya orqali sanagichni oshiruvchi outer yarat; ikkita mustaqil sanagichni sinab ko‘r."
+        },
+        {
+          "id": "py-06-13",
+          "source_status": "planned",
+          "title_uz": "LEGB qidiruv tartibi",
+          "theory_uz": "LEGB qidiruv tartibi: Local, Enclosing, Global, Built-in.",
+          "example_uz": "`len=5` modulda built-in len nomini soyalaydi.",
+          "practice_uz": "Bir xil x nomini 3 scopedagi qiymat bilan ishlat; qaysi x topilishini oldindan ayt."
+        },
+        {
+          "id": "py-06-14",
+          "source_status": "planned",
+          "title_uz": "Built-in min, max, sum, len",
+          "theory_uz": "min/max ekstremum, sum yig‘indi, len element sonini beradi.",
+          "example_uz": "`a=[2,7,3]; sum(a)/len(a)` → 4.0",
+          "practice_uz": "Bo‘sh bo‘lmagan ballar listidan 4 statistikani qaytar; bo‘sh listni alohida tekshir."
+        },
+        {
+          "id": "py-06-15",
+          "source_status": "planned",
+          "title_uz": "Exception nima?",
+          "theory_uz": "Exception bajarilish paytidagi xato signali; traceback kelib chiqishini ko‘rsatadi.",
+          "example_uz": "`10/0` → ZeroDivisionError",
+          "practice_uz": "IndexError, KeyError, ValueError va ZeroDivisionError hosil qiluvchi kichik misollarni tahlil qil."
+        },
+        {
+          "id": "py-06-16",
+          "source_status": "planned",
+          "title_uz": "try va except",
+          "theory_uz": "try xavfli kodni bajaradi; except mos xato yuz bersa ishlaydi.",
+          "example_uz": "`try: n=int(\"x\")` / `except ValueError: print(\"Son kerak\")`",
+          "practice_uz": "Input butun son bo‘lmasa xabar chiqar; dastur qulamasin."
+        },
+        {
+          "id": "py-06-17",
+          "source_status": "planned",
+          "title_uz": "Aniq exception turini ushlash",
+          "theory_uz": "Aniq exception turi faqat kutilgan xatoni ushlaydi; bare except ko‘p narsani yashiradi.",
+          "example_uz": "`except (ValueError, ZeroDivisionError): ...`",
+          "practice_uz": "Bo‘lish kalkulyatorida son xatosi va nolga bo‘lish uchun alohida xabar yoz."
+        },
+        {
+          "id": "py-06-18",
+          "source_status": "planned",
+          "title_uz": "else va finally bloklari",
+          "theory_uz": "else try muvaffaqiyatli bo‘lsa, finally esa chiqishda odatda har holda ishlaydi.",
+          "example_uz": "`try: n=int(\"5\")` / `except ValueError: ...` / `else: print(n)` / `finally: print(\"Tugadi\")`",
+          "practice_uz": "Muvaffaqiyat va xato holatida printlar tartibini oldindan top, keyin tekshir."
+        },
+        {
+          "id": "py-06-19",
+          "source_status": "planned",
+          "title_uz": "raise orqali xato chiqarish",
+          "theory_uz": "raise kutilmagan yoki ruxsat etilmagan holatni exception bilan signal qiladi.",
+          "example_uz": "`if amount < 0: raise ValueError(\"Manfiy summa\")`",
+          "practice_uz": "Manfiy yosh yoki 0 dan kichik miqdor uchun ValueError chiqaruvchi funksiya yoz."
+        },
+        {
+          "id": "py-06-20",
+          "source_status": "planned",
+          "title_uz": "Xatoni yashirmasdan qayta ishlash",
+          "theory_uz": "Xatoni kerakli qatlamda ushla; qo‘shimcha kontekst bilan qayta raise qil yoki aniq foydali xabar ber.",
+          "example_uz": "`except ValueError: print(\"Kiritish xatosi\"); raise`",
+          "practice_uz": "Parsing funksiyasi xatoni yuqoriga uzatsin, CLI esa foydalanuvchiga tushunarli xabar bersin; noto‘g‘ri qiymatni 0 qilib yashirma."
+        }
+      ]
+    },
+    {
+      "id": "PY-07",
+      "order": 7,
+      "track": "Core (Asosiy)",
+      "title_uz": "Fayllar va modullar",
+      "lesson_count": 17,
+      "assessment": {
+        "title_uz": "CSV/JSONdan hisobot yaratuvchi CLI",
+        "requirements_uz": "CSV/JSON faylidan mahsulot hisobotini o‘qi, qatorlarni tekshir, jami summani hisobla va JSONga yoz.",
+        "acceptance_cases_uz": "A 10×2, B 5×3 → 35; bo‘sh data → 0; yo‘q fayl va yaroqsiz qiymat → xabar.",
+        "constraints_uz": "with, UTF-8, csv/json, pathlib, custom module va main guard; bir nechta input faylni sinab ko‘r."
+      },
+      "lessons": [
+        {
+          "id": "py-07-01",
+          "source_status": "planned",
+          "title_uz": "Path va fayl manzili",
+          "theory_uz": "Path faylning manzili; absolute ildizdan, relative joriy working directorydan.",
+          "example_uz": "`data/report.txt` va `C:/data/report.txt`",
+          "practice_uz": "Bir faylni joriy papkadan va boshqa papkadan qanday ochishni top."
+        },
+        {
+          "id": "py-07-02",
+          "source_status": "planned",
+          "title_uz": "open() bilan matn o‘qish",
+          "theory_uz": "open() fayl obyektini ochadi; read matnni o‘qiydi; close resursni yopadi.",
+          "example_uz": "`f=open(\"a.txt\",encoding=\"utf-8\"); text=f.read(); f.close()`",
+          "practice_uz": "3 qatorli fayl yarat, hammasini o‘qi va belgilar sonini chiqar."
+        },
+        {
+          "id": "py-07-03",
+          "source_status": "planned",
+          "title_uz": "with context manager asoslari",
+          "theory_uz": "with kontekst tugaganda faylni yopadi, exception bo‘lsa ham.",
+          "example_uz": "`with open(\"a.txt\",encoding=\"utf-8\") as f: text=f.read()`",
+          "practice_uz": "Fayldagi bo‘sh bo‘lmagan qatorlar sonini with yordamida sanab ber."
+        },
+        {
+          "id": "py-07-04",
+          "source_status": "planned",
+          "title_uz": "Faylga write va append",
+          "theory_uz": "w faylni qayta yozadi (truncate), a oxiriga qo‘shadi.",
+          "example_uz": "`with open(\"log.txt\",\"a\",encoding=\"utf-8\") as f: f.write(\"OK\\n\")`",
+          "practice_uz": "Ikki ishga tushirishda loglar saqlansin, alohida report fayli esa yangilansin."
+        },
+        {
+          "id": "py-07-05",
+          "source_status": "planned",
+          "title_uz": "UTF-8 encoding",
+          "theory_uz": "UTF-8 Unicode matnni baytlarga kodlaydi; encoding mos bo‘lishi kerak.",
+          "example_uz": "`\"O‘zbek\".encode(\"utf-8\")`",
+          "practice_uz": "O‘zbek va kirill matnini UTF-8 bilan yoz va qayta o‘qi; asl matn bilan tengligini tekshir."
+        },
+        {
+          "id": "py-07-06",
+          "source_status": "planned",
+          "title_uz": "JSON o‘qish va yozish",
+          "theory_uz": "json.load fayldan Python qiymatlarini o‘qiydi, json.dump ularni yozadi.",
+          "example_uz": "`import json`; `with open(\"data.json\",\"w\",encoding=\"utf-8\") as f: json.dump({\"a\":1},f)`",
+          "practice_uz": "Kontakt dictni JSONga saqla, keyin ochib yangi kontakt qo‘sh va qayta yoz."
+        },
+        {
+          "id": "py-07-07",
+          "source_status": "planned",
+          "title_uz": "CSV matn formati bilan tanishish",
+          "theory_uz": "CSV jadval formatidir; csv moduli qo‘shtirnoq va delimiterlarni to‘g‘ri parse qiladi.",
+          "example_uz": "`import csv`; `with open(\"a.csv\",newline=\"\",encoding=\"utf-8\") as f: rows=list(csv.DictReader(f))`",
+          "practice_uz": "name,price,qty ustunlaridan jami narx hisobla; vergulli mahsulot nomini ham sinab ko‘r."
+        },
+        {
+          "id": "py-07-08",
+          "source_status": "planned",
+          "title_uz": "pathlib.Path bilan fayllar",
+          "theory_uz": "pathlib.Path fayl yo‘llari uchun obyektga yo‘naltirilgan qulay API.",
+          "example_uz": "`from pathlib import Path`; `p=Path(\"data\")/\"a.txt\"; print(p.exists())`",
+          "practice_uz": "Papka yarat (`mkdir`), fayl yoz (`write_text`) va mavjudligini tekshir."
+        },
+        {
+          "id": "py-07-09",
+          "source_status": "planned",
+          "title_uz": "glob pattern bilan qidirish",
+          "theory_uz": "glob pattern fayl nomlarini wildcard orqali qidiradi; rglob ichki papkalarni ham aylanadi.",
+          "example_uz": "`list(Path(\"data\").glob(\"*.csv\"))`",
+          "practice_uz": "Faqat .csv fayllarni topib nomlarini sorted tartibida chiqar; .txt larni tashla."
+        },
+        {
+          "id": "py-07-10",
+          "source_status": "planned",
+          "title_uz": "Module va import",
+          "theory_uz": "Module odatda .py fayl; import uning nomlari uchun namespace beradi.",
+          "example_uz": "`import math`; `math.sqrt(81)` → 9.0",
+          "practice_uz": "math moduli bilan aylana yuzasi va ildiz hisobla; import nomini adashtirma."
+        },
+        {
+          "id": "py-07-11",
+          "source_status": "planned",
+          "title_uz": "from ... import ...",
+          "theory_uz": "from ... import ... tanlangan nomni joriy namespacega olib kiradi.",
+          "example_uz": "`from math import sqrt`; `sqrt(16)`",
+          "practice_uz": "`import math` va `from math import sqrt` ni ikkita skriptda solishtir; wildcard ishlatma."
+        },
+        {
+          "id": "py-07-12",
+          "source_status": "planned",
+          "title_uz": "__name__ == \"__main__\"",
+          "theory_uz": "__name__ bevosita bajarilgan modulda __main__, import qilinganda modul nomi.",
+          "example_uz": "`if __name__ == \"__main__\": main()`",
+          "practice_uz": "Bir faylda funksiya va CLI yarat; import qilganda CLI input so‘ramasligini tekshir."
+        },
+        {
+          "id": "py-07-13",
+          "source_status": "planned",
+          "title_uz": "Standard library nima?",
+          "theory_uz": "Standard library Python bilan birga keladigan modullar to‘plami.",
+          "example_uz": "`import statistics`; `statistics.mean([2,4,6])`",
+          "practice_uz": "math, datetime va json orqali sana bilan kichik hisob-kitob hisobotini yarat."
+        },
+        {
+          "id": "py-07-14",
+          "source_status": "planned",
+          "title_uz": "Custom module yaratish",
+          "theory_uz": "Custom module qayta ishlatiladigan funksiyalarni alohida faylga ajratadi.",
+          "example_uz": "`utils.py` da `def double(x): return x*2`; `main.py` da `from utils import double`",
+          "practice_uz": "Narx hisoblashni utils.py ga, input/outputni main.py ga ajrat."
+        },
+        {
+          "id": "py-07-15",
+          "source_status": "planned",
+          "title_uz": "Package va __init__.py tushunchasi",
+          "theory_uz": "Package modullarni guruhlaydi; oddiy regular package __init__.py bilan belgilanadi.",
+          "example_uz": "`shop/__init__.py`, `shop/prices.py`; `from shop.prices import total`",
+          "practice_uz": "Ikki moduldan iborat shop package yarat; ildizdan import qil."
+        },
+        {
+          "id": "py-07-16",
+          "source_status": "planned",
+          "title_uz": "Relative/absolute imports",
+          "theory_uz": "Absolute import to‘liq package yo‘lidan, relative import joriy packagega nisbatan.",
+          "example_uz": "`from shop.prices import total` va package ichida `from .prices import total`",
+          "practice_uz": "Package ichidagi ikki modulni bog‘la; `python -m shop.main` bilan bajar."
+        },
+        {
+          "id": "py-07-17",
+          "source_status": "planned",
+          "title_uz": "Import side effect tushunchasi",
+          "theory_uz": "Import modulning yuqori darajadagi kodini odatda birinchi importda bajaradi; side effect kutilmagan amal bo‘lishi mumkin.",
+          "example_uz": "Import vaqtida `print(\"loaded\")` chiqadi; main guard CLI ni ajratadi.",
+          "practice_uz": "Import paytida fayl yaratadigan modulni top va ishga tushirishni main funksiyasiga ko‘chir."
+        }
+      ]
+    },
+    {
+      "id": "PY-08",
+      "order": 8,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Big-O, array va linked list",
+      "lesson_count": 17,
+      "assessment": {
+        "title_uz": "LinkedList append/search CLI",
+        "requirements_uz": "Minimal Node/LinkedList: APPEND, PREPEND, SEARCH, TRAVERSE; head/tail invariant.",
+        "acceptance_cases_uz": "Bo‘sh search→-1; append 7,3; prepend 9→[9,7,3]; search 7→1; duplicate birinchi indeks.",
+        "constraints_uz": "Tayyor minimal Node class tayanch sifatida; tail bilan append O(1), search O(n); built-in listni backend qilma."
+      },
+      "lessons": [
+        {
+          "id": "py-08-01",
+          "source_status": "planned",
+          "title_uz": "DSA nima va qachon kerak?",
+          "theory_uz": "DSA ma’lumotni qanday saqlash va muammoni qanday samarali yechishni o‘rganadi.",
+          "example_uz": "Listdan qidirish va dictdan kalit orqali qidirish.",
+          "practice_uz": "1000 kontakt uchun ikkita saqlash usulini tanla; qidiruv, qo‘shish va tartib talablarini yoz."
+        },
+        {
+          "id": "py-08-02",
+          "source_status": "planned",
+          "title_uz": "Time complexity nima?",
+          "theory_uz": "Time complexity input hajmi n o‘sganda operatsiyalar sonining o‘sishini ifodalaydi; Big-O yuqori asimptotik chegara.",
+          "example_uz": "`for x in a: print(x)` → O(n) iteratsiya.",
+          "practice_uz": "n=10,100,1000 uchun bitta va ikkita nested loop iteratsiyalarini hisobla."
+        },
+        {
+          "id": "py-08-03",
+          "source_status": "planned",
+          "title_uz": "Space complexity nima?",
+          "theory_uz": "Space complexity inputga nisbatan xotira o‘sishi; auxiliary space qo‘shimcha xotirani bildiradi.",
+          "example_uz": "`b=a.copy()` → O(n) qo‘shimcha xotira.",
+          "practice_uz": "Listni teskari nusxalash va faqat oxirgi qiymatni olishning qo‘shimcha xotirasini solishtir."
+        },
+        {
+          "id": "py-08-04",
+          "source_status": "planned",
+          "title_uz": "O(1) intuitiv",
+          "theory_uz": "O(1) bajarish xarajati n bilan o‘smaydi.",
+          "example_uz": "`a[0]` — list uchun O(1).",
+          "practice_uz": "Listning birinchi va oxirgi elementini loopsiz ol; nima uchun n ga bog‘liq emasligini izohla."
+        },
+        {
+          "id": "py-08-05",
+          "source_status": "planned",
+          "title_uz": "O(n) intuitiv",
+          "theory_uz": "O(n) xarajat n ga proporsional o‘sadi.",
+          "example_uz": "`for x in a: total += x`",
+          "practice_uz": "Listning min va maxini bitta loopda top; taqqoslashlar sonini hisobla."
+        },
+        {
+          "id": "py-08-06",
+          "source_status": "planned",
+          "title_uz": "O(log n) intuitiv",
+          "theory_uz": "O(log n) har qadamda masala hajmi doimiy nisbatda kichrayganda keladi.",
+          "example_uz": "`while n>1: n//=2`",
+          "practice_uz": "1024 va 1000 sonlarini 1 gacha ikkiga bo‘l; qadamlar sonini top."
+        },
+        {
+          "id": "py-08-07",
+          "source_status": "planned",
+          "title_uz": "O(n²) intuitiv",
+          "theory_uz": "O(n²) ko‘pincha har bir elementni har biri bilan taqqoslashda yuz beradi.",
+          "example_uz": "`for x in a:` ichida `for y in a: ...`",
+          "practice_uz": "Takroriy element borligini barcha juftliklar bilan tekshir; o‘zini o‘zi taqqoslama."
+        },
+        {
+          "id": "py-08-08",
+          "source_status": "planned",
+          "title_uz": "Best, average va worst case",
+          "theory_uz": "Best/average/worst case turli inputlar uchun xarajat; average uchun input taqsimoti muhim.",
+          "example_uz": "Linear qidiruvda birinchi mos — O(1), oxirgi yoki yo‘q — O(n).",
+          "practice_uz": "Bir qidiruv uchun bosh, oxir va mavjud bo‘lmagan qiymat sinovlarini tayyorla."
+        },
+        {
+          "id": "py-08-09",
+          "source_status": "planned",
+          "title_uz": "Python list asosida dynamic array",
+          "theory_uz": "Python list odatda dynamic array: joy yetmasa sig‘im oshiriladi, indeks tez.",
+          "example_uz": "`a=[]; a.append(1); a.append(2)`",
+          "practice_uz": "10, 100 va 1000 element qo‘sh; sig‘im va uzunlik bir tushuncha emasligini izohla."
+        },
+        {
+          "id": "py-08-10",
+          "source_status": "planned",
+          "title_uz": "Array indekslash va append",
+          "theory_uz": "List index O(1), append amortized O(1); ba’zi resize operatsiyalar qimmatroq.",
+          "example_uz": "`a.append(8); a[-1]`",
+          "practice_uz": "n elementni append bilan to‘ldir va har 100-elementni indeks orqali o‘qi."
+        },
+        {
+          "id": "py-08-11",
+          "source_status": "planned",
+          "title_uz": "List insert/delete xarajati",
+          "theory_uz": "List o‘rtasiga insert/delete keyingi elementlarni siljitadi, O(n); oxiridan pop odatda O(1).",
+          "example_uz": "`a.insert(0,5); a.pop(0)`",
+          "practice_uz": "Navbat usulida list boshidan 100 element o‘chir; nima uchun xarajat to‘planishini hisobla."
+        },
+        {
+          "id": "py-08-12",
+          "source_status": "planned",
+          "title_uz": "Node va next pointer",
+          "theory_uz": "Node qiymat va keyingi nodega reference saqlaydi. Bu phase uchun minimal class sintaksisi tayanch sifatida beriladi.",
+          "example_uz": "`class Node:` ichida `def __init__(self,value): self.value=value; self.next=None`",
+          "practice_uz": "Tayyor Node shablonidan 3 node yasab next bilan bog‘la; class tafsiloti PY-11 da."
+        },
+        {
+          "id": "py-08-13",
+          "source_status": "planned",
+          "title_uz": "Singly Linked List yaratish",
+          "theory_uz": "Singly linked list head orqali boshlanadi; oxirgi node next=None.",
+          "example_uz": "`head=Node(1); head.next=Node(2)`",
+          "practice_uz": "Tayyor Node bilan 4 ta tugun bog‘la, bo‘sh ro‘yxatda head=None bo‘lsin."
+        },
+        {
+          "id": "py-08-14",
+          "source_status": "planned",
+          "title_uz": "LinkedList traverse",
+          "theory_uz": "Traverse current node dan next orqali oxirigacha o‘tadi.",
+          "example_uz": "`cur=head`; `while cur is not None: print(cur.value); cur=cur.next`",
+          "practice_uz": "Tugun qiymatlarini oddiy listga yig‘; head=None holatda [] qaytarsin."
+        },
+        {
+          "id": "py-08-15",
+          "source_status": "planned",
+          "title_uz": "LinkedList append va prepend",
+          "theory_uz": "Prepend headni yangilaydi O(1); tail mavjud bo‘lsa append O(1), aks holda O(n).",
+          "example_uz": "`node.next=head; head=node`",
+          "practice_uz": "Head/tail shablonida append va prepend yoz; bo‘sh va bitta tugunli holatni tekshir."
+        },
+        {
+          "id": "py-08-16",
+          "source_status": "planned",
+          "title_uz": "LinkedList qidirish",
+          "theory_uz": "LinkedList search ketma-ket traverse qiladi; umumiy O(n).",
+          "example_uz": "`while cur is not None:` ichida `if cur.value==target: ...`",
+          "practice_uz": "Birinchi mos qiymat indeksini, bo‘lmasa -1 qaytar; takroriy qiymatli list bilan tekshir."
+        },
+        {
+          "id": "py-08-17",
+          "source_status": "planned",
+          "title_uz": "Array vs LinkedList taqqoslash",
+          "theory_uz": "Array random access uchun, linked list ma’lum node yonida insert uchun qulay; node qidiruvi alohida xarajat.",
+          "example_uz": "List index O(1); singly LinkedList index O(n).",
+          "practice_uz": "1000 elementli ikki tuzilma uchun append, index, search va prepend xarajat jadvalini tuz."
+        }
+      ]
+    },
+    {
+      "id": "PY-09",
+      "order": 9,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Stack, Queue va Heap",
+      "lesson_count": 14,
+      "assessment": {
+        "title_uz": "Browser History + task queue",
+        "requirements_uz": "Browser VISIT/BACK/CURRENT va task ADD/PROCESS/STATUS; alohida stack va deque.",
+        "acceptance_cases_uz": "VISIT A,B; BACK→A; yana BACK→oldingi yo‘q; queue A,B→PROCESS A, keyin B; bo‘sh queue.",
+        "constraints_uz": "Historyda bosh sahifani saqla; priority queue qo‘shimcha challenge, bir xil priority FIFO."
+      },
+      "lessons": [
+        {
+          "id": "py-09-01",
+          "source_status": "planned",
+          "title_uz": "Stack LIFO nima?",
+          "theory_uz": "Stack oxirgi kelgan birinchi chiqadi (LIFO).",
+          "example_uz": "`stack=[1,2]; stack.pop()` → 2",
+          "practice_uz": "5 amal ketma-ketligida stackning har bosqichini chiz."
+        },
+        {
+          "id": "py-09-02",
+          "source_status": "planned",
+          "title_uz": "push va pop operatsiyalari",
+          "theory_uz": "Push qo‘shadi, pop oxirgi elementni olib tashlaydi; bo‘sh stackni tekshir.",
+          "example_uz": "`s=[]; s.append(\"A\"); s.pop()`",
+          "practice_uz": "push/pop/peek amallarini yoz; peek elementni o‘chirmasin."
+        },
+        {
+          "id": "py-09-03",
+          "source_status": "planned",
+          "title_uz": "Stack bilan browser history",
+          "theory_uz": "Browser historyda current oxirgi sahifa, BACK uchun avvalgi sahifa qolishi kerak.",
+          "example_uz": "`history=[\"home\",\"docs\"]; history.pop()` → docs",
+          "practice_uz": "VISIT/BACK/CURRENT buyruqlarini simulyatsiya qil; history uzunligi 1 bo‘lsa BACK o‘zgartirmasin."
+        },
+        {
+          "id": "py-09-04",
+          "source_status": "planned",
+          "title_uz": "Qavs balansini Stack orqali tekshirish",
+          "theory_uz": "Ochilgan qavs push, yopilganda oxirgi mos qavs pop; yakunda stack bo‘sh.",
+          "example_uz": "`([{}])` valid; `([)]` invalid.",
+          "practice_uz": "`()`, `[]`, `{}` aralashgan matnni tekshir; boshida yopuvchi va bo‘sh matnni sinab ko‘r."
+        },
+        {
+          "id": "py-09-05",
+          "source_status": "planned",
+          "title_uz": "Queue FIFO nima?",
+          "theory_uz": "Queue birinchi kelgan birinchi chiqadi (FIFO).",
+          "example_uz": "A,B,C kirsa, A avval chiqadi.",
+          "practice_uz": "5 mijozning kelish va xizmat ketma-ketligini navbat ko‘rinishida yoz."
+        },
+        {
+          "id": "py-09-06",
+          "source_status": "planned",
+          "title_uz": "enqueue va dequeue",
+          "theory_uz": "Enqueue oxiriga, dequeue boshidan oladi.",
+          "example_uz": "`q=[1,2]; q.append(3); q.pop(0)`",
+          "practice_uz": "Navbatga qo‘shish va xizmat ko‘rsatish funksiyasi; bo‘sh queue uchun xabar."
+        },
+        {
+          "id": "py-09-07",
+          "source_status": "planned",
+          "title_uz": "deque nima uchun kerak?",
+          "theory_uz": "collections.deque ikki uchidan samarali qo‘shish/o‘chirish imkonini beradi.",
+          "example_uz": "`from collections import deque`; `q=deque([1,2]); q.popleft()`",
+          "practice_uz": "List queue ni deque ga almashtir; boshidan pop xarajatini tushuntir."
+        },
+        {
+          "id": "py-09-08",
+          "source_status": "planned",
+          "title_uz": "Queue orqali ishlar navbati",
+          "theory_uz": "Task queue ishlarni kelish tartibida saqlaydi va worker olib bajaradi.",
+          "example_uz": "`q=deque([\"email\",\"report\"]); task=q.popleft()`",
+          "practice_uz": "ADD, PROCESS, STATUS amallaridan iborat task queue CLI yoz."
+        },
+        {
+          "id": "py-09-09",
+          "source_status": "planned",
+          "title_uz": "Priority queue tushunchasi",
+          "theory_uz": "Priority queue kelish vaqti emas, priority asosida element oladi.",
+          "example_uz": "`(1,\"urgent\")` kichik son yuqori ustuvorlik deb kelishib ol.",
+          "practice_uz": "3 shoshilinch va 2 oddiy vazifani ustuvorlik bo‘yicha chiqar; tenglikda FIFO bo‘lsin."
+        },
+        {
+          "id": "py-09-10",
+          "source_status": "planned",
+          "title_uz": "Heap strukturasi nima?",
+          "theory_uz": "Heap complete tree va heap invariantga asoslangan; butun list sorted bo‘lishi shart emas.",
+          "example_uz": "Min-heap misoli `[1,3,2,7,5]`.",
+          "practice_uz": "Berilgan arrayda har parent <= children ekanini tekshir; indekslar 2*i+1 va 2*i+2."
+        },
+        {
+          "id": "py-09-11",
+          "source_status": "planned",
+          "title_uz": "Min-heap va max-heap",
+          "theory_uz": "Min-heap ildizida eng kichik, max-heap ildizida eng katta qiymat.",
+          "example_uz": "Min-heap `[1,4,3]`; max-heap `[9,4,7]`.",
+          "practice_uz": "6 narxdan 3 ta eng kichigini olish uchun qaysi heap ishlatilishini tushuntir."
+        },
+        {
+          "id": "py-09-12",
+          "source_status": "planned",
+          "title_uz": "heapq bilan push/pop",
+          "theory_uz": "heapq odatda min-heap; heappush/heappop O(log n), heapify O(n).",
+          "example_uz": "`import heapq; h=[]; heapq.heappush(h,3); heapq.heappop(h)`",
+          "practice_uz": "Priority queue yoz; `(priority, arrival_index, task)` bilan barqaror tie-break ta’minla."
+        },
+        {
+          "id": "py-09-13",
+          "source_status": "planned",
+          "title_uz": "Stack va Queue trade-off",
+          "theory_uz": "Stack teskari tartib va undo uchun, queue adolatli xizmat, heap priority uchun.",
+          "example_uz": "Undo → stack; printer → queue; shoshilinch vazifa → heap.",
+          "practice_uz": "8 real holatni mos strukturalarga ajrat va noto‘g‘ri tanlov oqibatini yoz."
+        },
+        {
+          "id": "py-09-14",
+          "source_status": "planned",
+          "title_uz": "Amaliy navbat simulyatsiyasi",
+          "theory_uz": "Simulyatsiyada vaqt va navbat o‘zgarishini aniq qoidalar bilan hisoblash kerak.",
+          "example_uz": "Har minut kelgan mijoz enqueue, bo‘sh kassir dequeue.",
+          "practice_uz": "Kelish va xizmat vaqti berilgan mijozlar uchun o‘rtacha kutish va eng uzun navbatni top."
+        }
+      ]
+    },
+    {
+      "id": "PY-10",
+      "order": 10,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "HashMap, daraxtlar va algoritmlar",
+      "lesson_count": 20,
+      "assessment": {
+        "title_uz": "Qidiruv va sorting benchmark CLI",
+        "requirements_uz": "Linear va binary search, bubble/merge/quick sort; bir xil input nusxalaridan benchmark.",
+        "acceptance_cases_uz": "[3,1,2,2] sort→[1,2,2,3]; bo‘sh list; binary search sorted data; target yo‘q→-1.",
+        "constraints_uz": "perf_counter, bir nechta takror, input hajmi va complexity jadvali; fake benchmark yo‘q."
+      },
+      "lessons": [
+        {
+          "id": "py-10-01",
+          "source_status": "planned",
+          "title_uz": "Hash nima?",
+          "theory_uz": "Hash kalitdan butun sonli xesh qiymatini hosil qiladi; bir xil teng hashable qiymatlarning hash qiymati teng bo‘ladi.",
+          "example_uz": "`hash(\"python\")` (runlar orasida o‘zgarishi mumkin).",
+          "practice_uz": "Oddiy sum(ord(c)) % 10 hash yoz; `ab` va `ba` ni solishtir."
+        },
+        {
+          "id": "py-10-02",
+          "source_status": "planned",
+          "title_uz": "HashMap va dictionary bog‘liqligi",
+          "theory_uz": "HashMap kalitni hash orqali slotga joylaydi; Python dict hash table asosidagi mapping.",
+          "example_uz": "`d={\"A\":10}; d[\"A\"]` → 10",
+          "practice_uz": "So‘zlar chastotasini dict orqali O(n) kutilgan vaqt bilan hisobla."
+        },
+        {
+          "id": "py-10-03",
+          "source_status": "planned",
+          "title_uz": "Hash collision tushunchasi",
+          "theory_uz": "Hash collision turli kalitlarning hash/slot mos kelishi; chaining yoki probing bilan hal qilinadi.",
+          "example_uz": "`sum(map(ord,\"ab\")) == sum(map(ord,\"ba\"))`",
+          "practice_uz": "5 bucketli chaining jadval shabloni yarat; 2 to‘qnashuvli kalitni to‘g‘ri qidir."
+        },
+        {
+          "id": "py-10-04",
+          "source_status": "planned",
+          "title_uz": "Average va worst-case lookup",
+          "theory_uz": "Hash table lookup odatda O(1) kutilgan, yomon collision holatida O(n) bo‘lishi mumkin.",
+          "example_uz": "Barcha kalitlar bitta bucketda bo‘lsa linear qidiruv.",
+          "practice_uz": "Chaining jadvalda 10 ta kalit uchun bir va bir nechta bucket xarajatini sanab chiq."
+        },
+        {
+          "id": "py-10-05",
+          "source_status": "planned",
+          "title_uz": "Binary tree node nima?",
+          "theory_uz": "Binary tree node eng ko‘pi bilan ikkita child reference saqlaydi.",
+          "example_uz": "`node.left=None; node.right=None` (tayyor Node class shabloni).",
+          "practice_uz": "7 tugunli daraxtni chiz va reference bilan ulab chiq."
+        },
+        {
+          "id": "py-10-06",
+          "source_status": "planned",
+          "title_uz": "BST va tartib qoidasi",
+          "theory_uz": "BSTda har node uchun chapdagi kalitlar kichik, o‘ngdagi katta; duplicate qoidasi oldindan belgilanadi.",
+          "example_uz": "5 ildiz, 3 chap, 7 o‘ng.",
+          "practice_uz": "[8,3,10,1,6,14] ketma-ketligidan BST chiz; keyin 4 ni joylashtir."
+        },
+        {
+          "id": "py-10-07",
+          "source_status": "planned",
+          "title_uz": "BST insert",
+          "theory_uz": "BST insert taqqoslab mos bo‘sh childga node qo‘yadi; O(h), h daraxt balandligi.",
+          "example_uz": "`if value<cur.value: ...` aks holda o‘ngga.",
+          "practice_uz": "Tayyor Node shablonida iterative insert yoz; duplicate ni rad et, bo‘sh daraxtni tekshir."
+        },
+        {
+          "id": "py-10-08",
+          "source_status": "planned",
+          "title_uz": "BST search",
+          "theory_uz": "BST search har taqqoslashda bitta yo‘nalishni tanlaydi; O(h).",
+          "example_uz": "`while cur:` orqali chap/o‘ngga o‘tish.",
+          "practice_uz": "Topilgan node yoki None qaytar; root, leaf va yo‘q qiymatni sinab ko‘r."
+        },
+        {
+          "id": "py-10-09",
+          "source_status": "planned",
+          "title_uz": "BST inorder traversal",
+          "theory_uz": "Inorder chap → node → o‘ng; BSTda tartiblangan qiymatlar chiqadi. Recursion keyingi darsda, hozir stack bilan ham mumkin.",
+          "example_uz": "3 ← 5 → 7 daraxti inorder: 3,5,7.",
+          "practice_uz": "Stack yordamida iterative inorder yoz, yoki tayyor recursion shablonini trace qil."
+        },
+        {
+          "id": "py-10-10",
+          "source_status": "sample-authored",
+          "title_uz": "Recursion nima?",
+          "theory_uz": "Recursion funksiya o‘zini kichikroq muammo bilan chaqiradi.",
+          "example_uz": "`def countdown(n):` ichida `if n<=0: return`, keyin print va `countdown(n-1)`.",
+          "practice_uz": "n dan 1 gacha chiqarishni recursion bilan yoz; n=0 holatini tekshir."
+        },
+        {
+          "id": "py-10-11",
+          "source_status": "sample-authored",
+          "title_uz": "Base case va recursive case",
+          "theory_uz": "Base case to‘xtash sharti, recursive case muammoni kichraytiradi.",
+          "example_uz": "`def fact(n): return 1 if n==0 else n*fact(n-1)` (n>=0).",
+          "practice_uz": "0 va musbat son uchun factorial yoz, manfiy inputni rad et."
+        },
+        {
+          "id": "py-10-12",
+          "source_status": "sample-authored",
+          "title_uz": "Call stack qanday o‘sadi?",
+          "theory_uz": "Har recursive chaqiruv call stackda frame saqlaydi; qaytish teskari tartibda.",
+          "example_uz": "`fact(3)` → 3*fact(2) → 3*2*fact(1) → 6.",
+          "practice_uz": "fact(4) uchun call stack push/pop tartibini chiz va depth ni top."
+        },
+        {
+          "id": "py-10-13",
+          "source_status": "sample-authored",
+          "title_uz": "Binary Search sharti",
+          "theory_uz": "Binary search sorted kolleksiya va izchil taqqoslash talab qiladi.",
+          "example_uz": "`[1,3,5,7,9]` da target=7.",
+          "practice_uz": "Sorted va unsorted listlarda binary search ishlatilishi nega farq qilishini ko‘rsat."
+        },
+        {
+          "id": "py-10-14",
+          "source_status": "sample-authored",
+          "title_uz": "Binary Search step-by-step",
+          "theory_uz": "Binary search mid orqali qidiruv oralig‘ini yarimga qisqartiradi; O(log n).",
+          "example_uz": "`mid=(lo+hi)//2`; mos kelmasa `lo=mid+1` yoki `hi=mid-1`.",
+          "practice_uz": "Iterative binary_search yoz; bo‘sh, bitta element va mavjud bo‘lmagan targetni tekshir."
+        },
+        {
+          "id": "py-10-15",
+          "source_status": "sample-authored",
+          "title_uz": "Linear Search",
+          "theory_uz": "Linear search ketma-ket qaraydi va sorted bo‘lishni talab qilmaydi.",
+          "example_uz": "`for i,x in enumerate(a):` ichida `if x==target: return i`.",
+          "practice_uz": "Birinchi va oxirgi mos indeksni topadigan ikki variant yoz; taqqoslashlarni sanab ber."
+        },
+        {
+          "id": "py-10-16",
+          "source_status": "planned",
+          "title_uz": "Bubble Sort intuitiv",
+          "theory_uz": "Bubble sort yonma-yon elementlarni solishtirib almashtiradi; worst O(n²).",
+          "example_uz": "`if a[j]>a[j+1]: a[j],a[j+1]=a[j+1],a[j]`",
+          "practice_uz": "Bubble sort yoz; swap bo‘lmasa to‘xtatish bilan sorted inputni optimallashtir."
+        },
+        {
+          "id": "py-10-17",
+          "source_status": "planned",
+          "title_uz": "Merge Sort va divide-and-conquer",
+          "theory_uz": "Merge sort bo‘lib, qismlarni sort qilib, tartibli merge qiladi; O(n log n) vaqt, odatiy listda O(n) qo‘shimcha xotira.",
+          "example_uz": "`[1,4]` va `[2,3]` → `[1,2,3,4]`.",
+          "practice_uz": "Avval ikki sorted listni merge qil; keyin recursive merge sort yoz."
+        },
+        {
+          "id": "py-10-18",
+          "source_status": "planned",
+          "title_uz": "Quick Sort pivot tushunchasi",
+          "theory_uz": "Quick sort pivot bo‘yicha partition qiladi; odatda O(n log n), worst O(n²).",
+          "example_uz": "Pivot 4: [2,1] < 4, [7,5] > 4.",
+          "practice_uz": "Listni kichik/teng/katta qismlarga ajrat; duplicates bilan recursive sort sinovi yoz."
+        },
+        {
+          "id": "py-10-19",
+          "source_status": "planned",
+          "title_uz": "Sorting stable va unstable tushunchasi",
+          "theory_uz": "Stable sort teng keyli elementlar asl tartibini saqlaydi; unstable kafolatlamaydi.",
+          "example_uz": "`sorted([(\"A\",2),(\"B\",2)],key=lambda x:x[1])` A,B tartibini saqlaydi (lambda PY-14 da).",
+          "practice_uz": "Teng balli studentlar ro‘yxatida avvalgi tartib saqlanishini tekshir; bubble sortda > vs >= ni solishtir."
+        },
+        {
+          "id": "py-10-20",
+          "source_status": "planned",
+          "title_uz": "Algorithm complexity comparison",
+          "theory_uz": "Algoritm tanlash data tartibi, hajmi, memory, worst-case va barqarorlikka bog‘liq.",
+          "example_uz": "Linear O(n), binary O(log n) sorted bo‘lsa; merge O(n log n).",
+          "practice_uz": "100,1000,5000 elementda qidiruv va sorting vaqtini perf_counter bilan o‘lcha; nusxalar bir xil bo‘lsin."
+        }
+      ]
+    },
+    {
+      "id": "PY-11",
+      "order": 11,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "OOP asoslari",
+      "lesson_count": 15,
+      "assessment": {
+        "title_uz": "Student/course tracker OOP",
+        "requirements_uz": "Student, Course: score validation, student qo‘shish, o‘rtacha ball va top student, repr/str.",
+        "acceptance_cases_uz": "Ali [80,100]→90; bo‘sh score→None; duplicate ID rad; -1 va 101 rad.",
+        "constraints_uz": "Har instance alohida mutable state; Course contains Student; tashqi DB shart emas."
+      },
+      "lessons": [
+        {
+          "id": "py-11-01",
+          "source_status": "planned",
+          "title_uz": "OOP nima va nega kerak?",
+          "theory_uz": "OOP holat va xatti-harakatni obyektga birlashtiradi; har muammoda shart emas.",
+          "example_uz": "Student: name, scores, average().",
+          "practice_uz": "Student trackerda qaysi holat va metodlar bitta obyektga tegishli ekanini yoz."
+        },
+        {
+          "id": "py-11-02",
+          "source_status": "planned",
+          "title_uz": "Class e’lon qilish",
+          "theory_uz": "class obyektlar uchun tip va namespace e’lon qiladi.",
+          "example_uz": "`class Student: pass`",
+          "practice_uz": "Student va Course bo‘sh classlarini yarat; ularning nomlarini chiqar."
+        },
+        {
+          "id": "py-11-03",
+          "source_status": "planned",
+          "title_uz": "Object / instance yaratish",
+          "theory_uz": "Instance classdan yaratilgan alohida obyekt.",
+          "example_uz": "`a=Student(); b=Student(); print(a is b)` → False",
+          "practice_uz": "3 Student instance yarat va ularning identitysi farqli ekanini tekshir."
+        },
+        {
+          "id": "py-11-04",
+          "source_status": "planned",
+          "title_uz": "__init__ konstruktori",
+          "theory_uz": "__init__ yangi instance holatini boshlang‘ich qiymat bilan sozlaydi (obyektni __new__ yaratadi).",
+          "example_uz": "`def __init__(self,name): self.name=name`",
+          "practice_uz": "Name va age oluvchi Student __init__ yoz; ikkita instance yarat."
+        },
+        {
+          "id": "py-11-05",
+          "source_status": "planned",
+          "title_uz": "self nimani bildiradi?",
+          "theory_uz": "self instance metodining birinchi parametri; chaqiruvda avtomatik uzatiladi.",
+          "example_uz": "`a.greet()` taxminan `Student.greet(a)` bilan teng.",
+          "practice_uz": "Ikki xil nomli obyekt uchun greet yoz; self bo‘lmasa keladigan xatoni tushuntir."
+        },
+        {
+          "id": "py-11-06",
+          "source_status": "planned",
+          "title_uz": "Instance attributes",
+          "theory_uz": "Instance attribute har bir instancega xos holatni saqlaydi.",
+          "example_uz": "`self.scores=[]`",
+          "practice_uz": "Ikki student uchun mustaqil scores list yarat; biriga ball qo‘shish ikkinchisiga ta’sir qilmasin."
+        },
+        {
+          "id": "py-11-07",
+          "source_status": "planned",
+          "title_uz": "Instance methods",
+          "theory_uz": "Instance method self orqali holatni o‘qiydi yoki o‘zgartiradi.",
+          "example_uz": "`def add_score(self,score): self.scores.append(score)`",
+          "practice_uz": "add_score va average metodlarini yoz; bo‘sh ball holati uchun None qaytar."
+        },
+        {
+          "id": "py-11-08",
+          "source_status": "planned",
+          "title_uz": "Class attributes",
+          "theory_uz": "Class attribute classga tegishli, instance orqali ham o‘qilishi mumkin; mutable qiymatni ulashish xavfi bor.",
+          "example_uz": "`class Student: school=\"PDP\"`",
+          "practice_uz": "Umumiy school va alohida name saqla; class attribute ni instance orqali shadow qilib ko‘r."
+        },
+        {
+          "id": "py-11-09",
+          "source_status": "planned",
+          "title_uz": "@classmethod nima?",
+          "theory_uz": "classmethod birinchi parametr cls oladi; alternative constructor uchun qulay.",
+          "example_uz": "`@classmethod` / `def from_text(cls,text): return cls(text.strip())`",
+          "practice_uz": "`\"Ali,20\"` matnidan Student yaratadigan classmethod yoz."
+        },
+        {
+          "id": "py-11-10",
+          "source_status": "planned",
+          "title_uz": "@staticmethod nima?",
+          "theory_uz": "staticmethod self yoki cls olmaydi; class bilan mantiqiy bog‘liq util funksiya.",
+          "example_uz": "`@staticmethod` / `def valid_score(n): return 0<=n<=100`",
+          "practice_uz": "Ball validatsiyasini staticmethod sifatida yoz va -1,0,100,101 ni sinab ko‘r."
+        },
+        {
+          "id": "py-11-11",
+          "source_status": "planned",
+          "title_uz": "__str__ bilan o‘qiladigan matn",
+          "theory_uz": "__str__ foydalanuvchi uchun o‘qilishi qulay string qaytaradi.",
+          "example_uz": "`def __str__(self): return self.name`",
+          "practice_uz": "Student print qilinganda ism va ball soni chiqsin."
+        },
+        {
+          "id": "py-11-12",
+          "source_status": "planned",
+          "title_uz": "__repr__ bilan developer ko‘rinishi",
+          "theory_uz": "__repr__ debugging uchun obyektni noaniqliksiz ifodalashga harakat qiladi.",
+          "example_uz": "`def __repr__(self): return f\"Student({self.name!r})\"`",
+          "practice_uz": "List ichidagi Studentlar repr yordamida o‘qilishi qulay bo‘lsin."
+        },
+        {
+          "id": "py-11-13",
+          "source_status": "planned",
+          "title_uz": "Composition nima?",
+          "theory_uz": "Composition obyekt boshqa obyektni atribut sifatida tutadi (has-a).",
+          "example_uz": "`class Course:` ichida `self.students=[]`",
+          "practice_uz": "Coursega Student instance larni qo‘shish va ro‘yxatini chiqarish metodini yoz."
+        },
+        {
+          "id": "py-11-14",
+          "source_status": "planned",
+          "title_uz": "OOP va oddiy function trade-off",
+          "theory_uz": "OOP state va bog‘liq amallar ko‘p bo‘lsa qulay; stateless oddiy funksiya yengilroq.",
+          "example_uz": "`tax(price)` funksiya; `BankAccount.deposit()` obyekt.",
+          "practice_uz": "3 vazifani funksiya yoki class sifatida loyihala; tanlov sababini yoz."
+        },
+        {
+          "id": "py-11-15",
+          "source_status": "planned",
+          "title_uz": "Kichik Student class loyiha",
+          "theory_uz": "Student loyihasida validation, instance state va composition birga ishlaydi.",
+          "example_uz": "`student.add_score(90); course.add_student(student)`",
+          "practice_uz": "Student/Course tracker yoz; duplicate ID, noto‘g‘ri ball, bo‘sh course va eng yuqori o‘rtachani tekshir."
+        }
+      ]
+    },
+    {
+      "id": "PY-12",
+      "order": 12,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "OOP advanced: inheritance, polymorphism",
+      "lesson_count": 17,
+      "assessment": {
+        "title_uz": "Payment provider abstraction",
+        "requirements_uz": "PaymentProvider ABC; Card va Cash simulyatorlari, PaymentService composition.",
+        "acceptance_cases_uz": "Amount=100 uchun belgilangan simulyatsiya fee; manfiy sum rad; provider yo‘q metod bilan abstract qoladi.",
+        "constraints_uz": "Real to‘lov yo‘q; polymorphism, validation, feyk tranzaksiya ma’lum belgilangan simulyatsiya, maxfiy ma’lumot so‘ramaslik."
+      },
+      "lessons": [
+        {
+          "id": "py-12-01",
+          "source_status": "planned",
+          "title_uz": "Inheritance tushunchasi",
+          "theory_uz": "Inheritance parent class xatti-harakatini childga meros qiladi; is-a munosabatiga mos.",
+          "example_uz": "`class Dog(Animal): pass`",
+          "practice_uz": "Vehicle parent va Car child yarat; umumiy metodni childdan chaqir."
+        },
+        {
+          "id": "py-12-02",
+          "source_status": "planned",
+          "title_uz": "Parent va child class",
+          "theory_uz": "Parent umumiy xususiyatlarni, child o‘ziga xos xususiyatlarni ifodalaydi.",
+          "example_uz": "`class SavingsAccount(Account): ...`",
+          "practice_uz": "Employee va Manager classlarini yarat; umumiy ism, maxsus bo‘lim atributini ajrat."
+        },
+        {
+          "id": "py-12-03",
+          "source_status": "planned",
+          "title_uz": "super() bilan ota metod",
+          "theory_uz": "super() MRO bo‘yicha keyingi class metodiga murojaat qiladi, ko‘pincha parent initializer uchun.",
+          "example_uz": "`super().__init__(name)`",
+          "practice_uz": "Child initda parentdagi name ni va childdagi role ni o‘rnat."
+        },
+        {
+          "id": "py-12-04",
+          "source_status": "planned",
+          "title_uz": "Method overriding",
+          "theory_uz": "Overriding childda bir xil nomli metodni boshqa xatti-harakat bilan almashtiradi.",
+          "example_uz": "`class Dog(Animal):` ichida `def speak(self): return \"Woof\"`",
+          "practice_uz": "Ikki payment providerning fee metodini turlicha yoz; chaqiruv interfeysi bir xil bo‘lsin."
+        },
+        {
+          "id": "py-12-05",
+          "source_status": "planned",
+          "title_uz": "Polymorphism nima?",
+          "theory_uz": "Polymorphism bir xil interfeys orqali turli obyektlar turlicha ishlashidir.",
+          "example_uz": "`for p in providers: print(p.pay(100))`",
+          "practice_uz": "Card va Cash classlari uchun pay metodini yoz; bir loopda ikkalasini ishlat."
+        },
+        {
+          "id": "py-12-06",
+          "source_status": "planned",
+          "title_uz": "Duck typing tushunchasi",
+          "theory_uz": "Duck typing obyektning aniq tipidan ko‘ra kerakli xatti-harakatiga qaraydi.",
+          "example_uz": "`def notify(sender): sender.send(\"OK\")`",
+          "practice_uz": "Email va Console senderlar yarat; inheritance ishlatmay bitta notify funksiyasida ishlat."
+        },
+        {
+          "id": "py-12-07",
+          "source_status": "planned",
+          "title_uz": "Encapsulation amaliy qoida",
+          "theory_uz": "Encapsulation ichki holatni aniq public metodlar orqali boshqaradi; invariantni himoya qiladi.",
+          "example_uz": "`account.deposit(50)` balance ni nazorat bilan o‘zgartiradi.",
+          "practice_uz": "BankAccountda manfiy deposit va balansdan ortiq withdrawalni rad et."
+        },
+        {
+          "id": "py-12-08",
+          "source_status": "planned",
+          "title_uz": "Public va underscore convention",
+          "theory_uz": "Public nom foydalanish uchun, _name ichki API konvensiyasi; Python maxfiylikni majburlamaydi.",
+          "example_uz": "`self._balance=0`",
+          "practice_uz": "Classning public metodlari va ichki atributlarini ajratib nomla; tashqaridan _balance ga tegmaslik qoidasini yoz."
+        },
+        {
+          "id": "py-12-09",
+          "source_status": "planned",
+          "title_uz": "Name mangling nima emas?",
+          "theory_uz": "__name name mangling orqali class nomi bilan o‘zgartiriladi; xavfsizlik yoki qat’iy private emas.",
+          "example_uz": "`self.__token` odatda `_ClassName__token` nomiga aylanadi.",
+          "practice_uz": "Parent/child ikkisi __value ishlatsa qanday nomlar hosil bo‘lishini tekshir; maxfiy kalit saqlash deb qabul qilma."
+        },
+        {
+          "id": "py-12-10",
+          "source_status": "planned",
+          "title_uz": "Properties @property",
+          "theory_uz": "@property metodni atribut kabi o‘qishga imkon beradi; hisoblangan qiymat ham bo‘lishi mumkin.",
+          "example_uz": "`@property` / `def total(self): return self.price*self.qty`",
+          "practice_uz": "Order uchun total property yarat; qty o‘zgarsa total avtomatik hisoblansin."
+        },
+        {
+          "id": "py-12-11",
+          "source_status": "planned",
+          "title_uz": "Getter va setterlar",
+          "theory_uz": "Setter assignmentni nazorat qiladi; getter va setter bir xil propertyga bog‘lanadi.",
+          "example_uz": "`@age.setter` / `def age(self,value): ...`",
+          "practice_uz": "Age property 0–120 oralig‘ini qabul qilsin; noto‘g‘ri qiymat ValueError."
+        },
+        {
+          "id": "py-12-12",
+          "source_status": "planned",
+          "title_uz": "Abstract interface tushunchasi",
+          "theory_uz": "Abstract interface implementationlar bajarishi kerak bo‘lgan shartnomani bildiradi; abc bilan majburiy metod belgilanadi.",
+          "example_uz": "`from abc import ABC, abstractmethod`; `@abstractmethod` bilan pay.",
+          "practice_uz": "PaymentProvider ABC va ikki konkret provider yoz; metod yetishmasa instance yaratib bo‘lmasin."
+        },
+        {
+          "id": "py-12-13",
+          "source_status": "planned",
+          "title_uz": "Multiple inheritance haqida kirish",
+          "theory_uz": "Multiple inheritance bir nechta parent; MRO metod qidirish tartibini belgilaydi.",
+          "example_uz": "`class C(A,B): pass`; `C.mro()`",
+          "practice_uz": "A va B da bir xil method bo‘lsa C qaysisini chaqiradi? Parentlar tartibini almashtir."
+        },
+        {
+          "id": "py-12-14",
+          "source_status": "planned",
+          "title_uz": "Dunder __eq__ va __len__",
+          "theory_uz": "__eq__ qiymat tengligi, __len__ obyekt uzunligini ifodalash uchun protokol metodlari.",
+          "example_uz": "`def __len__(self): return len(self.items)`",
+          "practice_uz": "Cart uchun len va ikkita Cartning itemlari tengligini tekshiruvchi __eq__ yoz; boshqa tip uchun NotImplemented qaytar."
+        },
+        {
+          "id": "py-12-15",
+          "source_status": "planned",
+          "title_uz": "Dunder __iter__ ga kirish",
+          "theory_uz": "__iter__ iterator qaytarib obyektni for sikliga moslaydi.",
+          "example_uz": "`def __iter__(self): return iter(self.items)`",
+          "practice_uz": "Course classini for orqali studentlar bo‘ylab yuradigan qil."
+        },
+        {
+          "id": "py-12-16",
+          "source_status": "planned",
+          "title_uz": "Inheritance vs composition",
+          "theory_uz": "Inheritance is-a, composition has-a; composition bog‘liqlikni almashtirishga mos.",
+          "example_uz": "`Order` ichida `PaymentProvider` obyektini saqlash.",
+          "practice_uz": "Payment service uchun provider subclassi emas, provider atributi bilan composition loyihala."
+        },
+        {
+          "id": "py-12-17",
+          "source_status": "planned",
+          "title_uz": "OOP dizaynidagi xatolar",
+          "theory_uz": "OOP xatolari: haddan tashqari inheritance, shared mutable state, noaniq mas’uliyat va qattiq bog‘liqlik.",
+          "example_uz": "God class barcha validation, payment, loggingni bajaradi.",
+          "practice_uz": "Bitta katta shop classini 3 mas’uliyatga ajrat; qaysi invariant qayerda saqlanishini yoz."
+        }
+      ]
+    },
+    {
+      "id": "PY-13",
+      "order": 13,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Comprehensions, iterator va generator",
+      "lesson_count": 15,
+      "assessment": {
+        "title_uz": "Million yozuvni streaming qayta ishlash",
+        "requirements_uz": "Generator bilan 1 million sintetik yozuv yarat, streaming filter va aggregate qil, list bilan benchmark.",
+        "acceptance_cases_uz": "0..999999 da juft sonlar 500000; bo‘sh iterator → 0; ikkinchi iteratsiya tugaganini tekshir.",
+        "constraints_uz": "Barcha yozuvni streaming variantda listga olma; tracemalloc peak va real elapsed solishtir."
+      },
+      "lessons": [
+        {
+          "id": "py-13-01",
+          "source_status": "planned",
+          "title_uz": "List comprehension sintaksisi",
+          "theory_uz": "List comprehension iteratsiyadan yangi list yasaydi.",
+          "example_uz": "`[x*x for x in range(5)]` → [0,1,4,9,16]",
+          "practice_uz": "Oddiy loopdagi kvadratlar ro‘yxatini comprehension bilan qayta yoz."
+        },
+        {
+          "id": "py-13-02",
+          "source_status": "planned",
+          "title_uz": "List comprehension shart bilan",
+          "theory_uz": "Comprehension oxiridagi if elementni filtrlaydi; boshidagi if/else qiymat tanlaydi.",
+          "example_uz": "`[x*x for x in range(10) if x%2==0]`",
+          "practice_uz": "-5 dan 5 gacha faqat musbat toq sonlar kvadratini ol."
+        },
+        {
+          "id": "py-13-03",
+          "source_status": "planned",
+          "title_uz": "Nested comprehension qanday o‘qiladi?",
+          "theory_uz": "Nested comprehension for larni chapdan o‘ngga nested loop tartibida bajaradi.",
+          "example_uz": "`[(i,j) for i in range(2) for j in range(3)]`",
+          "practice_uz": "2D matrixni bitta listga flatten qil; keyin 3x3 ko‘paytirish jadvali yarat."
+        },
+        {
+          "id": "py-13-04",
+          "source_status": "planned",
+          "title_uz": "Dict comprehension",
+          "theory_uz": "Dict comprehension key:value juftliklarini hisoblaydi; takroriy key oxirgi qiymatni saqlaydi.",
+          "example_uz": "`{x:x*x for x in range(4)}`",
+          "practice_uz": "Ism va ball dictidan faqat 70+ ballarni yangi dictga ol."
+        },
+        {
+          "id": "py-13-05",
+          "source_status": "planned",
+          "title_uz": "Set comprehension",
+          "theory_uz": "Set comprehension unique hashable natijalar to‘plamini yasaydi.",
+          "example_uz": "`{x.lower() for x in [\"A\",\"a\",\"B\"]}` → a,b to‘plami.",
+          "practice_uz": "Matndagi noyob kichik harflarni top; bo‘sh joylarni filtrla."
+        },
+        {
+          "id": "py-13-06",
+          "source_status": "planned",
+          "title_uz": "Iterable va iterator farqi",
+          "theory_uz": "Iterable iter() berishi mumkin; iterator next() bilan ketma-ket qiymat beradi va holat saqlaydi.",
+          "example_uz": "`it=iter([1,2]); next(it)` → 1",
+          "practice_uz": "Bitta listdan ikkita iterator yarat, birini siljit va ikkinchisining natijasini kuzat."
+        },
+        {
+          "id": "py-13-07",
+          "source_status": "planned",
+          "title_uz": "iter() va next()",
+          "theory_uz": "iter iterator yaratadi, next navbatdagi qiymatni oladi.",
+          "example_uz": "`it=iter(\"AB\"); next(it); next(it)` → A,B.",
+          "practice_uz": "For ishlatmay 3 elementdan iterator orqali o‘t; next default qiymatini sinab ko‘r."
+        },
+        {
+          "id": "py-13-08",
+          "source_status": "planned",
+          "title_uz": "StopIteration",
+          "theory_uz": "Iterator tugaganda StopIteration chiqadi; for uni avtomatik ushlaydi.",
+          "example_uz": "`next(iter([]), None)` → None",
+          "practice_uz": "while va try/except orqali iteratorni to‘liq o‘qiydigan kod yoz."
+        },
+        {
+          "id": "py-13-09",
+          "source_status": "planned",
+          "title_uz": "Generator function va yield",
+          "theory_uz": "Generator function yield bilan qiymat beradi va holatini keyingi nextgacha pauza qiladi.",
+          "example_uz": "`def count(n):` ichida `for i in range(n): yield i`",
+          "practice_uz": "n gacha juft sonlarni generator bilan qaytar; hammasini birdan listga olma."
+        },
+        {
+          "id": "py-13-10",
+          "source_status": "planned",
+          "title_uz": "Generator expression",
+          "theory_uz": "Generator expression comprehensionga o‘xshaydi, lekin qiymatlarni talab bo‘yicha beradi.",
+          "example_uz": "`g=(x*x for x in range(10)); next(g)` → 0",
+          "practice_uz": "1 million kvadrat yig‘indisini generator expression bilan hisobla."
+        },
+        {
+          "id": "py-13-11",
+          "source_status": "planned",
+          "title_uz": "Lazy evaluation",
+          "theory_uz": "Lazy evaluation hisobni kerak bo‘lguncha kechiktiradi.",
+          "example_uz": "`g=(print(x) for x in range(3))` yaratishning o‘zida print bo‘lmaydi.",
+          "practice_uz": "Generatorning yaratilishi va next paytida side effect qachon bo‘lishini oldindan ayt."
+        },
+        {
+          "id": "py-13-12",
+          "source_status": "planned",
+          "title_uz": "Generator bilan xotira foydalanish",
+          "theory_uz": "Streaming generator barcha elementni xotirada bir vaqtda saqlash zaruratini kamaytiradi.",
+          "example_uz": "`sum(x*x for x in range(100000))`",
+          "practice_uz": "List va generator variantini tracemalloc bilan o‘lcha; natija bir xil, peak memory farqini qayd qil."
+        },
+        {
+          "id": "py-13-13",
+          "source_status": "planned",
+          "title_uz": "yield from tushunchasi",
+          "theory_uz": "yield from boshqa iterable qiymatlarini generator orqali delegatsiya qiladi.",
+          "example_uz": "`def both(): yield from [1,2]; yield from [3,4]`",
+          "practice_uz": "Bir nechta listni yield from orqali bir oqimga aylantir."
+        },
+        {
+          "id": "py-13-14",
+          "source_status": "planned",
+          "title_uz": "range obyektining xususiyatlari",
+          "theory_uz": "range immutable sequence, butun ketma-ketlikni list sifatida saqlamaydi; qayta iteratsiya mumkin.",
+          "example_uz": "`range(0,1000000,2)[3]` → 6",
+          "practice_uz": "range va list(range(...)) uzunligi, index va xotirasini solishtir."
+        },
+        {
+          "id": "py-13-15",
+          "source_status": "planned",
+          "title_uz": "Iteratorni qayta ishlatish cheklovi",
+          "theory_uz": "Iterator odatda bir martalik; tugagach qaytadan iterable yoki generator function chaqiruvini olish kerak.",
+          "example_uz": "`g=iter([1,2]); list(g)` → [1,2]; `list(g)` → [].",
+          "practice_uz": "Bir generatorni ikki martalik hisobotda ishlatishdagi xatoni tuzat; kerak bo‘lsa factory yoz."
+        }
+      ]
+    },
+    {
+      "id": "PY-14",
+      "order": 14,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Decorator, regex va context manager",
+      "lesson_count": 17,
+      "assessment": {
+        "title_uz": "Decoratorli logging / fayl filtratori",
+        "requirements_uz": "Log decorator + regex fayl filtratori; context manager yordamida resursni yop.",
+        "acceptance_cases_uz": "INFO va ERROR satrlardan faqat ERROR; no match→bo‘sh; exceptionda log/cleanup.",
+        "constraints_uz": "wraps va return saqlansin; raw regex, aniq cleanup; exception yutilmasin."
+      },
+      "lessons": [
+        {
+          "id": "py-14-01",
+          "source_status": "planned",
+          "title_uz": "Lambda expression nima?",
+          "theory_uz": "Lambda bitta ifodali anonim funksiya yaratadi.",
+          "example_uz": "`double=lambda x:x*2`; `double(4)` → 8",
+          "practice_uz": "Studentlarni ball bo‘yicha sorted key lambda bilan tartibla; oddiy def variantini yoz."
+        },
+        {
+          "id": "py-14-02",
+          "source_status": "planned",
+          "title_uz": "map/filter va comprehension tanlovi",
+          "theory_uz": "map o‘zgartiradi, filter tanlaydi; ikkalasi lazy iterator, comprehension ko‘pincha o‘qilishi oson.",
+          "example_uz": "`list(map(str,[1,2]))` → [\"1\",\"2\"]",
+          "practice_uz": "Sonlar listini musbatga filtrla va kvadratga ko‘tar; map/filter va comprehension variantlarini yoz."
+        },
+        {
+          "id": "py-14-03",
+          "source_status": "planned",
+          "title_uz": "Higher-order function",
+          "theory_uz": "Higher-order funksiya funksiya qabul qiladi yoki funksiya qaytaradi.",
+          "example_uz": "`def apply(f,x): return f(x)`",
+          "practice_uz": "Ikkita turli transform funksiyasini bir apply metodida ishlat."
+        },
+        {
+          "id": "py-14-04",
+          "source_status": "planned",
+          "title_uz": "First-class function tushunchasi",
+          "theory_uz": "First-class function qiymat kabi nomga biriktiriladi, uzatiladi va qaytariladi.",
+          "example_uz": "`f=abs; f(-3)` → 3",
+          "practice_uz": "Buyruq nomlari → funksiyalar dictini tuz; add/sub ni dict orqali chaqir."
+        },
+        {
+          "id": "py-14-05",
+          "source_status": "planned",
+          "title_uz": "Closure nima?",
+          "theory_uz": "Closure tashqi scope qiymatlarini saqlab qoladigan ichki funksiya.",
+          "example_uz": "`def multiplier(n): return lambda x:x*n`",
+          "practice_uz": "double va triple closurelarini yarat; tashqi n alohida ekanini tekshir."
+        },
+        {
+          "id": "py-14-06",
+          "source_status": "planned",
+          "title_uz": "Decorator nima?",
+          "theory_uz": "Decorator funksiyani qabul qilib o‘ralgan funksiya qaytaradi; @ sintaksisi assignmentga teng.",
+          "example_uz": "`@decorate` taxminan `f=decorate(f)`",
+          "practice_uz": "Funksiya chaqiruvidan oldin va keyin xabar chiqaruvchi decorator yoz; returnni saqla."
+        },
+        {
+          "id": "py-14-07",
+          "source_status": "planned",
+          "title_uz": "@wrapper va functools.wraps",
+          "theory_uz": "functools.wraps wrapperda original funksiya metadata sini saqlashga yordam beradi; @wrapper maxsus Python sintaksisi emas.",
+          "example_uz": "`from functools import wraps`; `@wraps(func)` bilan wrapper.",
+          "practice_uz": "`*args, **kwargs` qabul qiluvchi log decorator yoz; __name__ oldin/keyin bir xil bo‘lsin."
+        },
+        {
+          "id": "py-14-08",
+          "source_status": "planned",
+          "title_uz": "Argumentli decorator asoslari",
+          "theory_uz": "Argumentli decorator odatda factory → decorator → wrapper qatlamlaridan iborat.",
+          "example_uz": "`@repeat(3)` repeat factory chaqiruvidir.",
+          "practice_uz": "`@repeat(n)` yoz; n=0 uchun qoidani belgilab, return natijasini aniq tanla."
+        },
+        {
+          "id": "py-14-09",
+          "source_status": "planned",
+          "title_uz": "Regex literal va metabelgilar",
+          "theory_uz": "Regex literal matn va metabelgilar orqali pattern qidiradi; raw string qulay.",
+          "example_uz": "`r\"\\d+\"` bir yoki ko‘p raqamlar.",
+          "practice_uz": "Log matnidan 4 xonali yil va ID raqamlarni ajratadigan pattern yoz."
+        },
+        {
+          "id": "py-14-10",
+          "source_status": "planned",
+          "title_uz": "re.search vs re.match",
+          "theory_uz": "re.search istalgan joyda, re.match faqat boshida tekshiradi; fullmatch butun matn.",
+          "example_uz": "`re.search(r\"\\d+\",\"ID42\")` mos, match yo‘q.",
+          "practice_uz": "`abc123`, `123abc`, `123` uchun search/match/fullmatch natijalarini taqqosla."
+        },
+        {
+          "id": "py-14-11",
+          "source_status": "planned",
+          "title_uz": "re.findall va re.sub",
+          "theory_uz": "findall mosliklarni ro‘yxat qiladi, sub mosliklarni almashtiradi.",
+          "example_uz": "`re.sub(r\"\\s+\",\" \",\"a   b\")` → `a b`.",
+          "practice_uz": "Matndan barcha raqamlarni ajrat; ortiqcha whitespace ni bitta bo‘sh joyga keltir."
+        },
+        {
+          "id": "py-14-12",
+          "source_status": "planned",
+          "title_uz": "Greedy va non-greedy",
+          "theory_uz": "Greedy quantifier imkon qadar ko‘p, non-greedy imkon qadar kam moslik oladi.",
+          "example_uz": "`<.*>` va `<.*?>` ni `<b>x</b>` da taqqosla.",
+          "practice_uz": "Ikki quoted qiymatli logdan faqat ichki matnlarni ajrat; HTML parser o‘rnida regexni umumlashtirma."
+        },
+        {
+          "id": "py-14-13",
+          "source_status": "planned",
+          "title_uz": "Context manager nima?",
+          "theory_uz": "Context manager resurs ochish/yopish kabi vaqtinchalik holatni boshqaradi.",
+          "example_uz": "`with open(\"x.txt\") as f: ...`",
+          "practice_uz": "Fayl ochilgan va yopilgan holatini tekshir; exception bo‘lsa ham yopilishini kuzat."
+        },
+        {
+          "id": "py-14-14",
+          "source_status": "planned",
+          "title_uz": "with blokining hayot sikli",
+          "theory_uz": "with enter orqali kiradi, exit orqali chiqadi; exit exception haqida ma’lumot oladi.",
+          "example_uz": "`with resource as value:` blok tugaganda __exit__ chaqiriladi.",
+          "practice_uz": "Oddiy trace kontekstida enter, body, exit ketma-ketligini yoz; bodyda xato holatini ham tahlil qil."
+        },
+        {
+          "id": "py-14-15",
+          "source_status": "planned",
+          "title_uz": "Custom context manager (__enter__/__exit__)",
+          "theory_uz": "Custom manager __enter__ context qiymatini qaytaradi, __exit__ cleanup qiladi; True qaytarsa exception bosilishi mumkin.",
+          "example_uz": "`def __enter__(self): return self`; `def __exit__(self,*exc): return False`",
+          "practice_uz": "Timer context manager yoz; xato bo‘lsa ham elapsed vaqtni chiqar, xatoni yashirma."
+        },
+        {
+          "id": "py-14-16",
+          "source_status": "planned",
+          "title_uz": "contextlib.contextmanager",
+          "theory_uz": "contextlib.contextmanager generator yordamida context manager yaratadi; yield oldi setup, finally cleanup.",
+          "example_uz": "`@contextmanager` / `def managed():` ichida `try: yield value` va `finally: cleanup()`.",
+          "practice_uz": "Vaqtinchalik log fayli ochadigan manager yoz; cleanup doim ishlasin."
+        },
+        {
+          "id": "py-14-17",
+          "source_status": "planned",
+          "title_uz": "Procedural, functional va OOP yondashuvlari",
+          "theory_uz": "Procedural amallar ketma-ketligi, functional transformlar, OOP state va metodlar asosida quriladi.",
+          "example_uz": "Bir xil ball hisobini loop, map va Student class bilan ifodalash.",
+          "practice_uz": "Bir datasetni uch usulda hisobla; o‘qilish, state va testlanish bo‘yicha trade-off yoz."
+        }
+      ]
+    },
+    {
+      "id": "PY-15",
+      "order": 15,
+      "track": "Core (Asosiy)",
+      "title_uz": "Python muhitlari va paketlash",
+      "lesson_count": 18,
+      "assessment": {
+        "title_uz": "pyproject.toml bilan CLI paket",
+        "requirements_uz": "Calc CLI paket: src layout, pyproject, entry point, dependency va README; wheel build.",
+        "acceptance_cases_uz": "Toza venvda wheel install; CLI 2+3→5; import ishlaydi; README setup qayta bajariladi.",
+        "constraints_uz": "Bitta package manager asosiy; qolganlari overview; lock/reproducibility tanlovini izohla."
+      },
+      "lessons": [
+        {
+          "id": "py-15-01",
+          "source_status": "planned",
+          "title_uz": "PyPI nima?",
+          "theory_uz": "PyPI Python paketlarining ommaviy indeksi; paket ishonchliligi va litsenziyasini tekshir.",
+          "example_uz": "`https://pypi.org/` orqali package metadata ko‘rish.",
+          "practice_uz": "requests paketining rasmiy nomi, versiya talabi va litsenziyasini tekshir; o‘xshash nomli paketlardan saqlan."
+        },
+        {
+          "id": "py-15-02",
+          "source_status": "planned",
+          "title_uz": "pip install / uninstall",
+          "theory_uz": "pip Python muhitiga paket o‘rnatadi yoki o‘chiradi; python -m pip kerakli interpreterga bog‘laydi.",
+          "example_uz": "`python -m pip install requests`; `python -m pip uninstall requests`",
+          "practice_uz": "Test virtual muhitda paketni o‘rnat, import qil va o‘chir; tizim muhitini buzma."
+        },
+        {
+          "id": "py-15-03",
+          "source_status": "planned",
+          "title_uz": "pip freeze qachon kerak?",
+          "theory_uz": "pip freeze joriy muhitdagi o‘rnatilgan versiyalar snapshotini chiqaradi; universal lockfile emas.",
+          "example_uz": "`python -m pip freeze > requirements.txt`",
+          "practice_uz": "Toza muhitda ikki paket o‘rnat, freeze natijasida transitive paketlarni top."
+        },
+        {
+          "id": "py-15-04",
+          "source_status": "planned",
+          "title_uz": "venv yaratish",
+          "theory_uz": "venv loyiha uchun interpreter bilan bog‘liq alohida paket muhitini yaratadi.",
+          "example_uz": "`python -m venv .venv`",
+          "practice_uz": "Ikki loyihaga alohida .venv yarat va python yo‘lini tekshir."
+        },
+        {
+          "id": "py-15-05",
+          "source_status": "planned",
+          "title_uz": "Virtual muhitni faollashtirish",
+          "theory_uz": "Activation shell PATHini muhit interpreteriga yo‘naltiradi; activation majburiy emas.",
+          "example_uz": "PowerShell: `.\\.venv\\Scripts\\Activate.ps1`; Unix: `source .venv/bin/activate`",
+          "practice_uz": "Mühitni faollashtir, `python -m pip --version` ni tekshir, deactivate qil. Windows policy bloklasa to‘g‘ridan-to‘g‘ri .venv interpreterini ishlat."
+        },
+        {
+          "id": "py-15-06",
+          "source_status": "planned",
+          "title_uz": "Virtual environment nega kerak?",
+          "theory_uz": "Virtual environment dependency konfliktini kamaytiradi va loyiha muhitini ajratadi.",
+          "example_uz": "A loyihada package 1.x, B da 2.x alohida muhitlar.",
+          "practice_uz": "Ikki muhitga turli mos paket versiyasini o‘rnat; bir-biriga ta’sir qilmasligini tekshir."
+        },
+        {
+          "id": "py-15-07",
+          "source_status": "planned",
+          "title_uz": "requirements.txt",
+          "theory_uz": "requirements.txt pip uchun dependency ro‘yxati; exact yoki diapazon talablarini yozishi mumkin.",
+          "example_uz": "`python -m pip install -r requirements.txt`",
+          "practice_uz": "requirements.txt dan toza muhitni qayta tikla; loyiha importlarini tekshir."
+        },
+        {
+          "id": "py-15-08",
+          "source_status": "planned",
+          "title_uz": "pyproject.toml nima?",
+          "theory_uz": "pyproject.toml packaging metadata, build system va vosita konfiguratsiyasi uchun standart fayl.",
+          "example_uz": "`[project]` ostida `name`, `version`, `dependencies`.",
+          "practice_uz": "CLI loyiha uchun minimal pyproject yoz; build backendni qo‘sh va `[project.scripts]` entry point belgilashni mashq qil."
+        },
+        {
+          "id": "py-15-09",
+          "source_status": "planned",
+          "title_uz": "Dependency versions va lockfiles",
+          "theory_uz": "Versiya constraints mos versiyalarni, lockfile yechilgan versiyalarni qayta tiklashga xizmat qiladi; vositalarning formatlari turlicha.",
+          "example_uz": "`requests>=2,<3` diapazon misoli.",
+          "practice_uz": "Exact pin va diapazonni taqqosla; lockfile nima uchun commit qilinishini izohla."
+        },
+        {
+          "id": "py-15-10",
+          "source_status": "planned",
+          "title_uz": "uv package manager asoslari",
+          "theory_uz": "uv virtual muhit, dependency va Python loyiha ish oqimini boshqaruvchi vosita.",
+          "example_uz": "`uv init`; `uv add requests`; `uv run python main.py`",
+          "practice_uz": "Alohida test papkada uv loyiha yarat, uv.lock ni kuzat va `uv sync --locked` bilan tekshir."
+        },
+        {
+          "id": "py-15-11",
+          "source_status": "planned",
+          "title_uz": "Poetry haqida tushuncha",
+          "theory_uz": "Poetry dependency resolution, lockfile va packagingni boshqaradi.",
+          "example_uz": "`poetry init`; `poetry add requests`; `poetry run python main.py`",
+          "practice_uz": "Test loyihasida dependency qo‘shish, lock va run bosqichlarini uv/pip bilan solishtir."
+        },
+        {
+          "id": "py-15-12",
+          "source_status": "planned",
+          "title_uz": "Conda nima va qachon kerak?",
+          "theory_uz": "Conda environment va package manager, Python bo‘lmagan native dependencylar uchun ham qulay.",
+          "example_uz": "`conda create -n demo python=3.12`; `conda activate demo`",
+          "practice_uz": "Ilmiy hisoblash loyihasida conda yoki venv tanloviga sabab yoz; conda mavjud bo‘lsa muhit yarat."
+        },
+        {
+          "id": "py-15-13",
+          "source_status": "planned",
+          "title_uz": "pdm tushunchasi",
+          "theory_uz": "pdm pyproject va lock asosidagi Python project manager.",
+          "example_uz": "`pdm init`; `pdm add requests`; `pdm run python main.py`",
+          "practice_uz": "PDM workflow bilan dependency va lock vazifasini tushuntir; mavjud bo‘lsa test loyiha yarat."
+        },
+        {
+          "id": "py-15-14",
+          "source_status": "planned",
+          "title_uz": "pyenv Python versiyalari",
+          "theory_uz": "pyenv Python interpreter versiyalarini boshqaradi; Windowsda odatiy pyenv Unix bilan bir xil emas (pyenv-win yoki launcher alternativ).",
+          "example_uz": "Unix: `pyenv versions`; `pyenv local 3.12.0` (versiya o‘rnatilgan bo‘lsa).",
+          "practice_uz": "Kompyuterdagi interpreterlar ro‘yxatini ol va loyiha uchun 3.12 ni tanlash usulini yoz."
+        },
+        {
+          "id": "py-15-15",
+          "source_status": "planned",
+          "title_uz": "pipx CLI vositalar uchun",
+          "theory_uz": "pipx Python CLI ilovalarini izolyatsiyalangan muhitlarga o‘rnatadi.",
+          "example_uz": "`pipx install black`; `pipx list`",
+          "practice_uz": "CLI vosita bilan import qilinadigan kutubxona farqini ayt; test CLI ni pipx orqali o‘rnat."
+        },
+        {
+          "id": "py-15-16",
+          "source_status": "planned",
+          "title_uz": "Package vs application",
+          "theory_uz": "Package qayta ishlatiladigan tarqatma kod bo‘lishi mumkin; application ishga tushiriladigan mahsulot, ikkalasi ustma-ust kelishi mumkin.",
+          "example_uz": "Library `calc.add`, application `calc-cli`.",
+          "practice_uz": "Hisoblash paketini import qilinadigan API va CLI entry pointga ajrat."
+        },
+        {
+          "id": "py-15-17",
+          "source_status": "planned",
+          "title_uz": "Build va wheel tushunchasi",
+          "theory_uz": "Build distributable artifact yaratadi; wheel odatda o‘rnatishga tayyor paket formati.",
+          "example_uz": "`python -m build` (build o‘rnatilgan bo‘lsa); `dist/*.whl`.",
+          "practice_uz": "Minimal package build qil; wheelni boshqa toza muhitga o‘rnat va import/CLI ni tekshir."
+        },
+        {
+          "id": "py-15-18",
+          "source_status": "planned",
+          "title_uz": "Reproducible environment qoidalari",
+          "theory_uz": "Reproducible muhit Python talabi, dependencies, lock/pin, platform tafovuti va setup yo‘riqnomasi bilan ta’minlanadi.",
+          "example_uz": "README + pyproject.toml + lockfile.",
+          "practice_uz": "Yangidan clone qilingan loyiha uchun 5 qadamli setup yoz va toza muhitda sinab chiq."
+        }
+      ]
+    },
+    {
+      "id": "PY-16",
+      "order": 16,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "HTTP va Python web frameworklari",
+      "lesson_count": 21,
+      "assessment": {
+        "title_uz": "REST API: notes / todos",
+        "requirements_uz": "Local Notes/Todos REST API (FastAPI), CRUD, Pydantic request/response, in-memory storage, docs.",
+        "acceptance_cases_uz": "POST→201; GET→200; unknown→404; invalid title→422; DELETE→204; query filter.",
+        "constraints_uz": "API kontrakt, status va Swagger; real auth/production deployment scopega kirmaydi."
+      },
+      "lessons": [
+        {
+          "id": "py-16-01",
+          "source_status": "planned",
+          "title_uz": "Web server nima?",
+          "theory_uz": "Web server HTTP so‘rovlarini qabul qilib response qaytaradi; framework ilova kodini tashkil qiladi.",
+          "example_uz": "Browser → server → response.",
+          "practice_uz": "Notes ilovasi uchun client, server va data store vazifalarini chiz."
+        },
+        {
+          "id": "py-16-02",
+          "source_status": "planned",
+          "title_uz": "HTTP request va response",
+          "theory_uz": "Request method, URL, headers va ixtiyoriy bodydan; response status, headers va bodydan iborat.",
+          "example_uz": "`GET /notes` → `200 OK` + JSON.",
+          "practice_uz": "Note yaratish va o‘qish uchun request/response tarkibini qog‘ozda yoz."
+        },
+        {
+          "id": "py-16-03",
+          "source_status": "planned",
+          "title_uz": "GET va POST farqi",
+          "theory_uz": "GET odatda o‘qish uchun safe, POST serverda qayta ishlash yoki yangi resurs yaratish uchun.",
+          "example_uz": "`GET /notes/1`; `POST /notes` body `{\"title\":\"A\"}`.",
+          "practice_uz": "O‘qish, yaratish va qidirish amallariga method tanla; GETni yozish uchun ishlatma."
+        },
+        {
+          "id": "py-16-04",
+          "source_status": "planned",
+          "title_uz": "Status codes 2xx/4xx/5xx",
+          "theory_uz": "2xx muvaffaqiyat, 4xx client xatosi, 5xx server xatosi.",
+          "example_uz": "200 OK, 201 Created, 404 Not Found, 500 Internal Server Error.",
+          "practice_uz": "6 API holati uchun status tanla: create, not found, invalid input, server xatosi va boshqalar."
+        },
+        {
+          "id": "py-16-05",
+          "source_status": "planned",
+          "title_uz": "JSON API body",
+          "theory_uz": "JSON body ma’lumot almashish formatidir; Content-Type application/json ko‘rsatiladi.",
+          "example_uz": "`{\"title\":\"Note\",\"done\":false}`",
+          "practice_uz": "Note uchun valid JSON va 3 invalid JSON misoli yarat; Python dict bilan farqini izohla."
+        },
+        {
+          "id": "py-16-06",
+          "source_status": "planned",
+          "title_uz": "REST API nimani anglatadi?",
+          "theory_uz": "REST resurslar, stateless interaction va standart HTTP semantics asosidagi arxitektura uslubi.",
+          "example_uz": "`GET /notes/1`, `DELETE /notes/1`.",
+          "practice_uz": "Todo uchun CRUD endpoint jadvali tuz; fe’lni URLga keraksiz qo‘shma."
+        },
+        {
+          "id": "py-16-07",
+          "source_status": "planned",
+          "title_uz": "Flask minimal route",
+          "theory_uz": "Flask WSGI mikroframework; route decorator URLni funksiya bilan bog‘laydi.",
+          "example_uz": "`from flask import Flask`; `app=Flask(__name__)`; `@app.get(\"/\")` / `def home(): return {\"ok\":True}`",
+          "practice_uz": "Flask o‘rnatilgan muhitda home va health route yoz; `flask --app main run` bilan lokal sinov."
+        },
+        {
+          "id": "py-16-08",
+          "source_status": "planned",
+          "title_uz": "FastAPI minimal endpoint",
+          "theory_uz": "FastAPI ASGI framework, annotationlardan validation va OpenAPI yaratadi.",
+          "example_uz": "`from fastapi import FastAPI`; `app=FastAPI()`; `@app.get(\"/\")` / `def home(): return {\"ok\":True}`",
+          "practice_uz": "`uvicorn main:app --reload` bilan local serverni ishga tushir, /docs orqali GET sinov."
+        },
+        {
+          "id": "py-16-09",
+          "source_status": "planned",
+          "title_uz": "Django loyiha va app tushunchasi",
+          "theory_uz": "Django project umumiy settings va URL konfiguratsiyasi, app muayyan funksional bo‘lim.",
+          "example_uz": "`django-admin startproject config .`; `python manage.py startapp notes`",
+          "practice_uz": "Test Django loyihasida notes app yarat; project va app fayllarini ajratib tushuntir."
+        },
+        {
+          "id": "py-16-10",
+          "source_status": "planned",
+          "title_uz": "FastAPI vs Flask vs Django trade-off",
+          "theory_uz": "Flask kichik moslashuvchan app, FastAPI typed API, Django integratsiyalangan full-stack imkoniyatlari bilan qulay.",
+          "example_uz": "Admin/ORM kerak bo‘lsa Django; typed JSON API uchun FastAPI.",
+          "practice_uz": "3 loyiha uchun framework tanla va dependency, jamoa tajribasi, feature trade-offni yoz."
+        },
+        {
+          "id": "py-16-11",
+          "source_status": "planned",
+          "title_uz": "Route parameters",
+          "theory_uz": "Route parameter URL yo‘lining dinamik qismi.",
+          "example_uz": "`@app.get(\"/notes/{note_id}\")` / `def get_note(note_id:int): ...`",
+          "practice_uz": "ID orqali in-memory note topuvchi endpoint yoz; topilmagan IDni alohida ishlov ber."
+        },
+        {
+          "id": "py-16-12",
+          "source_status": "planned",
+          "title_uz": "Query parameters",
+          "theory_uz": "Query parameter URLdagi ? dan keyingi option/filter.",
+          "example_uz": "`GET /notes?limit=5`; `def list_notes(limit:int=10): ...`",
+          "practice_uz": "limit va q orqali notes listini chekla va qidir; limit manfiy bo‘lmasin."
+        },
+        {
+          "id": "py-16-13",
+          "source_status": "planned",
+          "title_uz": "Request body",
+          "theory_uz": "Request body odatda POST/PATCH kabi so‘rovda murakkab ma’lumot oladi; FastAPI Pydantic modeldan parse qiladi.",
+          "example_uz": "`class Note(BaseModel): title:str`; `def create(note:Note): ...`",
+          "practice_uz": "Title va content modelidan note yarat; missing title holatini sinab ko‘r."
+        },
+        {
+          "id": "py-16-14",
+          "source_status": "planned",
+          "title_uz": "Response model",
+          "theory_uz": "Response model chiqish tuzilmasini belgilaydi, validatsiya va filtrlashga yordam beradi.",
+          "example_uz": "`@app.get(\"/notes/{id}\",response_model=NoteOut)`",
+          "practice_uz": "Ichki maydonni public response modeldan chiqarib tashla; maxfiy ma’lumotni responsega bermaslikni tekshir."
+        },
+        {
+          "id": "py-16-15",
+          "source_status": "planned",
+          "title_uz": "Pydantic validation asoslari",
+          "theory_uz": "Pydantic model runtime validation va parsing qiladi; constraints orqali qiymatni cheklaydi.",
+          "example_uz": "`from pydantic import BaseModel,Field`; `title:str=Field(min_length=1)`",
+          "practice_uz": "Note title bo‘sh yoki id noto‘g‘ri tipda bo‘lsa qanday validation javobi chiqishini tekshir."
+        },
+        {
+          "id": "py-16-16",
+          "source_status": "planned",
+          "title_uz": "API errors va HTTPException",
+          "theory_uz": "HTTPException clientga status va detail bilan kutilgan API xatosini bildiradi.",
+          "example_uz": "`raise HTTPException(status_code=404,detail=\"Note not found\")`",
+          "practice_uz": "Notes CRUDda unknown ID uchun 404 va duplicate uchun 409 qaytar."
+        },
+        {
+          "id": "py-16-17",
+          "source_status": "planned",
+          "title_uz": "OpenAPI va Swagger UI",
+          "theory_uz": "OpenAPI API kontraktining mashina o‘qiydigan sxemasi; Swagger UI interaktiv hujjat.",
+          "example_uz": "FastAPI `/openapi.json` va `/docs`.",
+          "practice_uz": "Swaggerda POST va GETni sinab, schema va statuslarni tekshir."
+        },
+        {
+          "id": "py-16-18",
+          "source_status": "planned",
+          "title_uz": "ASGI va WSGI boshlang‘ich farqi",
+          "theory_uz": "WSGI sinxron web interfeysi; ASGI async va uzoq ulanishlarni ham qo‘llab-quvvatlaydi.",
+          "example_uz": "Flask WSGI; FastAPI ASGI.",
+          "practice_uz": "Websocket va oddiy CRUD uchun qaysi interfeys mosligini izohla; ASGI o‘zi barcha kodni async qilmasligini ayt."
+        },
+        {
+          "id": "py-16-19",
+          "source_status": "planned",
+          "title_uz": "Plotly Dash qayerda ishlatiladi?",
+          "theory_uz": "Plotly Dash interaktiv analitik dashboard yaratish frameworki.",
+          "example_uz": "`from dash import Dash,html`; `app=Dash()`; `app.layout=html.H1(\"Report\")`",
+          "practice_uz": "3 ta kategoriyali lokal datasetdan oddiy dashboard layout rejalashtir; Dash o‘rnatilsa ishga tushir."
+        },
+        {
+          "id": "py-16-20",
+          "source_status": "planned",
+          "title_uz": "Pyramid, aiohttp, Tornado, Sanic, gevent overview",
+          "theory_uz": "Pyramid moslashuvchan web framework; aiohttp async HTTP client/server; Tornado async networking/web; Sanic async web; gevent greenlet asosidagi concurrency kutubxonasi.",
+          "example_uz": "Har biri bir xil kategoriya emas: gevent framework emas.",
+          "practice_uz": "5 vositani framework/client-server/concurrency bo‘yicha tasnifla, bitta use-case yoz."
+        },
+        {
+          "id": "py-16-21",
+          "source_status": "planned",
+          "title_uz": "Lokal REST API tekshirish",
+          "theory_uz": "Lokal API testida method, status, JSON va xato holatlari tekshiriladi.",
+          "example_uz": "`curl http://127.0.0.1:8000/notes` yoki Swagger /docs.",
+          "practice_uz": "Notes CRUD uchun create, list, get, update, delete va invalid input ketma-ketligini tekshir."
+        }
+      ]
+    },
+    {
+      "id": "PY-17",
+      "order": 17,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Concurrency: Thread, Process va Async",
+      "lesson_count": 21,
+      "assessment": {
+        "title_uz": "Parallel I/O downloader + CPU benchmark",
+        "requirements_uz": "Lokal mock HTTP API downloader va CPU hisoblash benchmarki; sequential/thread/process/async mos variantlar.",
+        "acceptance_cases_uz": "5 lokal I/O natija to‘liq; timeout xabari; CPU variantlarda bir xil hisob; worker limit.",
+        "constraints_uz": "Main guard; cancellation cleanup; median real performance; faqat lokal endpoint yoki ruxsatli resurs."
+      },
+      "lessons": [
+        {
+          "id": "py-17-01",
+          "source_status": "planned",
+          "title_uz": "Concurrency va parallelism farqi",
+          "theory_uz": "Concurrency bir nechta ishning vaqt oralig‘ida davom etishi; parallelism bir vaqtning o‘zida haqiqiy bajarilishi.",
+          "example_uz": "Bitta kassir navbatlarni almashtirishi vs ikki kassir.",
+          "practice_uz": "4 vazifani concurrent yoki parallel qilib chiz; qaysida tezlik nega oshishi mumkinligini yoz."
+        },
+        {
+          "id": "py-17-02",
+          "source_status": "planned",
+          "title_uz": "I/O-bound va CPU-bound farqi",
+          "theory_uz": "I/O-bound tashqi resursni kutadi, CPU-bound hisoblash bilan band.",
+          "example_uz": "HTTP/file I/O vs katta prime hisoblash.",
+          "practice_uz": "Download, image transform, database query, sortingni tasnifla; mos concurrency modelini taxmin qil."
+        },
+        {
+          "id": "py-17-03",
+          "source_status": "planned",
+          "title_uz": "CPython GIL haqida asosiy tushuncha",
+          "theory_uz": "CPython GIL odatiy GIL-enabled buildda bir vaqtning o‘zida Python bytecode bajaruvchi threadlarni cheklaydi; I/Oda GIL bo‘shashi mumkin.",
+          "example_uz": "2 pure-Python CPU thread odatda 2x tez emas.",
+          "practice_uz": "CPU loop va sleep I/O ni bir xil thread sonida solishtirish rejasini tuz."
+        },
+        {
+          "id": "py-17-04",
+          "source_status": "planned",
+          "title_uz": "GIL CPython versiyasiga bog‘liqligi",
+          "theory_uz": "GIL xatti-harakati Python build/versiya va extensionga bog‘liq; free-threaded buildlar mavjud, hamma muhitda GIL o‘chgan emas.",
+          "example_uz": "`import sys; print(sys.version)`; mavjud bo‘lsa `sys._is_gil_enabled()`.",
+          "practice_uz": "O‘zingdagi build haqida versiya va GIL holatini aniqlab yoz; universal xulosa qilma."
+        },
+        {
+          "id": "py-17-05",
+          "source_status": "planned",
+          "title_uz": "threading.Thread",
+          "theory_uz": "Thread bitta process ichidagi bajarilish oqimi. start boshlaydi, join tugashini kutadi.",
+          "example_uz": "`from threading import Thread`; `t=Thread(target=work); t.start(); t.join()`",
+          "practice_uz": "2 ta sleep bilan simulyatsiya qilingan I/O ishini thread orqali bajar; sequential vaqt bilan solishtir."
+        },
+        {
+          "id": "py-17-06",
+          "source_status": "planned",
+          "title_uz": "Thread shared state",
+          "theory_uz": "Threadlar process xotirasini ulashadi; mutable shared state xavf tug‘diradi.",
+          "example_uz": "Ikkita thread bitta `results` listdan foydalanishi.",
+          "practice_uz": "2 worker natijalarini alohida saqlash va shared containerga yozishni solishtir."
+        },
+        {
+          "id": "py-17-07",
+          "source_status": "planned",
+          "title_uz": "Race condition va Lock",
+          "theory_uz": "Race condition natija bajarilish tartibiga bog‘liq bo‘lganda yuz beradi; Lock critical sectionni himoyalaydi.",
+          "example_uz": "`with lock: counter += 1`",
+          "practice_uz": "Shared counterda read-modify-write orasida sun’iy kutish bilan race ko‘rsat; Lock bilan tuzat."
+        },
+        {
+          "id": "py-17-08",
+          "source_status": "planned",
+          "title_uz": "multiprocessing.Process",
+          "theory_uz": "Process alohida interpreter/xotira bilan ishlaydi; multiprocessing CPU ishlarni parallel bajarishi mumkin.",
+          "example_uz": "`from multiprocessing import Process`; main guard ichida start/join.",
+          "practice_uz": "Top-level worker bilan 2 ta hisobni processda bajar; Windows main guard shartini tekshir."
+        },
+        {
+          "id": "py-17-09",
+          "source_status": "planned",
+          "title_uz": "Process memory isolation",
+          "theory_uz": "Processlar odatda bir-birining oddiy Python obyektlarini ulashmaydi; IPC kerak.",
+          "example_uz": "`multiprocessing.Queue()` orqali natija uzatish.",
+          "practice_uz": "Child listga qo‘shgan qiymat parentda nega ko‘rinmasligini tekshir; Queue bilan uzat."
+        },
+        {
+          "id": "py-17-10",
+          "source_status": "planned",
+          "title_uz": "ProcessPoolExecutor",
+          "theory_uz": "ProcessPoolExecutor processlar poolida ishlaydi; funksiyalar picklable bo‘lishi kerak.",
+          "example_uz": "`with ProcessPoolExecutor() as pool: results=list(pool.map(work,inputs))`",
+          "practice_uz": "Main guard va top-level work bilan 4 CPU taskni poolda bajar, sequential bilan solishtir."
+        },
+        {
+          "id": "py-17-11",
+          "source_status": "planned",
+          "title_uz": "ThreadPoolExecutor",
+          "theory_uz": "ThreadPoolExecutor thread poolini boshqaradi; I/O ishlariga qulay.",
+          "example_uz": "`with ThreadPoolExecutor(max_workers=4) as pool: list(pool.map(work,inputs))`",
+          "practice_uz": "10 ta simulated I/O uchun 1,2,4 worker benchmark qil; barcha natijalarni saqla."
+        },
+        {
+          "id": "py-17-12",
+          "source_status": "planned",
+          "title_uz": "async def va await",
+          "theory_uz": "async def coroutine function, await kutish nuqtasida boshqaruvni event loopga berishi mumkin.",
+          "example_uz": "`async def work(): await asyncio.sleep(1)`",
+          "practice_uz": "Ikki async funksiyani yoz; avval navbat bilan await qil va vaqtni o‘lcha."
+        },
+        {
+          "id": "py-17-13",
+          "source_status": "planned",
+          "title_uz": "Coroutine nima?",
+          "theory_uz": "Coroutine async funksiyani chaqirganda olinadigan obyekt; await yoki schedule qilish kerak.",
+          "example_uz": "`c=work()` o‘zi ishni to‘liq bajarmaydi; `asyncio.run(c)`",
+          "practice_uz": "Coroutine yaratish va bajarish farqini log orqali ko‘rsat; unawaited coroutine qoldirma."
+        },
+        {
+          "id": "py-17-14",
+          "source_status": "planned",
+          "title_uz": "asyncio event loop",
+          "theory_uz": "Event loop tayyor tasklarni ishlatadi, I/O kutayotganlarini keyin davom ettiradi.",
+          "example_uz": "`asyncio.run(main())` loopni boshqaradi.",
+          "practice_uz": "A va B tasklari turli sleep bilan chiqargan loglar tartibini taxmin qil."
+        },
+        {
+          "id": "py-17-15",
+          "source_status": "planned",
+          "title_uz": "asyncio.create_task va gather",
+          "theory_uz": "create_task coroutine ni schedule qiladi; gather bir nechta awaitable natijasini tartibda yig‘adi.",
+          "example_uz": "`results=await asyncio.gather(work(1),work(2))`",
+          "practice_uz": "3 simulated downloadni parallel kut; natijalar input tartibida bo‘lishini tekshir."
+        },
+        {
+          "id": "py-17-16",
+          "source_status": "planned",
+          "title_uz": "Task cancellation",
+          "theory_uz": "Task cancellation cooperative; CancelledError await nuqtasida yetkazilishi mumkin, cleanup finally da.",
+          "example_uz": "`task.cancel()`; `await task` (CancelledErrorni boshqar).",
+          "practice_uz": "Uzoq taskni bekor qil; finally ishlashini tekshir va cancellationni noto‘g‘ri yutma."
+        },
+        {
+          "id": "py-17-17",
+          "source_status": "planned",
+          "title_uz": "Timeout qo‘llash",
+          "theory_uz": "Timeout kutiladigan vaqtni cheklaydi; asyncio.wait_for timeoutda taskni cancel qiladi va TimeoutError chiqaradi.",
+          "example_uz": "`await asyncio.wait_for(work(),timeout=0.1)`",
+          "practice_uz": "Tez va sekin task uchun timeout qo‘y; muvaffaqiyat va timeoutni alohida qayta ishlov ber."
+        },
+        {
+          "id": "py-17-18",
+          "source_status": "planned",
+          "title_uz": "Blocking call ichida async muammosi",
+          "theory_uz": "Blocking call event loopni to‘sadi; async API yoki thread offloading kerak.",
+          "example_uz": "`time.sleep(1)` vs `await asyncio.sleep(1)`; `await asyncio.to_thread(blocking_fn)`.",
+          "practice_uz": "Async task ichida blocking sleep ta’sirini o‘lcha va almashtir."
+        },
+        {
+          "id": "py-17-19",
+          "source_status": "planned",
+          "title_uz": "aiohttp haqida tushuncha",
+          "theory_uz": "aiohttp async HTTP client/server kutubxonasi; client session qayta ishlatiladi va yopiladi.",
+          "example_uz": "`async with aiohttp.ClientSession() as s:` ichida `async with s.get(url) as r: ...`",
+          "practice_uz": "Lokal test APIga 5 async GET yubor; timeout, status va concurrency limitni boshqar."
+        },
+        {
+          "id": "py-17-20",
+          "source_status": "planned",
+          "title_uz": "Thread vs process vs asyncio tanlovi",
+          "theory_uz": "Thread blocking I/O, process pure-Python CPU, asyncio async I/O uchun ko‘pincha yaxshi; workload va buildga qarab benchmark qil.",
+          "example_uz": "Downloader → async/thread; CPU loop → process.",
+          "practice_uz": "3 xil workload uchun tanlov jadvali tuz, overhead va xotirani ham hisobga ol."
+        },
+        {
+          "id": "py-17-21",
+          "source_status": "planned",
+          "title_uz": "Oddiy I/O va CPU benchmark",
+          "theory_uz": "Benchmarkda bir xil vazifa, input, worker soni, warm-up, takroriy o‘lchov va to‘g‘ri natija kerak.",
+          "example_uz": "`time.perf_counter()` bilan elapsed.",
+          "practice_uz": "Sequential, thread, process va mos async variantlar uchun median vaqtni chiqar; tezlashuvni real o‘lchovdan hisobla."
+        }
+      ]
+    },
+    {
+      "id": "PY-18",
+      "order": 18,
+      "track": "Core (Asosiy)",
+      "title_uz": "Static typing va data validation",
+      "lesson_count": 16,
+      "assessment": {
+        "title_uz": "Pydantic schema bilan API input",
+        "requirements_uz": "Pydantic Product input: name, price, quantity; static annotations va runtime schema; kichik API endpoint.",
+        "acceptance_cases_uz": "Valid → 201; price=0, qty=-1, missing name → 422; optional field qoidasi.",
+        "constraints_uz": "TypedDict vs model farqini tushuntir; mypy/pyright natijasi va validation cases; pytest majburiy emas."
+      },
+      "lessons": [
+        {
+          "id": "py-18-01",
+          "source_status": "planned",
+          "title_uz": "Dynamic typing va annotation farqi",
+          "theory_uz": "Python dynamic typing: qiymatning tipi runtime mavjud; annotation odatda runtime enforcement emas.",
+          "example_uz": "`x:int=5; x=\"text\"` runtime o‘tishi mumkin, checker xato beradi.",
+          "practice_uz": "Type hint bilan noto‘g‘ri assignmentni sinab ko‘r va static/runtime farqini yoz."
+        },
+        {
+          "id": "py-18-02",
+          "source_status": "planned",
+          "title_uz": "Type hint nima?",
+          "theory_uz": "Type hint parametr, return va variable kutilgan tipini ifodalaydi.",
+          "example_uz": "`def add(a:int,b:int)->int: return a+b`",
+          "practice_uz": "Narx hisoblash va ism formatlash funksiyalariga type hint yoz."
+        },
+        {
+          "id": "py-18-03",
+          "source_status": "planned",
+          "title_uz": "list[str] va dict[str,int]",
+          "theory_uz": "Generik built-in annotation list va dict element tipini ifodalaydi.",
+          "example_uz": "`names:list[str]=[\"Ali\"]`; `scores:dict[str,int]={\"Ali\":90}`",
+          "practice_uz": "Student ballari uchun typed dict va list yoz; noto‘g‘ri tipli elementni checkerda tekshir."
+        },
+        {
+          "id": "py-18-04",
+          "source_status": "planned",
+          "title_uz": "Optional / None typing",
+          "theory_uz": "Optional[T] yoki T | None qiymat T yoki None bo‘lishi mumkinligini aytadi; default berilishi alohida.",
+          "example_uz": "`def find(id:int)->str | None: ...`",
+          "practice_uz": "Qidiruv funksiyasidan None qaytishi mumkin; chaqiruvchi None ni tekshirsin."
+        },
+        {
+          "id": "py-18-05",
+          "source_status": "planned",
+          "title_uz": "Union types",
+          "theory_uz": "Union bir nechta ruxsat etilgan tipni ifodalaydi; narrowing orqali aniq tip ajratiladi.",
+          "example_uz": "`def show(x:int | str)->str: return str(x)`",
+          "practice_uz": "int yoki str qabul qilib, isinstance bilan turiga mos qayta ishlovchi funksiya yoz."
+        },
+        {
+          "id": "py-18-06",
+          "source_status": "planned",
+          "title_uz": "Callable type hint",
+          "theory_uz": "Callable funksiya signature ni annotationda ifodalaydi.",
+          "example_uz": "`from collections.abc import Callable`; `def apply(f:Callable[[int],int],x:int)->int: return f(x)`",
+          "practice_uz": "Typed apply uchun ikkita mos, bitta mos bo‘lmagan callback yoz; checkerda sinov."
+        },
+        {
+          "id": "py-18-07",
+          "source_status": "planned",
+          "title_uz": "TypedDict nima?",
+          "theory_uz": "TypedDict dict kalitlari va qiymat turlarining static sxemasini beradi; runtime validation qilmaydi.",
+          "example_uz": "`class User(TypedDict): name:str; age:int`",
+          "practice_uz": "User TypedDict yoz; noto‘g‘ri key va tip holatini static checkerga ber."
+        },
+        {
+          "id": "py-18-08",
+          "source_status": "planned",
+          "title_uz": "Protocol tushunchasi",
+          "theory_uz": "Protocol structural typing: kerakli metodlar mavjud bo‘lsa mos deb qaraladi.",
+          "example_uz": "`class Sender(Protocol):` ichida `def send(self,msg:str)->None: ...`",
+          "practice_uz": "Inheritance talab qilmaydigan ikkita sender yoz; Protocol bilan tekshir."
+        },
+        {
+          "id": "py-18-09",
+          "source_status": "planned",
+          "title_uz": "Generic type tushunchasi",
+          "theory_uz": "Generic tip parametr orqali kirish-chiqish bog‘liqligini saqlaydi.",
+          "example_uz": "`from typing import TypeVar`; `T=TypeVar(\"T\")`; `def first(xs:list[T])->T: return xs[0]`",
+          "practice_uz": "int va str listlar uchun first ishlat; return tipusini checker orqali tekshir."
+        },
+        {
+          "id": "py-18-10",
+          "source_status": "planned",
+          "title_uz": "mypy statik tekshirish",
+          "theory_uz": "mypy annotation asosida static xatolarni topadi.",
+          "example_uz": "`python -m mypy main.py` (mypy o‘rnatilgan bo‘lsa).",
+          "practice_uz": "3 tipi noto‘g‘ri funksiyani yoz, mypy xabarini tushun va tuzat."
+        },
+        {
+          "id": "py-18-11",
+          "source_status": "planned",
+          "title_uz": "pyright statik tekshirish",
+          "theory_uz": "Pyright static checker; IDE integratsiyasi va CLI mavjud.",
+          "example_uz": "`pyright main.py` (o‘rnatilgan bo‘lsa).",
+          "practice_uz": "Bir xil typed faylni mypy va Pyright bilan tekshir; konfiguratsiya farqini qayd et."
+        },
+        {
+          "id": "py-18-12",
+          "source_status": "planned",
+          "title_uz": "pyre overview",
+          "theory_uz": "Pyre Python static type checker; loyiha konfiguratsiyasi va joriy qo‘llab-quvvatlashini rasmiy docsdan tekshirish kerak.",
+          "example_uz": "Pyre annotation tekshiruvchisi, runtime validator emas.",
+          "practice_uz": "mypy, pyright, pyre uchun maqsad, setup va cheklov bo‘yicha qisqa taqqoslash yoz."
+        },
+        {
+          "id": "py-18-13",
+          "source_status": "planned",
+          "title_uz": "Pydantic BaseModel",
+          "theory_uz": "Pydantic BaseModel kiruvchi data ni runtime parse/validate qiladi.",
+          "example_uz": "`class User(BaseModel): name:str; age:int`; `User(name=\"Ali\",age=20)`",
+          "practice_uz": "User model yarat, valid va invalid inputlarni sinab ko‘r; `model_dump()` natijasini chiqar."
+        },
+        {
+          "id": "py-18-14",
+          "source_status": "planned",
+          "title_uz": "Pydantic Field va validation",
+          "theory_uz": "Field constraint va metadata beradi; strict tipi majburlash uchun alohida sozlanadi.",
+          "example_uz": "`age:int=Field(ge=0,le=120)`",
+          "practice_uz": "Product modelda name min_length, price > 0, qty >=0 bo‘lsin; chegaralarni tekshir."
+        },
+        {
+          "id": "py-18-15",
+          "source_status": "planned",
+          "title_uz": "Type checking runtime kafolati emas",
+          "theory_uz": "Static typing xatolarni oldindan aniqlashga yordam beradi, tashqi data uchun runtime validation zarur.",
+          "example_uz": "TypedDict tashqi JSONni avtomatik tekshirmaydi, BaseModel tekshiradi.",
+          "practice_uz": "Noto‘g‘ri JSONni typed dict annotation va Pydantic orqali sinab, farqini tushuntir."
+        },
+        {
+          "id": "py-18-16",
+          "source_status": "planned",
+          "title_uz": "Input validation uchun test",
+          "theory_uz": "Validation test normal, invalid, boundary va missing qiymatlarni qamraydi.",
+          "example_uz": "age=0,120,121,-1 va missing; pytest keyingi phase da.",
+          "practice_uz": "Pydantic User uchun try/except yoki assert bilan testlar yoz; ValidationErrorni alohida tekshir."
+        }
+      ]
+    },
+    {
+      "id": "PY-19",
+      "order": 19,
+      "track": "Core (Asosiy)",
+      "title_uz": "Testing, linting va hujjat",
+      "lesson_count": 18,
+      "assessment": {
+        "title_uz": "Testlangan, hujjatlangan kutubxona",
+        "requirements_uz": "Calc yoki notes utility kutubxonasi: docstring, README, pytest fixtures/parametrize/mock, lint, CI.",
+        "acceptance_cases_uz": "Normal, boundary, invalid test; exception test; network mock; CI check.",
+        "constraints_uz": "Coverage maqsadi masalan 80% (kurs uchun), lekin asosiy behavior/test quality ustuvor; real report."
+      },
+      "lessons": [
+        {
+          "id": "py-19-01",
+          "source_status": "planned",
+          "title_uz": "PEP 8 nima?",
+          "theory_uz": "PEP 8 Python kodining o‘qiladigan uslubi uchun qo‘llanma, til sintaksisining o‘zi emas.",
+          "example_uz": "`total_price` snake_case, `StudentRecord` PascalCase.",
+          "practice_uz": "Noaniq nom va notekis whitespace bilan yozilgan funksiyani uslub bo‘yicha yaxshila."
+        },
+        {
+          "id": "py-19-02",
+          "source_status": "planned",
+          "title_uz": "ruff lint va format",
+          "theory_uz": "Ruff lint xatolar/uslubni topadi, format kodni formatlaydi.",
+          "example_uz": "`ruff check .`; `ruff format .`",
+          "practice_uz": "Test papkada unused import qo‘sh, ruff bilan top va formatla; mavjud loyihani ruxsatsiz mass o‘zgartirma."
+        },
+        {
+          "id": "py-19-03",
+          "source_status": "planned",
+          "title_uz": "Black formatter",
+          "theory_uz": "Black avtomatik code formatter; uslub tanlovlarini kamaytiradi.",
+          "example_uz": "`black --check .`; `black .`",
+          "practice_uz": "Bir faylda Black formatdan oldin/keyin diffni ko‘r; kod xatti-harakati o‘zgarmasligini tekshir."
+        },
+        {
+          "id": "py-19-04",
+          "source_status": "planned",
+          "title_uz": "pylint / yapf overview",
+          "theory_uz": "Pylint static lint va ko‘proq diagnostika; YAPF formatter.",
+          "example_uz": "`pylint main.py`; `yapf --diff main.py` (vositalar o‘rnatilsa).",
+          "practice_uz": "Ruff, Pylint, Black, YAPF ni linter/formatter bo‘yicha tasnifla; bitta izchil kombinatsiya tanla."
+        },
+        {
+          "id": "py-19-05",
+          "source_status": "planned",
+          "title_uz": "Unit test tushunchasi",
+          "theory_uz": "Unit test kichik birlik xatti-harakatini izolatsiyada tekshiradi.",
+          "example_uz": "`assert add(2,3)==5`",
+          "practice_uz": "Discount funksiyasi uchun normal, zero va boundary testlar ro‘yxatini yoz."
+        },
+        {
+          "id": "py-19-06",
+          "source_status": "planned",
+          "title_uz": "unittest bilan birinchi test",
+          "theory_uz": "unittest standard library test framework; TestCase assertionlar beradi.",
+          "example_uz": "`class TestCalc(unittest.TestCase):` ichida `def test_add(self): self.assertEqual(add(2,3),5)`",
+          "practice_uz": "3 unittest yoz va `python -m unittest` bilan ishga tushir."
+        },
+        {
+          "id": "py-19-07",
+          "source_status": "planned",
+          "title_uz": "pytest bilan birinchi test",
+          "theory_uz": "pytest oddiy test funksiyalari va assert diagnostikasini qo‘llaydi.",
+          "example_uz": "`def test_add(): assert add(2,3)==5`",
+          "practice_uz": "Yuqoridagi unittestlarni pytest uslubiga o‘gir; `python -m pytest` bilan bajar."
+        },
+        {
+          "id": "py-19-08",
+          "source_status": "planned",
+          "title_uz": "Test fixtures",
+          "theory_uz": "Fixture testga tayyor data/resurs beradi va kerak bo‘lsa teardown qiladi.",
+          "example_uz": "`@pytest.fixture` / `def cart(): return []`",
+          "practice_uz": "Har test uchun mustaqil cart va `tmp_path` orqali vaqtinchalik fayl fixture ishlat."
+        },
+        {
+          "id": "py-19-09",
+          "source_status": "planned",
+          "title_uz": "Parametrized tests",
+          "theory_uz": "Parametrize bir testni bir nechta input/expected bilan bajaradi.",
+          "example_uz": "`@pytest.mark.parametrize(\"a,b,expected\",[(2,3,5),(0,0,0)])`",
+          "practice_uz": "Discount uchun 5 parametrli case yoz, chegaralar ham bo‘lsin."
+        },
+        {
+          "id": "py-19-10",
+          "source_status": "planned",
+          "title_uz": "Mocking tashqi xizmatlar",
+          "theory_uz": "Mock tashqi dependency nazorat qilinadigan o‘rinbosar bilan almashtirib unit testni izolyatsiya qiladi.",
+          "example_uz": "`from unittest.mock import Mock`; `client=Mock(); client.get.return_value={\"ok\":True}`",
+          "practice_uz": "Networkga chiqmay API client natijasini test qil; failure side_effect bilan xatoni ham sinab ko‘r."
+        },
+        {
+          "id": "py-19-11",
+          "source_status": "planned",
+          "title_uz": "Exception testlash",
+          "theory_uz": "Exception test ruxsat etilmagan inputda kerakli exception chiqishini tekshiradi.",
+          "example_uz": "`with pytest.raises(ValueError): validate(-1)`",
+          "practice_uz": "Nolga bo‘lish, manfiy price va noto‘g‘ri input uchun aniq exception test yoz."
+        },
+        {
+          "id": "py-19-12",
+          "source_status": "planned",
+          "title_uz": "doctest nima?",
+          "theory_uz": "doctest docstringdagi Python REPL misollarini bajarib expected output bilan solishtiradi.",
+          "example_uz": "`>>> add(2, 3)` keyingi qator `5`.",
+          "practice_uz": "2 doctestli funksiya yoz va `python -m doctest -v main.py` bilan tekshir."
+        },
+        {
+          "id": "py-19-13",
+          "source_status": "planned",
+          "title_uz": "tox muhitlar bo‘yicha testlash",
+          "theory_uz": "tox bir necha Python muhitida test komandalarini avtomatlashtiradi.",
+          "example_uz": "`tox` konfiguratsiyasida env_list va test commands.",
+          "practice_uz": "Mavjud 2 interpreter uchun tox env rejalashtir; interpreter yo‘q bo‘lsa natijani uydirma."
+        },
+        {
+          "id": "py-19-14",
+          "source_status": "planned",
+          "title_uz": "Sphinx dokumentatsiya",
+          "theory_uz": "Sphinx dokumentatsiyani manba fayllar va autodocdan qurishi mumkin.",
+          "example_uz": "`sphinx-quickstart docs`; `sphinx-build -b html docs docs/_build`",
+          "practice_uz": "Kichik calc kutubxonasi uchun install, usage va API bo‘limlari bo‘lgan docs yarat."
+        },
+        {
+          "id": "py-19-15",
+          "source_status": "planned",
+          "title_uz": "Docstring yozish",
+          "theory_uz": "Docstring funksiya/class/modulning vazifasi va kontraktini tushuntiradigan birinchi matn literalidir.",
+          "example_uz": "`def add(a,b):` ostida `\"\"\"Return the sum of a and b.\"\"\"`",
+          "practice_uz": "3 funksiya uchun parametr, return va xato shartlarini docstringda yoz; kodni takrorlama."
+        },
+        {
+          "id": "py-19-16",
+          "source_status": "planned",
+          "title_uz": "README va API qo‘llanma",
+          "theory_uz": "README tez boshlash, install, usage, test va loyiha chegarasini tushuntiradi.",
+          "example_uz": "Setup → Example → Tests → API → Limitations.",
+          "practice_uz": "Calc paketiga foydalanuvchi noldan ishga tushira oladigan README yoz."
+        },
+        {
+          "id": "py-19-17",
+          "source_status": "planned",
+          "title_uz": "GitHub Actions test workflow kirish",
+          "theory_uz": "GitHub Actions eventlarda CI joblarni runnerda bajaradi.",
+          "example_uz": "`.github/workflows/tests.yml`: checkout, setup-python, install, pytest.",
+          "practice_uz": "Push va pull_requestda ishlaydigan test workflow yoz; action versiyalarini rasmiy docsdan tekshir."
+        },
+        {
+          "id": "py-19-18",
+          "source_status": "planned",
+          "title_uz": "Coverage va false confidence",
+          "theory_uz": "Coverage bajarilgan qator/branchlarni ko‘rsatadi, barcha xato topilganini kafolatlamaydi.",
+          "example_uz": "`pytest --cov=calc --cov-branch` (pytest-cov kerak).",
+          "practice_uz": "100% line coverage bo‘lsa ham noto‘g‘ri assertion bilan bug qolishini ko‘rsat; branch va edge test qo‘sh."
+        }
+      ]
+    },
+    {
+      "id": "PY-20",
+      "order": 20,
+      "track": "Supporting (Tayanch)",
+      "title_uz": "Production Python capstone",
+      "lesson_count": 21,
+      "assessment": {
+        "title_uz": "To‘liq FastAPI + CLI + tests + docs loyiha",
+        "requirements_uz": "Notes FastAPI + CLI + SQLite/JSON repository, service, schema, tests, docs, env, logging va CI.",
+        "acceptance_cases_uz": "CRUD, persistence restart, invalid 422, missing 404, CLI/API bir xil storage, toza setup, secret scan.",
+        "constraints_uz": "Docker/load test optional; release checklist; production deploy talab emas; barcha test real ishga tushiriladi."
+      },
+      "lessons": [
+        {
+          "id": "py-20-01",
+          "source_status": "planned",
+          "title_uz": "Texnik talablar va loyiha scope",
+          "theory_uz": "Scope loyiha nima qiladi va nima qilmasligini, acceptance criteria esa tekshiriladigan natijani belgilaydi.",
+          "example_uz": "Notes API: CRUD + CLI + validation + storage; auth bu scopega kirmaydi.",
+          "practice_uz": "Notes loyihasi uchun 8 functional va 4 non-functional talab yoz; out-of-scope ni ajrat."
+        },
+        {
+          "id": "py-20-02",
+          "source_status": "planned",
+          "title_uz": "Papka va package arxitekturasi",
+          "theory_uz": "Package arxitekturasi mas’uliyatlarni ajratadi: API, domain, storage, CLI va tests.",
+          "example_uz": "`src/notes/{api.py,service.py,storage.py,cli.py,schemas.py}` + `tests/`.",
+          "practice_uz": "Import yo‘nalishlarini chiz; API/CLI bitta service qatlamini ishlatsin, circular import bo‘lmasin."
+        },
+        {
+          "id": "py-20-03",
+          "source_status": "planned",
+          "title_uz": "venv/uv bilan muhit yaratish",
+          "theory_uz": "Izolyatsiyalangan muhit va deklarativ dependency loyiha qayta tiklanishini ta’minlaydi.",
+          "example_uz": "`uv sync --locked` (lock bo‘lsa) yoki `python -m venv .venv`.",
+          "practice_uz": "Toza muhit yarat, FastAPI/Pydantic/test dependencylarni pyprojectda belgilab install qil."
+        },
+        {
+          "id": "py-20-04",
+          "source_status": "planned",
+          "title_uz": "Data model va API schema",
+          "theory_uz": "Data model ichki holat, API schema kirish/chiqish kontraktini belgilaydi.",
+          "example_uz": "`NoteCreate(title,content)`, `NoteOut(id,title,content)`",
+          "practice_uz": "Create, Update va Read modellarini ajrat; ID server yaratadi va title validatsiyasi bo‘lsin."
+        },
+        {
+          "id": "py-20-05",
+          "source_status": "planned",
+          "title_uz": "FastAPI CRUD endpointlar",
+          "theory_uz": "CRUD endpointlar resurs yaratish, o‘qish, yangilash va o‘chirishni HTTP orqali beradi.",
+          "example_uz": "POST /notes → 201; GET /notes/{id} → 200/404; DELETE → 204.",
+          "practice_uz": "In-memory repository bilan CRUD yoz, query limit va id xatolarini test qil."
+        },
+        {
+          "id": "py-20-06",
+          "source_status": "planned",
+          "title_uz": "Exception handling strategiyasi",
+          "theory_uz": "Domain xatosini HTTP/CLI xatosiga mos qatlamda aylantir; ichki stacktrace clientga chiqmasin.",
+          "example_uz": "`NoteNotFound` → API 404; CLI tushunarli stderr xabar.",
+          "practice_uz": "NotFound, validation va storage failure holatlari uchun mapping yoz; 500 ni keraksiz 400 qilma."
+        },
+        {
+          "id": "py-20-07",
+          "source_status": "planned",
+          "title_uz": "Fayl saqlash yoki kichik DB integratsiya",
+          "theory_uz": "Fayl persistence kichik local appga, SQLite transactional structured data uchun mos; concurrency va atomicityni hisobga ol.",
+          "example_uz": "`sqlite3` parameterized `SELECT ... WHERE id=?`.",
+          "practice_uz": "SQLite repository yoki atomik yozuvchi JSON storage tanla; restartdan keyin data saqlansin, duplicate/id xatosini boshqar."
+        },
+        {
+          "id": "py-20-08",
+          "source_status": "planned",
+          "title_uz": "Async I/O qarori",
+          "theory_uz": "Async I/O faqat mos nonblocking driver va workload bo‘lsa foydali; sync storage bilan oddiy def yetarli bo‘lishi mumkin.",
+          "example_uz": "SQLite sync accessni async def ichida bloklab qo‘ymaslik.",
+          "practice_uz": "Storage uchun sync yoki async tanlovini yoz, bir xil load bilan o‘lchov rejasini tuz."
+        },
+        {
+          "id": "py-20-09",
+          "source_status": "planned",
+          "title_uz": "Type checking va validation",
+          "theory_uz": "Typing static kontrakt, validation tashqi inputni runtime tekshiradi.",
+          "example_uz": "`def get_note(id:int)->NoteOut: ...` va Pydantic schema.",
+          "practice_uz": "Service va repository interfeyslariga hint qo‘sh; mypy/pyright va invalid API inputni tekshir."
+        },
+        {
+          "id": "py-20-10",
+          "source_status": "planned",
+          "title_uz": "pytest testlarini yozish",
+          "theory_uz": "pytest unit va integration testlar domain, repository va HTTP kontraktini qamraydi.",
+          "example_uz": "`from fastapi.testclient import TestClient`; `client.get(\"/notes\")`.",
+          "practice_uz": "CRUD, not found, invalid schema, restart persistence va CLI uchun testlar yoz; real data ishlatma."
+        },
+        {
+          "id": "py-20-11",
+          "source_status": "planned",
+          "title_uz": "Lint/format pipeline",
+          "theory_uz": "Lint/format pipeline kelishilgan uslubni va statik xatolarni CI da nazorat qiladi.",
+          "example_uz": "`ruff check .`; `ruff format --check .`; `python -m pytest`",
+          "practice_uz": "Bitta tekshiruv komandalar ketma-ketligini yoz; xato bo‘lsa pipeline fail bo‘lsin."
+        },
+        {
+          "id": "py-20-12",
+          "source_status": "planned",
+          "title_uz": "API dokumentatsiya",
+          "theory_uz": "API docs endpoint, schema, status va autentifikatsiya chegarasini to‘g‘ri ko‘rsatadi.",
+          "example_uz": "FastAPI `/docs` + README curl misollari.",
+          "practice_uz": "5 CRUD endpoint uchun request/response misollari, 404/422 xatolari va run komandasini yoz."
+        },
+        {
+          "id": "py-20-13",
+          "source_status": "planned",
+          "title_uz": "Environment variables",
+          "theory_uz": "Environment variables muhitga bog‘liq sozlamalarni koddan ajratadi.",
+          "example_uz": "`import os; db_path=os.getenv(\"DB_PATH\",\"notes.db\")`",
+          "practice_uz": "DB_PATH va LOG_LEVEL ni env orqali sozla; test/prod path bir-biridan ajralishini tekshir."
+        },
+        {
+          "id": "py-20-14",
+          "source_status": "planned",
+          "title_uz": "Secrets hardcode qilmaslik",
+          "theory_uz": "Secret API kalit yoki passwordni source codega yozmaslik kerak; env/secret store va gitignore ishlatiladi.",
+          "example_uz": "`.env.example` faqat placeholder; `.env` gitignore.",
+          "practice_uz": "Dummy secret uchun env var va example file yarat; log, README va git diffda haqiqiy secret yo‘qligini tekshir."
+        },
+        {
+          "id": "py-20-15",
+          "source_status": "planned",
+          "title_uz": "Logging asoslari",
+          "theory_uz": "Logging strukturali diagnostika beradi; darajalar DEBUG, INFO, WARNING, ERROR.",
+          "example_uz": "`import logging; logger=logging.getLogger(__name__); logger.info(\"note created\")`",
+          "practice_uz": "CRUD va xatolar uchun log yoz; full request body yoki secretni loglama."
+        },
+        {
+          "id": "py-20-16",
+          "source_status": "planned",
+          "title_uz": "Docker overview (extension)",
+          "theory_uz": "Docker container ilova va runtime dependencylarini izolyatsiyalangan image sifatida ishga tushiradi; bu extension.",
+          "example_uz": "Dockerfile: Python base, dependency install, non-root user, app start.",
+          "practice_uz": "Docker mavjud bo‘lsa local image build/run qil; health endpointni tekshir, secretsni imagega kiritma."
+        },
+        {
+          "id": "py-20-17",
+          "source_status": "planned",
+          "title_uz": "CI sinovi",
+          "theory_uz": "CI pull request/pushda test, lint va typingni avtomatik tekshiradi; deploy bu alohida qaror.",
+          "example_uz": "GitHub Actions → setup → install → checks.",
+          "practice_uz": "CI workflow yoz; ataylab fail test bilan merge oldidan signal kelishini tekshir; auto-production deploy qo‘shma."
+        },
+        {
+          "id": "py-20-18",
+          "source_status": "planned",
+          "title_uz": "Manual acceptance criteria",
+          "theory_uz": "Manual acceptance ishlab turgan appni real user flow bo‘yicha tekshiradi.",
+          "example_uz": "Create → list → edit → delete → restart → error input.",
+          "practice_uz": "10 acceptance checklist tuz, har bandga expected va actual natija yoz."
+        },
+        {
+          "id": "py-20-19",
+          "source_status": "planned",
+          "title_uz": "Load test kirish (extension)",
+          "theory_uz": "Load test extension: nazoratli local/test muhitida latency, throughput va error rate o‘lchanadi.",
+          "example_uz": "Bir xil GET endpoint uchun 1 va 10 concurrent client.",
+          "practice_uz": "Faqat o‘zingning local API ngda kichik load test qil; p50/p95 va error rate ni o‘lcha; productionga yuk bermagin."
+        },
+        {
+          "id": "py-20-20",
+          "source_status": "planned",
+          "title_uz": "Release checklist",
+          "theory_uz": "Release checklist dependency, tests, migration/backup, config, docs va rollback tayyorligini tekshiradi.",
+          "example_uz": "Version tag, passing CI, env setup, smoke test, rollback note.",
+          "practice_uz": "Release oldidan pass/fail checklist yoz; critical failure bo‘lsa release qilma."
+        },
+        {
+          "id": "py-20-21",
+          "source_status": "planned",
+          "title_uz": "Portfolio README va demo",
+          "theory_uz": "Portfolio README muammo, arxitektura, setup, demo, test natijasi va cheklovlarni aniq ko‘rsatadi.",
+          "example_uz": "README + API examples + terminal demo.",
+          "practice_uz": "Notes API + CLI uchun to‘liq README yoz, 2 daqiqalik demo flow tayyorla; o‘lchanmagan metrikani uydirma."
+        }
+      ]
+    }
+  ]
+}

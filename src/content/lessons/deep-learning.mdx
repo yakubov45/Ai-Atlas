@@ -1,0 +1,79 @@
+---
+id: deep-learning
+title: "Deep Learning"
+slug: deep-learning
+description: "Deep Learning (Chuqur o'rganish) — Machine Learning ning maxsus yo'nalishi bo'lib, ko'p qatlamli (multilayer) sun'iy neyron tarmoqlar va Backpropagation algoritmi yordamida xom ma'lumotlardan vazifaga mos ichki tasvirlarni (internal representations / features) avtomatik ravishda o'rganadi."
+category: fundamentals
+difficulty: intermediate
+order: 3
+tags: ["ai","deep-learning","fundamentals","dl","chuqur","deep"]
+prerequisites: ["machine-learning","matrix-operations","chain-rule"]
+related: ["backpropagation","cnn","rnn","lstm","transformers","batch-normalization","optimizers"]
+visualizations: ["neural-network-explorer"]
+sources: ["vaswani-2017","lecun-1998","rumelhart-1986","hochreiter-1997","ioffe-2015","kingma-2014","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 776–836"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Deep Learning (Chuqur o'rganish) — [Machine Learning](/learn/machine-learning) ning maxsus yo'nalishi bo'lib, ko'p qatlamli (multilayer) sun'iy neyron tarmoqlar va [Backpropagation](/learn/backpropagation) algoritmi yordamida xom ma'lumotlardan vazifaga mos ichki tasvirlarni (internal representations / features) avtomatik ravishda o'rganadi.
+
+## 2. Nima uchun kerak?
+Rumelhart, Hinton va Williams (1986) ta'kidlaganidek, Perceptron convergence procedure kabi ilk oddiy usullar foydali yangi ichki belgilarni (features) yarata olmagan. Deep Learning yashirin qatlamlar (hidden layers) orqali kirish va chiqish o'rtasida murakkab abstrakt tasvirlarni avtomatik shakllantiradi; buning uchun yashirin birliklarga qo'lda nishon (target) berish shart emas, ular chiqish xatoligini kamaytirish jarayonida o'z-o'zidan shakllanadi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+3Blue1Brown (Grant Sanderson, 2017) tushuntirgan qo'lyozma raqamlarni tanish tarmog'ini ko'rib chiqaylik:
+
+Input Layer (Kirish qatlami): 28x28 o'lchamli kulrang tasvirdagi har bir piksel uchun bittadan — jami 784 ta neyron mavjud. Har bir neyron piksel yorqinligini (0.0 — qora, 1.0 — oq) bildiruvchi sonni (activation) ushlab turadi.
+Hidden Layers (Yashirin qatlamlar): Kirish va chiqish orasida, masalan, har birida 16 tadan neyron bo'lgan 2 ta yashirin qatlam joylashadi. Ular xom piksellarni bosqichma-bosqich chiziqlar, halqalar va qirralar kabi abstrakt qismlarga aylantiradi.
+Output Layer (Chiqish qatlami): 0 dan 9 gacha bo'lgan raqamlarga mos keluvchi 10 ta neyron. Qaysi neyron eng yuqori aktivatsiya bersa (masalan, "3" neyroni eng yorqin yonsa), tarmoqning yakuniy javobi o'sha raqam bo'ladi.
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Qatlamli (layered feed-forward) neyron tarmoqda har bir kirish bo'lmagan birlik quyidagi amallarni bajaradi (Rumelhart et al., 1986):
+
+Oldingi qatlam birliklaridan keluvchi chiqishlarni vaznlar bilan qo'shadi va siljish (bias — doimiy 1 ga teng qo'shimcha birlikdan keluvchi ulanish sifatida qaralishi mumkin) qo'shadi: $z_j = \sum_i w_{ji} a_i + b_j$.
+Natijaga sigmasimon (sigmoid) yoki boshqa nochiziqli funksiyani qo'llaydi: $a_j = f(z_j)$.
+O'qitish jarayonida:
+
+Forward computation: Kirishdan chiqishgacha barcha birliklar qiymati hisoblanadi (hosilalar hisoblanishidan oldin tarmoq chiqishi aniqlanadi).
+Backward pass ([Backpropagation](/learn/backpropagation)): Haqiqiy chiqish vektori va kerakli chiqish vektori o'rtasidagi farq o'lchanib, [Chain Rule](/learn/chain-rule) orqali yashirin vaznlarga o'rganish signali uzatiladi.
+Parameter update: [Gradient Descent](/learn/gradient-descent), [SGD](/learn/sgd) yoki [Adam](/learn/adam) orqali vaznlar yangilanadi.
+## 5. Matematik asoslari va Masshtablash Muammolari (Level 3 — Advanced)
+Chuqur tarmoqlarni kengaytirish va o'qitishda uchta asosiy texnik muammo yuzaga keladi:
+
+Fazoviy struktura va parametrlar soni: Tasvirlarda yaqin piksellar o'zaro bog'liq. Oddiy to'liq bog'langan tarmoq bu strukturani yo'qotadi; [CNN](/learn/cnn) esa lokal retseptiv maydonlar va vaznlarni ulashish orqali buni hal qiladi (LeCun et al., 1998).
+Ketma-ketliklarda uzoq vaqt oraliqlari va parallelizm: [RNN](/learn/rnn) larda xatolik signali vaqt bo'yicha eksponensial so'nadi; [LSTM](/learn/lstm) buni Constant Error Carousel orqali, [Transformers](/learn/transformers) esa rekurrentlikdan voz kechib parallel Self-Attention orqali hal qiladi (Hochreiter & Schmidhuber, 1997; Vaswani et al., 2017).
+To'yinish (Saturation) va Internal Covariate Shift: To'g'ri hisoblangan hosilalar o'z-o'zidan to'yinish (saturation) yoki qiyin optimallashtirish landshafti muammosini hal qilmaydi (Rumelhart et al., 1986). Quyi qatlam parametrlari o'zgarganda yuqori qatlam kirishlari taqsimoti siljiydi; bu muammo to'g'ri vazn initsializatsiyasi (masalan, Xavier initialization) va [Batch Normalization](/learn/batch-normalization) yordamida yumshatiladi (Ioffe & Szegedy, 2015).
+## 6. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Machine Learning](/learn/machine-learning)
+[Matrix Operations](/learn/matrix-operations)
+[Chain Rule](/learn/chain-rule)
+Keyingi mavzular:
+
+[Backpropagation](/learn/backpropagation)
+[CNN](/learn/cnn)
+[RNN](/learn/rnn)
+[LSTM](/learn/lstm)
+[Transformers](/learn/transformers)
+Bog'liq:
+
+[Batch Normalization](/learn/batch-normalization)
+[Optimizers](/learn/optimizers)
+## 7. Tekshirilgan manbalar
+Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536. DOI: 10.1038/323533a0.
+LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-Based Learning Applied to Document Recognition. Proceedings of the IEEE, 86(11), 2278–2324.
+Sanderson, G. [3Blue1Brown]. (2017). But what is a neural network? | Deep learning, chapter 1. YouTube. https://www.youtube.com/watch?v=aircAruvnKk
+Bo'lim B: Large Language Models (LLMs)
+Transformer arxitekturasi va uning diqqat (attention) mexanizmi zamonaviy katta til modellarining poydevori hisoblanadi. Vaswani et al. (2017) tomonidan kiritilgan original Transformer modelida rekurrent va konvolyutsion qatlamlar o'rnini 6 ta bir xil Encoder qatlami va 6 ta bir xil Decoder qatlamidan iborat stek, sinusoidal pozitsion kodlash (Positional Encoding) hamda 8 ta parallel boshli (har birining o'lchami 64 ga teng bo'lgan) Multi-Head Scaled Dot-Product Attention mexanizmi egallaydi; bunda so'rovlar (Query), kalitlar (Key) va qiymatlar (Value) chiziqli proyeksiyalanib, skalyar ko'paytma $\sqrt{d_k}$ ga bo'linadi, Softmax vaznlariga ko'paytiriladi va barcha boshlar chiqishlari birlashtiriladi (concatenated).
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+

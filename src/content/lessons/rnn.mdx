@@ -1,0 +1,97 @@
+---
+id: rnn
+title: "RNN"
+slug: rnn
+description: "Recurrent Neural Network (RNN) — qayta aloqa (feedback connections) ulanishlariga ega bo'lgan neyron tarmoq arxitekturasi bo'lib, yaqin o'tmishdagi kirish hodisalari haqidagi ma'lumotni aktivatsiyalar (\"qisqa muddatli xotira\") ko'rinishida saqlab, ketma-ketliklarni vaqt qadamlari bo'yicha qayta i..."
+category: architectures
+difficulty: intermediate
+order: 2
+tags: ["ai","deep-learning","rnn","architectures","recurrent","rekurrent"]
+prerequisites: ["deep-learning","chain-rule","hosila"]
+related: ["lstm","transformers","backpropagation","memory"]
+visualizations: ["neural-network-explorer"]
+sources: ["vaswani-2017","hochreiter-1997","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1428–1492"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Recurrent Neural Network (RNN) — qayta aloqa (feedback connections) ulanishlariga ega bo'lgan neyron tarmoq arxitekturasi bo'lib, yaqin o'tmishdagi kirish hodisalari haqidagi ma'lumotni aktivatsiyalar ("qisqa muddatli xotira") ko'rinishida saqlab, ketma-ketliklarni vaqt qadamlari bo'yicha qayta ishlaydi (Hochreiter & Schmidhuber, 1997).
+
+## 2. Nima uchun kerak?
+Vaqtli ketma-ketliklar va tabiiy tildagi ma'lumotlarda t-vaqt qadamidagi javob oldingi vaqt qadamlaridagi kirish hodisalariga bog'liq bo'ladi. RNN vaqt bo'yicha yoyilganda (unfolded in time) oldingi qadam aktivatsiyalarini keyingi qadamga uzatish orqali ketma-ketliklarni modellash imkonini beradi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Gapni boshidan oxirigacha o'qiyotganingizda har bir so'zni alohida emas, balki oldingi so'zlardan qolgan "qisqa muddatli taassurot" (aktivatsiya) bilan birgalikda tushunasiz. Biroq oddiy RNN da bir jiddiy kamchilik bor: gap juda uzun bo'lsa (masalan, 100 yoki 1000 qadam), xatolik signali orqaga qaytayotganda yo haddan tashqari kattalashib ketadi (Exploding Gradient), yoki butunlay nolga aylanib yo'qolib ketadi (Vanishing Gradient).
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+Sequential Operation (Ketma-ket ishlash): Vaswani et al. (2017) kontekstida ta'kidlanganidek, RNN lar ketma-ketlikdagi tokenlarni birinchisidan oxirgisigacha bittadan (one token at a time) qayta ishlaydi; ular ketma-ketlikdagi barcha tokenlar ustida parallel ishlay olmaydi.
+Error Backflow Muammosi (Hochreiter & Schmidhuber, 1997, Section 1 & 3): Standart rekurrent tarmoqlarda xatolik signali vaqt bo'yicha orqaga tarqatilganda (masalan, Backpropagation Through Time — BPTT da) ikki holat yuz beradi:
+Case 1 (Exploding): Xatolik signali eksponensial o'sib, vaznlarning tebranishiga (oscillating weights) olib keladi.
+Case 2 (Vanishing): Xatolik signali eksponensial so'nadi, natijada uzoq vaqt oraliqlarini (long time lags) bog'lashni o'rganish juda ko'p vaqt oladi yoki umuman ishlamaydi.
+## 5. Matematik asoslari: Hochreiter (1991 / 1997) Tahlili (Level 3 — Advanced)
+Hochreiter va Schmidhuber (1997, Section 3) $1$ dan $n$ gacha indeksli kirish bo'lmagan birliklardan iborat to'liq bog'langan rekurrent tarmoqni tahlil qiladi. Har bir $k$-birlikning vaznli kirishi va aktivatsiyasi:
+
+$$
+\text{net}_k(t) = \sum_{i} w_{ki} y_i(t-1), \quad y_k(t) = f_k\left(\text{net}_k(t)\right)
+$$
+
+$t$-vaqtdagi $k$ birligidan $q$ qadam oldingi $t-q$ vaqtdagi $u$ birligiga qaytuvchi xatolik oqimi quyidagi ko'paytmalar yig'indisi bilan belgilanadi:
+
+$$
+\sum_{l_1=1}^{n} \dots \sum_{l_{q-1}=1}^{n} \prod_{m=1}^{q} f'_{l_m}\left(\text{net}_{l_m}(t-m)\right) w_{l_m l_{m-1}}
+$$
+
+Bu yerda $[F'(t-m)]_{ij} = f'_i(\text{net}_i(t-m))$ (agar $i = j$ bo'lsa, aks holda 0) birinchi tartibli hosilalarning diagonal matritsasidir.
+
+Agar barcha $m$ lar uchun $\left|f'_{l_m}\left(\text{net}_{l_m}(t-m)\right) w_{l_m l_{m-1}}\right| < 1.0$ bo'lsa, eng katta ko'paytma ham $q$ oshgani sari eksponensial ravishda kamayadi (xatolik yo'qoladi va maqbul vaqt ichida hech narsa o'rganilmaydi).
+
+Xususan, agar $f_{l_m}$ standart logistik sigmoid funksiyasi bo'lsa, uning hosilasining maksimal qiymati 0.25 ga teng ($\max f'(x) = 0.25$). Demak, vaznlarning absolyut qiymati 4.0 dan kichik bo'lsa ($|w| < 4.0$, ayniqsa o'qitishning boshlang'ich bosqichida), xatolik oqimi nolga intiladi. Kattaroq boshlang'ich vaznlarni ishlatish ham yordam bermaydi, chunki u holda hosila to'yinish (saturation) tufayli nolga intiladi yoki gradient portlab ketadi.
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+import torch.nn as nn
+
+Oddiy RNN: input_size=4, hidden_size=8
+rnn = nn.RNN(input_size=4, hidden_size=8, num_layers=1, batch_first=True)
+
+Kirish ketma-ketligi: (batch=2, seq_len=5, features=4)
+x = torch.randn(2, 5, 4) h0 = torch.zeros(1, 2, 8)
+
+output, hn = rnn(x, h0) print("Output shape (all steps):", output.shape) # torch.Size([2, 5, 8]) print("Final hidden state shape:", hn.shape) # torch.Size([1, 2, 8])
+```
+
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Deep Learning](/learn/deep-learning)
+- [Chain Rule](/learn/chain-rule)
+- [Hosila](/learn/hosila)
+
+**Keyingi mavzular:**
+- [LSTM](/learn/lstm)
+- [Transformers](/learn/transformers)
+
+**Bog'liq:**
+- [Backpropagation](/learn/backpropagation)
+- [Memory](/learn/memory)
+
+## 8. Tekshirilgan manbalar
+- Hochreiter, S., & Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735.
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+
+Standart RNN lardagi gradientning eksponensial so'nish yoki portlash muammosini hal qilish uchun Hochreiter va Schmidhuber (1997) Constant Error Carousel (CEC) mexanizmiga asoslangan LSTM arxitekturasini yaratdilar. Quyidagi sxemada 1997-yilgi original LSTM xotira katakchasining ichki tuzilmasi va o'zgarmas xatolik oqimi ko'rsatilgan.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+

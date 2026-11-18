@@ -1,0 +1,113 @@
+---
+id: optimizers
+title: "Optimizers"
+slug: optimizers
+description: "Optimizers — stoxastik maqsad funksiyalarining gradientlari (∇ f_t(theta_t)) va ularning quyi tartibli momentlari asosida neyron tarmoq parametrlarini yangilovchi algoritmlar."
+category: deep-learning
+difficulty: intermediate
+order: 5
+tags: ["ai","deep-learning","training","optimizers","optimizer","optimallashtirish"]
+prerequisites: ["gradient-descent","backpropagation","mean","standard-deviation"]
+related: ["sgd","adam","batch-normalization","learning-rate","loss-functions"]
+visualizations: ["gradient-descent-1d"]
+sources: ["kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1832–1927"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Optimizers — stoxastik maqsad funksiyalarining gradientlari ($\nabla f_t(\theta_t)$) va ularning quyi tartibli momentlari asosida neyron tarmoq parametrlarini yangilovchi algoritmlar.
+
+## 2. Nima uchun kerak?
+Chuqur neyron tarmoqlarda (masalan, [CNN](/learn/cnn) larda vazn ulashilishi tufayli) turli qatlamlarda gradientlar juda farqli masshtablarga ega bo'ladi, ba'zi vazifalarda esa gradientlar siyrak (sparse) yoki maqsad funksiyasi nostatsionar (non-stationary) bo'ladi (Kingma & Ba, 2015). Optimizatorlar ushbu sharoitlarda tez konvergensiya va yaxshi umumlashtirishni (generalization) ta'minlaydi.
+
+## 3. Asosiy Optimizatorlarning Ilmiy Taqqoslanishi (Level 1 — Level 3)
+Kingma & Ba (2015, Section 1 & 5) hamda Loshchilov & Hutter (2019, Section 2) asosida optimizatorlarning taqqoslanishi:
+
+Optimizator
+
+Asosiy mexanizmi
+
+AdaGrad / RMSProp / Adam bilan bog'liqligi va farqi
+
+Regulyarizatsiya va Generalization xususiyati
+
+[SGD](/learn/sgd) (with Momentum)
+
+Gradient va 1-moment ($m_t$) yordamida yangilash
+
+Prekonditsioner $M_t = kI$ (adaptiv masshtablash yo'q)
+
+Standart SGD da $L_2$ regulyarizatsiya va Weight Decay ekvivalent (ammo $\lambda' = \lambda/\alpha$ orqali $\alpha$ ga bog'langan). Ko'pincha adaptiv usullardan yaxshiroq umumlashtiradi.
+
+AdaGrad (Duchi et al., 2011)
+
+Siyrak gradientlar uchun adaptiv qadam
+
+Kingma & Ba (2015) ko'rsatganidek, AdaGrad — bu Adam ning $\beta_1 = 0$, cheksiz kichik $(1 - \beta_2)$ va bias correction siz versiyasiga mos keladi
+
+Siyrak gradientlarda samarali.
+
+RMSProp (with Momentum)
+
+Kvadratik gradientning sirpanuvchi o'rtachasi
+
+RMSProp with momentum o'z yangilanishlarini masshtablangan gradient ustida momentum olib hosil qiladi va bias-correction hadiga ega emas
+
+Nostatsionar vazifalarda ishlaydi, ammo kichik $\beta_2$ yoki boshlang'ich qadamlarda bias correction yo'qligi katta qadamlarga olib keladi.
+
+[Adam](/learn/adam) (Kingma & Ba, 2015)
+
+1-moment ($m_t$) va 2-xom moment ($v_t$) ning sirpanuvchi o'rtachasi
+
+AdaGrad va RMSProp ustunliklarini birlashtiradi; Initialisation Bias Correction ($\hat{m}_t, \hat{v}_t$) kiritilgan
+
+Standart $L_2$ regulyarizatsiya Adam da samarasiz, chunki regulyarizator gradienti ham adaptiv masshtablanib ketadi.
+
+AdaMax (Kingma & Ba, 2015)
+
+$L_\infty$ (infinity norm) ga asoslangan Adam varianti
+
+2-moment $L_2$ normasi o'rniga cheksizlik normasiga asoslanadi
+
+Maxsus barqarorlik talab qilinadigan holatlar uchun.
+
+AdamW (Loshchilov & Hutter, 2019)
+
+Adam + Decoupled Weight Decay
+
+Vazn so'nishi ($\lambda \theta_{t-1}$) adaptiv gradient mexanizmidan alohida qadam sifatida bajariladi
+
+Barcha vaznlarni bir xil $\lambda$ tezlikda regulyarizatsiya qiladi; tasvir klassifikatsiyasida standart Adam ga nisbatan test xatoligini 15% ga kamaytirgan.
+
+Batafsil matematik formulalar, teoremalar va qadam-baqadam sonli misollar uchun [SGD](/learn/sgd) va [Adam](/learn/adam) kanonik konspektlariga qarang.
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Gradient Descent](/learn/gradient-descent)
+[Backpropagation](/learn/backpropagation)
+[Mean](/learn/mean)
+[Standard Deviation](/learn/standard-deviation)
+Keyingi mavzular:
+
+[SGD](/learn/sgd)
+[Adam](/learn/adam)
+[Batch Normalization](/learn/batch-normalization)
+Bog'liq:
+
+[Learning Rate](/learn/learning-rate)
+[Loss Functions](/learn/loss-functions)
+## 5. Tekshirilgan manbalar
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015. arXiv:1412.6980.
+Loshchilov, I., & Hutter, F. (2019). Decoupled Weight Decay Regularization. ICLR 2019. arXiv:1711.05101.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

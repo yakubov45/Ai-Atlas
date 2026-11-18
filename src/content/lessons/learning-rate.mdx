@@ -1,0 +1,61 @@
+---
+id: learning-rate
+title: "Learning Rate"
+slug: learning-rate
+description: "Learning Rate (alpha, Step Size) — Gradient Descent va stoxastik optimallashtirish algoritmlarida har bir qadamda parametrlar gradient yo'nalishi bo'yicha qanchalik katta miqdorga o'zgarishini belgilovchi giperparametr."
+category: deep-learning
+difficulty: intermediate
+order: 3
+tags: ["ai","deep-learning","training","hyperparameters","step","learning"]
+prerequisites: ["gradient-descent","gradient"]
+related: ["optimizers","adam","batch-normalization","sgd"]
+visualizations: ["gradient-descent-1d"]
+sources: ["ioffe-2015","kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1733–1772"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Learning Rate ($\alpha$, Step Size) — [Gradient Descent](/learn/gradient-descent) va stoxastik optimallashtirish algoritmlarida har bir qadamda parametrlar gradient yo'nalishi bo'yicha qanchalik katta miqdorga o'zgarishini belgilovchi giperparametr.
+
+## 2. Nima uchun kerak?
+Ioffe va Szegedy (2015) ko'rsatganidek, chuqur tarmoqlarni o'qitish odatda ehtiyotkor (kichik) o'rganish tezligini talab qiladi:
+
+Odatda katta learning rate qatlam parametrlarining masshtabini (scale) oshirib yuboradi, bu esa [Backpropagation](/learn/backpropagation) davomida gradientlarni yanada kuchaytirib, modelning portlashiga (divergence) olib keladi. Masalan, Batch Normalization siz Inception tarmog'ida boshlang'ich learning rate ni ($\alpha = 0.0015$ dan) 5 baravar oshirish parametrlarni mashina cheksizligiga (machine infinity) olib chiqib ketgan.
+
+Aksincha, [Batch Normalization](/learn/batch-normalization) qo'llanilganda o'qitish parametrlar masshtabiga chidamli (resilient) bo'lib, 5 baravar yuqori learning rate (BN-x5) bilan o'qitishni keskin tezlashtirish imkonini beradi.
+
+## 3. Learning Rate Schedules va Nazariy Xossalar (Level 1 — Level 3)
+Step Size Bounding va Natural Annealing (Kingma & Ba, 2015): [Adam](/learn/adam) optimizatorida qadam kattaligi $\alpha$ giperparametri bilan taxminiy chegaralangan (approximately bounded by the stepsize hyperparameter). Shuningdek, optimumga yaqinlashganda signal-shovqin nisbati ($m_t / \sqrt{v_t}$) nolga intilib, qadam kattaligining tabiiy kichrayishi (automatic step size annealing) yuz beradi.
+
+$1/\sqrt{t}$ Decay Schedule (Kingma & Ba, 2015): Adam konvergensiya teoremasi (Theorem 4.1) va MNIST logistik regressiya tajribalarida qadam kattaligi vaqt qadami $t$ bo'yicha quyidagicha kamaytiriladi:
+$$\alpha_t = \frac{\alpha}{\sqrt{t}}$$
+
+Fixed, Drop-Step va Cosine / Cyclical Schedules (Loshchilov & Hutter, 2019): Loshchilov va Hutter (2019, Section 4.1) Adam va AdamW ni uch xil o'rganish tezligi jadvali (fixed learning rate, drop-step schedule va cosine/cyclical schedules) ustida baholab, vazn so'nishini ajratish (Decoupled Weight Decay) optimal learning rate $\alpha$ va weight decay $\lambda$ giperparametrlarini bir-biridan ancha mustaqil qilishini isbotlaganlar.
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Gradient Descent](/learn/gradient-descent)
+[Gradient](/learn/gradient)
+Keyingi mavzular:
+
+[Optimizers](/learn/optimizers)
+[Adam](/learn/adam)
+[Batch Normalization](/learn/batch-normalization)
+Bog'liq:
+
+[SGD](/learn/sgd)
+## 5. Tekshirilgan manbalar
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015, PMLR 37:448–456.
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015. arXiv:1412.6980.
+Loshchilov, I., & Hutter, F. (2019). Decoupled Weight Decay Regularization. ICLR 2019. arXiv:1711.05101.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

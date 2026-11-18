@@ -1,0 +1,442 @@
+/**
+ * Unified AI Knowledge Graph — Typed Relations
+ * 
+ * Supports the 8 canonical relationship types:
+ * - REQUIRES: B cannot be properly learned without understanding A (strict hard prerequisite)
+ * - RECOMMENDED_BEFORE: Learning A before B improves understanding, but not strictly blocking
+ * - RELATED_TO: Meaningful connection without strict order
+ * - PART_OF: A is a component or subconcept of B
+ * - APPLIED_IN: A is applied in domain or context B
+ * - EXTENDS: B is an advanced extension or generalization of A
+ * - ALTERNATIVE_TO: Alternative approach to solve similar problems
+ * - USED_IN_PROJECT: Concept is essential for building project X
+ */
+
+import type { ConceptRelation } from "./types";
+
+export const CONCEPT_RELATIONS: ConceptRelation[] = [
+  // --- Programming Foundations ---
+  {
+    id: "rel-01",
+    source: "python-variables-types",
+    target: "python-control-flow",
+    type: "REQUIRES",
+    descriptionUz: "Shart va sikllarni boshqarish uchun o'zgaruvchilar va tiplar bazasi kerak",
+  },
+  {
+    id: "rel-02",
+    source: "python-control-flow",
+    target: "python-functions-scope",
+    type: "REQUIRES",
+    descriptionUz: "Funksiyalar ichida shartli mantiq va sikllar doimiy ishlatiladi",
+  },
+  {
+    id: "rel-03",
+    source: "python-functions-scope",
+    target: "python-oop",
+    type: "REQUIRES",
+    descriptionUz: "Metodlar — bu sinf (class) ichida e'lon qilingan funksiyalardir",
+  },
+  {
+    id: "rel-04",
+    source: "python-functions-scope",
+    target: "python-async-concurrency",
+    type: "REQUIRES",
+    descriptionUz: "Korutinalar va asinxron funksiyalar funksiya ta'rifiga asoslanadi",
+  },
+  {
+    id: "rel-05",
+    source: "python-async-concurrency",
+    target: "api-rest-fastapi",
+    type: "REQUIRES",
+    descriptionUz: "FastAPI endpointlari asinxron (async def) ishlaydi",
+  },
+  {
+    id: "rel-06",
+    source: "python-oop",
+    target: "docker-containerization",
+    type: "RECOMMENDED_BEFORE",
+    descriptionUz: "Dasturlash madaniyati va modullik konteynerlashdan oldin tavsiya etiladi",
+  },
+
+  // --- Mathematics Foundations ---
+  {
+    id: "rel-07",
+    source: "linear-algebra-vectors",
+    target: "linear-algebra-matrices",
+    type: "REQUIRES",
+    descriptionUz: "Matritsalar vektorlarning 2D to'plami sifatida quriladi",
+  },
+  {
+    id: "rel-08",
+    source: "linear-algebra-vectors",
+    target: "dot-product-cosine",
+    type: "REQUIRES",
+    descriptionUz: "Skalyar ko'paytma va kosinus vektor koordinatalari yordamida hisoblanadi",
+  },
+  {
+    id: "rel-09",
+    source: "dot-product-cosine",
+    target: "linear-algebra-matrices",
+    type: "PART_OF",
+    descriptionUz: "Matritsalar ko'paytmasi aslida qator va ustun vektorlarining dot product yig'indisidir",
+  },
+  {
+    id: "rel-10",
+    source: "calculus-derivatives",
+    target: "gradient-multivariate",
+    type: "REQUIRES",
+    descriptionUz: "Gradient — ko'p o'zgaruvchili xususiy hosilalarning vektoridir",
+  },
+  {
+    id: "rel-11",
+    source: "calculus-derivatives",
+    target: "loss-cost-functions",
+    type: "RECOMMENDED_BEFORE",
+    descriptionUz: "Yo'qotish funksiyalari minimumini topish uchun hosila tushunchasi zarur",
+  },
+  {
+    id: "rel-12",
+    source: "probability-distributions",
+    target: "loss-cost-functions",
+    type: "APPLIED_IN",
+    descriptionUz: "Cross-Entropy yo'qotish funksiyasi ehtimollik taqsimotlariga asoslanadi",
+  },
+
+  // --- Data Science & Analytics ---
+  {
+    id: "rel-13",
+    source: "python-functions-scope",
+    target: "numpy-vectorization",
+    type: "REQUIRES",
+    descriptionUz: "NumPy operatsiyalari va massivlarni manipulyatsiya qilish uchun Python asoslari kerak",
+  },
+  {
+    id: "rel-14",
+    source: "linear-algebra-vectors",
+    target: "numpy-vectorization",
+    type: "APPLIED_IN",
+    descriptionUz: "NumPy 1D massivlari chiziqli algebraning vektorlarini amalga oshiradi",
+  },
+  {
+    id: "rel-15",
+    source: "numpy-vectorization",
+    target: "pandas-data-wrangling",
+    type: "REQUIRES",
+    descriptionUz: "Pandas ustunlari va Series obyektlari NumPy massivlari ustiga qurilgan",
+  },
+  {
+    id: "rel-16",
+    source: "sql-relational-databases",
+    target: "pandas-data-wrangling",
+    type: "RELATED_TO",
+    descriptionUz: "SQL jadvallari va Pandas DataFrame lar o'rtasida o'xshash mantiq mavjud",
+  },
+  {
+    id: "rel-17",
+    source: "pandas-data-wrangling",
+    target: "exploratory-data-analysis",
+    type: "REQUIRES",
+    descriptionUz: "EDA o'tkazish uchun ma'lumotlarni tozalash va filtrlash vositalari zarur",
+  },
+  {
+    id: "rel-18",
+    source: "exploratory-data-analysis",
+    target: "feature-engineering",
+    type: "REQUIRES",
+    descriptionUz: "Qaysi belgilarni yaratish kerakligini EDA dagi korrelyatsiyalar belgilaydi",
+  },
+  {
+    id: "rel-19",
+    source: "probability-distributions",
+    target: "ab-testing-experimentation",
+    type: "REQUIRES",
+    descriptionUz: "A/B testlar p-value va normal taqsimot qonuniyatlariga qat'iy tayanadi",
+  },
+
+  // --- Classical Machine Learning ---
+  {
+    id: "rel-20",
+    source: "feature-engineering",
+    target: "supervised-learning-foundations",
+    type: "REQUIRES",
+    descriptionUz: "Nazorat ostidagi o'rganish uchun toza X va y belgilangan ma'lumotlar kerak",
+  },
+  {
+    id: "rel-21",
+    source: "supervised-learning-foundations",
+    target: "linear-regression",
+    type: "REQUIRES",
+    descriptionUz: "Chiziqli regressiya — regressiya sinfining eng asosiy modelidir",
+  },
+  {
+    id: "rel-22",
+    source: "linear-algebra-matrices",
+    target: "linear-regression",
+    type: "APPLIED_IN",
+    descriptionUz: "Regressiya tenglamasi matritsalar ko'rinishida OLS orqali analitik yechiladi",
+  },
+  {
+    id: "rel-23",
+    source: "linear-regression",
+    target: "logistic-regression",
+    type: "EXTENDS",
+    descriptionUz: "Logistik regressiya chiziqli ifodaga Sigmoid nochiziqligini qo'shish orqali hosil qilinadi",
+  },
+  {
+    id: "rel-24",
+    source: "gradient-multivariate",
+    target: "gradient-descent-optimizers",
+    type: "REQUIRES",
+    descriptionUz: "Gradient tushish ko'p o'lchovli gradient vektoriga teskari qadam tashlaydi",
+  },
+  {
+    id: "rel-25",
+    source: "loss-cost-functions",
+    target: "gradient-descent-optimizers",
+    type: "REQUIRES",
+    descriptionUz: "Optimizator aynan yo'qotish funksiyasi sirtini minimallashtiradi",
+  },
+  {
+    id: "rel-26",
+    source: "linear-regression",
+    target: "overfitting-regularization",
+    type: "REQUIRES",
+    descriptionUz: "Regulyarizatsiya (L1/L2) ortiqcha moslashishni bartaraf etish uchun vaznlarni jazolaydi",
+  },
+  {
+    id: "rel-27",
+    source: "logistic-regression",
+    target: "model-evaluation-metrics",
+    type: "REQUIRES",
+    descriptionUz: "Klassifikatsiyaning aniqligi va to'liqligi Precision, Recall va F1 orqali o'lchanadi",
+  },
+  {
+    id: "rel-28",
+    source: "supervised-learning-foundations",
+    target: "decision-trees",
+    type: "REQUIRES",
+    descriptionUz: "Qaror daraxtlari — nazorat ostidagi o'rganishning nokonveks, qoidalarga asoslangan turi",
+  },
+  {
+    id: "rel-29",
+    source: "decision-trees",
+    target: "ensemble-random-forests",
+    type: "REQUIRES",
+    descriptionUz: "Random Forest — bu ko'plab mustaqil qaror daraxtlarining ansamblidir",
+  },
+  {
+    id: "rel-30",
+    source: "decision-trees",
+    target: "gradient-boosting-xgboost",
+    type: "REQUIRES",
+    descriptionUz: "Gradient Boosting ketma-ket daraxtlar orqali xatoliklarni to'g'rilaydi",
+  },
+  {
+    id: "rel-31",
+    source: "ensemble-random-forests",
+    target: "gradient-boosting-xgboost",
+    type: "ALTERNATIVE_TO",
+    descriptionUz: "Ikkalasi ham jadvalli ma'lumotlarda yetakchi ansambl modellari hisoblanadi",
+  },
+  {
+    id: "rel-32",
+    source: "dot-product-cosine",
+    target: "unsupervised-kmeans-clustering",
+    type: "APPLIED_IN",
+    descriptionUz: "K-Means sentroidlariga bo'lgan masofalar Evklid yoki Kosinus masofasi orqali o'lchanadi",
+  },
+  {
+    id: "rel-33",
+    source: "linear-algebra-matrices",
+    target: "pca-dimensionality-reduction",
+    type: "APPLIED_IN",
+    descriptionUz: "PCA kovariatsiya matritsasining xos vektorlari (eigenvectors) orqali amalga oshadi",
+  },
+
+  // --- Deep Learning & Neural Networks ---
+  {
+    id: "rel-34",
+    source: "linear-algebra-matrices",
+    target: "neural-networks-perceptrons",
+    type: "REQUIRES",
+    descriptionUz: "Neyron tarmoq qatlamlari kirish vektorini vaznlar matritsasiga ko'paytiradi",
+  },
+  {
+    id: "rel-35",
+    source: "gradient-descent-optimizers",
+    target: "neural-networks-perceptrons",
+    type: "REQUIRES",
+    descriptionUz: "Neyron tarmoq parametrlarini faqat gradient tushish optimizatorlari orqali o'qitish mumkin",
+  },
+  {
+    id: "rel-36",
+    source: "neural-networks-perceptrons",
+    target: "backpropagation-autograd",
+    type: "REQUIRES",
+    descriptionUz: "Orqaga tarqalish — ko'p qatlamli tarmoqning barcha vaznlari bo'yicha gradientlarni topadi",
+  },
+  {
+    id: "rel-37",
+    source: "gradient-multivariate",
+    target: "backpropagation-autograd",
+    type: "PART_OF",
+    descriptionUz: "Zanjir qoidasi (Chain Rule) xususiy hosilalarning ko'paytmasiga tayanadi",
+  },
+
+  // --- AI Engineering & LLM Architecture ---
+  {
+    id: "rel-38",
+    source: "python-functions-scope",
+    target: "tokenization-bpe",
+    type: "RECOMMENDED_BEFORE",
+    descriptionUz: "Matnni qayta ishlash algoritmlarini tushunish uchun funksiyalar va string amallari kerak",
+  },
+  {
+    id: "rel-39",
+    source: "dot-product-cosine",
+    target: "embeddings-vector-spaces",
+    type: "REQUIRES",
+    descriptionUz: "Semantik fazoda ikki embedding ma'nosini taqqoslash aynan Cosine Similarity ga tayanadi",
+  },
+  {
+    id: "rel-40",
+    source: "tokenization-bpe",
+    target: "embeddings-vector-spaces",
+    type: "REQUIRES",
+    descriptionUz: "Embedding qatlamiga kirish token ID lari orqali beriladi",
+  },
+  {
+    id: "rel-41",
+    source: "embeddings-vector-spaces",
+    target: "vector-databases-indexing",
+    type: "REQUIRES",
+    descriptionUz: "Vektor bazalari matnlarning embedding vektorlarini saqlash va indekslash uchun qurilgan",
+  },
+  {
+    id: "rel-42",
+    source: "dot-product-cosine",
+    target: "attention-mechanism",
+    type: "REQUIRES",
+    descriptionUz: "Scaled Dot-Product Attention formulasi to'g'ridan-to'g'ri dot product ga asoslanadi",
+  },
+  {
+    id: "rel-43",
+    source: "linear-algebra-matrices",
+    target: "attention-mechanism",
+    type: "APPLIED_IN",
+    descriptionUz: "Query, Key va Value proyeksiyalari matritsalar ko'paytmasi orqali hisoblanadi",
+  },
+  {
+    id: "rel-44",
+    source: "attention-mechanism",
+    target: "transformer-architecture",
+    type: "REQUIRES",
+    descriptionUz: "Transformer arxitekturasi bir nechta Multi-Head Attention qatlamlaridan tashkil topgan",
+  },
+  {
+    id: "rel-45",
+    source: "backpropagation-autograd",
+    target: "transformer-architecture",
+    type: "APPLIED_IN",
+    descriptionUz: "Transformerlarni o'qitish va fine-tuning qilish backpropagation orqali bajariladi",
+  },
+  {
+    id: "rel-46",
+    source: "tokenization-bpe",
+    target: "prompt-engineering-cot",
+    type: "RECOMMENDED_BEFORE",
+    descriptionUz: "Prompt uzunligi va token chegaralarini tushunish uchun tokenizatsiya zarur",
+  },
+  {
+    id: "rel-47",
+    source: "vector-databases-indexing",
+    target: "rag-retrieval-augmented",
+    type: "REQUIRES",
+    descriptionUz: "RAG ning retrieval (qidiruv) bosqichi vektor bazasidagi ANN indeksiga tayanadi",
+  },
+  {
+    id: "rel-48",
+    source: "prompt-engineering-cot",
+    target: "rag-retrieval-augmented",
+    type: "REQUIRES",
+    descriptionUz: "Topilgan bo'laklarni (chunks) modelga kontekst sifatida to'g'ri uzatish promptga bog'liq",
+  },
+  {
+    id: "rel-49",
+    source: "rag-retrieval-augmented",
+    target: "reranking-hybrid-search",
+    type: "EXTENDS",
+    descriptionUz: "Gibrid qidiruv va Re-Ranking bazaviy RAG aniqligini keskin oshiruvchi ilg'or kengaytmadir",
+  },
+  {
+    id: "rel-50",
+    source: "transformer-architecture",
+    target: "fine-tuning-lora-peft",
+    type: "REQUIRES",
+    descriptionUz: "LoRA adapterlari bevosita Transformerning diqqat matritsalariga (q_proj, v_proj) ulanadi",
+  },
+  {
+    id: "rel-51",
+    source: "prompt-engineering-cot",
+    target: "function-calling-tools",
+    type: "REQUIRES",
+    descriptionUz: "Function calling uchun modelga JSON sxemasi prompt orqali uzatiladi",
+  },
+  {
+    id: "rel-52",
+    source: "api-rest-fastapi",
+    target: "function-calling-tools",
+    type: "APPLIED_IN",
+    descriptionUz: "Model chaqiradigan vositalar ko'pincha REST API yoki lokal Python funksiyalaridir",
+  },
+  {
+    id: "rel-53",
+    source: "function-calling-tools",
+    target: "ai-agents-react-loop",
+    type: "REQUIRES",
+    descriptionUz: "AI Agent harakat (Action) bosqichida aynan funksiyalarni chaqirish orqali ish bajaradi",
+  },
+  {
+    id: "rel-54",
+    source: "ai-agents-react-loop",
+    target: "model-context-protocol",
+    type: "REQUIRES",
+    descriptionUz: "MCP — agentlar uchun vositalar va kontekstni standartlashtiruvchi universal protokol",
+  },
+  {
+    id: "rel-55",
+    source: "function-calling-tools",
+    target: "model-context-protocol",
+    type: "EXTENDS",
+    descriptionUz: "MCP har bir provayderning xususiy tool-calling mexanizmini universal ochiq standartga aylantiradi",
+  },
+  {
+    id: "rel-56",
+    source: "api-rest-fastapi",
+    target: "production-mlops-serving",
+    type: "REQUIRES",
+    descriptionUz: "Modelni xizmat sifatida taqdim etish (serving) mustahkam API serveriga tayanadi",
+  },
+  {
+    id: "rel-57",
+    source: "docker-containerization",
+    target: "production-mlops-serving",
+    type: "RECOMMENDED_BEFORE",
+    descriptionUz: "Production serverlarida AI modellari Docker konteynerlarida joylashtiriladi",
+  },
+  {
+    id: "rel-58",
+    source: "model-evaluation-metrics",
+    target: "production-mlops-serving",
+    type: "APPLIED_IN",
+    descriptionUz: "Monitoring jarayonida modelning kechikishi va sifat ko'rsatkichlari doimiy nazorat qilinadi",
+  },
+  {
+    id: "rel-59",
+    source: "ai-agents-react-loop",
+    target: "production-mlops-serving",
+    type: "USED_IN_PROJECT",
+    descriptionUz: "Keng ko'lamli korporativ agentlar doimiy tracing va monitoring tizimini talab qiladi",
+  },
+];

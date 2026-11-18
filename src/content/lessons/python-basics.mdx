@@ -1,0 +1,163 @@
+---
+id: python-basics
+title: "Python Dasturlash Asoslari"
+slug: python-basics
+description: "Python sintaksisi, o'zgaruvchilar, dinamik tiplash, xotira modeli (is vs ==), to'plamlar va shart operatorlari."
+category: python
+difficulty: beginner
+order: 1
+tags: ["python","programming","variables","data-types","basics","collections"]
+prerequisites: []
+related: ["functions","atomic-note"]
+visualizations: []
+sources: ["python-docs-2024"]
+origin:
+  - document: "deep research 1.md"
+    section: "Python Developer Foundation"
+    note: "Python poydevori va ma'lumot turlari"
+status: published
+locale: uz
+---
+
+> [!IMPORTANT]
+> **🚀 Diqqat! Python ta'limi to'liq 20-Fazali Python Academy mikro-darslar tizimiga ko'chirildi.**
+> Barcha Python darslari, brauzerdagi haqiqiy Pyodide amaliyoti, 3 bosqichli testlar (nazariya, natijani topish, xatolarni tuzatish) va mustaqil dasturlash topshiriqlari endi [Python Academy Yo'nalishida (344 ta Mikro-dars)](/roadmap?tab=python-dev&lesson=py-01-01) o'rganiladi. Quyidagi matn umumiy konspekt sifatida saqlangan.
+
+## 1. Qisqacha ta'rif
+Python — bu yuqori darajadagi, talqin qilinadigan (interpreted), dinamik tiplangan va o'qilishi juda qulay bo'lgan zamonaviy dasturlash tili. U dasturchiga kompyuterning past darajadagi apparat xotirasini qo'lda boshqarish (C/C++ dagi kabi malloc/free) majburiyatini yuklamasdan, toza va tushunarli sintaksis orqali murakkab algoritmlarni tez qurish imkonini beradi.
+
+## 2. Nima uchun kerak va Dasturlash Poydevori?
+Zamonaviy texnologiyalarda Python sun'iy intellekt, mashinali o'rganish, ma'lumotlar tahlili va backend tizimlarining mutlaq yetakchisi hisoblanadi:
+
+1. **O'qilishi qulayligi (Readability):** Kod matni oddiy ingliz tiliga yaqin tuzilgan bo'lib, murakkab qavslar o'rniga qat'iy 4 ta bo'shliq (indentation) bilan tartiblanadi.
+2. **Keng ekotizim:** NumPy, Pandas, PyTorch, FastAPI kabi yuz minglab tayyor kutubxonalar dasturchiga noldan g'ildirak ixtiro qilmasdan, maqsadga tez erishish imkonini beradi.
+3. **Mantiqiy poydevor:** Har qanday AI modeli yoki veb-server zamirida eng oddiy arifmetika, o'zgaruvchilar, shartlar va xotiradagi ma'lumotlar yotadi. Shuning uchun ham avval poydevor — o'zgaruvchilar, tiplar va xotira tamoyillari chuqur o'zlashtiriladi.
+
+## 3. Qanday ishlaydi? Xotira Modeli, Dinamik Tiplash va To'plamlar
+
+Dasturlashda ma'lumotlarni xatosiz boshqarish uchun Python xotirani qanday tashkil qilishini tushunish shart:
+
+### 1. Ob'yektga Havola va Xotira Modeli (`is` vs `==`)
+Python'da hamma narsa — sonlar, matnlar, to'plamlar ob'yektdir. O'zgaruvchi esa qiymatning o'zini emas, balki xotiradagi (Heap) ob'yekt manziliga ko'rsatib turuvchi havola hisoblanadi:
+
+- `==` (Equality): Ikkita ob'yekt ichidagi qiymatlar tengligini tekshiradi.
+- `is` (Identity): Ikkala o'zgaruvchi xotiradagi aynan bitta manzilga (`id()`) ko'rsatayotganini tekshiradi.
+- **Aliasing xavfi:** Agar `b = a` deb yozilsa, yangi ro'yxat yaratilmaydi! Ikkala nom bitta xotiraga ulanadi. Natijada `b.append(99)` amali `a` ning ham qiymatini o'zgartirib yuboradi. Mustaqil yangi xotira ajratish uchun `.copy()` dan foydalaniladi.
+
+```python
+# 1. Teng qiymat, lekin turli xotira manzillari:
+a = [1, 2, 3]
+b = [1, 2, 3]
+print(a == b)  # True  (qiymatlari teng)
+print(a is b)  # False (xotirada ikkita alohida list)
+
+# 2. Bitta ob'yektga ikki nom (Aliasing):
+c = a
+print(c is a)  # True  (aynan bitta xotira manzili)
+c.append(4)
+print(a)       # [1, 2, 3, 4] -> a ham o'zgardi!
+```
+
+<RecallQuestion
+  conceptTitle="Mantiqiy Sinov: Xotira Modeli va Identity"
+  question="`a = [1, 2]` va `b = [1, 2]` holatida ularning ichki qiymatlari bir xil bo'lsa-da, Heap xotirasida ikkita alohida manzilga ega ekanligini (identity) solishtirish uchun qaysi operator ishlatiladi?"
+  placeholder="Operator nomini kiriting..."
+  acceptedAnswers={["is"]}
+  hint="Tenglik qiymatini solishtiruvchi '==' emas, balki obyektning o'ziga xosligini (id()) tekshiruvchi 2 harfli operator."
+  explanation="To'g'ri! 'is' operatori ikkala o'zgaruvchi xotiradagi aynan bitta obyekt manziliga bog'langanini tekshiradi (a is b -> False)."
+/>
+
+### 2. Dinamik Tiplash va O'zgarmaslik (Mutability)
+Python'da o'zgaruvchi e'lon qilinayotganda uning tipi oldindan yozilmaydi. Tip o'zgaruvchi ko'rsatayotgan ob'yektga bog'liqdir:
+
+- **Skalyar primitivlar:** `int` (butun son), `float` (haqiqiy son), `str` (matn), `bool` (`True`/`False`). Bularning barchasi **o'zgarmas (immutable)** turlardir.
+- **Dinamik massivlar:** `list` — o'zgaruvchan (mutable) bo'lib, xotiradagi manzilni o'zgartirmasdan yangi elementlar qo'shish (`.append()`) va o'chirish (`.pop()`) mumkin.
+- **Kortejlar:** `tuple` — o'zgarmas (immutable) to'plam. Ma'lumotlarni tasodifiy o'zgarishlardan himoya qilish uchun ishlatiladi.
+- **Lug'atlar:** `dict` — kalit-qiymat (Key-Value) juftligi. Kalit orqali qidirish hash-jadval asosida o'rtacha $O(1)$ vaqt oladi.
+- **To'plamlar:** `set` — faqat unikal (takrorlanmas) elementlarni saqlovchi tartiblanmagan to'plam.
+
+```python
+# Har xil tiplarni o'zgaruvchiga yuklash:
+x = 42                 # int
+print(type(x))         # <class 'int'>
+
+x = "Salom, Python!"   # str (til to'liq dinamik)
+print(type(x))         # <class 'str'>
+```
+
+<RecallQuestion
+  conceptTitle="Dinamik Tiplash Sinovi: Sonlar Bo'linishi"
+  question="`x = 10` (butun son) o'zgaruvchisiga `x = x / 2` amali qo'llanganda, natija butun son bo'lishiga qaramay (5.0), Python dinamik tiplash mexanizmi ushbu qiymatni qaysi ma'lumot turiga aylantiradi?"
+  placeholder="Ma'lumot turini kiriting..."
+  acceptedAnswers={["float"]}
+  hint="Haqiqiy (suzuvchi vergulli) o'nlik kasr sonlar uchun ishlatiladigan 5 harfli ma'lumot turi."
+  explanation="To'g'ri! Python'da '/' bo'lish amali natijani har doim 'float' (o'nlik kasr) turiga o'tkazadi."
+/>
+
+<RecallQuestion
+  conceptTitle="Xotira Xavfsizligi: Aliasingdan Himoyalanish"
+  question="`b = a` deb yozganda aliasing yuz berib, `b` o'zgarsa `a` ham buziladi. Asl `a` ro'yxatini saqlab qolish uchun undan mustaqil yangi xotira nusxasini ajratib beruvchi ro'yxat metodi nima?"
+  placeholder="Metod nomini kiriting..."
+  acceptedAnswers={["copy", "copy()", ".copy()"]}
+  hint="Ingliz tilida 'nusxa ko'chirish' so'zidan olingan 4 harfli standart metod."
+  explanation="To'g'ri! `a.copy()` yoki `list(a)` orqali yangi mustaqil Heap xotira ajratiladi va asl ro'yxat xavfsiz saqlanadi."
+/>
+
+### 3. Shart Operatorlari (`if / elif / else`)
+Dastur mantiqini boshqarish uchun shart bloklari ishlatiladi. Python'da qavslar o'rniga qat'iy **4 ta bo'shliq (indentation)** bilan bloklar ajratiladi:
+
+```python
+yosh = 20
+
+if yosh >= 21:
+    maqom = "Katta yoshli"
+elif yosh >= 18:
+    maqom = "Voyaga yetgan"
+else:
+    maqom = "O'smir"
+
+print(f"Foydalanuvchi maqomi: {maqom}")
+```
+
+<RecallQuestion
+  conceptTitle="Mantiqiy Oqim: Zanjirli Shartlar"
+  question="`if ball >= 90:` sharti bajarilmaganda, kodni to'xtatmasdan keyingi oraliq shartni (masalan, `ball >= 80`) yaxlit bitta mantiqiy zanjir sifatida tekshirish uchun qaysi kalit so'z yoziladi?"
+  placeholder="Kalit so'zni kiriting..."
+  acceptedAnswers={["elif"]}
+  hint="Dasturlashdagi 'else if' iborasining Python'dagi 4 harfli qisqartma kalit so'zi."
+  explanation="To'g'ri! 'elif' (else if) faqat o'zidan oldingi shartlar False bo'lgandagina navbatdagi oraliq shartni tekshiradi."
+/>
+
+## 4. Amaliy Python Dasturlash Namunasi (Kod Tatbiqi)
+
+Quyida xotiradagi nusxalash va to'plamlar bilan ishlashning amaliy namunasi keltirilgan:
+
+```python
+def xavfsiz_yangilash(asl_royxat: list[int], yangi_qiymat: int) -> list[int]:
+    """
+    Asl ro'yxatni o'zgartirmasdan, uning nusxasi ustida ishlovchi funksiya.
+    """
+    # 1. Alohida xotira ajratish (Shallow Copy)
+    nusxa = asl_royxat.copy()
+    
+    # 2. Nusxaga yangi qiymat kiritish
+    nusxa.append(yangi_qiymat)
+    
+    return nusxa
+
+boshlangich = [10, 20, 30]
+natija = xavfsiz_yangilash(boshlangich, 40)
+
+print(f"Asl ro'yxat (o'zgarmadi): {boshlangich}")  # [10, 20, 30]
+print(f"Yangi ro'yxat:            {natija}")       # [10, 20, 30, 40]
+print(f"Ikkisi bitta xotiradami?  {boshlangich is natija}")  # False
+```
+
+## 5. Bog'liq tushunchalar va Xulosalar
+Oldin o'rganish:
+- Ushbu dars dasturlashdagi asosiy fundament hisoblanadi.
+
+Keyingi mavzular:
+- [Funksiyalar va Qaytish Qiymatlari](/learn/functions)
+- [Vektorlar](/learn/vector)
+- [Gradient Tushishi](/learn/gradient-descent)

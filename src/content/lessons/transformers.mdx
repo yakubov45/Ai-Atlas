@@ -1,0 +1,155 @@
+---
+id: transformers
+title: "Transformers"
+slug: transformers
+description: "Transformer — 2017-yilda Ashish Vaswani va hammualliflar (\"Attention Is All You Need\", NIPS 2017) tomonidan taklif etilgan, rekurrentlik (RNN, LSTM) va konvolyutsiyalardan (CNN) butunlay voz kechib, ketma-ketliklarni (sequences) faqat Attention (Diqqat) mexanizmi va pozitsion kodlash (Positional..."
+category: architectures
+difficulty: advanced
+order: 4
+tags: ["ai","deep-learning","llm","transformers","transformer","attention"]
+prerequisites: ["matrix-operations","probability","standard-deviation"]
+related: ["llm","rag","ai-agent","rnn","lstm"]
+visualizations: ["self-attention-explorer"]
+sources: ["vaswani-2017","sanderson-2017","karpathy-2023"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 837–962"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Transformer — 2017-yilda Ashish Vaswani va hammualliflar ("Attention Is All You Need", NIPS 2017) tomonidan taklif etilgan, rekurrentlik ([RNN](/learn/rnn), [LSTM](/learn/lstm)) va konvolyutsiyalardan ([CNN](/learn/cnn)) butunlay voz kechib, ketma-ketliklarni (sequences) faqat Attention (Diqqat) mexanizmi va pozitsion kodlash (Positional Encoding) yordamida qayta ishlovchi neyron tarmoq arxitekturasi.
+
+## 2. Nima uchun kerak?
+Transformer yaratilgunga qadar ketma-ketliklarni qayta ishlash va mashina tarjimasida murakkab rekurrent ([LSTM](/learn/lstm), GRU) yoki konvolyutsion Encoder-Decoder modellari yetakchilik qilgan. Biroq rekurrent tarmoqlar tokenlarni chapdan o'ngga bittadan (ketma-ket) hisoblaydi: ular barcha tokenlar ustida parallel ishlay olmaydi. Transformer rekurrentlikdan voz kechib, parallel Multi-Head Attention dan foydalangani sababli:
+
+O'qitish (training) davrida tokenlarni GPU da parallel qayta ishlash va ancha katta modellarni tezroq o'qitish imkonini beradi.
+Ketma-ketlikdagi istalgan ikki pozitsiya o'rtasidagi maksimal yo'l uzunligini bir xil minimal darajaga tushirib, uzoq masofali sintaktik va semantik bog'liqliklarni samarali o'rganadi.
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+3Blue1Brown (Grant Sanderson, 2024) misolini ko'rib chiqaylik: "paxmoq ko'k mavjudot" ("fluffy blue creature"). "Mavjudot" so'zi dastlab umumiy embedding vektoriga ega. Gapni tushunish uchun "paxmoq" va "ko'k" sifatlari "mavjudot" so'ziga e'tibor qaratib (attend), uning ma'nosini boyitishi kerak. Self-Attention blokida har bir token uchta rol o'ynaydi:
+
+Query (Q — So'rov): Tokenning boshqa so'zlardan qidirayotgan ma'lumoti.
+Key (K — Kalit): Boshqa so'zlarning ushbu so'rovga qanchalik mos kelishini bildiruvchi ko'rsatkichi.
+Value (V — Qiymat): Agar Query va Key mos tushsa (ularning skalyar ko'paytmasi yuqori bo'lsa), tokenning embeddingini yangilash (\Delta e qo'shish) uchun uzatiladigan ma'no vektori.
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+### 4.1. Original 2017-yilgi Arxitektura (Vaswani et al., 2017)
+Original Transformer ketma-ketlikni o'zgartirish (sequence transduction / mashina tarjimasi) uchun Encoder-Decoder konfiguratsiyasida qurilgan:
+
+Encoder: N = 6 ta bir xil qatlamdan (stack of N = 6 identical layers) tashkil topgan. U kirish belgilar ketma-ketligini (x_1, \dots, x_n) uzluksiz tasvirlar ketma-ketligiga z = (z_1, \dots, z_n) o'tkazadi. Har bir Encoder qatlamida ikkita qism-qatlam (sub-layers) bor:
+Multi-Head Self-Attention: Bu yerda barcha Key, Value va Query vektorlari aynan bitta joydan — Encoderdagi oldingi qatlamning chiqishidan keladi. Encoderdagi har bir pozitsiya oldingi qatlamning barcha pozitsiyalariga murojaat qila oladi.
+Position-wise Fully Connected Feed-Forward Network: Har bir pozitsiyaga alohida qo'llaniluvchi to'liq bog'langan tarmoq.
+Decoder: z berilganda, chiqish ketma-ketligini (y_1, \dots, y_m) bitta elementdan auto-regressive tarzda (oldingi yaratilgan belgilarni qo'shimcha kirish sifatida olib) generatsiya qiladi. Decoder ham N = 6 ta qatlamdan iborat bo'lib, unda:
+Masked Self-Attention: O'ng tomondagi (hali yaratilmagan) chiqish pozitsiyalariga murojaat qilishning oldini olish uchun diqqat bloki faqat chap tomondagi kirishlarni qabul qiladi.
+Encoder-Decoder Cross-Attention: Tipik seq2seq diqqat mexanizmini takrorlaydi — Query decoderdan, Key va Value esa encoderdan olinadi.
+Position-wise Feed-Forward Network.
+Regulyarizatsiya va O'qitish: Original maqolada o'rganish tezligini o'zgartirish uchun maxsus formula, bir nechta joyda Dropout va Label Smoothing regulyarizatsiyasi qo'llanilgan.
+### 4.2. Original (2017) va Keyingi Transformer Tizimlari Farqi
+Xususiyat
+
+Original Transformer (Vaswani et al., 2017)
+
+Keyingi Transformer Tizimlari (GPT / ViT)
+
+Arxitektura turi
+
+Encoder-Decoder (N=6 qatlam)
+
+GPT modellarida (masalan, GPT-2, GPT-3, nanoGPT) faqat keyingi tokenni bashorat qiluvchi Decoder-only bloklar; Vision Transformer (ViT) da tasvir bo'laklari (image patches) tokenlar ketma-ketligi sifatida qayta ishlanadi
+
+Attention parametrlari
+
+$h = 8$ parallel attention head, $d_k = d_v = d_{\text{model}} / h = 64$ ($d_{\text{model}} = 512$)
+
+3Blue1Brown tahliliga ko'ra, GPT-3 da har bir blokda $h = 96$ attention head bo'lib, Key va Query matritsalari 12,288 ustun (embedding o'lchami) va $d_k = 128$ satrga ega
+
+Vazifalar
+
+English-to-French / German mashina tarjimasi va English Constituency Parsing
+
+Umumiy matn generatsiyasi ([LLM](/learn/llm)), tasvir va video generatsiya tizimlari
+
+## 5. Matematik asoslari (Level 3 — Advanced)
+### 5.1. Scaled Dot-Product Attention
+So'rovlar, kalitlar va qiymatlar mos ravishda $Q, K$ va $V$ matritsalariga qadoqlanadi (packed together into matrices). Diqqat funksiyasi qiymatlarning vaznli yig'indisi sifatida hisoblanadi (Vaswani et al., 2017, Section 3.2.1):
+
+$$ \operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V $$
+
+Bu yerda:
+- $Q$ — so'rovlar matritsasi,
+- $K$ — kalitlar matritsasi ($d_k$ o'lchamli),
+- $V$ — qiymatlar matritsasi ($d_v$ o'lchamli),
+- $\frac{1}{\sqrt{d_k}}$ — masshtablash ko'paytuvchisi (scaling factor).
+
+**Nima uchun $\sqrt{d_k}$ ga bo'linadi?**
+Maqolada ikki keng tarqalgan diqqat funksiyasi — qo'shuvchi (additive attention) va skalyar ko'paytmali (dot-product / multiplicative attention) solishtiriladi. Kichik $d_k$ qiymatlarida ikkala mexanizm o'xshash ishlaydi, ammo kattaroq $d_k$ uchun masshtablashsiz dot-product attention yomonroq natija beradi. Sababi (Vaswani et al., 2017, Footnote 4): faraz qilaylik, $q$ va $k$ vektorlarining komponentlari o'zaro mustaqil, o'rtacha qiymati ([Mean](/learn/mean)) 0 va dispersiyasi ([Standard Deviation](/learn/standard-deviation) kvadrati) 1 ga teng bo'lgan tasodifiy o'zgaruvchilardir. U holda ularning skalyar ko'paytmasi $q \cdot k = \sum_{i=1}^{d_k} q_i k_i$ ning o'rtachasi 0, dispersiyasi esa $d_k$ ga teng bo'ladi. Katta $d_k$ qiymatlarida skalyar ko'paytma miqdori juda kattalashib, $\operatorname{softmax}$ funksiyasini gradientlari o'ta kichik bo'lgan hududlarga (saturation regions) itarib yuboradi. Shu ta'sirni bartaraf etish uchun ko'paytmalar $\frac{1}{\sqrt{d_k}}$ ga masshtablanadi.
+
+### 5.2. Multi-Head Attention
+$d_{\text{model}}$ o'lchamli kalitlar, qiymatlar va so'rovlar bilan bitta diqqat funksiyasini bajarish o'rniga, ularni $h$ marta (original maqolada $h = 8$) turli o'rganiladigan chiziqli proyeksiyalar yordamida $d_k, d_k$ va $d_v$ o'lchamlarga proyeksiyalash foydali ekanligi aniqlangan (Section 3.2.2). Har bir boshdan chiqqan diqqat natijalari parallel hisoblanib, birlashtiriladi (concatenated) va yakuniy chiziqli transformatsiyadan o'tkaziladi:
+
+$$ \operatorname{MultiHead}(Q, K, V) = \operatorname{Concat}(\text{head}_1, \dots, \text{head}_h) W^O $$
+$$ \text{head}_i = \operatorname{Attention}(Q W_i^Q, K W_i^K, V W_i^V) $$
+
+Har bir boshning o'lchami kichraytirilgani ($d_k = d_v = d_{\text{model}} / h = 64$) tufayli umumiy hisoblash qiymati to'liq o'lchamli bitta boshli (single-head) diqqat bilan deyarli bir xil bo'ladi, ammo model embeddinglarni turli xil nuqtai nazarlardan boyitadi.
+
+### 5.3. Sinusoidal Positional Encoding
+Ketma-ketlik tartibini bildirish uchun Vaswani et al. (2017) turli chastotali sinus va kosinus funksiyalaridan foydalangan:
+
+$$ PE_{(\text{pos}, 2i)} = \sin\left(\frac{\text{pos}}{10000^{2i / d_{\text{model}}}}\right), \quad PE_{(\text{pos}, 2i+1)} = \cos\left(\frac{\text{pos}}{10000^{2i / d_{\text{model}}}}\right) $$
+
+Bu yerda $\text{pos}$ — pozitsiya, $i$ esa o'lcham indeksi bo'lib, to'lqin uzunliklari $2\pi$ dan $10000 \cdot 2\pi$ gacha geometrik progressiya hosil qiladi. Mualliflar sinusoidal versiyani tanlash sababini shunday izohlaydilar: bu modelga o'qitish jarayonida uchraganidan ko'ra uzunroq ketma-ketlik uzunliklariga ekstrapolyatsiya qilish imkonini berishi mumkin.
+
+### 5.4. Hisoblash murakkabligi (Computational Complexity)
+RNN lar tokenlarni bittadan ketma-ket qayta ishlagani uchun ketma-ketlik bo'yicha parallel ishlay olmaydi. Transformerlar o'qitish vaqtida tokenlarni parallel qayta ishlashga ruxsat beradi, biroq standart Self-Attention ning hisoblash va xotira xarajatlari ketma-ketlik uzunligi (n) bo'yicha kvadratik o'sadi.
+
+## 6. Python / PyTorch Amaliy Misoli
+Quyida PyTorch yordamida Scaled Dot-Product Attention mexanizmining tenzor o'lchamlari bilan amalga oshirilishi keltirilgan 
+## Python / PyTorch Amaliy Misoli
+
+```python
+import math import torch import torch.nn.functional as F
+
+def scaled_dot_product_attention(Q, K, V, mask=None): # Q, K, V shape: (batch_size, num_heads, seq_len, d_k) d_k = Q.size(-1)
+
+# 1. Q va K^T ko'paytmasi va sqrt(d_k) ga bo'lish # scores shape: (batch_size, num_heads, seq_len, seq_len) scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(d_k)
+
+# 2. Agar decoder (causal mask) bo'lsa, o'ng tomondagi kelajak tokenlarni yopish if mask is not None: scores = scores.masked_fill(mask == 0, float('-inf'))
+
+# 3. Softmax orqali diqqat vaznlarini olish attn_weights = F.softmax(scores, dim=-1)
+
+# 4. Qiymatlar (V) ning vaznli yig'indisi # output shape: (batch_size, num_heads, seq_len, d_v) output = torch.matmul(attn_weights, V) return output, attn_weights
+
+Kichik o'lchamli test: batch=1, heads=2, seq_len=4, d_k=8
+torch.manual_seed(42) x_q = torch.randn(1, 2, 4, 8) out, weights = scaled_dot_product_attention(x_q, x_q, x_q) print("Output shape:", out.shape) # torch.Size([1, 2, 4, 8]) print("Attention weights shape:", weights.shape) # torch.Size([1, 2, 4, 4])
+```
+
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Matrix Operations](/learn/matrix-operations)
+- [Embeddings](/learn/embeddings)
+- [Probability](/learn/probability)
+- [Standard Deviation](/learn/standard-deviation)
+
+**Keyingi mavzular:**
+- [LLM](/learn/llm)
+- [RAG](/learn/rag)
+- [AI Agent](/learn/ai-agent)
+
+**Bog'liq:**
+- [RNN](/learn/rnn)
+- [LSTM](/learn/lstm)
+
+## 8. Tekshirilgan manbalar
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention Is All You Need*. Advances in Neural Information Processing Systems 30 (NIPS 2017), pp. 5998–6008. arXiv:1706.03762.
+- Sanderson, G. [3Blue1Brown]. (2024). *Attention in transformers, step-by-step | Deep Learning Chapter 6*. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+- Karpathy, A. (2023). *Let's build GPT: from scratch, in code, spelled out*. YouTube. https://www.youtube.com/watch?v=kCc8FmEb1nY
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="self-attention-explorer" />
+

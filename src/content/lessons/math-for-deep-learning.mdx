@@ -1,0 +1,77 @@
+---
+id: math-for-deep-learning
+title: "Math for Deep Learning"
+slug: math-for-deep-learning
+description: "Math for Deep Learning — neyron tarmoqlarda ma'lumotlarni vektorlashgan tenzorlar sifatida tasvirlash, oldinga hisoblash (forward computation), teskari differensiallash (Backpropagation) va stoxastik optimallashtirishning nazariy asosini tashkil etuvchi to'rtta matematik yo'nalish: Linear Algebra..."
+category: math
+difficulty: beginner
+order: 1
+tags: ["ai","math","deep-learning","deep","chuqur"]
+prerequisites: []
+related: ["vector","matrix","hosila","probability","gradient-descent"]
+visualizations: ["function-explorer"]
+sources: ["vaswani-2017","rumelhart-1986","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2000–2058"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Math for Deep Learning — neyron tarmoqlarda ma'lumotlarni vektorlashgan tenzorlar sifatida tasvirlash, oldinga hisoblash (forward computation), teskari differensiallash ([Backpropagation](/learn/backpropagation)) va stoxastik optimallashtirishning nazariy asosini tashkil etuvchi to'rtta matematik yo'nalish: Linear Algebra, Calculus, Probability and Statistics hamda Optimization majmuasidir.
+
+## 2. To'rtta Matematik Bo'lim va Neyron Tarmoqlar Bilan Bog'liqligi
+Matematik bo'lim
+
+Kanonik konspektlar
+
+Neyron tarmoqni o'qitishdagi bevosita vazifasi
+
+## 1. Linear Algebra
+
+[Vector](/learn/vector), [Matrix](/learn/matrix), [Matrix Operations](/learn/matrix-operations), [Tensor](/learn/tensor)
+
+Kirish ma'lumotlarini ([Embeddings](/learn/embeddings), tasvirlar) va qatlam vaznlarini (W) saqlash hamda GPU da parallel ko'paytirish (Q K^T, W x + b) amallarini bajarish.
+
+## 2. Calculus
+
+[Hosila](/learn/hosila), [Partial Derivative](/learn/partial-derivative), [Gradient](/learn/gradient), [Chain Rule](/learn/chain-rule)
+
+Yo'qotish funksiyasining har bir parametrga nisbatan sezgirligini hisoblash va [Backpropagation](/learn/backpropagation) orqali xatolik signalini qatlamlar bo'ylab orqaga uzatish.
+
+## 3. Probability & Statistics
+
+[Probability](/learn/probability), [Mean](/learn/mean), [Standard Deviation](/learn/standard-deviation)
+
+Softmax ehtimolliklarini modellash, [Batch Normalization](/learn/batch-normalization) da aktivatsiyalarni standartlashtirish ($\mu_{\mathcal{B}}, \sigma_{\mathcal{B}}^2$), [Transformers](/learn/transformers) da $\sqrt{d_k}$ masshtablash va [Adam](/learn/adam) da 1-/2-momentlarni baholash.
+
+## 4. Optimization
+
+[Gradient Descent](/learn/gradient-descent), [SGD](/learn/sgd), [Adam](/learn/adam)
+
+Yuqori o'lchamli parametrlar fazosida yo'qotish funksiyasini iterativ minimallashtirish va Decoupled Weight Decay orqali regulyarizatsiya qilish.
+
+## 3. Matematik Nazariya va Muhandislik Implementatsiyasi Farqi
+Sonli barqarorlik (Numerical Stability): Matematik tenglamalarda bo'lish amali har qanday musbat dispersiya uchun o'rinli bo'lsa, kompyuter xotirasida standart chetlanish nolga teng bo'lib qolganda normalizatsiya cheksizlikka ($\infty$) ketib qoladi. Shu sababli [Batch Normalization](/learn/batch-normalization) va [Adam](/learn/adam) algoritmlarida maxrajga kichik $\epsilon$ o'zgarmasi qo'shiladi (Ioffe & Szegedy, 2015; Kingma & Ba, 2015).
+Vektorizatsiya va Mini-Batching: Matematik ta'riflarda har bir so'rov $q$ yoki namuna $x_i$ alohida yozilsa, amaliyotda ular $Q, K, V$ matritsalariga va mini-batch tenzorlariga qadoqlanib, zamonaviy GPU larda parallel hisoblanadi (Vaswani et al., 2017; Ioffe & Szegedy, 2015).
+## 4. Bog'liq tushunchalar
+Keyingi mavzular:
+
+[Vector](/learn/vector)
+[Matrix](/learn/matrix)
+[Hosila](/learn/hosila)
+[Probability](/learn/probability)
+[Gradient Descent](/learn/gradient-descent)
+## 5. Tekshirilgan manbalar
+Rumelhart, D. E., et al. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536.
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization. ICML 2015.
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="function-explorer" />
+

@@ -1,0 +1,57 @@
+---
+id: matrix
+title: "Matrix"
+slug: matrix
+description: "Matrix (W ∈ R^m × n}) — m ta satr va n ta ustundan iborat ikki o'lchamli sonlar jadvali bo'lib, vektor fazolar orasida chiziqli proyeksiya (linear projection) va vaznli ulanishlarni ifodalaydi."
+category: math
+difficulty: beginner
+order: 3
+tags: ["ai","math","linear-algebra","matritsa","matrices","matrix"]
+prerequisites: ["vector"]
+related: ["matrix-operations","tensor","transformers","deep-learning"]
+visualizations: []
+sources: ["vaswani-2017","hochreiter-1997","loshchilov-2017","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2112–2150"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Matrix ($W \in \mathbb{R}^{m \times n}$) — $m$ ta satr va $n$ ta ustundan iborat ikki o'lchamli sonlar jadvali bo'lib, vektor fazolar orasida chiziqli proyeksiya (linear projection) va vaznli ulanishlarni ifodalaydi.
+
+## 2. Nima uchun kerak?
+Simultaneous Computation (Vaswani et al., 2017): Amaliyotda diqqat funksiyasini alohida so'rovlar ustida bittadan bajarish o'rniga, so'rovlar to'plami bitta $Q$ matritsasiga, kalitlar va qiymatlar esa $K$ va $V$ matritsalariga qadoqlanadi (packed together into matrices $Q, K, V$).
+Linear Projections: [Transformers](/learn/transformers) dagi Multi-Head Attention mexanizmida har bir bosh o'zining o'rganiladigan chiziqli proyeksiya matritsalariga ega bo'ladi (masalan, 3Blue1Brown tahlilidagi GPT-3 da Key va Query matritsalari 12,288 ustun va 128 satrdan iborat).
+## 3. Matematik Notatsiya va Maxsus Matritsalar (Level 1 — Level 3)
+Hochreiter va Schmidhuber (1997, Section 3) notatsiyasiga ko'ra, $W$ vazn matritsasining elementlari va ustun/satr vektorlari quyidagicha belgilanadi:
+
+- $[W v]_i := [W]_{iv} = w_{iv}$ — $v$ birligidan chiquvchi vazn vektori,
+- $[W_u^T]_i := [W]_{ui} = w_{ui}$ — $u$ birligiga kiruvchi vazn vektori.
+
+**Diagonal matritsa ($F'(t-m)$):** Birinchi tartibli hosilalarning diagonal matritsasi bo'lib:
+$$
+[F'(t-m)]_{ij} = \begin{cases} 0, & \text{agar } i \neq j \\ f'_i\left(\text{net}_i(t-m)\right), & \text{aks holda } (i = j) \end{cases}
+$$
+
+**Birlik matritsa ($I$):** Loshchilov & Hutter (2019, Proposition 2) da adaptiv optimizatorlarning prekonditsioner matritsasi skalyar birlik matritsaga teng emasligi ($M_t \neq k I$) ko'rsatilgan.
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Vector](/learn/vector)
+Keyingi mavzular:
+
+[Matrix Operations](/learn/matrix-operations)
+[Tensor](/learn/tensor)
+[Transformers](/learn/transformers)
+Bog'liq:
+
+[Deep Learning](/learn/deep-learning)
+## 5. Tekshirilgan manbalar
+Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780.
+Loshchilov, I., & Hutter, F. (2019). Decoupled Weight Decay Regularization. ICLR 2019. arXiv:1711.05101.
+Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc

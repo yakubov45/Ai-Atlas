@@ -1,0 +1,66 @@
+---
+id: gradient
+title: "Gradient"
+slug: gradient
+description: "Gradient (g_t = ∇_theta f_t(theta_t)) — maqsad funksiyasi f_t(theta_t) ning barcha parametrlar bo'yicha Partial Derivative (xususiy hosilalari) ni jamlagan vektor bo'lib, i-chi elementi g_{t,i} = ∂ f_t(theta_t)/∂ theta_{t,i} ga teng (Kingma & Ba, 2015)."
+category: math
+difficulty: intermediate
+order: 8
+tags: ["ai","math","calculus","gradient"]
+prerequisites: ["vector","hosila","partial-derivative"]
+related: ["gradient-descent","backpropagation","sgd","adam","optimizers"]
+visualizations: ["function-explorer"]
+sources: ["kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2349–2392"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Gradient ($g_t = \nabla_\theta f_t(\theta_t)$) — maqsad funksiyasi $f_t(\theta_t)$ ning barcha parametrlar bo'yicha [Partial Derivative](/learn/partial-derivative) (xususiy hosilalari) ni jamlagan vektor bo'lib, $i$-chi elementi $g_{t,i} = \frac{\partial f_t(\theta_t)}{\partial \theta_{t,i}}$ ga teng (Kingma & Ba, 2015).
+
+## 2. Nima uchun kerak?
+Gradient vektori parametrlar fazosida funksiyaning eng tez o'sish yo'nalishini ko'rsatadi. [Gradient Descent](/learn/gradient-descent), [SGD](/learn/sgd) va [Adam](/learn/adam) optimizatorlari yo'qotish funksiyasini minimallashtirish uchun aynan shu gradient vektoridan foydalanadi.
+
+## 3. Matematik Xossalari: Masshtabga Nisbatan Invariantlik (Level 1 — Level 3)
+Kingma va Ba (2015, Section 2) ko'rsatganidek:
+
+Oddiy [SGD](/learn/sgd) da gradient vektori c koeffitsiyentga masshtablansa (c \cdot g_t), parametr yangilanishi ham c marta o'zgaradi.
+[Adam](/learn/adam) da esa effektiv qadam kattaligi $\Delta_t$ gradientlarning diagonal masshtablanishiga nisbatan invariantdir: gradient $g$ ni $c$ omilga ko'paytirish 1-moment $\hat{m}_t$ ni $c$ marta, 2-moment $\hat{v}_t$ ni esa $c^2$ marta masshtablaydi va ular nisbatda qisqarib ketadi:
+
+$$
+\frac{c \cdot \hat{m}_t}{\sqrt{c^2 \cdot \hat{v}_t}} = \frac{\hat{m}_t}{\sqrt{\hat{v}_t}}
+$$
+Qadam-baqadam Sonli Misol
+[Partial Derivative](/learn/partial-derivative) konspektidagi misolda $\frac{\partial E}{\partial w_1} = -4$ va $\frac{\partial E}{\partial w_2} = -6$ topilgan edi. Ular birgalikda 2 o'lchamli gradient vektorini tashkil etadi:
+
+$$ \nabla_w E = \begin{bmatrix} -4 \\ -6 \end{bmatrix} $$
+
+Agar bu gradientni $c = 10$ ga ko'paytirsak ($[-40, -60]^T$), har bir komponent uchun $\frac{c \cdot g_i}{\sqrt{c^2 \cdot g_i^2}} = \frac{g_i}{|g_i|} = [-1, -1]^T$ nisbat o'zgarmas qoladi.
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Vector](/learn/vector)
+[Hosila](/learn/hosila)
+[Partial Derivative](/learn/partial-derivative)
+Keyingi mavzular:
+
+[Gradient Descent](/learn/gradient-descent)
+[Backpropagation](/learn/backpropagation)
+[SGD](/learn/sgd)
+[Adam](/learn/adam)
+Bog'liq:
+
+[Optimizers](/learn/optimizers)
+## 5. Tekshirilgan manbalar
+Kingma, D. P., & Ba, J. (2015). Adam: A Method for Stochastic Optimization. ICLR 2015. arXiv:1412.6980.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="function-explorer" />
+

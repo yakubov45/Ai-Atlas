@@ -1,0 +1,52 @@
+---
+id: tools
+title: "Tools"
+slug: tools
+description: "Tools (Vositalar) — AI Agent tizimlarida til modelining mantiqiy mulohaza yuritish (reasoning) qobiliyatini tashqi muhitda amaliy harakatlar (acting) bilan bog'lovchi tashqi funksiyalar va interfeyslar."
+category: ai-agents
+difficulty: intermediate
+order: 1
+tags: ["ai","agents","tools","tool","function"]
+prerequisites: ["llm","prompt-engineering"]
+related: ["ai-agent","rag","memory"]
+visualizations: ["rag-pipeline-flow"]
+sources: ["lecun-1998","yao-2022","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1316–1349"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Tools (Vositalar) — [AI Agent](/learn/ai-agent) tizimlarida til modelining mantiqiy mulohaza yuritish (reasoning) qobiliyatini tashqi muhitda amaliy harakatlar (acting) bilan bog'lovchi tashqi funksiyalar va interfeyslar.
+
+## 2. Nima uchun kerak?
+Til modeli o'z holicha faqat keyingi token ehtimolligini hisoblaydi (3Blue1Brown, 2024). Tashqi tizimlar bilan ishlash uchun Yao et al. (2022, arXiv:2210.03629) tomonidan taklif etilgan ReAct: Synergizing Reasoning and Acting in Language Models paradigmasi mulohaza va harakatni birlashtiradi.
+
+Izoh (Manba maqomi): Yao et al. (2022, arXiv:2210.03629) maqolasining bibliografik metama'lumoti tasdiqlangan; ammo tashqi tool calling, execution sandboxing va API sxemalari bo'yicha to'liq matn joriy manbalar to'plamida mavjud emasligi sababli Tasdiqlanmagan deb belgilandi.
+
+## 3. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[LLM](/learn/llm)
+[Prompt Engineering](/learn/prompt-engineering)
+Keyingi mavzular:
+
+[AI Agent](/learn/ai-agent)
+[RAG](/learn/rag)
+Bog'liq:
+
+[Memory](/learn/memory)
+## 4. Tekshirilgan manbalar
+Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629. (Bibliografik metama'lumot tasdiqlangan).
+Bo'lim D: Deep Learning Architectures
+Chuqur o'rganish arxitekturalarini o'rganishda tarixiy-ilmiy aniqlik juda muhimdir. Ko'plab zamonaviy darsliklarda LeCun va hammualliflarning 1998-yilgi LeNet-5 tarmog'i zamonaviy Max-Pooling va ReLU qatlamlari bilan noto'g'ri tasvirlanadi. Quyidagi vizual grafikda LeCun et al. (1998) maqolasidagi haqiqiy LeNet-5 qatlamlarining fazoviy o'lchamlari va o'rganiladigan parametrlari aniq sonlar bilan aks ettirilgan.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="rag-pipeline-flow" />
+

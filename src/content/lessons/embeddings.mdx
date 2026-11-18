@@ -1,0 +1,92 @@
+---
+id: embeddings
+title: "Embeddings"
+slug: embeddings
+description: "Embeddings — matnning kichik birliklarini (tokenlar, so'zlar yoki iboralarni) ularning semantik va sintaktik ma'nosini hamda kontekstdagi pozitsiyasini kodlovchi yuqori o'lchamli vektorlar fazosida (R^d) tasvirlash usuli."
+category: llms-rag
+difficulty: intermediate
+order: 2
+tags: ["ai","llm","embeddings","embedding","vector"]
+prerequisites: ["vector","matrix","tokenization"]
+related: ["transformers","llm","rag","deep-learning"]
+visualizations: ["self-attention-explorer"]
+sources: ["vaswani-2017","sanderson-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1013–1070"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Embeddings — matnning kichik birliklarini (tokenlar, so'zlar yoki iboralarni) ularning semantik va sintaktik ma'nosini hamda kontekstdagi pozitsiyasini kodlovchi yuqori o'lchamli vektorlar fazosida ($\mathbb{R}^d$) tasvirlash usuli.
+
+## 2. Nima uchun kerak?
+Neyron tarmoqlar matnli belgilarni bevosita matritsalarga ko'paytira olmaydi. Mikolov et al. (2013) va 3Blue1Brown (2024) ko'rsatganidek, so'z va tokenlarni yuqori o'lchamli taqsimlangan vektorlar (distributed vector representations) sifatida ifodalash orqali:
+
+- Ko'p sonli aniq sintaktik va semantik so'z munosabatlarini fazodagi yo'nalishlar sifatida ushlash mumkin.
+- [Transformers](/learn/transformers) dagi diqqat mexanizmi orqali bir so'zning ma'nosini boshqa so'zlardan olingan ma'lumot bilan boyitish mumkin.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Har bir so'z dastlab ko'p o'lchamli fazoda o'zining ma'nosini va gapdagi o'rnini (position) bildiruvchi nuqta (vektor) sifatida joylashtiriladi. Masalan, "paxmoq ko'k mavjudot" jumlasida "mavjudot" so'zining dastlabki embeddingi diqqat blokidan o'tgach, "paxmoq" va "ko'k" so'zlaridan ma'lumot olib, yanada boyroq kontekstual ma'noga ega yangilangan embeddingga aylanadi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+- **Static Distributed Vector Representations (Mikolov et al., 2013):** Skip-gram modeli va hierarchical softmax o'rnini bosuvchi negative sampling usuli yordamida millionlab so'z va iboralar (phrases) uchun sifatli vektor tasvirlarni tez o'rganish mumkin.
+- **Contextual Embeddings in Transformers (Vaswani et al., 2017; 3Blue1Brown, 2024):**
+  - Token dastlab kirish embeddingi va Positional Encoding yig'indisi sifatida kodlanadi (original Transformerda $d_{\text{model}} = 512$, GPT-3 da $d_{\text{model}} = 12,288$).
+  - Har bir Multi-Head Attention blokida Query, Key va Value matritsalari yordamida so'zlar orasidagi bog'liqlik (relevance grid) hisoblanadi.
+  - Har bir attention head dastlabki embeddingga qo'shilishi kerak bo'lgan o'zgarish vektorini ($\Delta e$) hisoblaydi; barcha boshlardan chiqqan o'zgarishlar yig'ilib, dastlabki embeddingga qo'shiladi va refined (boyitilgan) embedding hosil bo'ladi.
+
+## 5. Matematik asoslari va Python Misoli (Level 3 — Advanced)
+Ikki embedding yoki Query/Key vektori $q, k \in \mathbb{R}^d$ o'rtasidagi moslik (compatibility / similarity) ularning skalyar ko'paytmasi orqali baholanadi:
+
+$$ q \cdot k = \sum_{i=1}^d q_i k_i $$
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+import torch.nn as nn
+
+# 100 ta token uchun 16 o'lchamli embedding va pozitsion embedding qatlami
+vocab_size, seq_len, d_model = 100, 4, 16
+token_emb = nn.Embedding(vocab_size, d_model)
+pos_emb = nn.Embedding(seq_len, d_model)
+
+# 4 ta token ID dan iborat ketma-ketlik
+tokens = torch.tensor([10, 25, 42, 7])
+positions = torch.arange(0, seq_len)
+
+# Token embedding + Positional embedding
+x = token_emb(tokens) + pos_emb(positions)  # Shape: (4, 16)
+print("Contextual input embedding shape:", x.shape)
+```
+
+
+## 6. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Vector](/learn/vector)
+- [Matrix](/learn/matrix)
+- [Tokenization](/learn/tokenization)
+
+**Keyingi mavzular:**
+- [Transformers](/learn/transformers)
+- [LLM](/learn/llm)
+- [RAG](/learn/rag)
+
+**Bog'liq:**
+- [Deep Learning](/learn/deep-learning)
+
+## 7. Tekshirilgan manbalar
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+- Mikolov, T., Corrado, G., Dean, J., et al. (2013). *Distributed Representations of Words and Phrases and their Compositionality* / *Skip-gram*. (Referenced via literature record).
+- Sanderson, G. [3Blue1Brown]. (2024). *Attention in transformers, step-by-step | Deep Learning Chapter 6*. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="self-attention-explorer" />
+

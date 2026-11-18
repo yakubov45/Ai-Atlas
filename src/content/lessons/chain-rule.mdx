@@ -1,0 +1,71 @@
+---
+id: chain-rule
+title: "Chain Rule"
+slug: chain-rule
+description: "Chain Rule (Zanjir qoidasi) — murakkab kompozitsion funksiyalar hosilasini ichki va tashqi hosilalar ko'paytmasi (tarmoqlangan hisoblash graflarida esa barcha keyingi iste'molchi yo'llar yig'indisi) sifatida hisoblash qoidasi."
+category: math
+difficulty: intermediate
+order: 9
+tags: ["ai","math","calculus","zanjir","murakkab","chain"]
+prerequisites: ["hosila","partial-derivative"]
+related: ["backpropagation","rnn","lstm","batch-normalization","gradient-descent"]
+visualizations: ["function-explorer"]
+sources: ["rumelhart-1986","hochreiter-1997","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2393–2435"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Chain Rule (Zanjir qoidasi) — murakkab kompozitsion funksiyalar hosilasini ichki va tashqi hosilalar ko'paytmasi (tarmoqlangan hisoblash graflarida esa barcha keyingi iste'molchi yo'llar yig'indisi) sifatida hisoblash qoidasi.
+
+## 2. Nima uchun kerak?
+Chuqur neyron tarmoqlarda [Backpropagation](/learn/backpropagation) (Rumelhart et al., 1986), vaqt bo'yicha xatolik oqimi (Hochreiter & Schmidhuber, 1997) va [Batch Normalization](/learn/batch-normalization) orqali gradient o'tishi (Ioffe & Szegedy, 2015) to'liq Chain Rule ga asoslanadi.
+
+## 3. Matematik Formulalari (Level 1 — Level 3)
+- **Tarmoqlangan Grafda Yig'indi (Rumelhart et al., 1986):**
+  Agar yashirin birlik $a_j$ keyingi qatlamdagi bir nechta $z_k$ birliklariga ulansa, teskari o'tishda barcha $k$ yo'llar bo'yicha yig'indi olinadi:
+  $$ \frac{\partial E}{\partial a_j} = \sum_{k} \frac{\partial E}{\partial z_k} \cdot \frac{\partial z_k}{\partial a_j} $$
+
+- **Ketma-ket Qadamlar Bo'yicha Ko'paytma (Hochreiter & Schmidhuber, 1997):**
+  $q$ ta vaqt qadami bo'yicha orqaga uzatilgan xatolik har bir qadamdagi hosila va vazn ko'paytmasini o'z ichiga oladi:
+  $$ \prod_{m=1}^{q} f'_{l_m} w_{l_m l_{m-1}} $$
+
+### Qadam-baqadam Sonli Misol (Ikki Chiqishli Tarmoqda Chain Rule)
+Faraz qilaylik, yashirin birlik aktivatsiyasi $a_h = 2.0$ ikkita chiqishga ulanadi:
+- 1-chiqish: $z_1 = w_1 a_h$ ($w_1 = 3.0$) va uning xatolik hosilasi $\frac{\partial E}{\partial z_1} = 0.5$.
+- 2-chiqish: $z_2 = w_2 a_h$ ($w_2 = -1.0$) va uning xatolik hosilasi $\frac{\partial E}{\partial z_2} = 0.8$.
+
+Yashirin birlik $a_h$ bo'yicha umumiy hosilani topamiz:
+1. 1-chiqishdan kelgan ulush:
+   $$ \frac{\partial E}{\partial z_1} \cdot \frac{\partial z_1}{\partial a_h} = 0.5 \times 3.0 = 1.5 $$
+2. 2-chiqishdan kelgan ulush:
+   $$ \frac{\partial E}{\partial z_2} \cdot \frac{\partial z_2}{\partial a_h} = 0.8 \times (-1.0) = -0.8 $$
+3. Ikkala yo'l yig'indisi:
+   $$ \frac{\partial E}{\partial a_h} = 1.5 + (-0.8) = 0.7 $$
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Hosila](/learn/hosila)
+[Partial Derivative](/learn/partial-derivative)
+Keyingi mavzular:
+
+[Backpropagation](/learn/backpropagation)
+[RNN](/learn/rnn)
+[LSTM](/learn/lstm)
+[Batch Normalization](/learn/batch-normalization)
+Bog'liq:
+
+[Gradient Descent](/learn/gradient-descent)
+## 5. Tekshirilgan manbalar
+Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536.
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="function-explorer" />
+

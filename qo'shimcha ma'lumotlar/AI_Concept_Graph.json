@@ -1,0 +1,4891 @@
+{
+  "nodes": [
+    {
+      "id": "artificial-intelligence",
+      "title": "Artificial Intelligence",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "machine-learning",
+      "title": "Machine Learning",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "deep-learning",
+      "title": "Deep Learning",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "artificial-general-intelligence",
+      "title": "Artificial General Intelligence",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "narrow-ai",
+      "title": "Narrow AI",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "algorithm",
+      "title": "Algorithm",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "dataset",
+      "title": "Dataset",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "feature",
+      "title": "Feature",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "label",
+      "title": "Label",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "model-training",
+      "title": "Model Training",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "inference",
+      "title": "Inference",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "parameter",
+      "title": "Parameter",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "hyperparameter",
+      "title": "Hyperparameter",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "generative-ai",
+      "title": "Generative AI",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "discriminative-model",
+      "title": "Discriminative Model",
+      "category": "AI asoslari"
+    },
+    {
+      "id": "big-o-notation",
+      "title": "Big O Notation",
+      "category": "Matematika"
+    },
+    {
+      "id": "scalar",
+      "title": "Scalar",
+      "category": "Matematika"
+    },
+    {
+      "id": "vector",
+      "title": "Vector",
+      "category": "Matematika"
+    },
+    {
+      "id": "matrix",
+      "title": "Matrix",
+      "category": "Matematika"
+    },
+    {
+      "id": "tensor",
+      "title": "Tensor",
+      "category": "Matematika"
+    },
+    {
+      "id": "matrix-multiplication",
+      "title": "Matrix Multiplication",
+      "category": "Matematika"
+    },
+    {
+      "id": "dot-product",
+      "title": "Dot Product",
+      "category": "Matematika"
+    },
+    {
+      "id": "vector-norm",
+      "title": "Vector Norm",
+      "category": "Matematika"
+    },
+    {
+      "id": "cosine-similarity",
+      "title": "Cosine Similarity",
+      "category": "Matematika"
+    },
+    {
+      "id": "derivative",
+      "title": "Derivative",
+      "category": "Matematika"
+    },
+    {
+      "id": "partial-derivative",
+      "title": "Partial Derivative",
+      "category": "Matematika"
+    },
+    {
+      "id": "chain-rule",
+      "title": "Chain Rule",
+      "category": "Matematika"
+    },
+    {
+      "id": "gradient",
+      "title": "Gradient",
+      "category": "Matematika"
+    },
+    {
+      "id": "probability",
+      "title": "Probability",
+      "category": "Matematika"
+    },
+    {
+      "id": "bayes-theorem",
+      "title": "Bayes Theorem",
+      "category": "Matematika"
+    },
+    {
+      "id": "conditional-probability",
+      "title": "Conditional Probability",
+      "category": "Matematika"
+    },
+    {
+      "id": "mean",
+      "title": "Mean",
+      "category": "Matematika"
+    },
+    {
+      "id": "variance",
+      "title": "Variance",
+      "category": "Matematika"
+    },
+    {
+      "id": "standard-deviation",
+      "title": "Standard Deviation",
+      "category": "Matematika"
+    },
+    {
+      "id": "normal-distribution",
+      "title": "Normal Distribution",
+      "category": "Matematika"
+    },
+    {
+      "id": "linear-regression",
+      "title": "Linear Regression",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "regression",
+      "title": "Regression",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "classification",
+      "title": "Classification",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "supervised-learning",
+      "title": "Supervised Learning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "unsupervised-learning",
+      "title": "Unsupervised Learning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "semi-supervised-learning",
+      "title": "Semi-Supervised Learning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "self-supervised-learning",
+      "title": "Self-Supervised Learning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "training-set",
+      "title": "Training Set",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "validation-set",
+      "title": "Validation Set",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "test-set",
+      "title": "Test Set",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "data-leakage",
+      "title": "Data Leakage",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "overfitting",
+      "title": "Overfitting",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "underfitting",
+      "title": "Underfitting",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "bias-variance-tradeoff",
+      "title": "Bias-Variance Tradeoff",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "regularization",
+      "title": "Regularization",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "loss-function",
+      "title": "Loss Function",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "mean-squared-error",
+      "title": "Mean Squared Error",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "gradient-descent",
+      "title": "Gradient Descent",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "learning-rate",
+      "title": "Learning Rate",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "optimizer",
+      "title": "Optimizer",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "adam",
+      "title": "Adam",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "batch-size",
+      "title": "Batch Size",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "epoch",
+      "title": "Epoch",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "early-stopping",
+      "title": "Early Stopping",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "hyperparameter-tuning",
+      "title": "Hyperparameter Tuning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "cross-validation",
+      "title": "Cross-Validation",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "decision-tree",
+      "title": "Decision Tree",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "random-forest",
+      "title": "Random Forest",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "bagging",
+      "title": "Bagging",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "boosting",
+      "title": "Boosting",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "gradient-boosting",
+      "title": "Gradient Boosting",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "ensemble-learning",
+      "title": "Ensemble Learning",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "k-means-clustering",
+      "title": "K-Means Clustering",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "clustering",
+      "title": "Clustering",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "dbscan",
+      "title": "DBSCAN",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "principal-component-analysis",
+      "title": "Principal Component Analysis",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "dimensionality-reduction",
+      "title": "Dimensionality Reduction",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "accuracy",
+      "title": "Accuracy",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "precision",
+      "title": "Precision",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "recall",
+      "title": "Recall",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "f1-score",
+      "title": "F1 Score",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "confusion-matrix",
+      "title": "Confusion Matrix",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "roc-auc",
+      "title": "ROC-AUC",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "neural-network",
+      "title": "Neural Network",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "neuron",
+      "title": "Neuron",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "weight",
+      "title": "Weight",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "bias",
+      "title": "Bias",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "activation-function",
+      "title": "Activation Function",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "relu",
+      "title": "ReLU",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "sigmoid",
+      "title": "Sigmoid",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "tanh",
+      "title": "Tanh",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "softmax",
+      "title": "Softmax",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "logit",
+      "title": "Logit",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "forward-propagation",
+      "title": "Forward Propagation",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "backpropagation",
+      "title": "Backpropagation",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "multilayer-perceptron",
+      "title": "Multilayer Perceptron",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "dropout",
+      "title": "Dropout",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "batch-normalization",
+      "title": "Batch Normalization",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "convolutional-neural-network",
+      "title": "Convolutional Neural Network",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "convolution",
+      "title": "Convolution",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "pooling",
+      "title": "Pooling",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "recurrent-neural-network",
+      "title": "Recurrent Neural Network",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "lstm",
+      "title": "LSTM",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "gru",
+      "title": "GRU",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "attention-mechanism",
+      "title": "Attention Mechanism",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "transformer",
+      "title": "Transformer",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "self-attention",
+      "title": "Self-Attention",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "query-vector",
+      "title": "Query Vector",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "key-vector",
+      "title": "Key Vector",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "value-vector",
+      "title": "Value Vector",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "scaled-dot-product-attention",
+      "title": "Scaled Dot-Product Attention",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "multi-head-attention",
+      "title": "Multi-Head Attention",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "positional-encoding",
+      "title": "Positional Encoding",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "masked-attention",
+      "title": "Masked Attention",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "residual-connection",
+      "title": "Residual Connection",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "layer-normalization",
+      "title": "Layer Normalization",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "autoencoder",
+      "title": "Autoencoder",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "generative-adversarial-network",
+      "title": "Generative Adversarial Network",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "diffusion-model",
+      "title": "Diffusion Model",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "transfer-learning",
+      "title": "Transfer Learning",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "reinforcement-learning",
+      "title": "Reinforcement Learning",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "agent",
+      "title": "Agent",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "reward",
+      "title": "Reward",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "policy",
+      "title": "Policy",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "q-learning",
+      "title": "Q-Learning",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "rlhf",
+      "title": "RLHF",
+      "category": "Deep Learning"
+    },
+    {
+      "id": "natural-language-processing",
+      "title": "Natural Language Processing",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "token",
+      "title": "Token",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "tokenization",
+      "title": "Tokenization",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "vocabulary",
+      "title": "Vocabulary",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "embedding",
+      "title": "Embedding",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "word-embedding",
+      "title": "Word Embedding",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "sentence-embedding",
+      "title": "Sentence Embedding",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "large-language-model",
+      "title": "Large Language Model",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "context-window",
+      "title": "Context Window",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "next-token-prediction",
+      "title": "Next Token Prediction",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "autoregressive-decoding",
+      "title": "Autoregressive Decoding",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "kv-cache",
+      "title": "KV Cache",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "prefill",
+      "title": "Prefill",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "decode",
+      "title": "Decode",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "encoder",
+      "title": "Encoder",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "decoder",
+      "title": "Decoder",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "fine-tuning",
+      "title": "Fine-Tuning",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "lora",
+      "title": "LoRA",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "quantization",
+      "title": "Quantization",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "hallucination",
+      "title": "Hallucination",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "natural-language-generation",
+      "title": "Natural Language Generation",
+      "category": "NLP va LLM"
+    },
+    {
+      "id": "semantic-search",
+      "title": "Semantic Search",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "vector-database",
+      "title": "Vector Database",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "approximate-nearest-neighbor",
+      "title": "Approximate Nearest Neighbor",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "hnsw",
+      "title": "HNSW",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "retrieval-augmented-generation",
+      "title": "Retrieval-Augmented Generation",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "chunking",
+      "title": "Chunking",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "retrieval",
+      "title": "Retrieval",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "hybrid-search",
+      "title": "Hybrid Search",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "bm25",
+      "title": "BM25",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "reciprocal-rank-fusion",
+      "title": "Reciprocal Rank Fusion",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "reranking",
+      "title": "Reranking",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "citation-grounding",
+      "title": "Citation Grounding",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "tool-calling",
+      "title": "Tool Calling",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "ai-agent",
+      "title": "AI Agent",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "agent-memory",
+      "title": "Agent Memory",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "multi-agent-system",
+      "title": "Multi-Agent System",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "model-context-protocol",
+      "title": "Model Context Protocol",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "knowledge-graph",
+      "title": "Knowledge Graph",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "graphrag",
+      "title": "GraphRAG",
+      "category": "RAG va agentlar"
+    },
+    {
+      "id": "python",
+      "title": "Python",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "variable",
+      "title": "Variable",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "function",
+      "title": "Function",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "stack",
+      "title": "Stack",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "queue",
+      "title": "Queue",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "hash-table",
+      "title": "Hash Table",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "api",
+      "title": "API",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "rest-api",
+      "title": "REST API",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "fastapi",
+      "title": "FastAPI",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "pydantic",
+      "title": "Pydantic",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "asyncio",
+      "title": "Asyncio",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "concurrency",
+      "title": "Concurrency",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "multiprocessing",
+      "title": "Multiprocessing",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "unit-testing",
+      "title": "Unit Testing",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "data-science",
+      "title": "Data Science",
+      "category": "Data Science"
+    },
+    {
+      "id": "exploratory-data-analysis",
+      "title": "Exploratory Data Analysis",
+      "category": "Data Science"
+    },
+    {
+      "id": "data-cleaning",
+      "title": "Data Cleaning",
+      "category": "Data Science"
+    },
+    {
+      "id": "missing-value",
+      "title": "Missing Value",
+      "category": "Data Science"
+    },
+    {
+      "id": "outlier",
+      "title": "Outlier",
+      "category": "Data Science"
+    },
+    {
+      "id": "data-preprocessing",
+      "title": "Data Preprocessing",
+      "category": "Data Science"
+    },
+    {
+      "id": "feature-engineering",
+      "title": "Feature Engineering",
+      "category": "Data Science"
+    },
+    {
+      "id": "standardization",
+      "title": "Standardization",
+      "category": "Data Science"
+    },
+    {
+      "id": "hypothesis-testing",
+      "title": "Hypothesis Testing",
+      "category": "Data Science"
+    },
+    {
+      "id": "p-value",
+      "title": "P-Value",
+      "category": "Data Science"
+    },
+    {
+      "id": "confidence-interval",
+      "title": "Confidence Interval",
+      "category": "Data Science"
+    },
+    {
+      "id": "central-limit-theorem",
+      "title": "Central Limit Theorem",
+      "category": "Data Science"
+    },
+    {
+      "id": "ab-testing",
+      "title": "AB Testing",
+      "category": "Data Science"
+    },
+    {
+      "id": "statistical-power",
+      "title": "Statistical Power",
+      "category": "Data Science"
+    },
+    {
+      "id": "minimum-detectable-effect",
+      "title": "Minimum Detectable Effect",
+      "category": "Data Science"
+    },
+    {
+      "id": "cuped",
+      "title": "CUPED",
+      "category": "Data Science"
+    },
+    {
+      "id": "cupac",
+      "title": "CUPAC",
+      "category": "Data Science"
+    },
+    {
+      "id": "time-series",
+      "title": "Time Series",
+      "category": "Data Science"
+    },
+    {
+      "id": "forecasting",
+      "title": "Forecasting",
+      "category": "Data Science"
+    },
+    {
+      "id": "arima",
+      "title": "ARIMA",
+      "category": "Data Science"
+    },
+    {
+      "id": "data-engineering",
+      "title": "Data Engineering",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-pipeline",
+      "title": "Data Pipeline",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "etl",
+      "title": "ETL",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "elt",
+      "title": "ELT",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-warehouse",
+      "title": "Data Warehouse",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-lake",
+      "title": "Data Lake",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-lakehouse",
+      "title": "Data Lakehouse",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "oltp",
+      "title": "OLTP",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "olap",
+      "title": "OLAP",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "acid",
+      "title": "ACID",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "postgresql",
+      "title": "PostgreSQL",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "sql",
+      "title": "SQL",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "window-function",
+      "title": "Window Function",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "object-storage",
+      "title": "Object Storage",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "parquet",
+      "title": "Parquet",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "star-schema",
+      "title": "Star Schema",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "slowly-changing-dimension",
+      "title": "Slowly Changing Dimension",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "change-data-capture",
+      "title": "Change Data Capture",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "kafka",
+      "title": "Kafka",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "streaming",
+      "title": "Streaming",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "windowing",
+      "title": "Windowing",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "watermark",
+      "title": "Watermark",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "apache-spark",
+      "title": "Apache Spark",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "batch-processing",
+      "title": "Batch Processing",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "pyspark",
+      "title": "PySpark",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "orchestration",
+      "title": "Orchestration",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "airflow",
+      "title": "Airflow",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "dagster",
+      "title": "Dagster",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-quality",
+      "title": "Data Quality",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-contract",
+      "title": "Data Contract",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "data-lineage",
+      "title": "Data Lineage",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "schema-evolution",
+      "title": "Schema Evolution",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "apache-iceberg",
+      "title": "Apache Iceberg",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "prompt",
+      "title": "Prompt",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "system-prompt",
+      "title": "System Prompt",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "zero-shot-prompting",
+      "title": "Zero-Shot Prompting",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "few-shot-prompting",
+      "title": "Few-Shot Prompting",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "in-context-learning",
+      "title": "In-Context Learning",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "chain-of-thought-prompting",
+      "title": "Chain-of-Thought Prompting",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "step-back-prompting",
+      "title": "Step-Back Prompting",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "self-consistency",
+      "title": "Self-Consistency",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "react",
+      "title": "ReAct",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "temperature",
+      "title": "Temperature",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "top-k-sampling",
+      "title": "Top-K Sampling",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "top-p",
+      "title": "Top-P",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "structured-output",
+      "title": "Structured Output",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "prompt-injection",
+      "title": "Prompt Injection",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "ai-safety",
+      "title": "AI Safety",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "red-teaming",
+      "title": "Red Teaming",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "data-privacy",
+      "title": "Data Privacy",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "llm-evaluation",
+      "title": "LLM Evaluation",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "regression-testing",
+      "title": "Regression Testing",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "faithfulness",
+      "title": "Faithfulness",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "latency",
+      "title": "Latency",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "throughput",
+      "title": "Throughput",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "gpu",
+      "title": "GPU",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "cuda",
+      "title": "CUDA",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "tpu",
+      "title": "TPU",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "pytorch",
+      "title": "PyTorch",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "mlops",
+      "title": "MLOps",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "model-monitoring",
+      "title": "Model Monitoring",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "data-drift",
+      "title": "Data Drift",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "ci-cd",
+      "title": "CI/CD",
+      "category": "Infratuzilma va MLOps"
+    },
+    {
+      "id": "context-engineering",
+      "title": "Context Engineering",
+      "category": "Prompt Engineering va xavfsizlik"
+    },
+    {
+      "id": "logistic-regression",
+      "title": "Logistic Regression",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "time-complexity",
+      "title": "Time Complexity",
+      "category": "Python va dasturlash"
+    },
+    {
+      "id": "anomaly-detection",
+      "title": "Anomaly Detection",
+      "category": "Machine Learning"
+    },
+    {
+      "id": "dbt",
+      "title": "dbt",
+      "category": "Data Engineering"
+    },
+    {
+      "id": "schema",
+      "title": "Schema",
+      "category": "Data Engineering"
+    }
+  ],
+  "edges": [
+    {
+      "from": "artificial-intelligence",
+      "to": "machine-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "artificial-intelligence",
+      "to": "deep-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "artificial-intelligence",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "artificial-intelligence",
+      "to": "machine-learning",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "dataset",
+      "to": "machine-learning",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "machine-learning",
+      "to": "artificial-intelligence",
+      "relationship": "related-to"
+    },
+    {
+      "from": "machine-learning",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "machine-learning",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "machine-learning",
+      "to": "deep-learning",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "vector",
+      "to": "deep-learning",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "deep-learning",
+      "to": "machine-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "deep-learning",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "deep-learning",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "artificial-general-intelligence",
+      "to": "artificial-intelligence",
+      "relationship": "related-to"
+    },
+    {
+      "from": "artificial-general-intelligence",
+      "to": "narrow-ai",
+      "relationship": "related-to"
+    },
+    {
+      "from": "narrow-ai",
+      "to": "artificial-intelligence",
+      "relationship": "related-to"
+    },
+    {
+      "from": "narrow-ai",
+      "to": "artificial-general-intelligence",
+      "relationship": "related-to"
+    },
+    {
+      "from": "algorithm",
+      "to": "big-o-notation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "algorithm",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dataset",
+      "to": "feature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dataset",
+      "to": "training-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dataset",
+      "to": "data-cleaning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "feature",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "feature",
+      "to": "feature-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "feature",
+      "to": "regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "label",
+      "to": "supervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "label",
+      "to": "loss-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "label",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-training",
+      "to": "loss-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-training",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-training",
+      "to": "optimizer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "inference",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "inference",
+      "to": "latency",
+      "relationship": "related-to"
+    },
+    {
+      "from": "inference",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "parameter",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "parameter",
+      "to": "weight",
+      "relationship": "related-to"
+    },
+    {
+      "from": "parameter",
+      "to": "bias",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hyperparameter",
+      "to": "learning-rate",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hyperparameter",
+      "to": "batch-size",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hyperparameter",
+      "to": "hyperparameter-tuning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "generative-ai",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "generative-ai",
+      "to": "diffusion-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "generative-ai",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "discriminative-model",
+      "to": "generative-ai",
+      "relationship": "related-to"
+    },
+    {
+      "from": "discriminative-model",
+      "to": "classification",
+      "relationship": "related-to"
+    },
+    {
+      "from": "big-o-notation",
+      "to": "algorithm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "big-o-notation",
+      "to": "time-complexity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scalar",
+      "to": "vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scalar",
+      "to": "learning-rate",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "dot-product",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix",
+      "to": "vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix",
+      "to": "matrix-multiplication",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tensor",
+      "to": "matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tensor",
+      "to": "pytorch",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tensor",
+      "to": "batch-size",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix",
+      "to": "matrix-multiplication",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "dot-product",
+      "to": "matrix-multiplication",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "matrix-multiplication",
+      "to": "matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix-multiplication",
+      "to": "dot-product",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix-multiplication",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dot-product",
+      "to": "vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dot-product",
+      "to": "cosine-similarity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dot-product",
+      "to": "scaled-dot-product-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector-norm",
+      "to": "vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector-norm",
+      "to": "cosine-similarity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "cosine-similarity",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "dot-product",
+      "to": "cosine-similarity",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "vector-norm",
+      "to": "cosine-similarity",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "cosine-similarity",
+      "to": "dot-product",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cosine-similarity",
+      "to": "vector-norm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cosine-similarity",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scalar",
+      "to": "derivative",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "derivative",
+      "to": "gradient",
+      "relationship": "related-to"
+    },
+    {
+      "from": "derivative",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "derivative",
+      "to": "partial-derivative",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "partial-derivative",
+      "to": "derivative",
+      "relationship": "related-to"
+    },
+    {
+      "from": "partial-derivative",
+      "to": "gradient",
+      "relationship": "related-to"
+    },
+    {
+      "from": "derivative",
+      "to": "chain-rule",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "chain-rule",
+      "to": "derivative",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chain-rule",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "partial-derivative",
+      "to": "gradient",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "vector",
+      "to": "gradient",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "gradient",
+      "to": "partial-derivative",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "probability",
+      "to": "bayes-theorem",
+      "relationship": "related-to"
+    },
+    {
+      "from": "probability",
+      "to": "softmax",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bayes-theorem",
+      "to": "probability",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bayes-theorem",
+      "to": "conditional-probability",
+      "relationship": "related-to"
+    },
+    {
+      "from": "conditional-probability",
+      "to": "probability",
+      "relationship": "related-to"
+    },
+    {
+      "from": "conditional-probability",
+      "to": "bayes-theorem",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mean",
+      "to": "variance",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mean",
+      "to": "standard-deviation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "variance",
+      "to": "mean",
+      "relationship": "related-to"
+    },
+    {
+      "from": "variance",
+      "to": "standard-deviation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "variance",
+      "to": "bias-variance-tradeoff",
+      "relationship": "related-to"
+    },
+    {
+      "from": "standard-deviation",
+      "to": "variance",
+      "relationship": "related-to"
+    },
+    {
+      "from": "standard-deviation",
+      "to": "standardization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "normal-distribution",
+      "to": "mean",
+      "relationship": "related-to"
+    },
+    {
+      "from": "normal-distribution",
+      "to": "standard-deviation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "normal-distribution",
+      "to": "central-limit-theorem",
+      "relationship": "related-to"
+    },
+    {
+      "from": "linear-regression",
+      "to": "regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "linear-regression",
+      "to": "loss-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "linear-regression",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regression",
+      "to": "linear-regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regression",
+      "to": "mean-squared-error",
+      "relationship": "related-to"
+    },
+    {
+      "from": "classification",
+      "to": "logistic-regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "classification",
+      "to": "precision",
+      "relationship": "related-to"
+    },
+    {
+      "from": "classification",
+      "to": "recall",
+      "relationship": "related-to"
+    },
+    {
+      "from": "supervised-learning",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "supervised-learning",
+      "to": "label",
+      "relationship": "related-to"
+    },
+    {
+      "from": "supervised-learning",
+      "to": "classification",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unsupervised-learning",
+      "to": "k-means-clustering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unsupervised-learning",
+      "to": "principal-component-analysis",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unsupervised-learning",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "semi-supervised-learning",
+      "to": "supervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "semi-supervised-learning",
+      "to": "unsupervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-supervised-learning",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-supervised-learning",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "training-set",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "training-set",
+      "to": "validation-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "training-set",
+      "to": "test-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "validation-set",
+      "to": "training-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "validation-set",
+      "to": "test-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "validation-set",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "test-set",
+      "to": "training-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "test-set",
+      "to": "validation-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "test-set",
+      "to": "data-leakage",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-leakage",
+      "to": "training-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-leakage",
+      "to": "test-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-leakage",
+      "to": "data-preprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "overfitting",
+      "to": "regularization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "overfitting",
+      "to": "bias-variance-tradeoff",
+      "relationship": "related-to"
+    },
+    {
+      "from": "overfitting",
+      "to": "validation-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "underfitting",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "underfitting",
+      "to": "bias-variance-tradeoff",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bias-variance-tradeoff",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bias-variance-tradeoff",
+      "to": "underfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bias-variance-tradeoff",
+      "to": "regularization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regularization",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regularization",
+      "to": "dropout",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regularization",
+      "to": "early-stopping",
+      "relationship": "related-to"
+    },
+    {
+      "from": "loss-function",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "loss-function",
+      "to": "mean-squared-error",
+      "relationship": "related-to"
+    },
+    {
+      "from": "loss-function",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mean-squared-error",
+      "to": "regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mean-squared-error",
+      "to": "loss-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient",
+      "to": "gradient-descent",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "derivative",
+      "to": "gradient-descent",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "loss-function",
+      "to": "gradient-descent",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "gradient-descent",
+      "to": "gradient",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient-descent",
+      "to": "learning-rate",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient-descent",
+      "to": "optimizer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "learning-rate",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "learning-rate",
+      "to": "optimizer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "optimizer",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "optimizer",
+      "to": "learning-rate",
+      "relationship": "related-to"
+    },
+    {
+      "from": "optimizer",
+      "to": "adam",
+      "relationship": "related-to"
+    },
+    {
+      "from": "adam",
+      "to": "optimizer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "adam",
+      "to": "gradient-descent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-size",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-size",
+      "to": "epoch",
+      "relationship": "related-to"
+    },
+    {
+      "from": "epoch",
+      "to": "batch-size",
+      "relationship": "related-to"
+    },
+    {
+      "from": "epoch",
+      "to": "early-stopping",
+      "relationship": "related-to"
+    },
+    {
+      "from": "early-stopping",
+      "to": "validation-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "early-stopping",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "early-stopping",
+      "to": "regularization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hyperparameter-tuning",
+      "to": "hyperparameter",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hyperparameter-tuning",
+      "to": "cross-validation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cross-validation",
+      "to": "validation-set",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cross-validation",
+      "to": "hyperparameter-tuning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decision-tree",
+      "to": "random-forest",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decision-tree",
+      "to": "classification",
+      "relationship": "related-to"
+    },
+    {
+      "from": "random-forest",
+      "to": "decision-tree",
+      "relationship": "related-to"
+    },
+    {
+      "from": "random-forest",
+      "to": "bagging",
+      "relationship": "related-to"
+    },
+    {
+      "from": "random-forest",
+      "to": "ensemble-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bagging",
+      "to": "ensemble-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bagging",
+      "to": "random-forest",
+      "relationship": "related-to"
+    },
+    {
+      "from": "boosting",
+      "to": "ensemble-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "boosting",
+      "to": "gradient-boosting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient-boosting",
+      "to": "boosting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gradient-boosting",
+      "to": "decision-tree",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ensemble-learning",
+      "to": "bagging",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ensemble-learning",
+      "to": "boosting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ensemble-learning",
+      "to": "random-forest",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "k-means-clustering",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "mean",
+      "to": "k-means-clustering",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "k-means-clustering",
+      "to": "unsupervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "k-means-clustering",
+      "to": "clustering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "clustering",
+      "to": "k-means-clustering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "clustering",
+      "to": "dbscan",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dbscan",
+      "to": "clustering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dbscan",
+      "to": "k-means-clustering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "principal-component-analysis",
+      "to": "matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "principal-component-analysis",
+      "to": "dimensionality-reduction",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dimensionality-reduction",
+      "to": "principal-component-analysis",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dimensionality-reduction",
+      "to": "autoencoder",
+      "relationship": "related-to"
+    },
+    {
+      "from": "accuracy",
+      "to": "precision",
+      "relationship": "related-to"
+    },
+    {
+      "from": "accuracy",
+      "to": "recall",
+      "relationship": "related-to"
+    },
+    {
+      "from": "accuracy",
+      "to": "confusion-matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "precision",
+      "to": "recall",
+      "relationship": "related-to"
+    },
+    {
+      "from": "precision",
+      "to": "f1-score",
+      "relationship": "related-to"
+    },
+    {
+      "from": "precision",
+      "to": "confusion-matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recall",
+      "to": "precision",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recall",
+      "to": "f1-score",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recall",
+      "to": "confusion-matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "f1-score",
+      "to": "precision",
+      "relationship": "related-to"
+    },
+    {
+      "from": "f1-score",
+      "to": "recall",
+      "relationship": "related-to"
+    },
+    {
+      "from": "confusion-matrix",
+      "to": "accuracy",
+      "relationship": "related-to"
+    },
+    {
+      "from": "confusion-matrix",
+      "to": "precision",
+      "relationship": "related-to"
+    },
+    {
+      "from": "confusion-matrix",
+      "to": "recall",
+      "relationship": "related-to"
+    },
+    {
+      "from": "roc-auc",
+      "to": "classification",
+      "relationship": "related-to"
+    },
+    {
+      "from": "roc-auc",
+      "to": "confusion-matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neural-network",
+      "to": "neuron",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neural-network",
+      "to": "weight",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neural-network",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neuron",
+      "to": "weight",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neuron",
+      "to": "bias",
+      "relationship": "related-to"
+    },
+    {
+      "from": "neuron",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "weight",
+      "to": "neuron",
+      "relationship": "related-to"
+    },
+    {
+      "from": "weight",
+      "to": "bias",
+      "relationship": "related-to"
+    },
+    {
+      "from": "weight",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bias",
+      "to": "neuron",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bias",
+      "to": "weight",
+      "relationship": "related-to"
+    },
+    {
+      "from": "activation-function",
+      "to": "relu",
+      "relationship": "related-to"
+    },
+    {
+      "from": "activation-function",
+      "to": "sigmoid",
+      "relationship": "related-to"
+    },
+    {
+      "from": "activation-function",
+      "to": "softmax",
+      "relationship": "related-to"
+    },
+    {
+      "from": "relu",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "relu",
+      "to": "neuron",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sigmoid",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sigmoid",
+      "to": "logistic-regression",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tanh",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tanh",
+      "to": "recurrent-neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "softmax",
+      "to": "logit",
+      "relationship": "related-to"
+    },
+    {
+      "from": "softmax",
+      "to": "temperature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "softmax",
+      "to": "scaled-dot-product-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "logit",
+      "to": "softmax",
+      "relationship": "related-to"
+    },
+    {
+      "from": "logit",
+      "to": "temperature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "forward-propagation",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "forward-propagation",
+      "to": "loss-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "forward-propagation",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chain-rule",
+      "to": "backpropagation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "forward-propagation",
+      "to": "backpropagation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "loss-function",
+      "to": "backpropagation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "backpropagation",
+      "to": "chain-rule",
+      "relationship": "related-to"
+    },
+    {
+      "from": "backpropagation",
+      "to": "forward-propagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "backpropagation",
+      "to": "optimizer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multilayer-perceptron",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multilayer-perceptron",
+      "to": "activation-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dropout",
+      "to": "regularization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dropout",
+      "to": "overfitting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-normalization",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-normalization",
+      "to": "batch-size",
+      "relationship": "related-to"
+    },
+    {
+      "from": "convolutional-neural-network",
+      "to": "convolution",
+      "relationship": "related-to"
+    },
+    {
+      "from": "convolutional-neural-network",
+      "to": "pooling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "convolutional-neural-network",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "convolution",
+      "to": "convolutional-neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "convolution",
+      "to": "pooling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pooling",
+      "to": "convolutional-neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pooling",
+      "to": "convolution",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recurrent-neural-network",
+      "to": "lstm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recurrent-neural-network",
+      "to": "gru",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recurrent-neural-network",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "lstm",
+      "to": "recurrent-neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "lstm",
+      "to": "gru",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gru",
+      "to": "recurrent-neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gru",
+      "to": "lstm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "attention-mechanism",
+      "to": "self-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "attention-mechanism",
+      "to": "scaled-dot-product-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-attention",
+      "to": "transformer",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "positional-encoding",
+      "to": "transformer",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "transformer",
+      "to": "self-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "transformer",
+      "to": "multi-head-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "transformer",
+      "to": "positional-encoding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "self-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "matrix-multiplication",
+      "to": "self-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "softmax",
+      "to": "self-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "self-attention",
+      "to": "query-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-attention",
+      "to": "key-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-attention",
+      "to": "value-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "query-vector",
+      "to": "key-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "query-vector",
+      "to": "scaled-dot-product-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "key-vector",
+      "to": "query-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "key-vector",
+      "to": "value-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "value-vector",
+      "to": "query-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "value-vector",
+      "to": "key-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "value-vector",
+      "to": "scaled-dot-product-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "query-vector",
+      "to": "scaled-dot-product-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "key-vector",
+      "to": "scaled-dot-product-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "value-vector",
+      "to": "scaled-dot-product-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "softmax",
+      "to": "scaled-dot-product-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "scaled-dot-product-attention",
+      "to": "query-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scaled-dot-product-attention",
+      "to": "key-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scaled-dot-product-attention",
+      "to": "value-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "scaled-dot-product-attention",
+      "to": "multi-head-attention",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "multi-head-attention",
+      "to": "self-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multi-head-attention",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "positional-encoding",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "positional-encoding",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "masked-attention",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "masked-attention",
+      "to": "self-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "residual-connection",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "residual-connection",
+      "to": "layer-normalization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "layer-normalization",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "layer-normalization",
+      "to": "residual-connection",
+      "relationship": "related-to"
+    },
+    {
+      "from": "autoencoder",
+      "to": "dimensionality-reduction",
+      "relationship": "related-to"
+    },
+    {
+      "from": "autoencoder",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "generative-adversarial-network",
+      "to": "generative-ai",
+      "relationship": "related-to"
+    },
+    {
+      "from": "generative-adversarial-network",
+      "to": "discriminative-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "diffusion-model",
+      "to": "generative-ai",
+      "relationship": "related-to"
+    },
+    {
+      "from": "diffusion-model",
+      "to": "neural-network",
+      "relationship": "related-to"
+    },
+    {
+      "from": "transfer-learning",
+      "to": "fine-tuning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "transfer-learning",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reinforcement-learning",
+      "to": "agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reinforcement-learning",
+      "to": "reward",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reinforcement-learning",
+      "to": "q-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "agent",
+      "to": "reinforcement-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "agent",
+      "to": "policy",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reward",
+      "to": "agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reward",
+      "to": "reinforcement-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "policy",
+      "to": "agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "policy",
+      "to": "reinforcement-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "q-learning",
+      "to": "reinforcement-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "q-learning",
+      "to": "reward",
+      "relationship": "related-to"
+    },
+    {
+      "from": "rlhf",
+      "to": "reinforcement-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "rlhf",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "natural-language-processing",
+      "to": "tokenization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "natural-language-processing",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "token",
+      "to": "tokenization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "token",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tokenization",
+      "to": "token",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tokenization",
+      "to": "context-window",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vocabulary",
+      "to": "token",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vocabulary",
+      "to": "tokenization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "word-embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "cosine-similarity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector",
+      "to": "word-embedding",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "word-embedding",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "word-embedding",
+      "to": "cosine-similarity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sentence-embedding",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sentence-embedding",
+      "to": "semantic-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "large-language-model",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "large-language-model",
+      "to": "token",
+      "relationship": "related-to"
+    },
+    {
+      "from": "large-language-model",
+      "to": "context-window",
+      "relationship": "related-to"
+    },
+    {
+      "from": "context-window",
+      "to": "token",
+      "relationship": "related-to"
+    },
+    {
+      "from": "context-window",
+      "to": "context-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "next-token-prediction",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "next-token-prediction",
+      "to": "softmax",
+      "relationship": "related-to"
+    },
+    {
+      "from": "next-token-prediction",
+      "to": "autoregressive-decoding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "autoregressive-decoding",
+      "to": "next-token-prediction",
+      "relationship": "related-to"
+    },
+    {
+      "from": "autoregressive-decoding",
+      "to": "kv-cache",
+      "relationship": "related-to"
+    },
+    {
+      "from": "autoregressive-decoding",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "kv-cache",
+      "to": "key-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "kv-cache",
+      "to": "value-vector",
+      "relationship": "related-to"
+    },
+    {
+      "from": "kv-cache",
+      "to": "autoregressive-decoding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prefill",
+      "to": "kv-cache",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prefill",
+      "to": "decode",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decode",
+      "to": "prefill",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decode",
+      "to": "autoregressive-decoding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "encoder",
+      "to": "decoder",
+      "relationship": "related-to"
+    },
+    {
+      "from": "encoder",
+      "to": "transformer",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decoder",
+      "to": "encoder",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decoder",
+      "to": "masked-attention",
+      "relationship": "related-to"
+    },
+    {
+      "from": "decoder",
+      "to": "autoregressive-decoding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fine-tuning",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fine-tuning",
+      "to": "lora",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fine-tuning",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "matrix",
+      "to": "lora",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "fine-tuning",
+      "to": "lora",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "lora",
+      "to": "fine-tuning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "lora",
+      "to": "matrix",
+      "relationship": "related-to"
+    },
+    {
+      "from": "quantization",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "quantization",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hallucination",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hallucination",
+      "to": "llm-evaluation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "natural-language-generation",
+      "to": "natural-language-processing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "natural-language-generation",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "semantic-search",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "cosine-similarity",
+      "to": "semantic-search",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "semantic-search",
+      "to": "sentence-embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "semantic-search",
+      "to": "vector-database",
+      "relationship": "related-to"
+    },
+    {
+      "from": "semantic-search",
+      "to": "cosine-similarity",
+      "relationship": "related-to"
+    },
+    {
+      "from": "embedding",
+      "to": "vector-database",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "approximate-nearest-neighbor",
+      "to": "vector-database",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "vector-database",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector-database",
+      "to": "approximate-nearest-neighbor",
+      "relationship": "related-to"
+    },
+    {
+      "from": "vector-database",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "approximate-nearest-neighbor",
+      "to": "vector-database",
+      "relationship": "related-to"
+    },
+    {
+      "from": "approximate-nearest-neighbor",
+      "to": "hnsw",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hnsw",
+      "to": "approximate-nearest-neighbor",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hnsw",
+      "to": "vector-database",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chunking",
+      "to": "retrieval-augmented-generation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "embedding",
+      "to": "retrieval-augmented-generation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "retrieval",
+      "to": "retrieval-augmented-generation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "large-language-model",
+      "to": "retrieval-augmented-generation",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "retrieval-augmented-generation",
+      "to": "chunking",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval-augmented-generation",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval-augmented-generation",
+      "to": "retrieval",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval-augmented-generation",
+      "to": "large-language-model",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chunking",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chunking",
+      "to": "embedding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval",
+      "to": "semantic-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval",
+      "to": "hybrid-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "retrieval",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "semantic-search",
+      "to": "hybrid-search",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "bm25",
+      "to": "hybrid-search",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "hybrid-search",
+      "to": "bm25",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hybrid-search",
+      "to": "reciprocal-rank-fusion",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hybrid-search",
+      "to": "semantic-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bm25",
+      "to": "hybrid-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "bm25",
+      "to": "retrieval",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reciprocal-rank-fusion",
+      "to": "hybrid-search",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reciprocal-rank-fusion",
+      "to": "bm25",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reranking",
+      "to": "retrieval",
+      "relationship": "related-to"
+    },
+    {
+      "from": "reranking",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "citation-grounding",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "citation-grounding",
+      "to": "hallucination",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tool-calling",
+      "to": "ai-agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tool-calling",
+      "to": "structured-output",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tool-calling",
+      "to": "ai-agent",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "large-language-model",
+      "to": "ai-agent",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "ai-agent",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ai-agent",
+      "to": "agent-memory",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ai-agent",
+      "to": "multi-agent-system",
+      "relationship": "related-to"
+    },
+    {
+      "from": "agent-memory",
+      "to": "ai-agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "agent-memory",
+      "to": "context-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multi-agent-system",
+      "to": "ai-agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multi-agent-system",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-context-protocol",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-context-protocol",
+      "to": "ai-agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "knowledge-graph",
+      "to": "graphrag",
+      "relationship": "related-to"
+    },
+    {
+      "from": "knowledge-graph",
+      "to": "retrieval",
+      "relationship": "related-to"
+    },
+    {
+      "from": "graphrag",
+      "to": "knowledge-graph",
+      "relationship": "related-to"
+    },
+    {
+      "from": "graphrag",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "python",
+      "to": "api",
+      "relationship": "related-to"
+    },
+    {
+      "from": "python",
+      "to": "pytorch",
+      "relationship": "related-to"
+    },
+    {
+      "from": "python",
+      "to": "algorithm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "variable",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "variable",
+      "to": "function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "function",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "function",
+      "to": "variable",
+      "relationship": "related-to"
+    },
+    {
+      "from": "function",
+      "to": "recursion",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recursion",
+      "to": "function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "recursion",
+      "to": "stack",
+      "relationship": "related-to"
+    },
+    {
+      "from": "stack",
+      "to": "queue",
+      "relationship": "related-to"
+    },
+    {
+      "from": "stack",
+      "to": "recursion",
+      "relationship": "related-to"
+    },
+    {
+      "from": "queue",
+      "to": "stack",
+      "relationship": "related-to"
+    },
+    {
+      "from": "queue",
+      "to": "algorithm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hash-table",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hash-table",
+      "to": "algorithm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "api",
+      "to": "rest-api",
+      "relationship": "related-to"
+    },
+    {
+      "from": "api",
+      "to": "fastapi",
+      "relationship": "related-to"
+    },
+    {
+      "from": "rest-api",
+      "to": "api",
+      "relationship": "related-to"
+    },
+    {
+      "from": "rest-api",
+      "to": "fastapi",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fastapi",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fastapi",
+      "to": "pydantic",
+      "relationship": "related-to"
+    },
+    {
+      "from": "fastapi",
+      "to": "rest-api",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pydantic",
+      "to": "fastapi",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pydantic",
+      "to": "structured-output",
+      "relationship": "related-to"
+    },
+    {
+      "from": "asyncio",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "asyncio",
+      "to": "concurrency",
+      "relationship": "related-to"
+    },
+    {
+      "from": "concurrency",
+      "to": "asyncio",
+      "relationship": "related-to"
+    },
+    {
+      "from": "concurrency",
+      "to": "multiprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multiprocessing",
+      "to": "concurrency",
+      "relationship": "related-to"
+    },
+    {
+      "from": "multiprocessing",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unit-testing",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unit-testing",
+      "to": "regression-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-science",
+      "to": "exploratory-data-analysis",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-science",
+      "to": "hypothesis-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-science",
+      "to": "machine-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "exploratory-data-analysis",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "exploratory-data-analysis",
+      "to": "data-cleaning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "exploratory-data-analysis",
+      "to": "outlier",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-cleaning",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-cleaning",
+      "to": "missing-value",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-cleaning",
+      "to": "data-preprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "missing-value",
+      "to": "data-cleaning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "missing-value",
+      "to": "data-preprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "outlier",
+      "to": "exploratory-data-analysis",
+      "relationship": "related-to"
+    },
+    {
+      "from": "outlier",
+      "to": "anomaly-detection",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-preprocessing",
+      "to": "data-cleaning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-preprocessing",
+      "to": "feature-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-preprocessing",
+      "to": "standardization",
+      "relationship": "related-to"
+    },
+    {
+      "from": "feature-engineering",
+      "to": "feature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "feature-engineering",
+      "to": "data-preprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "standardization",
+      "to": "mean",
+      "relationship": "related-to"
+    },
+    {
+      "from": "standardization",
+      "to": "standard-deviation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "standardization",
+      "to": "data-preprocessing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "probability",
+      "to": "hypothesis-testing",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "mean",
+      "to": "hypothesis-testing",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "hypothesis-testing",
+      "to": "p-value",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hypothesis-testing",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hypothesis-testing",
+      "to": "statistical-power",
+      "relationship": "related-to"
+    },
+    {
+      "from": "p-value",
+      "to": "hypothesis-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "p-value",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "confidence-interval",
+      "to": "hypothesis-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "confidence-interval",
+      "to": "standard-deviation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "central-limit-theorem",
+      "to": "normal-distribution",
+      "relationship": "related-to"
+    },
+    {
+      "from": "central-limit-theorem",
+      "to": "mean",
+      "relationship": "related-to"
+    },
+    {
+      "from": "hypothesis-testing",
+      "to": "ab-testing",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "dataset",
+      "to": "ab-testing",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "ab-testing",
+      "to": "hypothesis-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ab-testing",
+      "to": "statistical-power",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ab-testing",
+      "to": "cuped",
+      "relationship": "related-to"
+    },
+    {
+      "from": "statistical-power",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "statistical-power",
+      "to": "minimum-detectable-effect",
+      "relationship": "related-to"
+    },
+    {
+      "from": "minimum-detectable-effect",
+      "to": "statistical-power",
+      "relationship": "related-to"
+    },
+    {
+      "from": "minimum-detectable-effect",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ab-testing",
+      "to": "cuped",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "variance",
+      "to": "cuped",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "cuped",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cuped",
+      "to": "variance",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ab-testing",
+      "to": "cupac",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "cuped",
+      "to": "cupac",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "cupac",
+      "to": "cuped",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cupac",
+      "to": "ab-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "time-series",
+      "to": "forecasting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "time-series",
+      "to": "arima",
+      "relationship": "related-to"
+    },
+    {
+      "from": "forecasting",
+      "to": "time-series",
+      "relationship": "related-to"
+    },
+    {
+      "from": "forecasting",
+      "to": "arima",
+      "relationship": "related-to"
+    },
+    {
+      "from": "time-series",
+      "to": "arima",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "arima",
+      "to": "time-series",
+      "relationship": "related-to"
+    },
+    {
+      "from": "arima",
+      "to": "forecasting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-engineering",
+      "to": "etl",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-engineering",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-engineering",
+      "to": "data-quality",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-pipeline",
+      "to": "etl",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-pipeline",
+      "to": "orchestration",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-pipeline",
+      "to": "data-quality",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-pipeline",
+      "to": "etl",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "etl",
+      "to": "elt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "etl",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "etl",
+      "to": "elt",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "data-warehouse",
+      "to": "elt",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "elt",
+      "to": "etl",
+      "relationship": "related-to"
+    },
+    {
+      "from": "elt",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "elt",
+      "to": "dbt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-warehouse",
+      "to": "olap",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-warehouse",
+      "to": "star-schema",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-warehouse",
+      "to": "etl",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lake",
+      "to": "object-storage",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lake",
+      "to": "parquet",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lake",
+      "to": "data-lakehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lake",
+      "to": "data-lakehouse",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "data-warehouse",
+      "to": "data-lakehouse",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "data-lakehouse",
+      "to": "data-lake",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lakehouse",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lakehouse",
+      "to": "apache-iceberg",
+      "relationship": "related-to"
+    },
+    {
+      "from": "oltp",
+      "to": "olap",
+      "relationship": "related-to"
+    },
+    {
+      "from": "oltp",
+      "to": "acid",
+      "relationship": "related-to"
+    },
+    {
+      "from": "olap",
+      "to": "oltp",
+      "relationship": "related-to"
+    },
+    {
+      "from": "olap",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "acid",
+      "to": "oltp",
+      "relationship": "related-to"
+    },
+    {
+      "from": "acid",
+      "to": "postgresql",
+      "relationship": "related-to"
+    },
+    {
+      "from": "postgresql",
+      "to": "sql",
+      "relationship": "related-to"
+    },
+    {
+      "from": "postgresql",
+      "to": "acid",
+      "relationship": "related-to"
+    },
+    {
+      "from": "postgresql",
+      "to": "oltp",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sql",
+      "to": "postgresql",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sql",
+      "to": "window-function",
+      "relationship": "related-to"
+    },
+    {
+      "from": "sql",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "window-function",
+      "to": "sql",
+      "relationship": "related-to"
+    },
+    {
+      "from": "window-function",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "object-storage",
+      "to": "data-lake",
+      "relationship": "related-to"
+    },
+    {
+      "from": "object-storage",
+      "to": "parquet",
+      "relationship": "related-to"
+    },
+    {
+      "from": "parquet",
+      "to": "data-lake",
+      "relationship": "related-to"
+    },
+    {
+      "from": "parquet",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "star-schema",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "star-schema",
+      "to": "slowly-changing-dimension",
+      "relationship": "related-to"
+    },
+    {
+      "from": "slowly-changing-dimension",
+      "to": "star-schema",
+      "relationship": "related-to"
+    },
+    {
+      "from": "slowly-changing-dimension",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "change-data-capture",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "change-data-capture",
+      "to": "kafka",
+      "relationship": "related-to"
+    },
+    {
+      "from": "kafka",
+      "to": "change-data-capture",
+      "relationship": "related-to"
+    },
+    {
+      "from": "kafka",
+      "to": "streaming",
+      "relationship": "related-to"
+    },
+    {
+      "from": "streaming",
+      "to": "kafka",
+      "relationship": "related-to"
+    },
+    {
+      "from": "streaming",
+      "to": "windowing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "windowing",
+      "to": "streaming",
+      "relationship": "related-to"
+    },
+    {
+      "from": "windowing",
+      "to": "watermark",
+      "relationship": "related-to"
+    },
+    {
+      "from": "watermark",
+      "to": "windowing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "watermark",
+      "to": "streaming",
+      "relationship": "related-to"
+    },
+    {
+      "from": "apache-spark",
+      "to": "batch-processing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "apache-spark",
+      "to": "pyspark",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-processing",
+      "to": "apache-spark",
+      "relationship": "related-to"
+    },
+    {
+      "from": "batch-processing",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pyspark",
+      "to": "apache-spark",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pyspark",
+      "to": "python",
+      "relationship": "related-to"
+    },
+    {
+      "from": "orchestration",
+      "to": "airflow",
+      "relationship": "related-to"
+    },
+    {
+      "from": "orchestration",
+      "to": "dagster",
+      "relationship": "related-to"
+    },
+    {
+      "from": "orchestration",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "airflow",
+      "to": "orchestration",
+      "relationship": "related-to"
+    },
+    {
+      "from": "airflow",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dagster",
+      "to": "orchestration",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dagster",
+      "to": "data-quality",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-quality",
+      "to": "data-contract",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-quality",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-contract",
+      "to": "data-quality",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-contract",
+      "to": "schema-evolution",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lineage",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lineage",
+      "to": "orchestration",
+      "relationship": "related-to"
+    },
+    {
+      "from": "schema-evolution",
+      "to": "data-contract",
+      "relationship": "related-to"
+    },
+    {
+      "from": "schema-evolution",
+      "to": "parquet",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-lakehouse",
+      "to": "apache-iceberg",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "object-storage",
+      "to": "apache-iceberg",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "apache-iceberg",
+      "to": "data-lakehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "apache-iceberg",
+      "to": "object-storage",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt",
+      "to": "system-prompt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt",
+      "to": "context-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt",
+      "to": "prompt-engineering",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "large-language-model",
+      "to": "prompt-engineering",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "prompt-engineering",
+      "to": "prompt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt-engineering",
+      "to": "few-shot-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt-engineering",
+      "to": "llm-evaluation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "system-prompt",
+      "to": "prompt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "system-prompt",
+      "to": "prompt-injection",
+      "relationship": "related-to"
+    },
+    {
+      "from": "zero-shot-prompting",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "zero-shot-prompting",
+      "to": "few-shot-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "few-shot-prompting",
+      "to": "in-context-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "few-shot-prompting",
+      "to": "zero-shot-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "in-context-learning",
+      "to": "few-shot-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "in-context-learning",
+      "to": "fine-tuning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chain-of-thought-prompting",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "chain-of-thought-prompting",
+      "to": "step-back-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "step-back-prompting",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "step-back-prompting",
+      "to": "chain-of-thought-prompting",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-consistency",
+      "to": "llm-evaluation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "self-consistency",
+      "to": "temperature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "react",
+      "to": "ai-agent",
+      "relationship": "related-to"
+    },
+    {
+      "from": "react",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "temperature",
+      "to": "logit",
+      "relationship": "related-to"
+    },
+    {
+      "from": "temperature",
+      "to": "softmax",
+      "relationship": "related-to"
+    },
+    {
+      "from": "temperature",
+      "to": "top-p",
+      "relationship": "related-to"
+    },
+    {
+      "from": "softmax",
+      "to": "top-k-sampling",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "top-k-sampling",
+      "to": "temperature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "top-k-sampling",
+      "to": "top-p",
+      "relationship": "related-to"
+    },
+    {
+      "from": "softmax",
+      "to": "top-p",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "temperature",
+      "to": "top-p",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "top-p",
+      "to": "temperature",
+      "relationship": "related-to"
+    },
+    {
+      "from": "top-p",
+      "to": "top-k-sampling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "structured-output",
+      "to": "pydantic",
+      "relationship": "related-to"
+    },
+    {
+      "from": "structured-output",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt",
+      "to": "prompt-injection",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "ai-agent",
+      "to": "prompt-injection",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "prompt-injection",
+      "to": "system-prompt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt-injection",
+      "to": "ai-safety",
+      "relationship": "related-to"
+    },
+    {
+      "from": "prompt-injection",
+      "to": "tool-calling",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ai-safety",
+      "to": "prompt-injection",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ai-safety",
+      "to": "red-teaming",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ai-safety",
+      "to": "data-privacy",
+      "relationship": "related-to"
+    },
+    {
+      "from": "red-teaming",
+      "to": "ai-safety",
+      "relationship": "related-to"
+    },
+    {
+      "from": "red-teaming",
+      "to": "prompt-injection",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-privacy",
+      "to": "ai-safety",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-privacy",
+      "to": "data-contract",
+      "relationship": "related-to"
+    },
+    {
+      "from": "llm-evaluation",
+      "to": "regression-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "llm-evaluation",
+      "to": "hallucination",
+      "relationship": "related-to"
+    },
+    {
+      "from": "llm-evaluation",
+      "to": "citation-grounding",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regression-testing",
+      "to": "llm-evaluation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "regression-testing",
+      "to": "unit-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "faithfulness",
+      "to": "retrieval-augmented-generation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "faithfulness",
+      "to": "llm-evaluation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "latency",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "latency",
+      "to": "prefill",
+      "relationship": "related-to"
+    },
+    {
+      "from": "latency",
+      "to": "decode",
+      "relationship": "related-to"
+    },
+    {
+      "from": "throughput",
+      "to": "latency",
+      "relationship": "related-to"
+    },
+    {
+      "from": "throughput",
+      "to": "inference",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gpu",
+      "to": "cuda",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gpu",
+      "to": "tensor",
+      "relationship": "related-to"
+    },
+    {
+      "from": "gpu",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cuda",
+      "to": "gpu",
+      "relationship": "related-to"
+    },
+    {
+      "from": "cuda",
+      "to": "pytorch",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tpu",
+      "to": "gpu",
+      "relationship": "related-to"
+    },
+    {
+      "from": "tpu",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pytorch",
+      "to": "tensor",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pytorch",
+      "to": "backpropagation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "pytorch",
+      "to": "cuda",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mlops",
+      "to": "model-training",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mlops",
+      "to": "data-pipeline",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mlops",
+      "to": "model-monitoring",
+      "relationship": "related-to"
+    },
+    {
+      "from": "mlops",
+      "to": "model-monitoring",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "model-training",
+      "to": "model-monitoring",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "model-monitoring",
+      "to": "mlops",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-monitoring",
+      "to": "data-drift",
+      "relationship": "related-to"
+    },
+    {
+      "from": "model-monitoring",
+      "to": "latency",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-drift",
+      "to": "model-monitoring",
+      "relationship": "related-to"
+    },
+    {
+      "from": "data-drift",
+      "to": "dataset",
+      "relationship": "related-to"
+    },
+    {
+      "from": "docker",
+      "to": "mlops",
+      "relationship": "related-to"
+    },
+    {
+      "from": "docker",
+      "to": "rest-api",
+      "relationship": "related-to"
+    },
+    {
+      "from": "unit-testing",
+      "to": "ci-cd",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "docker",
+      "to": "ci-cd",
+      "relationship": "prerequisite-of"
+    },
+    {
+      "from": "ci-cd",
+      "to": "unit-testing",
+      "relationship": "related-to"
+    },
+    {
+      "from": "ci-cd",
+      "to": "mlops",
+      "relationship": "related-to"
+    },
+    {
+      "from": "context-engineering",
+      "to": "context-window",
+      "relationship": "related-to"
+    },
+    {
+      "from": "context-engineering",
+      "to": "prompt-engineering",
+      "relationship": "related-to"
+    },
+    {
+      "from": "context-engineering",
+      "to": "agent-memory",
+      "relationship": "related-to"
+    },
+    {
+      "from": "logistic-regression",
+      "to": "sigmoid",
+      "relationship": "related-to"
+    },
+    {
+      "from": "logistic-regression",
+      "to": "classification",
+      "relationship": "related-to"
+    },
+    {
+      "from": "logistic-regression",
+      "to": "supervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "time-complexity",
+      "to": "big-o-notation",
+      "relationship": "related-to"
+    },
+    {
+      "from": "time-complexity",
+      "to": "algorithm",
+      "relationship": "related-to"
+    },
+    {
+      "from": "anomaly-detection",
+      "to": "outlier",
+      "relationship": "related-to"
+    },
+    {
+      "from": "anomaly-detection",
+      "to": "autoencoder",
+      "relationship": "related-to"
+    },
+    {
+      "from": "anomaly-detection",
+      "to": "unsupervised-learning",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dbt",
+      "to": "elt",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dbt",
+      "to": "data-warehouse",
+      "relationship": "related-to"
+    },
+    {
+      "from": "dbt",
+      "to": "data-quality",
+      "relationship": "related-to"
+    },
+    {
+      "from": "schema",
+      "to": "data-contract",
+      "relationship": "related-to"
+    },
+    {
+      "from": "schema",
+      "to": "schema-evolution",
+      "relationship": "related-to"
+    }
+  ]
+}

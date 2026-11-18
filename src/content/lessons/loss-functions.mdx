@@ -1,0 +1,80 @@
+---
+id: loss-functions
+title: "Loss Functions"
+slug: loss-functions
+description: "Loss Function (Objective / Cost Function) — modelning bashorati Y_p = F(Z_p, W) va kerakli nishon chiqish D_p o'rtasidagi farqni (discrepancy) o'lchovchi funksiya: E_p = D(D_p, F(Z_p, W)) (LeCun et al., 1998)."
+category: deep-learning
+difficulty: intermediate
+order: 1
+tags: ["ai","deep-learning","training","loss-functions","loss","objective"]
+prerequisites: ["machine-learning","probability","hosila"]
+related: ["backpropagation","gradient-descent","optimizers","llm","cnn"]
+visualizations: ["gradient-descent-1d"]
+sources: ["vaswani-2017","lecun-1998","rumelhart-1986","ioffe-2015","kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1773–1831"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Loss Function (Objective / Cost Function) — modelning bashorati Y_p = F(Z_p, W) va kerakli nishon chiqish D_p o'rtasidagi farqni (discrepancy) o'lchovchi funksiya: E_p = D(D_p, F(Z_p, W)) (LeCun et al., 1998).
+
+## 2. Nima uchun kerak?
+[Backpropagation](/learn/backpropagation) va [Gradient Descent](/learn/gradient-descent) ulanish vaznlarini qaysi yo'nalishda o'zgartirishni bilishi uchun tarmoqning haqiqiy chiqish vektori va kerakli chiqish vektori o'rtasidagi tafovut differensiallanuvchi skalyar o'lchov sifatida ifodalanishi shart (Rumelhart et al., 1986).
+
+## 3. Tasdiqlangan Yo'qotish Funksiyalari va Regulyarizatsiya (Level 1 — Level 3)
+Squared Difference / Euclidean Prototype Distance:
+Rumelhart et al. (1986) da haqiqiy va kerakli chiqish vektorlari orasidagi farq o'lchovi minimallashtiriladi.
+LeCun et al. (1998, Section II-B, Equation 7) LeNet-5 ning oxirgi bosqichida sinf prototiplariga (\pm 1 bitli 7x12 shablonlarga) nisbatan kvadratik masofani (squared distance to a prototype) xatolik jarimasi sifatida hisoblaydi.
+L_2-Regularized Multi-Class Logistic Regression (Kingma & Ba, 2015, Section 6): Ko'p sinfli klassifikatsiya vazifalarida (masalan, MNIST da) yaxshi o'rganilgan qavariq (convex) maqsad funksiyasi bo'lgan logistik regressiya (Cross-Entropy) va L_2 regulyarizatsiya hadidan foydalaniladi.
+Label Smoothing Regularization (Vaswani et al., 2017): [Transformers](/learn/transformers) o'qitishda Dropout bilan bir qatorda chiqish taqsimoti uchun Label Smoothing regulyarizatsiyasi qo'llaniladi.
+Global Loss Functions in Multi-Module Pipelines (LeCun et al., 1998): Graph Transformer Networks (GTNs) da bir nechta modullardan iborat hujjat tanish tizimi (segmentatsiya, tanish, til modeli) yagona global yo'qotish funksiyasi (masalan, perceptron-like loss) yordamida birgalikda o'qitiladi.
+Training vs. Validation / Test Performance va Generalization
+Loshchilov va Hutter (2019) hamda Ioffe va Szegedy (2015) tahlillarida ko'rsatilganidek, modelning o'quv to'plamidagi xatoligi (training performance) yaxshi bo'lishi uning validatsiya va test to'plamida ham yaxshi umumlashtirishini (generalization) avtomatik bildirmaydi (overfitting). Umumlashtirishni yaxshilash uchun Decoupled Weight Decay ([Adam](/learn/adam), [SGD](/learn/sgd)), Dropout va [Batch Normalization](/learn/batch-normalization) qo'llaniladi.
+
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch import torch.nn as nn
+
+Label smoothing bilan Cross-Entropy Loss (Vaswani et al., 2017)
+criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+
+logits = torch.tensor(2.5, 0.3, -1.2], [0.2, 1.8, 0.5) targets = torch.tensor([0, 1])
+
+loss = criterion(logits, targets) print("Cross-Entropy Loss (with label smoothing):", round(loss.item(), 4))
+```
+
+
+## 5. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Machine Learning](/learn/machine-learning)
+- [Probability](/learn/probability)
+- [Hosila](/learn/hosila)
+
+**Keyingi mavzular:**
+- [Backpropagation](/learn/backpropagation)
+- [Gradient Descent](/learn/gradient-descent)
+- [Optimizers](/learn/optimizers)
+
+**Bog'liq:**
+- [LLM](/learn/llm)
+- [CNN](/learn/cnn)
+
+## 6. Tekshirilgan manbalar
+- LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-Based Learning Applied to Document Recognition*. Proceedings of the IEEE, 86(11), 2278–2324.
+- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature, 323, 533–536.
+- Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
+- Kingma, D. P., & Ba, J. (2015). *Adam: A Method for Stochastic Optimization*. ICLR 2015. arXiv:1412.6980.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

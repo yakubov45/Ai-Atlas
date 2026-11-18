@@ -1,0 +1,59 @@
+---
+id: ai-agent
+title: "AI Agent"
+slug: ai-agent
+description: "AI Agent — til modelida mantiqiy mulohaza yuritish (reasoning) va harakat qilishni (acting) uyg'unlashtirib (masalan, Yao et al., 2022 dagi ReAct yondashuvi), ko'p modulli yoki ko'p qadamli vazifalarni bajaruvchi tizim."
+category: ai-agents
+difficulty: advanced
+order: 2
+tags: ["ai","agents","llm","agent","react"]
+prerequisites: ["llm","prompt-engineering"]
+related: ["tools","rag","memory","artificial-intelligence"]
+visualizations: ["rag-pipeline-flow"]
+sources: ["lecun-1998","hochreiter-1997","kingma-2014","lewis-2020","yao-2022"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1162–1202"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+AI Agent — til modelida mantiqiy mulohaza yuritish (reasoning) va harakat qilishni (acting) uyg'unlashtirib (masalan, Yao et al., 2022 dagi ReAct yondashuvi), ko'p modulli yoki ko'p qadamli vazifalarni bajaruvchi tizim.
+
+## 2. Nima uchun kerak?
+Oddiy bitta chaqiruvli klassifikator yoki til modelidan farqli o'laroq, murakkab amaliy vazifalar (masalan, LeCun et al., 1998 tahlilidagi ko'p bosqichli hujjatlarni qayta ishlash konveyerlari yoki bilimga asoslangan NLP vazifalari) bir nechta qadam va modullarning o'zaro muvofiqlashgan ishlashini talab qiladi. Shunyu Yao va hammualliflar (2022, arXiv:2210.03629) til modellarida mulohaza yuritish va harakat qilishni birlashtiruvchi ReAct tizimini taklif etganlar.
+
+## 3. Bilim va Xotira Qatlamlarining Farqlanishi (Level 1 — Level 3)
+AI muhandisligida tizim foydalanadigan axborot manbalarini quyidagicha farqlash muhim:
+
+Model-internal knowledge (Uzoq muddatli parametrik xotira): Hochreiter & Schmidhuber (1997) ta'riflaganidek, neyron tarmoqning sekin o'zgaruvchan vaznlarida (W) mujassamlashgan bilimlar.
+Short-term activations / Conversation context (Qisqa muddatli kontekst): Joriy kirish hodisalari va ketma-ketlik tokenlarining aktivatsiyalarida ([RNN](/learn/rnn)/[LSTM](/learn/lstm) ichki holati yoki [Transformers](/learn/transformers) kontekst oynasida) saqlanuvchi tezkor ma'lumot.
+External retrieval (Tashqi qidiruv): [RAG](/learn/rag) (Lewis et al., 2020) kabi bilimga asoslangan NLP vazifalarida tashqi manbalardan olinadigan ma'lumotlar.
+Persistent application memory va Tools: Tashqi ilova xotirasi va vositalar ([Tools](/learn/tools)).
+Izoh (Manba maqomi): Neyron tarmoqlarda qisqa muddatli aktivatsiyalar va uzoq muddatli vaznlar farqi (Hochreiter & Schmidhuber, 1997), ko'p modulli tizimlar (LeCun et al., 1998) hamda Yao et al. (2022, arXiv:2210.03629) va Lewis et al. (2020, arXiv:2005.11401) bibliografiyalari tasdiqlangan. Biroq arXiv:2210.03629 maqolasining to'liq matni va multi-agent hamda production xavfsizlik protokollari joriy qidiruv parchalarida keltirilmagani sababli, ushbu qo'shimcha tafsilotlar Tasdiqlanmagan deb belgilandi.
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[LLM](/learn/llm)
+[Prompt Engineering](/learn/prompt-engineering)
+Keyingi mavzular:
+
+[Tools](/learn/tools)
+[RAG](/learn/rag)
+[Memory](/learn/memory)
+Bog'liq:
+
+[Artificial Intelligence](/learn/artificial-intelligence)
+## 5. Tekshirilgan manbalar
+Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629. (Bibliografik metama'lumot tasdiqlangan).
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780.
+LeCun, Y., et al. (1998). Gradient-Based Learning Applied to Document Recognition. Proceedings of the IEEE, 86(11), 2278–2324.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="rag-pipeline-flow" />
+

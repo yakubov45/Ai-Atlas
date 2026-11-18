@@ -1,0 +1,79 @@
+---
+id: partial-derivative
+title: "Partial Derivative"
+slug: partial-derivative
+description: "Partial Derivative (Xususiy hosila, ∂ ell/∂ theta_i) — ko'p o'zgaruvchili yo'qotish funksiyasining boshqa barcha parametrlarni o'zgarmas deb hisoblagan holda, faqat bitta theta_i parametri yoki y_i aktivatsiyasi bo'yicha olingan hosilasi."
+category: math
+difficulty: intermediate
+order: 7
+tags: ["ai","math","calculus","xususiy","partial"]
+prerequisites: ["hosila","vector"]
+related: ["gradient","chain-rule","gradient-descent","backpropagation","batch-normalization"]
+visualizations: ["function-explorer"]
+sources: ["rumelhart-1986","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2300–2348"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Partial Derivative (Xususiy hosila, $\frac{\partial \ell}{\partial \theta_i}$) — ko'p o'zgaruvchili yo'qotish funksiyasining boshqa barcha parametrlarni o'zgarmas deb hisoblagan holda, faqat bitta $\theta_i$ parametri yoki $y_i$ aktivatsiyasi bo'yicha olingan hosilasi.
+
+## 2. Nima uchun kerak?
+Neyron tarmoqlarda yo'qotish funksiyasi $\ell$ bir vaqtning o'zida barcha qatlam vaznlari va aktivatsiyalariga bog'liq (Rumelhart et al., 1986; Ioffe & Szegedy, 2015). Har bir vaznni qanday yangilashni aniqlash uchun $\frac{\partial \ell}{\partial w_{ji}}$ xususiy hosilasi hisoblanadi.
+
+## 3. Matematik Formulalar va Qadam-baqadam Sonli Misol (Level 1 — Level 3)
+Faraz qilaylik, bitta neyronning vaznli yig'indisi $z = w_1 x_1 + w_2 x_2 + b$ va kvadratik xatoligi $E = \frac{1}{2}(z - d)^2$ bo'lsin ($x_1 = 2, x_2 = 3, w_1 = 1, w_2 = 2, b = 0, d = 10$):
+
+1. **1-qadam (Forward qiymatni topish):**
+   $$ z = (1 \times 2) + (2 \times 3) + 0 = 2 + 6 = 8 $$
+   $$ E = \frac{1}{2}(8 - 10)^2 = \frac{1}{2}(-2)^2 = 2.0 $$
+
+2. **2-qadam ($z$ bo'yicha xususiy hosila):**
+   $$ \frac{\partial E}{\partial z} = z - d = 8 - 10 = -2 $$
+
+3. **3-qadam ($w_1$ va $w_2$ bo'yicha xususiy hosilalar):**
+   $$ \frac{\partial z}{\partial w_1} = x_1 = 2 \implies \frac{\partial E}{\partial w_1} = \frac{\partial E}{\partial z} \cdot \frac{\partial z}{\partial w_1} = -2 \times 2 = -4 $$
+   $$ \frac{\partial z}{\partial w_2} = x_2 = 3 \implies \frac{\partial E}{\partial w_2} = \frac{\partial E}{\partial z} \cdot \frac{\partial z}{\partial w_2} = -2 \times 3 = -6 $$
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+w1 = torch.tensor(1.0, requires_grad=True) w2 = torch.tensor(2.0, requires_grad=True) x1, x2, d = 2.0, 3.0, 10.0
+
+z = w1 * x1 + w2 * x2 E = 0.5 * (z - d) 2 E.backward()
+
+print("dE/dw1:", w1.grad.item()) # -4.0 print("dE/dw2:", w2.grad.item()) # -6.0
+```
+
+
+## 5. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Hosila](/learn/hosila)
+- [Vector](/learn/vector)
+
+**Keyingi mavzular:**
+- [Gradient](/learn/gradient)
+- [Chain Rule](/learn/chain-rule)
+- [Gradient Descent](/learn/gradient-descent)
+- [Backpropagation](/learn/backpropagation)
+
+**Bog'liq:**
+- [Batch Normalization](/learn/batch-normalization)
+
+## 6. Tekshirilgan manbalar
+- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature, 323, 533–536.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization*. ICML 2015.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="function-explorer" />
+

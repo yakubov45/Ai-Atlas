@@ -1,0 +1,77 @@
+---
+id: production-ready-ml-structure
+title: "Production-Ready ML Loyihasi Tuzilmasi"
+slug: production-ready-ml-structure
+description: "Production-Ready ML Loyihasi Tuzilmasi — mashinali o'rganish tizimini o'qib tushunish, o'zgartirish, tekshirish (testing) va masshtablash oson bo'lgan aniq javobgarlikka ega dasturiy modullarga ajratish tamoyili."
+category: production-ml
+difficulty: intermediate
+order: 2
+tags: ["ai","mlops","software-architecture","ml","production-ready"]
+prerequisites: ["machine-learning","deep-learning"]
+related: ["production-ml-pipeline","atomic-note","batch-normalization"]
+visualizations: []
+sources: ["rumelhart-1986","ioffe-2015","karpathy-2023"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2721–2784"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Production-Ready ML Loyihasi Tuzilmasi — mashinali o'rganish tizimini o'qib tushunish, o'zgartirish, tekshirish (testing) va masshtablash oson bo'lgan aniq javobgarlikka ega dasturiy modullarga ajratish tamoyili.
+
+## 2. Nima uchun kerak?
+Haddan tashqari murakkab abstraksiyalar yoki tartibsiz monolit skriptlar modelning ichki ishlashini yashirib qo'yadi va xatolarni topishni qiyinlashtiradi. Andrej Karpathy'ning nanoGPT loyihasi (2023) ko'rsatganidek, bitta yagona majburiy loyiha shabloni mavjud emas — hatto 124 million parametrli to'liq GPT-2 modelini qayta tiklay oladigan (reproducible) kod bazasini ham ikkita aniq va toza faylga ajratish mumkin:
+
+Model Definition (~300 qator): [Transformers](/learn/transformers) bloklari, attention heads, positional embeddings va layer normalization qatlamlari.
+Training Loop (~300 qator): Ma'lumotlarni yuklash (data loading), [Optimizers](/learn/optimizers) sozlamalari, o'qitish sikli, yo'qotish va perplexity monitoringi hamda checkpointing (model holatini saqlash).
+## 3. Majburiy Komponentlar va Qo'shimcha Arxitekturaviy Tanlovlar
+Komponent
+
+Maqomi
+
+Tasdiqlangan texnik vazifasi
+
+Model & Architecture Module
+
+Majburiy
+
+Tarmoq qatlamlari va forward computation (nanoGPT model fayli; Karpathy, 2023).
+
+Data Loading, Optimization & Checkpointing
+
+Majburiy
+
+Mini-batch uzatish, shuffling (Ioffe & Szegedy, 2015 da shuffling validatsiya aniqligini ~1% ga oshirgan), optimizatsiya va checkpoint saqlash (Karpathy, 2023).
+
+Derivative & Numerical Verification
+
+Majburiy
+
+Har bir vazn va bias hosilasini finite differences (ikki mustaqil forward pass) orqali tekshirish (Rumelhart et al., 1986).
+
+Kengaytirilgan MLOps (Data Versioning, Model Registry, CI/CD)
+
+Loyiha ko'lamiga ko'ra / Tasdiqlanmagan
+
+Katta sanoat tizimlarida qo'llaniladi; maxsus uchinchi tomon MLOps vositalari bo'yicha birlamchi manbalar joriy to'plamda mavjud emas (Tasdiqlanmagan).
+
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Machine Learning](/learn/machine-learning)
+[Deep Learning](/learn/deep-learning)
+Keyingi mavzular:
+
+[Real Production ML Pipeline Arxitektura va Ish Jarayoni](/learn/production-ml-pipeline)
+Bog'liq:
+
+[Atomic Note](/learn/atomic-note)
+[Batch Normalization](/learn/batch-normalization)
+## 5. Tekshirilgan manbalar
+Karpathy, A. (2023). Let's build GPT: from scratch, in code, spelled out. YouTube. https://www.youtube.com/watch?v=kCc8FmEb1nY
+Rumelhart, D. E., et al. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536.
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015.

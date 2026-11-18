@@ -1,0 +1,86 @@
+---
+id: sgd
+title: "SGD"
+slug: sgd
+description: "Stochastic Gradient Descent (SGD) — mini-batch gradienti ∇ f_t(theta_t) asosida model parametrlarini yangilovchi bazaviy stoxastik optimallashtirish algoritmi bo'lib, amaliyotda Momentum (beta_1) va Weight Decay (lambda) bilan qo'llaniladi."
+category: deep-learning
+difficulty: intermediate
+order: 6
+tags: ["ai","math","optimization","training","stochastic","sgd"]
+prerequisites: ["gradient-descent","gradient","learning-rate"]
+related: ["adam","optimizers","batch-normalization","backpropagation"]
+visualizations: ["gradient-descent-1d"]
+sources: ["ioffe-2015","kingma-2014","loshchilov-2017"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2564–2621"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Stochastic Gradient Descent (SGD) — mini-batch gradienti $\nabla f_t(\theta_t)$ asosida model parametrlarini yangilovchi bazaviy stoxastik optimallashtirish algoritmi bo'lib, amaliyotda Momentum ($\beta_1$) va Weight Decay ($\lambda$) bilan qo'llaniladi.
+
+## 2. Nima uchun kerak?
+Ioffe va Szegedy (2015) ta'kidlaganidek, mini-batch SGD chuqur neyron tarmoqlarni o'qitishning samarali usulidir. Bundan tashqari, Loshchilov va Hutter (2019) ko'rsatganidek, standart SGD da Weight Decay va $L_2$ regulyarizatsiya matematik jihatdan ekvivalent bo'lsa-da, optimal $L_2$ koeffitsiyenti o'rganish tezligiga bog'lanib qolmasligi uchun ularni ajratish (SGDW) maqsadga muvofiqdir.
+
+## 3. Matematik Asoslari: Proposition 1 va SGDW (Level 1 — Level 3)
+Loshchilov va Hutter (2019, Section 2) bo'yicha:
+
+Hanson & Pratt (1988) Weight Decay tenglamasi (Equation 1):
+
+$$
+\theta_{t+1} = (1 - \lambda)\theta_t - \alpha \nabla f_t(\theta_t)
+$$
+Proposition 1 (Weight decay = L_2 reg for standard SGD): Standart SGD uchun Weight Decay standart $L_2$ regulyarizatsiyaga ekvivalentdir, biroq bu ekvivalentlik bajarilishi uchun $L_2$ regulyarizator koeffitsiyenti $\lambda'$ quyidagicha tanlanishi shart: $\lambda' = \frac{\lambda}{\alpha}$. Ya'ni $\lambda'$ o'rganish tezligi $\alpha$ bilan qattiq bog'lanib (tightly coupled) qoladi. Shu ikki giperparametr ta'sirini bir-biridan ajratish uchun SGD with Decoupled Weight Decay (SGDW, Algorithm 1) qo'llaniladi.
+
+### Qadam-baqadam Sonli Misol
+Berilgan: $\theta_0 = 10.0$, gradient $\nabla f_1(\theta_0) = 4.0$, learning rate $\alpha = 0.1$ va weight decay $\lambda = 0.02$:
+
+$$
+\theta_1 = (1 - 0.02) \times 10.0 - 0.1 \times 4.0 = 9.8 - 0.4 = 9.4
+$$
+
+(Agar buni standart $L_2$ regulyarizatsiya $\theta_1 = \theta_0 - \alpha(\nabla f_1(\theta_0) + \lambda' \theta_0)$ orqali olishni istasak, $\lambda' = \frac{0.02}{0.1} = 0.2$ qilib olishga majbur bo'lamiz: $10.0 - 0.1(4.0 + 0.2 \times 10.0) = 10.0 - 0.6 = 9.4$).
+
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+
+theta = torch.nn.Parameter(torch.tensor([10.0]))
+
+Standart PyTorch SGD da weight_decay = lambda' = 0.2, lr = 0.1
+optimizer = torch.optim.SGD([theta], lr=0.1, weight_decay=0.2)
+
+theta.grad = torch.tensor([4.0]) optimizer.step() print("Updated theta:", round(theta.item(), 4)) # 9.4
+```
+
+
+## 5. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Gradient Descent](/learn/gradient-descent)
+- [Gradient](/learn/gradient)
+- [Learning Rate](/learn/learning-rate)
+
+**Keyingi mavzular:**
+- [Adam](/learn/adam)
+- [Optimizers](/learn/optimizers)
+- [Batch Normalization](/learn/batch-normalization)
+
+**Bog'liq:**
+- [Backpropagation](/learn/backpropagation)
+
+## 6. Tekshirilgan manbalar
+- Loshchilov, I., & Hutter, F. (2019). *Decoupled Weight Decay Regularization*. ICLR 2019. arXiv:1711.05101.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. ICML 2015.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="gradient-descent-1d" />
+

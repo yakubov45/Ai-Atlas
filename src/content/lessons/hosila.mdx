@@ -1,0 +1,72 @@
+---
+id: hosila
+title: "Hosila"
+slug: hosila
+description: "Hosila (f'(x) yoki df/dx) — funksiya argumenti x o'zgarganda funksiya qiymati f(x) ning o'zgarish tezligini ifodalovchi matematik analiz tushunchasi."
+category: math
+difficulty: beginner
+order: 6
+tags: ["ai","math","calculus","derivative","funksiya","hosila"]
+prerequisites: ["math-for-deep-learning"]
+related: ["partial-derivative","gradient","chain-rule","backpropagation","rnn","lstm","batch-normalization"]
+visualizations: ["function-explorer"]
+sources: ["vaswani-2017","rumelhart-1986","hochreiter-1997","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 2258–2299"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Hosila ($f'(x)$ yoki $\frac{df}{dx}$) — funksiya argumenti $x$ o'zgarganda funksiya qiymati $f(x)$ ning o'zgarish tezligini ifodalovchi matematik analiz tushunchasi.
+
+## 2. Nima uchun kerak?
+Neyron tarmoqlarda [Backpropagation](/learn/backpropagation) orqali xatolik signalini orqaga uzatishda har bir qatlamning aktivatsiya funksiyasi differensiallanuvchi bo'lishi shart. Aktivatsiya funksiyasining birinchi tartibli hosilasi $f'(\text{net}_i)$ xatolik signalini qanchalik o'tkazish yoki so'ndirishini belgilaydi.
+
+## 3. Matematik Asoslari: Sigmoid Hosilasi va Saturation (Level 1 — Level 3)
+- **Logistik Sigmoid Funksiyasi va Uning Maksimal Hosilasi (Hochreiter & Schmidhuber, 1997, Section 3):**
+  $$ \sigma(x) = \frac{1}{1 + e^{-x}}, \quad \sigma'(x) = \sigma(x)\left(1 - \sigma(x)\right) $$
+  Logistik sigmoid hosilasining maksimal qiymati $x = 0$ nuqtada kuzatiladi va u $0.25$ ga teng:
+  $$ \max_x \sigma'(x) = 0.5 \times (1 - 0.5) = 0.25 $$
+  Agar kirish qiymati $|x|$ juda kattalashib ketsa, funksiya to'yinish (saturation) hududiga tushib qoladi va $\sigma'(x) \to 0$ bo'lib, gradient oqimi to'xtab qoladi (Rumelhart et al., 1986; Ioffe & Szegedy, 2015; Vaswani et al., 2017).
+
+- **Chiziqli Ayniyat Funksiyasi (Hochreiter & Schmidhuber, 1997):**
+  $$ f_j(x) = x \implies f'_j(x) = 1.0 $$
+  [LSTM](/learn/lstm) ning Constant Error Carousel (CEC) markazida hosila doimo 1.0 bo'lishi uchun aynan shu funksiya ishlatiladi.
+
+### Qadam-baqadam Sonli Misol
+$\sigma(x) = \frac{1}{1 + e^{-x}}$ funksiyaning $x = 0$ va $x = 2$ nuqtalardagi hosilasini hisoblaymiz:
+
+1. **$x = 0$ da:**
+   $$ \sigma(0) = \frac{1}{1 + 1} = 0.5 \implies \sigma'(0) = 0.5 \times (1 - 0.5) = 0.25 $$
+
+2. **$x = 2$ da:**
+   $$ \sigma(2) = \frac{1}{1 + e^{-2}} \approx \frac{1}{1 + 0.1353} \approx 0.8808 $$
+   $$ \sigma'(2) = 0.8808 \times (1 - 0.8808) \approx 0.1050 $$
+## 4. Bog'liq tushunchalar
+Oldin o'rganish:
+
+[Math for Deep Learning](/learn/math-for-deep-learning)
+Keyingi mavzular:
+
+[Partial Derivative](/learn/partial-derivative)
+[Gradient](/learn/gradient)
+[Chain Rule](/learn/chain-rule)
+[Backpropagation](/learn/backpropagation)
+Bog'liq:
+
+[RNN](/learn/rnn)
+[LSTM](/learn/lstm)
+[Batch Normalization](/learn/batch-normalization)
+## 5. Tekshirilgan manbalar
+Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780.
+Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536.
+Ioffe, S., & Szegedy, C. (2015). Batch Normalization. ICML 2015.
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="function-explorer" />
+

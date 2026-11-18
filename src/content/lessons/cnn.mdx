@@ -1,0 +1,105 @@
+---
+id: cnn
+title: "CNN"
+slug: cnn
+description: "Convolutional Neural Network (CNN) — 2D fazoviy o'zgaruvchanlikka (2D shape variability) ega tasvirlar va qo'lyozma belgilarni tanib olish uchun loyihalangan, lokal retseptiv maydonlar (local receptive fields), vaznlarni ulashish (shared weights / weight replication) va fazoviy kichraytirish (spa..."
+category: architectures
+difficulty: intermediate
+order: 1
+tags: ["ai","deep-learning","cnn","architectures","convolutional","lenet-5"]
+prerequisites: ["deep-learning","matrix-operations","tensor"]
+related: ["batch-normalization","transformers","backpropagation","adam"]
+visualizations: ["neural-network-explorer"]
+sources: ["lecun-1998","ioffe-2015","kingma-2014"]
+origin:
+  - document: "deep research 1.md"
+    section: "3. Deliverable B — Takomillashtirilgan va Tekshirilgan Obsidian Konspektlari"
+    pages: "Qatorlar 1350–1427"
+    note: "Kanonik Deep Research ilmiy konspekti"
+status: published
+locale: uz
+---
+
+## 1. Qisqacha ta'rif
+Convolutional Neural Network (CNN) — 2D fazoviy o'zgaruvchanlikka (2D shape variability) ega tasvirlar va qo'lyozma belgilarni tanib olish uchun loyihalangan, lokal retseptiv maydonlar (local receptive fields), vaznlarni ulashish (shared weights / weight replication) va fazoviy kichraytirish (spatial subsampling) g'oyalarini birlashtiruvchi neyron tarmoq arxitekturasi (LeCun, Bottou, Bengio, & Haffner, 1998).
+
+## 2. Nima uchun kerak?
+Tasvirni oddiy to'liq bog'langan tarmoqqa uzatish fazoviy strukturani yo'qotadi: tasvirda yaqin joylashgan piksellar o'zaro kuchli bog'langan bo'lib, kichik chiziq (stroke) tasvirning ko'plab joylarida uchrashi mumkin. Bundan tashqari, to'liq bog'langan qatlamlarda har bir kirish-chiqish juftligi uchun alohida vazn saqlash juda ko'p parametr talab qiladi. CNN lar bitta feature map ichida vaznlarni bog'lash (tying weights) orqali parametrlar sonini kamaytiradi va siljish (shift), masshtab (scale) hamda kichik buzilishlarga (distortion) nisbatan barqarorlikni ta'minlaydi.
+
+## 3. Intuitiv tushuntirish (Level 1 — Beginner)
+Butun rasmga birvarakayiga qarash o'rniga, 5x5 piksel o'lchamli kichik darchani (filtrni) rasm ustida yurgizib chiqasiz. Shu bitta detektor rasmning qayerida o'ziga mos chiziq yoki burchakni ko'rsa, o'sha joyda javob beradi. Natijada Feature Map (Belgilar xaritasi) hosil bo'ladi. So'ngra fazoviy kichraytirish (subsampling) qatlami 2x2 katakchalarni umumlashtirib, xarita o'lchamini ikki baravar kichraytiradi.
+
+## 4. Qanday ishlaydi? (Level 2 — Intermediate)
+### 4.1. CNN ning uchta arxitekturaviy tamoyili (LeCun et al., 1998, Section II-A)
+Local Receptive Fields: Har bir yashirin birlik butun tasvirga emas, balki kichik qo'shnichilik sohasiga (masalan, 5x5 hududga) ulanadi.
+Shared Weights (Weight Replication): Bitta Feature Map ichidagi barcha birliklar aynan bir xil filtr vaznlarini va bitta biasni ulashadi. Bu translation invariance (siljishga nisbatan invariantlik) beradi va parametrlar sonini qisqartiradi.
+Spatial Subsampling: Fazoviy aniqlikni (resolution) kamaytirib, kichik siljish va qiyshayishlarga sezgirlikni pasaytiradi.
+### 4.2. Original LeNet-5 (1998) Arxitekturasi va Zamonaviy O'quv Modellaridan Farqi
+Ko'pincha zamonaviy darsliklarda ReLU, parametrsiz Max-Pooling va Softmax qatlamiga ega tarmoq LeNet-5 deb ataladi; ammo LeCun et al. (1998, Section II-B) dagi haqiqiy LeNet-5 quyidagicha tuzilgan:
+
+Input (32x32): MNIST raqami proporsiyasi saqlangan holda 20x20 sohaga sig'dirilib, massa markazi bo'yicha 28x28 maydonga markazlashtiriladi; LeNet-5 ning 32x32 kirishi esa uning atrofida qo'shimcha hoshiya qoldiradi.
+C1 (Convolution): 6 ta 5x5 filtr $\to$ 6 ta 28x28 o'lchamli feature map ($6 \times 25 + 6 = 156$ ta parametr).
+S2 (Original Subsampling $\neq$ Max-Pooling): Har bir 2x2 oynadagi 4 ta qiymat qo'shiladi, o'rganiladigan koeffitsiyentga ko'paytiriladi, o'rganiladigan bias qo'shiladi va sigmasimon (squashing) funksiyadan o'tkaziladi. Demak, har bir xarita 2 ta o'rganiladigan parametr qo'shadi (6 ta xarita bo'yicha S2 da 12 ta parametr; 14x14 o'lcham).
+C3 (Qisman bog'langan Convolution — Table I): C3 dagi 16 ta chiqish xaritasi (10x10) S2 dagi barcha 6 ta xarita bilan to'liq bog'lanmagan! Ular original maqolaning I jadvalidagi sxema bo'yicha jami 60 ta aloqaga ega. Har bir aloqa 5x5 filtr (25 ta vazn) va har bir chiqish xaritasi bitta biasga ega bo'lib, jami $60 \times 25 + 16 = 1516$ ta o'rganiladigan parametrni tashkil etadi (agar 6 ta kirish va 16 ta chiqish to'liq bog'langanda $96 \times 25 + 16 = 2416$ ta parametr bo'lar edi).
+S4 (Subsampling): 16 ta xarita ustida S2 kabi ishlaydi va 32 ta o'rganiladigan parametr qo'shadi (5x5 o'lcham).
+C5 va F6: C5 (120 ta 5x5 filtr) 5x5 xaritani 120 ta qiymatga o'tkazadi (kirish kattaroq bo'lganda fazoviy bo'lishi sababli konvolyutsion qatlam deb ataladi); F6 esa bu 120 ta qiymatni 84 ta yashirin birlikka akslantiradi.
+Output (Euclidean RBF — Equation 7): Har bir chiqish 7x12 o'lchamli belgi bitmaplaridan olingan qat'iy $\pm 1$ prototip vektoriga nisbatan kvadratik masofani o'lchaydi (kichik masofa — sinfga yaqinlikni bildiradi).
+## 5. Matematik asoslari va Parametrlarni Hisoblash (Level 3 — Advanced)
+Kirish tasviri $H_{\text{in}} \times W_{\text{in}} = 32 \times 32$ va kernel $K \times K = 5 \times 5$ (padding $p=0$, stride $s=1$) uchun C1 chiqish o'lchami:
+
+$$
+H_{\text{out}} = H_{\text{in}} - K + 1 = 32 - 5 + 1 = 28
+$$
+
+C3 qatlamidagi o'rganiladigan parametrlar sonining aniq formulasi:
+
+$$
+\text{Params}_{C3} = N_{\text{links}} \times (K_h \times K_w) + C_{\text{out}} = 60 \times (5 \times 5) + 16 = 1500 + 16 = 1516
+$$
+
+Kingma va Ba (2015) ta'kidlaganidek, to'liq bog'langan tarmoqlardan farqli ravishda, CNN larda vaznlarning ulashilishi (weight sharing) turli qatlamlarda gradientlarning miqdori (magnitude) keskin farq qilishiga olib keladi; shu sababli [Adam](/learn/adam) kabi adaptiv optimizatorlar va [Batch Normalization](/learn/batch-normalization) (bunda statistikalar feature map ning barcha pozitsiyalari va mini-batch bo'yicha jamlanadi) CNN larni o'qitishda juda samaralidir.
+
+Qachon va nima uchun CNN hanuz dolzarb?
+1998-yilda LeNet-5 o'sha davr CPU hisoblash quvvati va kichik (32x32) o'lchamlar bilan cheklangan bo'lsa-da, keyinchalik GPU larda masshtablangan CNN lar (AlexNet, Inception, ResNet) kompyuter ko'rish sohasining poydevoriga aylandi. Bugungi kunda ham optik belgilarni tanib olish (OCR), bank cheklarini qayta ishlash, tibbiy tasvirlar va cheklangan resursli (embedded) qurilmalarda CNN lar yuqori samaradorlik ko'rsatadi.
+
+
+## Python / PyTorch Amaliy Misoli
+
+```python
+import torch
+import torch.nn as nn
+
+LeNet-5 C1 qatlamining o'lcham va parametrlarini tekshirish
+conv_c1 = nn.Conv2d(in_channels=1, out_channels=6, kernel_size=5, stride=1, padding=0)
+
+x = torch.randn(1, 1, 32, 32) # (batch=1, channel=1, H=32, W=32) out = conv_c1(x)
+
+c1_params = sum(p.numel() for p in conv_c1.parameters()) print("C1 output shape:", out.shape) # torch.Size([1, 6, 28, 28]) print("C1 trainable params:", c1_params) # 6 * 25 + 6 = 156
+```
+
+
+## 7. Bog'liq tushunchalar
+
+**Oldin o'rganish:**
+- [Deep Learning](/learn/deep-learning)
+- [Matrix Operations](/learn/matrix-operations)
+- [Tensor](/learn/tensor)
+
+**Keyingi mavzular:**
+- [Batch Normalization](/learn/batch-normalization)
+- [Transformers](/learn/transformers)
+
+**Bog'liq:**
+- [Backpropagation](/learn/backpropagation)
+- [Adam](/learn/adam)
+
+## 8. Tekshirilgan manbalar
+- LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-Based Learning Applied to Document Recognition*. Proceedings of the IEEE, 86(11), 2278–2324. DOI: 10.1109/5.726791.
+- Kingma, D. P., & Ba, J. (2015). *Adam: A Method for Stochastic Optimization*. ICLR 2015. arXiv:1412.6980.
+- Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. ICML 2015, PMLR 37:448–456.
+
+
+## Interaktiv Vizualizatsiya
+
+<Visualization id="neural-network-explorer" />
+
