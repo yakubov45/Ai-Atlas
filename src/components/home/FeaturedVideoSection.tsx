@@ -70,6 +70,31 @@ export function FeaturedVideoSection() {
             </button>
           ))}
         </div>
+
+        {/* YouTube Video Catalog Promo Banner */}
+        <div className="rounded-2xl bg-gradient-to-r from-red-950/40 via-slate-900 to-violet-950/40 border border-slate-800 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <span className="px-2 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold">YouTube</span>
+              <span className="text-xs font-semibold text-slate-300">3 Tilda 88 ta Video Dars</span>
+            </div>
+            <h4 className="text-base sm:text-lg font-bold text-white">
+              To&apos;liq YouTube Video Darslar Katalogini kashf eting
+            </h4>
+            <p className="text-xs text-slate-400 max-w-xl">
+              Python, Machine Learning, Data Science, AI Engineer, Data Engineer va Prompt Engineering bo&apos;yicha o&apos;zbek, rus va ingliz tillaridagi tasdiqlangan darslar.
+            </p>
+          </div>
+
+          <Link
+            href="/videos"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all shadow-lg shadow-red-950/50 flex-shrink-0"
+          >
+            <Film className="w-4 h-4" />
+            <span>Videolar Katalogini Ochish</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       {/* Featured Video Highlight Card */}
@@ -204,6 +229,31 @@ export function FeaturedVideoSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* YouTube Video Catalog Promo Banner */}
+        <div className="rounded-2xl bg-gradient-to-r from-red-950/40 via-slate-900 to-violet-950/40 border border-slate-800 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <span className="px-2 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold">YouTube</span>
+              <span className="text-xs font-semibold text-slate-300">3 Tilda 88 ta Video Dars</span>
+            </div>
+            <h4 className="text-base sm:text-lg font-bold text-white">
+              To&apos;liq YouTube Video Darslar Katalogini kashf eting
+            </h4>
+            <p className="text-xs text-slate-400 max-w-xl">
+              Python, Machine Learning, Data Science, AI Engineer, Data Engineer va Prompt Engineering bo&apos;yicha o&apos;zbek, rus va ingliz tillaridagi tasdiqlangan darslar.
+            </p>
+          </div>
+
+          <Link
+            href="/videos"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all shadow-lg shadow-red-950/50 flex-shrink-0"
+          >
+            <Film className="w-4 h-4" />
+            <span>Videolar Katalogini Ochish</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
 

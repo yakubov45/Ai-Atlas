@@ -14,11 +14,13 @@ import {
   Sparkles,
   ArrowRight,
   Calculator,
+  Film,
 } from "lucide-react";
 import type { ConceptRelationType, KnowledgeConcept } from "@/lib/knowledge-graph/types";
 import { DOMAIN_COLORS, DOMAIN_TITLES_UZ } from "@/lib/knowledge-graph/layout";
 import { CONCEPT_RELATIONS } from "@/lib/knowledge-graph/relations";
 import { getConceptById } from "@/lib/knowledge-graph/concepts";
+import { YOUTUBE_CATALOG_VIDEOS } from "@/lib/media/youtube-videos-data";
 
 export interface ConceptDetailsModalProps {
   concept: KnowledgeConcept | null;
@@ -72,6 +74,40 @@ export function ConceptDetailsModal({
     "data-science": "Data Science",
     core: "Asosiy Platforma",
   };
+
+  const conceptToYtTopic: Record<string, string[]> = {
+    "python-variables-types": ["A1"],
+    "python-control-flow": ["A2"],
+    "python-functions-scope": ["A3"],
+    "python-oop": ["A5"],
+    "linear-regression": ["B2"],
+    "gradient-descent-optimizers": ["B3"],
+    "model-evaluation-metrics": ["B4"],
+    "decision-trees": ["B5"],
+    "ensemble-random-forests": ["B5"],
+    "neural-networks-perceptrons": ["B6"],
+    "backpropagation-autograd": ["B6"],
+    "pandas-data-wrangling": ["C2"],
+    "exploratory-data-analysis": ["C3"],
+    "sql-relational-databases": ["C4"],
+    "ab-testing-experimentation": ["C5"],
+    "tokenization-bpe": ["D1"],
+    "dot-product-cosine": ["D2"],
+    "embeddings-vector-spaces": ["D2"],
+    "attention-mechanism": ["D3"],
+    "transformer-architecture": ["D3"],
+    "vector-databases-indexing": ["D4"],
+    "rag-retrieval-augmented": ["D4", "D5"],
+    "function-calling-tools": ["D6"],
+    "ai-agents-react-loop": ["D6"],
+    "prompt-engineering-cot": ["F1", "F2"],
+    "fine-tuning-lora-peft": ["F4"],
+  };
+
+  const matchingTopicIds = conceptToYtTopic[concept.id] ?? [];
+  const matchingVideos = YOUTUBE_CATALOG_VIDEOS.filter((v) =>
+    matchingTopicIds.includes(v.topicId)
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
@@ -268,6 +304,45 @@ export function ConceptDetailsModal({
             ))}
           </div>
         </div>
+
+        {/* YouTube Video Lessons */}
+        {matchingVideos.length > 0 && (
+          <div className="space-y-2.5 pt-2 border-t border-slate-800">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                <Film className="w-3.5 h-3.5 text-red-500" />
+                <span>Mavzuga oid YouTube Video Darslar:</span>
+              </h4>
+              <Link href="/videos" className="text-[11px] text-cyan-400 hover:underline">
+                Barcha videolar →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {matchingVideos.slice(0, 3).map((v) => {
+                const langLabel =
+                  v.language === "uz" ? "🇺🇿 O'zbekcha" : v.language === "ru" ? "🇷🇺 Ruscha" : "🇬🇧 Inglizcha";
+                return (
+                  <a
+                    key={v.id}
+                    href={v.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 bg-slate-950/70 hover:bg-slate-800 border border-slate-800 rounded-xl transition-all group block"
+                  >
+                    <div className="flex items-center justify-between gap-1 mb-1">
+                      <span className="text-[10px] font-semibold text-slate-400">{langLabel}</span>
+                      <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-red-400" />
+                    </div>
+                    <p className="text-xs font-medium text-slate-200 group-hover:text-cyan-300 truncate">
+                      {v.title}
+                    </p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">{v.channelTitle}</p>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Visual Lab Link (if available) */}
         {concept.visualLabIds.length > 0 && (

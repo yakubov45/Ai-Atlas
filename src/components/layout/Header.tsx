@@ -19,6 +19,7 @@ import {
   Terminal,
   Award,
   Network,
+  Film,
 } from "lucide-react";
 import { usePreferences } from "@/hooks/use-preferences";
 import { uz } from "@/i18n/dictionaries/uz";
@@ -33,6 +34,7 @@ export function Header() {
   const navLinks = [
     { href: "/learn", label: uz.nav.learn, icon: BookOpen },
     { href: "/learn/map", label: "Bilimlar xaritasi", icon: Network },
+    { href: "/videos", label: "Videolar", icon: Film },
     { href: "/roadmap?tab=python-dev", label: "Python", icon: Terminal },
     { href: "/practice/python-30-days", label: "30 Days Python", icon: Award },
     { href: "/roadmap", label: uz.nav.roadmap, icon: Workflow },
@@ -44,6 +46,9 @@ export function Header() {
   const isLinkActive = (href: string) => {
     if (href === "/learn/map") {
       return pathname === "/learn/map";
+    }
+    if (href === "/videos") {
+      return pathname === "/videos";
     }
     if (href.includes("?tab=python-dev")) {
       if ((pathname === "/roadmap" || pathname === "/learn") && typeof window !== "undefined") {
