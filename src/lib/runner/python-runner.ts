@@ -388,6 +388,41 @@ export async function runPythonCode(
   const { timeoutMs = 8000, runTests = true } = options;
   const startTime = Date.now();
 
+  // 1. In browser environment, try dedicated fast server API first (instant native Python)
+  if (typeof window !== "undefined") {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs + 1000);
+      const res = await fetch("/api/run-python", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: userCode,
+          timeoutMs,
+          testCases: runTests ? testCases : [],
+        }),
+        signal: controller.signal,
+      });
+      clearTimeout(timer);
+      if (res.ok) {
+        const data = await res.json();
+        return {
+          success: Boolean(data.success),
+          stdout: data.stdout || "",
+          stderr: data.stderr || "",
+          error: data.error,
+          errorName: data.errorName,
+          errorDetailsUz: data.errorDetailsUz,
+          executionTimeMs: data.executionTimeMs || Date.now() - startTime,
+          testResults: data.testResults,
+          allTestsPassed: Boolean(data.allTestsPassed),
+        };
+      }
+    } catch {
+      // Server API unreachable or offline, proceed to Pyodide / Fallback
+    }
+  }
+
   let pyodide: PyodideInterface | null = null;
   try {
     pyodide = await getPyodideInstance();

@@ -1145,14 +1145,15 @@ export function getGuidedStepsForMicroLesson(
             whyQuestion: "Nega ushbu tushunchani amaliy kodda to'g'ri qo'llash muhim?",
           }
         : {
-            question: `“${lesson.title}” (${lesson.id}) mikro-darsi qaysi bosqich va amaliy vazifaga xizmat qiladi?`,
+            question: `“${lesson.title}” (${lesson.id}) darsining asosiy muhandislik maqsadi nima?`,
             options: [
-              `Phase ${phase.id}: ${phase.title} — ${phase.projectMilestone}`,
-              "Faqat nazariy tarix, amaliy kod va tizimga aloqasi yo‘q",
-              "Faqat frontend CSS bezaklari uchun",
+              "Faqat tashqi kutubxona kodini o'zgartirmasdan nusxalash",
+              "Faqat nazariy formulani yodlab, amaliyotda qo'llamaslik",
+              `Kodni to'g'ri loyihalash, xavfsiz arxitekturani ta'minlash va ${phase.title} talablarini bajarish`,
+              "Faqat operatsion tizimni qayta ishga tushirish",
             ],
-            correctIndex: 0,
-            explanation: `Ushbu mikro-dars Phase ${phase.id} (${phase.title}) doirasida “${phase.projectMilestone}” natijasiga erishish uchun xizmat qiladi.`,
+            correctIndex: 2,
+            explanation: `Ushbu mikro-dars Phase ${phase.id} (${phase.title}) doirasida “${phase.projectMilestone}” amaliy natijasiga erishish uchun xizmat qiladi.`,
             whyQuestion: "Nega har bir mikro-darsni amaliy mini-loyiha bilan bog‘lab o‘rganish muhim?",
           },
     },

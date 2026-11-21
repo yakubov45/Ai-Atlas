@@ -20,6 +20,7 @@ import { getLessonPractice } from "@/lib/practice/registry";
 import { GuidedPractice } from "@/components/practice/GuidedPractice";
 import { Python30DaysPractice } from "@/components/practice/Python30DaysPractice";
 import type { PracticeResultInfo } from "@/components/practice/PracticeLab";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import {
   ArrowLeft,
   ArrowRight,
@@ -730,15 +731,19 @@ export function LessonExperienceClient({
                   </div>
                 ) : (
                   <div className="space-y-2.5">
-                    {microStructure.checkpoint.options.map((option, idx) => {
-                      const selected = quizChoice === idx;
-                      const right = idx === microStructure.checkpoint.correctIndex;
+                    {getShuffledQuizOptions(
+                      lessonId + "-checkpoint",
+                      microStructure.checkpoint.options,
+                      microStructure.checkpoint.correctIndex
+                    ).map((opt) => {
+                      const selected = quizChoice === opt.originalIndex;
+                      const right = opt.isCorrect;
                       return (
                         <button
-                          key={idx}
+                          key={opt.originalIndex}
                           type="button"
                           onClick={() => {
-                            setQuizChoice(idx);
+                            setQuizChoice(opt.originalIndex);
                             setQuizChecked(false);
                           }}
                           className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm transition-all flex items-center justify-between gap-3 cursor-pointer ${
@@ -751,7 +756,7 @@ export function LessonExperienceClient({
                               : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                           }`}
                         >
-                          <span>{option}</span>
+                          <span>{opt.text}</span>
                           {quizChecked && selected && (
                             <span>
                               {right ? (

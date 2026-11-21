@@ -6,6 +6,7 @@ import {
   type Python30DayData,
 } from "@/lib/curriculum/python-30-days-data";
 import { runPythonCode } from "@/lib/runner/python-runner";
+import { PythonCodeEditor } from "./PythonCodeEditor";
 import {
   CheckCircle2,
   XCircle,
@@ -77,16 +78,25 @@ export function Python30DaysPractice({
 
   const [debuggingCode, setDebuggingCode] = useState<string>("");
   const [debuggingOutput, setDebuggingOutput] = useState<string>("");
+  const [debuggingError, setDebuggingError] = useState<string>("");
+  const [debuggingErrorDetailsUz, setDebuggingErrorDetailsUz] = useState<string>("");
+  const [debuggingTimeMs, setDebuggingTimeMs] = useState<number>(0);
   const [debuggingRunning, setDebuggingRunning] = useState<boolean>(false);
   const [debuggingPassed, setDebuggingPassed] = useState<boolean>(false);
 
   const [practiceCode, setPracticeCode] = useState<string>("");
   const [practiceOutput, setPracticeOutput] = useState<string>("");
+  const [practiceError, setPracticeError] = useState<string>("");
+  const [practiceErrorDetailsUz, setPracticeErrorDetailsUz] = useState<string>("");
+  const [practiceTimeMs, setPracticeTimeMs] = useState<number>(0);
   const [practiceRunning, setPracticeRunning] = useState<boolean>(false);
   const [practicePassed, setPracticePassed] = useState<boolean>(false);
 
   const [challengeCode, setChallengeCode] = useState<string>("");
   const [challengeOutput, setChallengeOutput] = useState<string>("");
+  const [challengeError, setChallengeError] = useState<string>("");
+  const [challengeErrorDetailsUz, setChallengeErrorDetailsUz] = useState<string>("");
+  const [challengeTimeMs, setChallengeTimeMs] = useState<number>(0);
   const [challengeRunning, setChallengeRunning] = useState<boolean>(false);
   const [challengePassed, setChallengePassed] = useState<boolean>(false);
 
@@ -256,25 +266,28 @@ export function Python30DaysPractice({
   // 3. Run Level 3 Debugging Code
   const handleRunDebugging = async () => {
     setDebuggingRunning(true);
-    setDebuggingOutput("Kodingiz Pyodide orqali tekshirilmoqda...");
+    setDebuggingOutput("");
+    setDebuggingError("");
+    setDebuggingErrorDetailsUz("");
     try {
       const res = await runPythonCode(debuggingCode, [], { runTests: false });
-      const out = res.success
-        ? res.stdout || "Kod xatosiz bajarildi!"
-        : `Xatolik:\n${res.stderr || res.error || "Noma'lum xatolik"}`;
-      setDebuggingOutput(out);
+      setDebuggingTimeMs(res.executionTimeMs || 0);
 
-      // Check if code was fixed and executes without error
-      if (res.success && !res.stderr) {
+      if (res.success && !res.stderr && !res.error) {
+        setDebuggingOutput(res.stdout || "Kod xatosiz bajarildi!");
         setDebuggingPassed(true);
         saveProgressUpdate((prev) => ({
           ...prev,
           scores: { ...prev.scores, [dayData.t3.id]: dayData.t3.points },
           userCodes: { ...prev.userCodes, [`${dayData.t3.id}_code`]: debuggingCode },
         }));
+      } else {
+        setDebuggingOutput(res.stdout || "");
+        setDebuggingError(res.stderr || res.error || "Sintaktik yoki mantiqiy xatolik.");
+        setDebuggingErrorDetailsUz(res.errorDetailsUz || "");
       }
     } catch (e: unknown) {
-      setDebuggingOutput(`Bajarishda xatolik yuz berdi: ${e instanceof Error ? e.message : String(e)}`);
+      setDebuggingError(`Bajarishda xatolik yuz berdi: ${e instanceof Error ? e.message : String(e)}`);
     } finally {
       setDebuggingRunning(false);
     }
@@ -283,24 +296,30 @@ export function Python30DaysPractice({
   // 4. Run Level 4 Problem Solving Code
   const handleRunPractice = async () => {
     setPracticeRunning(true);
-    setPracticeOutput("Kodingiz brauzerda ishga tushirilmoqda...");
+    setPracticeOutput("");
+    setPracticeError("");
+    setPracticeErrorDetailsUz("");
     try {
       const res = await runPythonCode(practiceCode, [], { runTests: false });
-      const out = res.success
-        ? res.stdout || "Kod xatosiz bajarildi (Chiqish mavjud emas)."
-        : `Xatolik:\n${res.stderr || res.error || "Noma'lum xatolik"}`;
-      setPracticeOutput(out);
+      setPracticeTimeMs(res.executionTimeMs || 0);
 
-      if (res.success && !res.stderr && practiceCode.trim().length > 15) {
-        setPracticePassed(true);
-        saveProgressUpdate((prev) => ({
-          ...prev,
-          scores: { ...prev.scores, [dayData.p1.id]: dayData.p1.points },
-          userCodes: { ...prev.userCodes, [`${dayData.p1.id}_code`]: practiceCode },
-        }));
+      if (res.success && !res.stderr && !res.error) {
+        setPracticeOutput(res.stdout || "Kod xatosiz bajarildi!");
+        if (practiceCode.trim().length > 15) {
+          setPracticePassed(true);
+          saveProgressUpdate((prev) => ({
+            ...prev,
+            scores: { ...prev.scores, [dayData.p1.id]: dayData.p1.points },
+            userCodes: { ...prev.userCodes, [`${dayData.p1.id}_code`]: practiceCode },
+          }));
+        }
+      } else {
+        setPracticeOutput(res.stdout || "");
+        setPracticeError(res.stderr || res.error || "Xatolik yuz berdi.");
+        setPracticeErrorDetailsUz(res.errorDetailsUz || "");
       }
     } catch (e: unknown) {
-      setPracticeOutput(`Bajarishda xatolik: ${e instanceof Error ? e.message : String(e)}`);
+      setPracticeError(`Bajarishda xatolik: ${e instanceof Error ? e.message : String(e)}`);
     } finally {
       setPracticeRunning(false);
     }
@@ -309,24 +328,30 @@ export function Python30DaysPractice({
   // 5. Run Level 5 Real-world Challenge Code
   const handleRunChallenge = async () => {
     setChallengeRunning(true);
-    setChallengeOutput("Kodingiz brauzerda ishga tushirilmoqda...");
+    setChallengeOutput("");
+    setChallengeError("");
+    setChallengeErrorDetailsUz("");
     try {
       const res = await runPythonCode(challengeCode, [], { runTests: false });
-      const out = res.success
-        ? res.stdout || "Kod xatosiz bajarildi."
-        : `Xatolik:\n${res.stderr || res.error || "Noma'lum xatolik"}`;
-      setChallengeOutput(out);
+      setChallengeTimeMs(res.executionTimeMs || 0);
 
-      if (res.success && !res.stderr && challengeCode.trim().length > 15) {
-        setChallengePassed(true);
-        saveProgressUpdate((prev) => ({
-          ...prev,
-          scores: { ...prev.scores, [dayData.p2.id]: dayData.p2.points },
-          userCodes: { ...prev.userCodes, [`${dayData.p2.id}_code`]: challengeCode },
-        }));
+      if (res.success && !res.stderr && !res.error) {
+        setChallengeOutput(res.stdout || "Kod xatosiz bajarildi!");
+        if (challengeCode.trim().length > 15) {
+          setChallengePassed(true);
+          saveProgressUpdate((prev) => ({
+            ...prev,
+            scores: { ...prev.scores, [dayData.p2.id]: dayData.p2.points },
+            userCodes: { ...prev.userCodes, [`${dayData.p2.id}_code`]: challengeCode },
+          }));
+        }
+      } else {
+        setChallengeOutput(res.stdout || "");
+        setChallengeError(res.stderr || res.error || "Xatolik yuz berdi.");
+        setChallengeErrorDetailsUz(res.errorDetailsUz || "");
       }
     } catch (e: unknown) {
-      setChallengeOutput(`Bajarishda xatolik: ${e instanceof Error ? e.message : String(e)}`);
+      setChallengeError(`Bajarishda xatolik: ${e instanceof Error ? e.message : String(e)}`);
     } finally {
       setChallengeRunning(false);
     }
@@ -825,48 +850,21 @@ export function Python30DaysPractice({
               {dayData.t3.prompt}
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-                <span>Kodni to&apos;g&apos;irlang va ishga tushiring:</span>
-                <span className="text-[11px] text-amber-400/80">Pyodide Sandbox</span>
-              </label>
-              <textarea
-                value={debuggingCode}
-                onChange={(e) => setDebuggingCode(e.target.value)}
-                rows={5}
-                className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-700/80 font-mono text-xs sm:text-sm text-amber-300 focus:outline-none focus:border-amber-500 transition-colors"
-                spellCheck={false}
-              />
-            </div>
-
-            <div className="flex items-center gap-3 pt-1">
-              <button
-                type="button"
-                onClick={handleRunDebugging}
-                disabled={debuggingRunning}
-                className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer flex items-center gap-2"
-              >
-                <Play className="w-3.5 h-3.5 fill-current" />
-                <span>{debuggingRunning ? "Tekshirilmoqda..." : "Kodni ishga tushirish (Pyodide)"}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setDebuggingCode(dayData.t3.buggyCode || "")}
-                className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Asliga qaytarish</span>
-              </button>
-            </div>
-
-            {debuggingOutput && (
-              <div className="space-y-2">
-                <div className="text-xs font-semibold text-slate-400">Natija:</div>
-                <div className="rounded-2xl bg-black/70 border border-slate-800 p-4 font-mono text-xs text-slate-200 whitespace-pre-wrap">
-                  {debuggingOutput}
-                </div>
-              </div>
-            )}
+            <PythonCodeEditor
+              label={`Level 3: Debugging (${dayData.t3.id})`}
+              runtimeLabel="Python 3.12 / Pyodide"
+              value={debuggingCode}
+              onChange={setDebuggingCode}
+              onRun={handleRunDebugging}
+              onReset={() => setDebuggingCode(dayData.t3.buggyCode || "")}
+              isRunning={debuggingRunning}
+              output={debuggingOutput}
+              error={debuggingError}
+              errorDetailsUz={debuggingErrorDetailsUz}
+              executionTimeMs={debuggingTimeMs}
+              minHeight="150px"
+              placeholder="# Xatoni toping va to'g'rilang..."
+            />
 
             {debuggingPassed && (
               <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-200 text-xs space-y-1">
@@ -903,40 +901,25 @@ export function Python30DaysPractice({
               {dayData.p1.description}
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-                <span>Mustaqil algoritm yozing (Python Sandbox):</span>
-                <span className="text-[11px] text-orange-400/80">Cheklovlarga rioya qiling</span>
-              </label>
-              <textarea
-                value={practiceCode}
-                onChange={(e) => setPracticeCode(e.target.value)}
-                rows={9}
-                className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-700/80 font-mono text-xs sm:text-sm text-amber-200 focus:outline-none focus:border-orange-500 transition-colors"
-                spellCheck={false}
-              />
-            </div>
-
-            <div className="flex items-center gap-3 pt-1">
-              <button
-                type="button"
-                onClick={handleRunPractice}
-                disabled={practiceRunning}
-                className="px-5 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-400 disabled:opacity-40 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer flex items-center gap-2"
-              >
-                <Play className="w-3.5 h-3.5 fill-current" />
-                <span>{practiceRunning ? "Bajarilmoqda..." : "Kodni bajarish & Tekshirish"}</span>
-              </button>
-            </div>
-
-            {practiceOutput && (
-              <div className="space-y-2">
-                <div className="text-xs font-semibold text-slate-400">Terminal Natijasi:</div>
-                <div className="rounded-2xl bg-black/70 border border-slate-800 p-4 font-mono text-xs text-slate-200 whitespace-pre-wrap">
-                  {practiceOutput}
-                </div>
-              </div>
-            )}
+            <PythonCodeEditor
+              label={`Level 4: Algoritm (${dayData.p1.id})`}
+              runtimeLabel="Python 3.12 / Sandbox"
+              value={practiceCode}
+              onChange={setPracticeCode}
+              onRun={handleRunPractice}
+              onReset={() =>
+                setPracticeCode(
+                  `# ${dayData.p1.id}: ${dayData.p1.title}\n# ${dayData.p1.description}\n\n`,
+                )
+              }
+              isRunning={practiceRunning}
+              output={practiceOutput}
+              error={practiceError}
+              errorDetailsUz={practiceErrorDetailsUz}
+              executionTimeMs={practiceTimeMs}
+              minHeight="220px"
+              placeholder="# Mustaqil algoritmingizni shu yerga yozing..."
+            />
 
             {practicePassed && (
               <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-200 text-xs flex items-center gap-2 font-bold">
@@ -978,40 +961,25 @@ export function Python30DaysPractice({
               </div>
             )}
 
-            <div className="space-y-2">
-              <label className="text-xs font-semibold text-slate-400 flex items-center justify-between">
-                <span>Murakkab topshiriq kodi:</span>
-                <span className="text-[11px] text-rose-400/80">Chegaraviy holatlarni hisobga oling</span>
-              </label>
-              <textarea
-                value={challengeCode}
-                onChange={(e) => setChallengeCode(e.target.value)}
-                rows={10}
-                className="w-full p-4 rounded-2xl bg-slate-950 border border-slate-700/80 font-mono text-xs sm:text-sm text-amber-200 focus:outline-none focus:border-rose-500 transition-colors"
-                spellCheck={false}
-              />
-            </div>
-
-            <div className="flex items-center gap-3 pt-1">
-              <button
-                type="button"
-                onClick={handleRunChallenge}
-                disabled={challengeRunning}
-                className="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 disabled:opacity-40 text-white font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer flex items-center gap-2"
-              >
-                <Play className="w-3.5 h-3.5 fill-current" />
-                <span>{challengeRunning ? "Tekshirilmoqda..." : "Kodni bajarish & Tekshirish"}</span>
-              </button>
-            </div>
-
-            {challengeOutput && (
-              <div className="space-y-2">
-                <div className="text-xs font-semibold text-slate-400">Terminal Natijasi:</div>
-                <div className="rounded-2xl bg-black/70 border border-slate-800 p-4 font-mono text-xs text-slate-200 whitespace-pre-wrap">
-                  {challengeOutput}
-                </div>
-              </div>
-            )}
+            <PythonCodeEditor
+              label={`Level 5: Challenge (${dayData.p2.id})`}
+              runtimeLabel="Python 3.12 / Production"
+              value={challengeCode}
+              onChange={setChallengeCode}
+              onRun={handleRunChallenge}
+              onReset={() =>
+                setChallengeCode(
+                  `# ${dayData.p2.id}: ${dayData.p2.title}\n# ${dayData.p2.description}\n\n`,
+                )
+              }
+              isRunning={challengeRunning}
+              output={challengeOutput}
+              error={challengeError}
+              errorDetailsUz={challengeErrorDetailsUz}
+              executionTimeMs={challengeTimeMs}
+              minHeight="260px"
+              placeholder="# Katta amaliy loyiha kodingizni shu yerga yozing..."
+            />
 
             {challengePassed && (
               <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-200 text-xs flex items-center gap-2 font-bold">

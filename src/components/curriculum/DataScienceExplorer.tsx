@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import {
   BarChart3,
   TrendingUp,
@@ -508,9 +509,9 @@ export function DataScienceExplorer({
                         {qIdx + 1}. {q.promptUz}
                       </div>
                       <div className="space-y-2">
-                        {q.options.map((opt, oIdx) => {
-                          const isChosen = selectedOpt === oIdx;
-                          const isCorrect = q.correctIndex === oIdx;
+                        {getShuffledQuizOptions(q.id || `ds-q-${qIdx}`, q.options, q.correctIndex).map((opt) => {
+                          const isChosen = selectedOpt === opt.originalIndex;
+                          const isCorrect = opt.isCorrect;
                           let optClass = "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700";
                           if (isChecked) {
                             if (isCorrect) optClass = "bg-emerald-950/80 border-emerald-400 text-emerald-200 font-bold";
@@ -520,16 +521,16 @@ export function DataScienceExplorer({
                           }
                           return (
                             <button
-                              key={oIdx}
+                              key={opt.originalIndex}
                               type="button"
                               onClick={() => {
                                 if (!isChecked) {
-                                  setQuizAnswers((prev) => ({ ...prev, [q.id]: oIdx }));
+                                  setQuizAnswers((prev) => ({ ...prev, [q.id]: opt.originalIndex }));
                                 }
                               }}
                               className={`w-full p-2.5 rounded-xl text-left text-xs border transition-all cursor-pointer flex items-center justify-between ${optClass}`}
                             >
-                              <span>{opt}</span>
+                              <span>{opt.text}</span>
                               {isChecked && isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
                             </button>
                           );

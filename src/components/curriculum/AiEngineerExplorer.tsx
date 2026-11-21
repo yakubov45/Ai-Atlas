@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import {
   AlertTriangle,
   ArrowRight,
@@ -1062,9 +1063,13 @@ export function AiEngineerExplorer({
                             {currentStep.checkpoint.question}
                           </p>
                           <div className="space-y-2">
-                            {currentStep.checkpoint.options.map((opt, idx) => {
-                              const isSelected = selectedQuizIdx === idx;
-                              const isCorrect = idx === currentStep.checkpoint!.correctIndex;
+                            {getShuffledQuizOptions(
+                              currentStep.id,
+                              currentStep.checkpoint.options,
+                              currentStep.checkpoint.correctIndex,
+                            ).map((opt) => {
+                              const isSelected = selectedQuizIdx === opt.originalIndex;
+                              const isCorrect = opt.isCorrect;
                               let btnStyle = "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700";
                               if (selectedQuizIdx !== null) {
                                 if (isCorrect) {
@@ -1075,12 +1080,12 @@ export function AiEngineerExplorer({
                               }
                               return (
                                 <button
-                                  key={idx}
+                                  key={opt.originalIndex}
                                   type="button"
-                                  onClick={() => setSelectedQuizIdx(idx)}
+                                  onClick={() => setSelectedQuizIdx(opt.originalIndex)}
                                   className={`w-full text-left px-3.5 py-2.5 rounded-xl border text-xs sm:text-sm transition-all cursor-pointer ${btnStyle}`}
                                 >
-                                  {opt}
+                                  {opt.text}
                                 </button>
                               );
                             })}
@@ -1405,17 +1410,17 @@ export function AiEngineerExplorer({
                             </div>
 
                             <div className="space-y-1.5 pt-2">
-                              {q.options.map((opt, idx) => {
-                                const isChosen = chosen === idx;
-                                const isRight = idx === q.correctIndex;
+                              {getShuffledQuizOptions(q.id, q.options, q.correctIndex).map((opt) => {
+                                const isChosen = chosen === opt.originalIndex;
+                                const isRight = opt.isCorrect;
                                 return (
                                   <button
-                                    key={idx}
+                                    key={opt.originalIndex}
                                     type="button"
                                     onClick={() =>
                                       setQuizAnswers((prev) => ({
                                         ...prev,
-                                        [q.id]: idx,
+                                        [q.id]: opt.originalIndex,
                                       }))
                                     }
                                     className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all cursor-pointer ${
@@ -1426,7 +1431,7 @@ export function AiEngineerExplorer({
                                         : "bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700"
                                     }`}
                                   >
-                                    {opt}
+                                    {opt.text}
                                   </button>
                                 );
                               })}

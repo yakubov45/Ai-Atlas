@@ -20,6 +20,7 @@ import {
   Award,
   Network,
   Film,
+  Calendar,
 } from "lucide-react";
 import { usePreferences } from "@/hooks/use-preferences";
 import { uz } from "@/i18n/dictionaries/uz";
@@ -33,6 +34,7 @@ export function Header() {
 
   const navLinks = [
     { href: "/learn", label: uz.nav.learn, icon: BookOpen },
+    { href: "/learn/ds-ml-ai-12weeks", label: "12 Haftalik Reja", icon: Calendar },
     { href: "/learn/map", label: "Bilimlar xaritasi", icon: Network },
     { href: "/videos", label: "Videolar", icon: Film },
     { href: "/roadmap?tab=python-dev", label: "Python", icon: Terminal },
@@ -44,6 +46,9 @@ export function Header() {
   ];
 
   const isLinkActive = (href: string) => {
+    if (href === "/learn/ds-ml-ai-12weeks") {
+      return pathname === "/learn/ds-ml-ai-12weeks";
+    }
     if (href === "/learn/map") {
       return pathname === "/learn/map";
     }

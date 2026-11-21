@@ -18,6 +18,7 @@ import { getLessonPractice } from "@/lib/practice/registry";
 import { GuidedPractice } from "@/components/practice/GuidedPractice";
 import { PracticeLab, type PracticeResultInfo } from "@/components/practice/PracticeLab";
 import type { LessonPractice, PracticeExercise, PracticeExample } from "@/lib/practice/types";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -1028,17 +1029,17 @@ export function PythonDeveloperExplorer({
                             </div>
 
                             <div className="space-y-1.5 pt-2">
-                              {q.options.map((opt, idx) => {
-                                const isChosen = chosen === idx;
-                                const isRight = idx === q.correctIndex;
+                              {getShuffledQuizOptions(q.id, q.options, q.correctIndex).map((opt) => {
+                                const isChosen = chosen === opt.originalIndex;
+                                const isRight = opt.isCorrect;
                                 return (
                                   <button
-                                    key={idx}
+                                    key={opt.originalIndex}
                                     type="button"
                                     onClick={() =>
                                       setQuizAnswers((prev) => ({
                                         ...prev,
-                                        [q.id]: idx,
+                                        [q.id]: opt.originalIndex,
                                       }))
                                     }
                                     className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all cursor-pointer ${
@@ -1049,7 +1050,7 @@ export function PythonDeveloperExplorer({
                                         : "bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700"
                                     }`}
                                   >
-                                    {opt}
+                                    {opt.text}
                                   </button>
                                 );
                               })}

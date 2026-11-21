@@ -13,6 +13,7 @@ import {
 } from "@/lib/curriculum/ds-deep";
 import { DEPTH_META, type LearningDepth } from "@/lib/curriculum/paths";
 import { FormulaDisplay } from "@/components/visualizations/FormulaDisplay";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import { PhaseDropdown } from "./PhaseDropdown";
 import { ConfusionMatrixExplorer } from "@/components/visualizations/MlDsGuaranteeLabs";
 import { GradientDescent } from "@/components/visualizations/GradientDescent";
@@ -685,17 +686,17 @@ export function DsDeepDivePanel({
                               {q.promptUz}
                             </div>
                             <div className="space-y-1.5">
-                              {q.options.map((opt, idx) => {
-                                const isChosen = chosen === idx;
-                                const isRight = idx === q.correctIndex;
+                              {getShuffledQuizOptions(q.id, q.options, q.correctIndex).map((opt) => {
+                                const isChosen = chosen === opt.originalIndex;
+                                const isRight = opt.isCorrect;
                                 return (
                                   <button
-                                    key={idx}
+                                    key={opt.originalIndex}
                                     type="button"
                                     onClick={() =>
                                       setQuizAnswers((prev) => ({
                                         ...prev,
-                                        [q.id]: idx,
+                                        [q.id]: opt.originalIndex,
                                       }))
                                     }
                                     className={`w-full text-left p-2.5 rounded-lg border transition-all cursor-pointer ${
@@ -706,7 +707,7 @@ export function DsDeepDivePanel({
                                         : "bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700"
                                     }`}
                                   >
-                                    {opt}
+                                    {opt.text}
                                   </button>
                                 );
                               })}

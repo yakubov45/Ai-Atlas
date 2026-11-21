@@ -12,6 +12,7 @@ import { AttentionExplorer } from "@/components/visualizations/AttentionExplorer
 import { FunctionExplorer } from "@/components/visualizations/FunctionExplorer";
 import { NeuralNetworkExplorer } from "@/components/visualizations/NeuralNetworkExplorer";
 import { FormulaDisplay } from "@/components/visualizations/FormulaDisplay";
+import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
 import {
   CheckCircle2,
   Circle,
@@ -375,9 +376,13 @@ export function TransformerMicroPathView() {
           </div>
 
           <div className="space-y-2">
-            {activeLesson.checkpoint.options.map((opt, idx) => {
-              const isSelected = selectedOption === idx;
-              const isRightOption = idx === activeLesson.checkpoint.correctIndex;
+            {getShuffledQuizOptions(
+              activeLesson.id + "-transformer-checkpoint",
+              activeLesson.checkpoint.options,
+              activeLesson.checkpoint.correctIndex
+            ).map((opt) => {
+              const isSelected = selectedOption === opt.originalIndex;
+              const isRightOption = opt.isCorrect;
               let btnStyle =
                 "bg-slate-900/80 border-slate-800 text-slate-300 hover:border-slate-700";
               if (quizSubmitted && isSelected) {
@@ -391,15 +396,15 @@ export function TransformerMicroPathView() {
 
               return (
                 <button
-                  key={idx}
+                  key={opt.originalIndex}
                   type="button"
                   onClick={() => {
-                    setSelectedOption(idx);
+                    setSelectedOption(opt.originalIndex);
                     setQuizSubmitted(false);
                   }}
                   className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm transition-all flex items-center justify-between gap-3 cursor-pointer ${btnStyle}`}
                 >
-                  <span>{opt}</span>
+                  <span>{opt.text}</span>
                   {quizSubmitted && isSelected && (
                     <span>
                       {isRightOption ? (

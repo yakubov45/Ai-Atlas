@@ -11,10 +11,25 @@
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 
-const jsonCurriculum = JSON.parse(fs.readFileSync("docs/python/python_344_curriculum.json", "utf8"));
-const mdGuide = fs.readFileSync("docs/python/python_344_mikrodars_qollanma.md", "utf8");
-const practice30DaysMd = fs.readFileSync("30_days_python_test_va_amaliyot.md", "utf8");
-const answers30DaysMd = fs.readFileSync("30_days_python_test_javoblari.md", "utf8");
+const jsonPath = fs.existsSync("src/content/curriculum/python-dev-curriculum.json")
+  ? "src/content/curriculum/python-dev-curriculum.json"
+  : "docs/python/python_344_curriculum.json";
+const jsonCurriculum = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+
+const mdGuidePath = fs.existsSync("docs/python/python_344_mikrodars_qollanma.md")
+  ? "docs/python/python_344_mikrodars_qollanma.md"
+  : "";
+const mdGuide = mdGuidePath ? fs.readFileSync(mdGuidePath, "utf8") : "";
+
+const practice30DaysPath = fs.existsSync("public/30_days_python_test_va_amaliyot.md")
+  ? "public/30_days_python_test_va_amaliyot.md"
+  : "30_days_python_test_va_amaliyot.md";
+const practice30DaysMd = fs.readFileSync(practice30DaysPath, "utf8");
+
+const answers30DaysPath = fs.existsSync("public/30_days_python_test_javoblari.md")
+  ? "public/30_days_python_test_javoblari.md"
+  : "30_days_python_test_javoblari.md";
+const answers30DaysMd = fs.readFileSync(answers30DaysPath, "utf8");
 
 // 1. Parse markdown lessons from guide
 const lessonBlocks = mdGuide.split(/(?=###\s+py-\d+-\d+\s+—)/g).slice(1);
@@ -591,7 +606,8 @@ function synthesizeLessonCode(lessonId, title, rawEx, pNum) {
 // Build Rich Lesson
 function buildRichLesson(phase, rawLesson, pIdx, lIdx, prevLessonId, nextLessonId) {
   const lessonId = rawLesson.id;
-  const title = rawLesson.title_uz;
+  const title = rawLesson.title_uz || rawLesson.title || "Python Darsi";
+  const phaseTitle = phase.title_uz || phase.title || `Phase ${pIdx + 1}`;
   const phaseId = phase.id.toLowerCase();
   const mdLesson = parsedMdLessons.get(lessonId) || {};
   const pNum = pIdx + 1;
@@ -599,12 +615,12 @@ function buildRichLesson(phase, rawLesson, pIdx, lIdx, prevLessonId, nextLessonI
   const curated = CURATED_LESSONS[lessonId];
 
   const cleanTitle = title.replace(/\?$/, "");
-  const baseTheory = curated?.concept || mdLesson.theory || rawLesson.theory_uz || `${title} tushunchasi Python dasturlashda muhim ahamiyatga ega.`;
+  const baseTheory = curated?.concept || mdLesson.theory || rawLesson.theory_uz || rawLesson.theory || `${title} tushunchasi Python dasturlashda muhim ahamiyatga ega.`;
 
   const { code1, out1, code2, out2 } = synthesizeLessonCode(lessonId, title, mdLesson.example, pNum);
 
   // Distinct, non-repetitive explanations for Steps 1, 2, 3
-  const step1Text = curated?.step1 || `${cleanTitle} — ${phase.title_uz} bosqichining muhim tushunchasidir. ${baseTheory}\n\nUshbu vosita dastur arxitekturasini tushunarli, ishonchli va xatolarga chidamli qilishda poydevor vazifasini o'taydi.`;
+  const step1Text = curated?.step1 || `${cleanTitle} — ${phaseTitle} bosqichining muhim tushunchasidir. ${baseTheory}\n\nUshbu vosita dastur arxitekturasini tushunarli, ishonchli va xatolarga chidamli qilishda poydevor vazifasini o'taydi.`;
   const step2Text = curated?.step2 || `${profile.step2Focus}\n\nAmaliy kod tahlilida interpretator ob'yektlarni xotirada qanday saqlashi va stdout oqimiga natijalarni qanday uzatishi kuzatiladi.`;
   const step3Text = curated?.step3 || `${profile.step3Focus}\n\nKod yozishda chegaraviy holatlar, ma'lumot turlari mosligi va clean code prinsiplariga amal qilish tavsiya etiladi.`;
 
@@ -732,7 +748,7 @@ function buildRichLesson(phase, rawLesson, pIdx, lIdx, prevLessonId, nextLessonI
     order: lIdx + 1,
     title,
     status: "published",
-    track: phase.track,
+    track: phase.track || phase.sourceSection || "Core (Asosiy)",
     learningObjectiveUz: `${title} tamoyilini to'liq tushunish va mustaqil dastur kodida xatosiz qo'llash.`,
     prerequisites: prevLessonId ? [prevLessonId] : [],
     theoryUz: baseTheory,
@@ -809,13 +825,13 @@ for (let pIdx = 0; pIdx < jsonCurriculum.phases.length; pIdx++) {
   allPhases.push({
     id: phase.id.toLowerCase(),
     order: pIdx + 1,
-    title: phase.title_uz,
-    sourceSection: phase.source_section || phase.track || `PY-${pIdx + 1}`,
-    prerequisitePhaseIds: phase.prerequisites ? phase.prerequisites.map(p => p.toLowerCase()) : [],
+    title: phase.title_uz || phase.title,
+    sourceSection: phase.source_section || phase.sourceSection || phase.track || `PY-${pIdx + 1}`,
+    prerequisitePhaseIds: phase.prerequisites ? phase.prerequisites.map(p => p.toLowerCase()) : (phase.prerequisitePhaseIds ? phase.prerequisitePhaseIds.map(p => p.toLowerCase()) : []),
     visualizationId: phase.visualization?.id || `viz-${phase.id.toLowerCase()}`,
-    visualizationConcept: phase.visualization?.concept_uz || phase.title_uz,
+    visualizationConcept: phase.visualization?.concept_uz || phase.visualization?.concept || phase.title_uz || phase.title,
     visualizationStatus: pIdx === 0 ? "implemented" : "proposed",
-    projectMilestone: phase.milestone_project_uz || `Phase ${pIdx + 1} Loyihasi`,
+    projectMilestone: phase.milestone_project_uz || phase.projectMilestone || `Phase ${pIdx + 1} Loyihasi`,
     trackPriority: {
       "python-developer": "core",
       "ai-engineer": pIdx < 10 ? "core" : "supporting",
