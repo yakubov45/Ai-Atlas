@@ -8,7 +8,7 @@ import {
   PORTFOLIO_PROJECTS,
 } from "@/lib/curriculum/ds-ml-ai-12weeks";
 
-describe("12-Week Intensive Curriculum Dataset", () => {
+describe("12-Week Intensive Curriculum Dataset (Granular & Interview-Ready)", () => {
   it("contains exactly 12 weeks", () => {
     expect(INTENSIVE_12_WEEKS).toHaveLength(12);
   });
@@ -28,6 +28,53 @@ describe("12-Week Intensive Curriculum Dataset", () => {
     const lRAG = getIntensiveLessonById("D08.2");
     expect(lRAG).toBeDefined();
     expect(lRAG?.titleUz).toContain("Gibrid Qidiruv");
+  });
+
+  it("enriches every single lesson with microSteps, practicalExamples, termsAndConnections, interviewQA, videos, and 3 quizzes", () => {
+    const validIds = new Set(ALL_INTENSIVE_LESSONS.map((l) => l.id));
+
+    for (const lesson of ALL_INTENSIVE_LESSONS) {
+      expect(lesson.microSteps.length).toBeGreaterThanOrEqual(3);
+      for (const step of lesson.microSteps) {
+        expect(step.titleUz.length).toBeGreaterThan(10);
+        expect(step.explanationUz.length).toBeGreaterThan(40);
+        expect(step.codeExample.length).toBeGreaterThan(10);
+        expect(step.outputOrNoteUz.length).toBeGreaterThan(10);
+      }
+
+      expect(lesson.practicalExamples.length).toBeGreaterThanOrEqual(2);
+      for (const ex of lesson.practicalExamples) {
+        expect(ex.titleUz.length).toBeGreaterThan(5);
+        expect(ex.howToUseUz.length).toBeGreaterThan(10);
+        expect(ex.code.length).toBeGreaterThan(15);
+        expect(ex.breakdownUz.length).toBeGreaterThan(10);
+      }
+
+      expect(lesson.termsAndConnections.length).toBeGreaterThanOrEqual(3);
+      for (const tc of lesson.termsAndConnections) {
+        expect(tc.term.length).toBeGreaterThan(2);
+        expect(tc.definitionUz.length).toBeGreaterThan(20);
+        expect(tc.connectedTo.length).toBeGreaterThanOrEqual(1);
+        for (const link of tc.connectedTo) {
+          expect(validIds.has(link.targetLessonId)).toBe(true);
+        }
+      }
+
+      expect(lesson.interviewQA).toHaveLength(3);
+      const levels = lesson.interviewQA.map((q) => q.level);
+      expect(levels).toContain("Junior");
+      expect(levels).toContain("Middle");
+      expect(levels).toContain("Senior / Production");
+
+      expect(lesson.videos.length).toBeGreaterThanOrEqual(2);
+      for (const vid of lesson.videos) {
+        expect(vid.youtubeId.length).toBeGreaterThanOrEqual(8);
+        expect(vid.whatItExplainsUz.length).toBeGreaterThan(15);
+        expect(vid.howToUseVideoUz.length).toBeGreaterThan(15);
+      }
+
+      expect(lesson.quiz).toHaveLength(3);
+    }
   });
 
   it("catalogues all 55 sources from M01 to M55", () => {
