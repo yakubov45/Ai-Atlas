@@ -1731,7 +1731,7 @@ def pass_at_k(n: int, c: int, k: int) -> float:
       testCases: [
         { id: "tc1", descriptionUz: "k=1 bo'lganda oddiy c/n nisbati chiqadi", assertionCode: "abs(pass_at_k(10, 4, 1) - 0.4) < 1e-6" },
         { id: "tc2", descriptionUz: "n-c < k bo'lganda albatta 1.0", assertionCode: "pass_at_k(5, 3, 4) == 1.0" },
-        { id: "tc3", descriptionUz: "n=10, c=2, k=5 -> ~0.7778", assertionCode: "abs(pass_at_k(10, 2, 5) - (1.0 - 21 / 252)) < 1e-6" },
+        { id: "tc3", descriptionUz: "n=10, c=2, k=5 -> ~0.7778", assertionCode: "abs(pass_at_k(10, 2, 5) - (1.0 - 56 / 252)) < 1e-6" },
       ],
       modelSolution: `import math
 
