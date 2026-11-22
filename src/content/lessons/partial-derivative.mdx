@@ -45,11 +45,16 @@ Faraz qilaylik, bitta neyronning vaznli yig'indisi $z = w_1 x_1 + w_2 x_2 + b$ v
 ```python
 import torch
 
-w1 = torch.tensor(1.0, requires_grad=True) w2 = torch.tensor(2.0, requires_grad=True) x1, x2, d = 2.0, 3.0, 10.0
+w1 = torch.tensor(1.0, requires_grad=True)
+w2 = torch.tensor(2.0, requires_grad=True)
+x1, x2, d = 2.0, 3.0, 10.0
 
-z = w1 * x1 + w2 * x2 E = 0.5 * (z - d) 2 E.backward()
+z = w1 * x1 + w2 * x2
+E = 0.5 * (z - d) ** 2
+E.backward()
 
-print("dE/dw1:", w1.grad.item()) # -4.0 print("dE/dw2:", w2.grad.item()) # -6.0
+print("dE/dw1:", w1.grad.item())  # -4.0
+print("dE/dw2:", w2.grad.item())  # -6.0
 ```
 
 

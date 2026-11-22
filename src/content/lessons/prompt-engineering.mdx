@@ -30,9 +30,24 @@ Prompt Engineering — [LLM](/learn/llm) parametrlarini qayta o'qitmasdan, kiris
 Kontekstual Diqqat Yangilanishi (3Blue1Brown, 2024): Promptdagi har bir token Key va Value matritsalari orqali keyingi tokenlarning embeddinglarini boyitishda qatnashadi.
 Reasoning va Acting Uyg'unligi: Yao et al. (2022, arXiv:2210.03629) til modellarida mantiqiy mulohaza yuritish (reasoning) va harakat qilishni (acting) birlashtirish yondashuvini taqdim etgan.
 Arxitekturaviy Cheklovlar: Standart Self-Attention da hisoblash va xotira xarajatlari ketma-ketlik uzunligi bo'yicha kvadratik o'sadi (Vaswani et al., 2017), shu bois prompt uzunligini cheksiz oshirib bo'lmaydi.
-Izoh (Manba maqomi): Transformerlarda kontekst tokenlarining diqqat mexanizmi orqali keyingi token bashoratiga ta'siri (3Blue1Brown, 2024; Vaswani et al., 2017) va Yao et al. (2022, arXiv:2210.03629) bibliografiyasi tasdiqlangan. Biroq arXiv:2210.03629 ning to'liq matni va boshqa prompt shablonlari joriy manbalar to'plamida ochilmaganligi sababli, maxsus prompting evristikalari Tasdiqlanmagan deb belgilandi.
 
-## 4. Bog'liq tushunchalar
+## 4. Python Amaliy Misoli: Strukturaviy Prompt Builder
+
+```python
+def build_grounded_prompt(question: str, context_chunks: list[str]) -> str:
+    joined_context = "\n".join(f"- [{i+1}] {c}" for i, c in enumerate(context_chunks))
+    return (
+        "Rol: Faqat berilgan manbalarga tayanib javob beruvchi AI muhandislik assistenti.\n"
+        "Qoida: Agar javob kontekstda bo'lmasa, 'Manbada dalil yetarli emas' deb javob ber.\n\n"
+        f"Kontekst:\n{joined_context}\n\n"
+        f"Savol: {question}\n"
+        "Javob:"
+    )
+
+print(build_grounded_prompt("ResNet nimani hal qildi?", ["Skip connection (y = F(x) + x) vanishing gradientni kamaytirdi."]))
+```
+
+## 5. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [LLM](/learn/llm)
@@ -46,11 +61,10 @@ Bog'liq:
 
 [Tools](/learn/tools)
 [Memory](/learn/memory)
-## 5. Tekshirilgan manbalar
+## 6. Tekshirilgan manbalar
 Sanderson, G. [3Blue1Brown]. (2024). Attention in transformers, step-by-step | Deep Learning Chapter 6. YouTube. https://www.youtube.com/watch?v=eMlx5fFNoYc
 Vaswani, A., et al. (2017). Attention Is All You Need. NIPS 2017. arXiv:1706.03762.
 Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629. (Bibliografik metama'lumot tasdiqlangan).
-Bo'lim C: AI Agents and Retrieval
 
 ## Interaktiv Vizualizatsiya
 

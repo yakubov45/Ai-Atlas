@@ -65,18 +65,24 @@ Ilmiy munozara va Kichik Batch Cheklovi: BN ning muvaffaqiyati faqat "Internal C
 ## Python / PyTorch Amaliy Misoli
 
 ```python
-import torch import torch.nn as nn
+import torch
+import torch.nn as nn
 
-CNN uchun 2D Batch Normalization (6 ta feature map, har biriga bitta gamma va beta)
+# CNN uchun 2D Batch Normalization (6 ta feature map, har biriga bitta gamma va beta)
 bn2d = nn.BatchNorm2d(num_features=6, eps=1e-5)
 
-Training mode: mini-batch m=4, C=6, H=14, W=14
-bn2d.train() x_batch = torch.randn(4, 6, 14, 14) out_train = bn2d(x_batch)
+# Training mode: mini-batch m=4, C=6, H=14, W=14
+bn2d.train()
+x_batch = torch.randn(4, 6, 14, 14)
+out_train = bn2d(x_batch)
 
-Inference mode: deterministik, bitta namuna (m=1) bilan ham ishlaydi
-bn2d.eval() out_eval = bn2d(x_batch[:1])
+# Inference mode: deterministik, bitta namuna (m=1) bilan ham ishlaydi
+bn2d.eval()
+out_eval = bn2d(x_batch[:1])
 
-print("Gamma shape:", bn2d.weight.shape) # torch.Size([6]) print("Beta shape:", bn2d.bias.shape) # torch.Size([6]) print("Eval output shape:", out_eval.shape) # torch.Size([1, 6, 14, 14])
+print("Gamma shape:", bn2d.weight.shape)      # torch.Size([6])
+print("Beta shape:", bn2d.bias.shape)         # torch.Size([6])
+print("Eval output shape:", out_eval.shape)   # torch.Size([1, 6, 14, 14])
 ```
 
 
@@ -97,8 +103,6 @@ print("Gamma shape:", bn2d.weight.shape) # torch.Size([6]) print("Beta shape:", 
 
 ## 7. Tekshirilgan manbalar
 - Ioffe, S., & Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. Proceedings of the 32nd International Conference on Machine Learning (ICML 2015), PMLR 37:448–456. arXiv:1502.03167.
-
-Bo'lim F: Mathematics for Deep Learning
 
 ## Interaktiv Vizualizatsiya
 

@@ -15,8 +15,10 @@ import {
   BarChart3,
   Database,
   Sliders,
+  Layers,
 } from "lucide-react";
 import type { CategoryWithCount, LessonSummary } from "@/lib/content/types";
+import { SUBJECT_GROUPS, buildLearningLibraryCatalog, type SubjectGroupId } from "@/lib/learning-os/catalog";
 import type { Difficulty } from "@/lib/content/schema";
 import { LessonCard } from "@/components/lessons/LessonCard";
 import { SpecializationSelector } from "@/components/curriculum/SpecializationSelector";
@@ -63,6 +65,8 @@ export function LearnCatalogClient({
   const [pathFilter, setPathFilter] = useState<"all" | "deep-path" | "overview-only">(
     "all",
   );
+  const [selectedSubjectGroup, setSelectedSubjectGroup] = useState<SubjectGroupId | "all">("all");
+  const subjectCourses = useMemo(() => buildLearningLibraryCatalog(), []);
 
   // Collect all unique tags
   const allTags = useMemo(() => {
@@ -73,7 +77,19 @@ export function LearnCatalogClient({
 
   // Filter lessons
   const filteredLessons = useMemo(() => {
+    const activeGroupCategories =
+      selectedSubjectGroup === "all"
+        ? null
+        : new Set(
+            subjectCourses
+              .filter((c) => c.subjectGroup === selectedSubjectGroup)
+              .flatMap((c) => c.canonicalCategoryIds ?? []),
+          );
+
     return initialLessons.filter((lesson) => {
+      if (activeGroupCategories && activeGroupCategories.size > 0 && !activeGroupCategories.has(lesson.category)) {
+        return false;
+      }
       // Specialization Path Role Filter
       if (state.selectedPathId && pathFilter !== "all") {
         const roleInfo = getLessonRoleInPath(lesson.slug, state.selectedPathId);
@@ -690,6 +706,79 @@ export function LearnCatalogClient({
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Hierarchical Subject Groups Browser (Section 7 Learning OS Taxonomy) */}
+      <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-5 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="space-y-0.5">
+            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+              <Layers className="w-4 h-4 text-cyan-400" />
+              <span>Fanlar Kesimida Katalog (Subject Groups)</span>
+            </h3>
+            <p className="text-xs text-slate-400">
+              Kurslarni mavzu sohalari bo&apos;yicha tanlang — har bir yo&apos;nalishda haqiqiy nashr etilgan va rejalashtirilgan darslar soni alohida ko&apos;rsatiladi.
+            </p>
+          </div>
+          {selectedSubjectGroup !== "all" && (
+            <button
+              type="button"
+              onClick={() => setSelectedSubjectGroup("all")}
+              className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer"
+            >
+              Barcha fanlarni ko&apos;rsatish
+            </button>
+          )}
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setSelectedSubjectGroup("all")}
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${
+              selectedSubjectGroup === "all"
+                ? "bg-cyan-500 text-slate-950"
+                : "bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700"
+            }`}
+          >
+            Barcha sohalar ({subjectCourses.length} modul)
+          </button>
+          {SUBJECT_GROUPS.map((grp) => (
+            <button
+              key={grp.id}
+              type="button"
+              onClick={() => setSelectedSubjectGroup(grp.id)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${
+                selectedSubjectGroup === grp.id
+                  ? "bg-cyan-500 text-slate-950"
+                  : "bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700"
+              }`}
+            >
+              {grp.titleUz}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {subjectCourses
+            .filter((c) => selectedSubjectGroup === "all" || c.subjectGroup === selectedSubjectGroup)
+            .map((course) => (
+              <Link
+                key={course.id}
+                href={course.href}
+                className="rounded-2xl border border-slate-800 bg-slate-950/75 p-3.5 hover:border-cyan-500/40 transition-colors space-y-1.5"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-bold text-white truncate">{course.titleUz}</span>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 shrink-0">
+                    {course.publishedItems}/{course.totalItems} pub
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400 line-clamp-1">{course.subtitleUz}</p>
+                <p className="text-[10px] text-slate-500 line-clamp-2">{course.honestStatusNoteUz}</p>
+              </Link>
+            ))}
         </div>
       </div>
 

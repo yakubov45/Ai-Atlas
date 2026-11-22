@@ -22,6 +22,7 @@ import {
 import type { LessonSummary } from "@/lib/content/types";
 import { RoadmapGraph } from "@/components/roadmap/RoadmapGraph";
 import { RoadmapList } from "@/components/roadmap/RoadmapList";
+import { GlobalUnifiedRoadmap } from "@/components/roadmap/GlobalUnifiedRoadmap";
 import { SpecializationSelector } from "@/components/curriculum/SpecializationSelector";
 import { AiEngineerExplorer } from "@/components/curriculum/AiEngineerExplorer";
 import { MlDsExplorer } from "@/components/curriculum/MlDsExplorer";
@@ -40,6 +41,7 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { uz } from "@/i18n/dictionaries/uz";
 
 type RoadmapTab =
+  | "global"
   | "list"
   | "ai-engineer"
   | "ml-engineer"
@@ -52,6 +54,7 @@ type RoadmapTab =
   | "graph";
 
 const VALID_TABS = new Set<RoadmapTab>([
+  "global",
   "list",
   "ai-engineer",
   "ml-engineer",
@@ -66,7 +69,7 @@ const VALID_TABS = new Set<RoadmapTab>([
 
 export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }) {
   const { state } = useLearning();
-  const [view, setView] = useState<RoadmapTab>("ai-engineer");
+  const [view, setView] = useState<RoadmapTab>("global");
   const [onlyCorePath, setOnlyCorePath] = useState<boolean>(false);
   const [urlParams, setUrlParams] = useState<{
     tab?: string;
@@ -83,7 +86,7 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
     const lessonParam = params.get("lesson") || undefined;
     const stepParam = params.get("step") || undefined;
 
-    let targetTab: RoadmapTab = "ai-engineer";
+    let targetTab: RoadmapTab = "global";
 
     if (tabParam) {
       if (tabParam === "python" || tabParam === "python-dev") {
@@ -245,6 +248,19 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80 text-xs">
           <button
             type="button"
+            onClick={() => handleTabChange("global")}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-colors cursor-pointer ${
+              view === "global"
+                ? "bg-cyan-500 text-slate-950 font-bold shadow-sm"
+                : "bg-slate-950 border border-slate-800 text-slate-300 hover:text-white"
+            }`}
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Global Roadmap (10 Bosqich)</span>
+          </button>
+
+          <button
+            type="button"
             onClick={() => handleTabChange("ai-engineer")}
             className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-colors cursor-pointer ${
               view === "ai-engineer"
@@ -392,7 +408,9 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
         </Link>
       </div>
 
-      {view === "deep-learning" ? (
+      {view === "global" ? (
+        <GlobalUnifiedRoadmap />
+      ) : view === "deep-learning" ? (
         <DeepLearningArchitecturesRoadmap />
       ) : view === "prompt-eng" ? (
         <PromptEngineeringExplorer initialPhaseId={urlParams.phase} />

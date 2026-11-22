@@ -31,7 +31,21 @@ $$
 
 Markazlashtirilgan qiymatlar ($\hat{x}_i = x_i - \mu_{\mathcal{B}}$): [-3.0, -1.0, 1.0, 3.0] (yangi o'rtacha qiymat 0.0 ga teng).
 
-## 3. Bog'liq tushunchalar
+## 3. Python Amaliy Misoli: O'rtacha va Markazlashtirish
+
+```python
+import numpy as np
+
+activations = np.array([2.0, 4.0, 6.0, 8.0], dtype=np.float32)
+mu = activations.mean()
+centered = activations - mu
+
+print("Mini-batch o'rtachasi (mu):", float(mu))          # 5.0
+print("Markazlashtirilgan vektor:", centered.tolist())      # [-3.0, -1.0, 1.0, 3.0]
+print("Yangi o'rtacha:", round(float(centered.mean()), 6)) # 0.0
+```
+
+## 4. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [Probability](/learn/probability)

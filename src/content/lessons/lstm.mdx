@@ -61,14 +61,20 @@ Quyida original 1997-yilgi LSTM katakchasining ($s_{c_j}(t)$ va $y^{c_j}(t)$) Py
 ```python
 import torch
 
-Original 1997-yilgi LSTM katakchasining bitta vaqt qadami:
-s_c(t) = s_c(t-1) + y_in(t) * g(net_c(t))
-y_c(t) = y_out(t) * h(s_c(t))
-s_prev = torch.tensor([0.5]) # s_{c_j}(t-1) net_c = torch.tensor([1.2]) # net_{c_j}(t) y_in = torch.sigmoid(torch.tensor([0.8])) # Input gate activation y_out = torch.sigmoid(torch.tensor([1.5])) # Output gate activation
+# Original 1997-yilgi LSTM katakchasining bitta vaqt qadami:
+# s_c(t) = s_c(t-1) + y_in(t) * g(net_c(t))
+# y_c(t) = y_out(t) * h(s_c(t))
+s_prev = torch.tensor([0.5])                         # s_{c_j}(t-1)
+net_c = torch.tensor([1.2])                          # net_{c_j}(t)
+y_in = torch.sigmoid(torch.tensor([0.8]))            # Input gate activation
+y_out = torch.sigmoid(torch.tensor([1.5]))           # Output gate activation
 
-g_net = torch.tanh(net_c) # Squashing function g s_curr = s_prev + y_in * g_net # CEC internal state update (w_jj = 1.0) y_c = y_out * torch.tanh(s_curr) # Cell output with scaling function h
+g_net = torch.tanh(net_c)                            # Squashing function g
+s_curr = s_prev + y_in * g_net                       # CEC internal state update (w_jj = 1.0)
+y_c = y_out * torch.tanh(s_curr)                     # Cell output with scaling function h
 
-print("Updated internal state s_c(t):", round(s_curr.item(), 4)) print("Cell output y_c(t):", round(y_c.item(), 4))
+print("Updated internal state s_c(t):", round(s_curr.item(), 4))
+print("Cell output y_c(t):", round(y_c.item(), 4))
 ```
 
 
@@ -90,8 +96,6 @@ print("Updated internal state s_c(t):", round(s_curr.item(), 4)) print("Cell out
 ## 8. Tekshirilgan manbalar
 - Hochreiter, S., & Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735.
 - Vaswani, A., et al. (2017). *Attention Is All You Need*. NIPS 2017. arXiv:1706.03762.
-
-Bo'lim E: Model Training (va Bo'lim F bilan Kanonik Integratsiya)
 Chuqur neyron tarmoqlarni o'qitishni tezlashtirish va barqarorlashtirishda Ioffe va Szegedy (2015) tomonidan kiritilgan Batch Normalization muhim burilish yasadi. Shu bilan birga, maqoladagi tajriba natijalarini tahlil qilishda faqatgina BN qatlamini qo'shish (BN-Baseline) hamda o'rganish tezligini 5 baravarga oshirib, regulyarizatsiyani o'zgartirish (BN-x5) o'rtasidagi farqni aniq ko'rsatish talab etiladi. Quyidagi grafikda Ioffe va Szegedy (2015) ning ImageNet bo'yicha rasmiy tajriba ko'rsatkichlari taqqoslangan.
 
 

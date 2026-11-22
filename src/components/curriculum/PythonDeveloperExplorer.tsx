@@ -19,6 +19,7 @@ import { GuidedPractice } from "@/components/practice/GuidedPractice";
 import { PracticeLab, type PracticeResultInfo } from "@/components/practice/PracticeLab";
 import type { LessonPractice, PracticeExercise, PracticeExample } from "@/lib/practice/types";
 import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
+import { KnowledgeRelationshipsButton } from "@/components/lessons/KnowledgeRelationshipsPanel";
 import {
   AlertTriangle,
   ArrowUpRight,
@@ -121,6 +122,7 @@ export function PythonDeveloperExplorer({
   const [selectedAssessmentPhaseId, setSelectedAssessmentPhaseId] = useState<string>("py-01");
   const [copiedSnippetId, setCopiedSnippetId] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
+  const [showLessonList, setShowLessonList] = useState<boolean>(false);
 
   const syncUrl = (lessonId: string, phaseId: string, step: string) => {
     if (typeof window === "undefined") return;
@@ -552,30 +554,47 @@ export function PythonDeveloperExplorer({
               </div>
             </div>
 
-            {/* Lesson Badges Scroll Row */}
-            <div className="flex gap-2 overflow-x-auto pb-1 pt-1">
-              {activePhase.lessons.map((lesson) => {
-                const isActive = lesson.id === activeLesson.id;
-                const isDone = isMicroLessonCompleted(lesson.id);
-                return (
-                  <button
-                    key={lesson.id}
-                    type="button"
-                    onClick={() => selectLesson(lesson.id, activeDepth)}
-                    className={`shrink-0 text-left px-3.5 py-2 rounded-xl border text-xs transition-all cursor-pointer flex items-center gap-2 ${
-                      isActive
-                        ? "bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
-                        : isDone
-                        ? "bg-emerald-950/40 text-emerald-300 border-emerald-500/50"
-                        : "bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700"
-                    }`}
-                  >
-                    {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
-                    <span className="font-mono">{lesson.id}</span>
-                    <span className="max-w-[140px] truncate">{lesson.title}</span>
-                  </button>
-                );
-              })}
+            {/* Collapsible Lesson Badges Row (collapsed by default) */}
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setShowLessonList((prev) => !prev)}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-800 bg-slate-950 hover:bg-slate-900 text-xs font-semibold text-slate-200 cursor-pointer transition-colors"
+              >
+                <span>
+                  {showLessonList
+                    ? "Darslar ro'yxatini yopish"
+                    : `Faza darslari ro'yxati (${activePhase.lessons.length} ta)`}
+                </span>
+                <span className="font-mono text-[10px] text-amber-400">{activeLesson.id}</span>
+              </button>
+
+              {showLessonList && (
+                <div className="flex gap-2 overflow-x-auto pb-1 pt-1">
+                  {activePhase.lessons.map((lesson) => {
+                    const isActive = lesson.id === activeLesson.id;
+                    const isDone = isMicroLessonCompleted(lesson.id);
+                    return (
+                      <button
+                        key={lesson.id}
+                        type="button"
+                        onClick={() => selectLesson(lesson.id, activeDepth)}
+                        className={`shrink-0 text-left px-3.5 py-2 rounded-xl border text-xs transition-all cursor-pointer flex items-center gap-2 ${
+                          isActive
+                            ? "bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-md shadow-amber-500/20"
+                            : isDone
+                            ? "bg-emerald-950/40 text-emerald-300 border-emerald-500/50"
+                            : "bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-700"
+                        }`}
+                      >
+                        {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
+                        <span className="font-mono">{lesson.id}</span>
+                        <span className="max-w-[140px] truncate">{lesson.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 
@@ -623,6 +642,12 @@ export function PythonDeveloperExplorer({
                     </>
                   )}
                 </button>
+                <KnowledgeRelationshipsButton
+                  entityId={activeLesson.id}
+                  fallbackMeta={{
+                    title: activeLesson.title,
+                  }}
+                />
                 <button
                   type="button"
                   onClick={() => toggleMicroLessonCompleted(activeLesson.id)}

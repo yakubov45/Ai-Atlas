@@ -71,10 +71,13 @@ Berilgan: $\theta_0 = 2.0$, $g_1 = 0.5$, $\alpha = 0.1$, $\beta_1 = 0.9$, $\beta
 ```python
 import torch
 
-theta = torch.nn.Parameter(torch.tensor([2.0])) optimizer = torch.optim.AdamW([theta], lr=0.1, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.1)
+theta = torch.nn.Parameter(torch.tensor([2.0]))
+optimizer = torch.optim.AdamW([theta], lr=0.1, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.1)
 
-Eslatma: PyTorch AdamW da weight_decay lr ga ko'paytiriladi (lr * wd = 0.1 * 0.1 = 0.01 = lambda)
-theta.grad = torch.tensor([0.5]) optimizer.step() print("Updated theta (AdamW):", round(theta.item(), 4)) # 1.88
+# Eslatma: PyTorch AdamW da weight_decay lr ga ko'paytiriladi (lr * wd = 0.1 * 0.1 = 0.01 = lambda)
+theta.grad = torch.tensor([0.5])
+optimizer.step()
+print("Updated theta (AdamW):", round(theta.item(), 4))  # 1.88
 ```
 
 
@@ -97,8 +100,6 @@ theta.grad = torch.tensor([0.5]) optimizer.step() print("Updated theta (AdamW):"
 ## 7. Tekshirilgan manbalar
 - Kingma, D. P., & Ba, J. (2015). *Adam: A Method for Stochastic Optimization*. International Conference on Learning Representations (ICLR 2015). arXiv:1412.6980.
 - Loshchilov, I., & Hutter, F. (2019). *Decoupled Weight Decay Regularization*. International Conference on Learning Representations (ICLR 2019). arXiv:1711.05101.
-
-Bo'lim G: Software Architecture and Knowledge Management
 
 ## Interaktiv Vizualizatsiya
 

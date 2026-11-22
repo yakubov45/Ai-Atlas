@@ -27,47 +27,38 @@ Sun'iy intellekt va neyron tarmoqlarda Memory (Xotira) axborotni vaqt qadamlari 
 Ketma-ketliklarni qayta ishlashda (masalan, 1000 qadamdan ortiq vaqt oraliqlariga ega vazifalarda) tarmoq oldingi kirish hodisalarini eslab qolishi shart. Agar qisqa muddatli xotira tezda o'chib ketsa (vanishing gradient tufayli), tizim uzoq vaqt oraliqlarini bog'lay olmaydi.
 
 ## 3. Xotira Turlarining Aniq Texnik Farqlanishi (Level 1 — Level 3)
-Xotira turi
 
-Texnik joylashuvi
+| Xotira turi | Texnik joylashuvi | Yangilanish mexanizmi | Tasdiqlangan manba va arxitektura |
+| --- | --- | --- | --- |
+| **1. Short-Term Memory (Qisqa muddatli aktivatsiyalar)** | Rekurrent bog'lanishlar orqali saqlanuvchi ichki aktivatsiyalar va holatlar ($s_{c_j}(t)$) | Har bir vaqt qadamida (forward pass) yangi kirish hodisalari bilan yangilanadi | Hochreiter & Schmidhuber (1997): [RNN](/learn/rnn) va [LSTM](/learn/lstm) Constant Error Carousel |
+| **2. Long-Term Memory (Uzoq muddatli model vaznlari)** | Tarmoqning o'rganiladigan vazn matritsalari ($W$) | [Backpropagation](/learn/backpropagation) va [Gradient Descent](/learn/gradient-descent) orqali sekin o'zgaradi | Hochreiter & Schmidhuber (1997); Rumelhart et al. (1986) |
+| **3. Contextual Sequence Representation (Kontekst oynasi)** | [Transformers](/learn/transformers) dagi ketma-ketlik tokenlarining boyitilgan embeddinglari | Self-Attention orqali pozitsiyalararo axborot almashish | Vaswani et al. (2017); 3Blue1Brown (2024) |
+| **4. External Retrieval / Application Memory** | Tashqi bilimlar bazasi va ilova xotirasi | [RAG](/learn/rag) va [AI Agent](/learn/ai-agent) qidiruv mexanizmlari | Lewis et al. (2020) |
 
-Yangilanish mexanizmi
+## 4. Python Amaliy Misoli: Qisqa va Uzoq Muddatli Xotira
 
-Tasdiqlangan manba va arxitektura
+```python
+# Agent tizimida suhbat oynasi (qisqa muddatli) va kalit-qiymat ombori (tashqi xotira)
+short_term_buffer: list[str] = []
+long_term_store: dict[str, str] = {
+    "user_lang": "uz",
+    "topic": "PyTorch autograd",
+}
 
-## 1. Short-Term Memory (Qisqa muddatli aktivatsiyalar)
+def remember_turn(role: str, content: str, max_turns: int = 3) -> None:
+    short_term_buffer.append(f"{role}: {content}")
+    if len(short_term_buffer) > max_turns:
+        short_term_buffer.pop(0)  # Sliding window xotira cheklovi
 
-Rekurrent bog'lanishlar orqali saqlanuvchi ichki aktivatsiyalar va holatlar ($s_{c_j}(t)$)
+remember_turn("user", "Backpropagation nima?")
+remember_turn("assistant", "Zanjir qoidasi asosida gradient hisoblash.")
+remember_turn("user", f"Menga {long_term_store['topic']} misolini ber.")
 
-Har bir vaqt qadamida (forward pass) yangi kirish hodisalari bilan yangilanadi
+print("Kontekst oynasi:", short_term_buffer)
+print("Uzoq muddatli profil:", long_term_store)
+```
 
-Hochreiter & Schmidhuber (1997): [RNN](/learn/rnn) va [LSTM](/learn/lstm) Constant Error Carousel
-
-## 2. Long-Term Memory (Uzoq muddatli model vaznlari)
-
-Tarmoqning o'rganiladigan vazn matritsalari (W)
-
-[Backpropagation](/learn/backpropagation) va [Gradient Descent](/learn/gradient-descent) orqali sekin o'zgaradi (slowly changing weights)
-
-Hochreiter & Schmidhuber (1997); Rumelhart et al. (1986)
-
-## 3. Contextual Sequence Representation (Kontekst oynasi)
-
-[Transformers](/learn/transformers) dagi ketma-ketlik tokenlarining boyitilgan embeddinglari
-
-Self-Attention orqali pozitsiyalararo axborot almashish
-
-Vaswani et al. (2017); 3Blue1Brown (2024)
-
-## 4. External Retrieval / Application Memory
-
-Tashqi bilimlar bazasi va ilova xotirasi
-
-[RAG](/learn/rag) va [AI Agent](/learn/ai-agent) qidiruv mexanizmlari
-
-Lewis et al. (2020) (bibliografik); persistent application memory detallari Tasdiqlanmagan
-
-## 4. Bog'liq tushunchalar
+## 5. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [RNN](/learn/rnn)

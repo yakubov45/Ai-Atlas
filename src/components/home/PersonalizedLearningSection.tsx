@@ -79,6 +79,12 @@ export function PersonalizedLearningSection({
                 <span>Darsga o‘tish</span>
               </Link>
               <Link
+                href="/dashboard"
+                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/40 text-xs font-semibold text-cyan-200 transition-colors"
+              >
+                <span>Dashboard</span>
+              </Link>
+              <Link
                 href="/roadmap"
                 className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-slate-950 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 transition-colors"
               >
@@ -133,7 +139,7 @@ export function PersonalizedLearningSection({
               Hech qanday to‘siqlarsiz o‘rganishni hoziroq boshlang
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Barcha 39 ta ilmiy maqola, 1,400+ ta mikro-dars yo‘l xaritasi, interaktiv vizual laboratoriyalar va Manim videolari bepul va ochiq.
+              Barcha {publishedLessons.length} ta ilmiy maqola, 1,400+ ta mikro-dars yo‘l xaritasi, interaktiv vizual laboratoriyalar va Manim videolari bepul va ochiq.
             </p>
           </div>
 

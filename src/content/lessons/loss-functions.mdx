@@ -40,14 +40,17 @@ Loshchilov va Hutter (2019) hamda Ioffe va Szegedy (2015) tahlillarida ko'rsatil
 ## Python / PyTorch Amaliy Misoli
 
 ```python
-import torch import torch.nn as nn
+import torch
+import torch.nn as nn
 
-Label smoothing bilan Cross-Entropy Loss (Vaswani et al., 2017)
+# Label smoothing bilan Cross-Entropy Loss (Vaswani et al., 2017)
 criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
 
-logits = torch.tensor(2.5, 0.3, -1.2], [0.2, 1.8, 0.5) targets = torch.tensor([0, 1])
+logits = torch.tensor([[2.5, 0.3, -1.2], [0.2, 1.8, 0.5]])
+targets = torch.tensor([0, 1])
 
-loss = criterion(logits, targets) print("Cross-Entropy Loss (with label smoothing):", round(loss.item(), 4))
+loss = criterion(logits, targets)
+print("Cross-Entropy Loss (with label smoothing):", round(loss.item(), 4))
 ```
 
 

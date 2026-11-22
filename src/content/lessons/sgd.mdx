@@ -53,10 +53,12 @@ import torch
 
 theta = torch.nn.Parameter(torch.tensor([10.0]))
 
-Standart PyTorch SGD da weight_decay = lambda' = 0.2, lr = 0.1
+# Standart PyTorch SGD da weight_decay = lambda' = 0.2, lr = 0.1
 optimizer = torch.optim.SGD([theta], lr=0.1, weight_decay=0.2)
 
-theta.grad = torch.tensor([4.0]) optimizer.step() print("Updated theta:", round(theta.item(), 4)) # 9.4
+theta.grad = torch.tensor([4.0])
+optimizer.step()
+print("Updated theta:", round(theta.item(), 4))  # 9.4
 ```
 
 

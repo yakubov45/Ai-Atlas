@@ -29,11 +29,37 @@ Standart [LLM](/learn/llm) va [Transformers](/learn/transformers) modellari bili
 ## 3. Arxitekturaviy Komponentlar va Manba Maqomi (Level 1 — Level 3)
 RAG tizimlari [Embeddings](/learn/embeddings) (yuqori o'lchamli semantik vektorlar), skalyar ko'paytma (dot product similarity) va [Transformers](/learn/transformers) generatorlariga tayanadi:
 
-Embedding va Yaqinlik Qidiruvi: Matn bo'laklari va so'rovlar [Embeddings](/learn/embeddings) fazosiga o'tkazilib, ular orasidagi o'xshashlik [Vector](/learn/vector) skalyar ko'paytmasi orqali hisoblanadi.
+Embedding va Yaqinlik Qidiruvi: Matn bo'laklari va so'rovlar [Embeddings](/learn/embeddings) fazosiga o'tkazilib, ular orasidagi o'xshashlik [Vector](/learn/vector) skalyar ko'paytmasi yoki cosine similarity orqali hisoblanadi.
 Sequence Transduction / Generation: Topilgan kontekst [Transformers](/learn/transformers) asosidagi auto-regressive modelga uzatiladi.
-Izoh (Manba maqomi): Lewis et al. (2020) maqolasining sarlavhasi, mualliflari, nashr sanasi (May 2020) va DOI (10.48550/arXiv.2005.11401) ko'rsatkichlari to'liq tasdiqlangan. Biroq ushbu maqolaning to'liq ichki matni, shuningdek, document ingestion, chunking overlap, vector databases, hybrid search, reranking va retrieval evaluation bo'yicha maxsus tajriba raqamlari joriy manbalar to'plamida mavjud emasligi sababli, manba tekshiruvi siyosatiga (Section 3) muvofiq Tasdiqlanmagan deb belgilandi va to'qima formulalar kiritilmadi.
 
-## 4. Bog'liq tushunchalar
+## 4. Python Amaliy Misoli: Vektor Yaqinligi bilan Retrieval
+
+```python
+import math
+
+docs = {
+    "chunk_1": ("Transformer self-attention barcha tokenlarni parallel bog'laydi.", [0.9, 0.2, 0.1]),
+    "chunk_2": ("RAG tashqi hujjatlardan dalil topib, gallyutsinatsiyani kamaytiradi.", [0.2, 0.9, 0.4]),
+    "chunk_3": ("Batch Normalization mini-batch o'rtacha va dispersiyasini normallashtiradi.", [0.1, 0.1, 0.95]),
+}
+
+def cosine_sim(a: list[float], b: list[float]) -> float:
+    dot = sum(x * y for x, y in zip(a, b))
+    na = math.sqrt(sum(x * x for x in a))
+    nb = math.sqrt(sum(y * y for y in b))
+    return dot / (na * nb)
+
+query_vec = [0.18, 0.88, 0.35]  # "RAG nega kerak?" so'rovining embeddingi
+ranked = sorted(
+    ((cid, cosine_sim(query_vec, vec), text) for cid, (text, vec) in docs.items()),
+    key=lambda x: x[1],
+    reverse=True,
+)
+top_id, score, top_text = ranked[0]
+print(f"Eng yaqin parcha: {top_id} (cosine={score:.3f}) -> {top_text}")
+```
+
+## 5. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [Embeddings](/learn/embeddings)

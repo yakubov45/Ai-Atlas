@@ -10,6 +10,11 @@ import {
   getDlArchitectureById,
 } from "@/lib/curriculum/deep-learning-16-architectures";
 import {
+  DL_PRACTICAL_COMPARISONS,
+  getDlArchitectureEnrichment,
+} from "@/lib/curriculum/deep-learning-16-enrichment";
+import { KnowledgeRelationshipsButton } from "@/components/lessons/KnowledgeRelationshipsPanel";
+import {
   BookOpen,
   Brain,
   CheckCircle2,
@@ -39,7 +44,7 @@ export function DeepLearningArchitecturesRoadmap() {
     DlQuestionCategory | "all"
   >("all");
   const [activeTab, setActiveTab] = useState<
-    "schematic" | "paper" | "math_code"
+    "schematic" | "paper" | "math_code" | "comparisons"
   >("schematic");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -409,10 +414,19 @@ export function DeepLearningArchitecturesRoadmap() {
                 <p className="text-xs text-cyan-300 font-semibold">
                   {selectedArch.fullNameUz}
                 </p>
+                <div className="pt-1.5">
+                  <KnowledgeRelationshipsButton
+                    entityId={selectedArch.id}
+                    fallbackMeta={{
+                      title: `${selectedArch.name} — ${selectedArch.fullNameUz}`,
+                      summary: selectedArch.summaryUz,
+                    }}
+                  />
+                </div>
               </div>
 
-              {/* View Switcher: Schematic vs Paper vs Math/Code */}
-              <div className="flex gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800">
+              {/* View Switcher: Schematic vs Paper vs Math/Code vs Comparisons */}
+              <div className="flex flex-wrap gap-1 p-1 bg-slate-950 rounded-xl border border-slate-800">
                 <button
                   type="button"
                   onClick={() => setActiveTab("schematic")}
@@ -422,7 +436,7 @@ export function DeepLearningArchitecturesRoadmap() {
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Sxema (Image 2)
+                  Sxema &amp; Qo&apos;llanma
                 </button>
                 <button
                   type="button"
@@ -433,7 +447,7 @@ export function DeepLearningArchitecturesRoadmap() {
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Maqola (Image 1)
+                  Maqola ({selectedArch.year})
                 </button>
                 <button
                   type="button"
@@ -444,61 +458,106 @@ export function DeepLearningArchitecturesRoadmap() {
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  Formula & Kod
+                  Tensor &amp; PyTorch Kod
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("comparisons")}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    activeTab === "comparisons"
+                      ? "bg-cyan-500 text-slate-950"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Taqqoslashlar (8)
                 </button>
               </div>
             </div>
 
             {/* Content Tabs */}
-            {activeTab === "schematic" && (
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-                    <Lightbulb className="w-4 h-4" />
-                    <span>Nima uchun ixtiro qilingan? (Muammo va Yechim)</span>
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
-                    {selectedArch.whyInventedUz}
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
-                    <Zap className="w-4 h-4" />
-                    <span>Asosiy Ilmiy Yangilik (Key Breakthrough)</span>
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
-                    {selectedArch.keyInnovationUz}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <div className="p-3.5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-1.5">
-                    <span className="text-xs font-bold text-emerald-300 flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>Afzalliklari</span>
-                    </span>
-                    <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
-                      {selectedArch.strengthsUz.map((s, idx) => (
-                        <li key={idx}>{s}</li>
-                      ))}
-                    </ul>
+            {activeTab === "schematic" && (() => {
+              const enrichment = getDlArchitectureEnrichment(selectedArch.id);
+              return (
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                      <Lightbulb className="w-4 h-4" />
+                      <span>Nima uchun ixtiro qilingan? (Muammo va Yechim)</span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                      {selectedArch.whyInventedUz}
+                    </p>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-1.5">
-                    <span className="text-xs font-bold text-rose-300 flex items-center gap-1">
-                      <TrendingUp className="w-3.5 h-3.5" />
-                      <span>Keyingi Avlodga Sabab Bo‘lgan Cheklovi</span>
-                    </span>
-                    <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
-                      {selectedArch.limitationsUz.map((l, idx) => (
-                        <li key={idx}>{l}</li>
-                      ))}
-                    </ul>
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                      <Zap className="w-4 h-4" />
+                      <span>Asosiy Ilmiy Yangilik (Key Breakthrough)</span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                      {selectedArch.keyInnovationUz}
+                    </p>
                   </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div className="p-3.5 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-1.5">
+                      <span className="text-xs font-bold text-emerald-300 flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>Afzalliklari</span>
+                      </span>
+                      <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                        {selectedArch.strengthsUz.map((s, idx) => (
+                          <li key={idx}>{s}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-rose-950/20 border border-rose-500/30 space-y-1.5">
+                      <span className="text-xs font-bold text-rose-300 flex items-center gap-1">
+                        <TrendingUp className="w-3.5 h-3.5" />
+                        <span>Keyingi Avlodga Sabab Bo&lsquo;lgan Cheklovi</span>
+                      </span>
+                      <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                        {selectedArch.limitationsUz.map((l, idx) => (
+                          <li key={idx}>{l}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {enrichment && (
+                    <div className="space-y-3 pt-1">
+                      <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-amber-500/25 space-y-1.5">
+                        <span className="text-xs font-bold text-amber-300 block">
+                          Keng tarqalgan xatolar (Common Mistakes)
+                        </span>
+                        <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                          {enrichment.commonMistakesUz.map((m, i) => (
+                            <li key={i}>{m}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-indigo-500/25 space-y-2">
+                        <div className="text-xs text-indigo-200 leading-relaxed">
+                          <span className="font-bold text-indigo-300">Tizimdagi o&apos;rni: </span>
+                          {enrichment.connectionsUz}
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {enrichment.applicationsUz.map((app) => (
+                            <span
+                              key={app}
+                              className="px-2 py-0.5 rounded-full text-[11px] bg-indigo-950/60 border border-indigo-500/30 text-indigo-200"
+                            >
+                              {app}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {activeTab === "paper" && (
               <div className="space-y-4">
@@ -532,27 +591,137 @@ export function DeepLearningArchitecturesRoadmap() {
               </div>
             )}
 
-            {activeTab === "math_code" && (
-              <div className="space-y-4">
-                <div className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                    Matematik Ifodasi:
-                  </span>
-                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs sm:text-sm text-amber-200 overflow-x-auto">
-                    {selectedArch.formula}
+            {activeTab === "math_code" && (() => {
+              const enrichment = getDlArchitectureEnrichment(selectedArch.id);
+              return (
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                      Matematik Ifodasi:
+                    </span>
+                    <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs sm:text-sm text-amber-200 overflow-x-auto">
+                      {selectedArch.formula}
+                    </div>
+                    <p className="text-xs text-slate-400">
+                      {selectedArch.formulaExplanationUz}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-400">
-                    {selectedArch.formulaExplanationUz}
-                  </p>
-                </div>
 
-                <div className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-                    Minimal Pure-Python Amalga Oshirish:
-                  </span>
-                  <pre className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-300 overflow-x-auto leading-relaxed">
-                    <code>{selectedArch.codeSnippet}</code>
-                  </pre>
+                  {enrichment && (
+                    <div className="p-3.5 rounded-2xl bg-cyan-950/20 border border-cyan-500/30 space-y-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-cyan-300">
+                        Tensor O&apos;lchamlari (Tensor Shape Flow)
+                      </span>
+                      <p className="text-xs font-mono text-cyan-100 leading-relaxed">
+                        {enrichment.tensorShapesUz}
+                      </p>
+                    </div>
+                  )}
+
+                  {enrichment && (
+                    <div className="space-y-1.5">
+                      <span className="text-xs font-bold uppercase tracking-wider text-violet-300">
+                        PyTorch Forward Pass Implementatsiyasi:
+                      </span>
+                      <pre className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-violet-200 overflow-x-auto leading-relaxed">
+                        <code>{enrichment.pytorchCode}</code>
+                      </pre>
+                    </div>
+                  )}
+
+                  <div className="space-y-1.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                      Minimal Pure-Python Amalga Oshirish:
+                    </span>
+                    <pre className="p-4 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-300 overflow-x-auto leading-relaxed">
+                      <code>{selectedArch.codeSnippet}</code>
+                    </pre>
+                  </div>
+
+                  {enrichment && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+                        <span className="text-[11px] font-bold uppercase text-amber-300">O&apos;qitish (Training)</span>
+                        <p className="text-xs text-slate-300 leading-relaxed">{enrichment.trainingExampleUz}</p>
+                      </div>
+                      <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+                        <span className="text-[11px] font-bold uppercase text-emerald-300">Baholash (Evaluation)</span>
+                        <p className="text-xs text-slate-300 leading-relaxed">{enrichment.evaluationExampleUz}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {enrichment && enrichment.experimentsUz.length > 0 && (
+                    <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-1.5">
+                      <span className="text-xs font-bold text-cyan-300">Amaliy Eksperimentlar (Sinab Ko&apos;ring):</span>
+                      <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                        {enrichment.experimentsUz.map((exp, idx) => (
+                          <li key={idx}>{exp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+
+            {activeTab === "comparisons" && (
+              <div className="space-y-4">
+                <p className="text-xs text-slate-300">
+                  Har bir arxitektura qaysi cheklovni yengganini amaliy savollar kesimida taqqoslang (Transformer vs Mamba alohida muqobil yondashuv sifatida ajratilgan).
+                </p>
+                <div className="space-y-4">
+                  {DL_PRACTICAL_COMPARISONS.map((cmp) => (
+                    <div
+                      key={cmp.id}
+                      className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 space-y-3"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <span className="text-[11px] font-semibold text-cyan-400 block">
+                            {cmp.questionContextUz}
+                          </span>
+                          <h4 className="text-sm font-bold text-white">{cmp.title}</h4>
+                        </div>
+                      </div>
+                      <p className="text-xs text-slate-300 leading-relaxed">{cmp.summaryUz}</p>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left border-collapse text-xs">
+                          <thead>
+                            <tr className="border-b border-slate-800 text-slate-400">
+                              <th className="py-1.5 pr-3 font-semibold">Mezon</th>
+                              <th className="py-1.5 pr-3 font-semibold text-amber-300">{cmp.leftName}</th>
+                              {cmp.middleName && (
+                                <th className="py-1.5 pr-3 font-semibold text-emerald-300">{cmp.middleName}</th>
+                              )}
+                              <th className="py-1.5 font-semibold text-cyan-300">{cmp.rightName}</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-800/70">
+                            {cmp.dimensions.map((d) => (
+                              <tr key={d.criterionUz}>
+                                <td className="py-1.5 pr-3 font-medium text-slate-200">{d.criterionUz}</td>
+                                <td className="py-1.5 pr-3 text-slate-300">{d.leftValueUz}</td>
+                                {cmp.middleName && (
+                                  <td className="py-1.5 pr-3 text-slate-300">{d.middleValueUz ?? "—"}</td>
+                                )}
+                                <td className="py-1.5 text-slate-300">{d.rightValueUz}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className="text-xs text-emerald-300 bg-emerald-950/20 border border-emerald-500/25 rounded-xl px-3 py-2">
+                        <span className="font-bold">Qachon tanlanadi: </span>
+                        {cmp.whenToUseUz}
+                      </div>
+                      {cmp.tradeOffWarningUz && (
+                        <div className="text-xs text-amber-200 bg-amber-950/30 border border-amber-500/35 rounded-xl px-3 py-2">
+                          {cmp.tradeOffWarningUz}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

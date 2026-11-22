@@ -64,11 +64,12 @@ $$
 ```python
 import torch
 
-Q = torch.tensor(1.0, 2.0], [3.0, 0.0) K = torch.tensor(2.0, 1.0], [0.0, 4.0)
+Q = torch.tensor([[1.0, 2.0], [3.0, 0.0]])
+K = torch.tensor([[2.0, 1.0], [0.0, 4.0]])
 
-S = torch.matmul(Q, K.T) print("Q @ K^T:\n", S)
-
-Kutilgan natija: tensor(4., 8.], [6., 0.)
+S = torch.matmul(Q, K.T)
+print("Q @ K^T:\n", S)
+# Kutilgan natija: tensor([[4., 8.], [6., 0.]])
 ```
 
 

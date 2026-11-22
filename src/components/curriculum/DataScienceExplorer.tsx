@@ -33,6 +33,7 @@ import {
 import { useLearning } from "@/hooks/use-learning";
 import { PandasAggregationLab } from "@/components/visualizations/PandasAggregationLab";
 import { runPythonCode } from "@/lib/runner/python-runner";
+import { KnowledgeRelationshipsButton } from "@/components/lessons/KnowledgeRelationshipsPanel";
 
 export interface DataScienceExplorerProps {
   initialLessonId?: string;
@@ -52,6 +53,7 @@ export function DataScienceExplorer({
   const [lessonStep, setLessonStep] = useState<"theory" | "examples" | "quiz" | "practice">(initialStep);
   const [showVisualLab, setShowVisualLab] = useState<boolean>(true);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [showLessonList, setShowLessonList] = useState<boolean>(false);
 
   // Active Phase
   const activePhase = useMemo<DsPhase>(() => {
@@ -318,39 +320,51 @@ export function DataScienceExplorer({
         )}
       </div>
 
-      {/* Lesson Selection Pills for this Phase */}
+      {/* Collapsible Lesson Selection Pills for this Phase (collapsed by default) */}
       <div className="space-y-2">
-        <div className="text-xs font-mono text-slate-400">
-          Ushbu fazadagi darslar ({activePhase.lessons.length} ta):
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {activePhase.lessons.map((lesson) => {
-            const isSelected = lesson.id === activeLesson.id;
-            const isDone = isMicroLessonCompleted(lesson.id);
-            const isProposal = lesson.isOptionalProposal;
-            return (
-              <button
-                key={lesson.id}
-                type="button"
-                onClick={() => handleSelectLesson(lesson.id)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium border flex items-center gap-1.5 transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-sky-500 text-slate-950 font-bold border-sky-400 shadow-md"
-                    : isDone
-                    ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-200"
-                    : isProposal
-                    ? "bg-amber-950/30 border-amber-500/40 text-amber-300 hover:border-amber-400"
-                    : "bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700"
-                }`}
-              >
-                {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
-                <span className="font-mono text-[10px] opacity-80">{lesson.id}</span>
-                <span>{lesson.title}</span>
-                {isProposal && <span className="text-[9px] px-1 rounded bg-amber-500/20 text-amber-200">taklif</span>}
-              </button>
-            );
-          })}
-        </div>
+        <button
+          type="button"
+          onClick={() => setShowLessonList((prev) => !prev)}
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-800 bg-slate-900/90 hover:bg-slate-800 text-xs font-bold text-slate-200 cursor-pointer transition-colors"
+        >
+          <span>
+            {showLessonList
+              ? "Darslar ro'yxatini yopish"
+              : `Darslar ro'yxati (${activePhase.lessons.length} ta)`}
+          </span>
+          <span className="font-mono text-[10px] text-sky-400">{activeLesson.id}</span>
+        </button>
+
+        {showLessonList && (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {activePhase.lessons.map((lesson) => {
+              const isSelected = lesson.id === activeLesson.id;
+              const isDone = isMicroLessonCompleted(lesson.id);
+              const isProposal = lesson.isOptionalProposal;
+              return (
+                <button
+                  key={lesson.id}
+                  type="button"
+                  onClick={() => handleSelectLesson(lesson.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium border flex items-center gap-1.5 transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-sky-500 text-slate-950 font-bold border-sky-400 shadow-md"
+                      : isDone
+                      ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-200"
+                      : isProposal
+                      ? "bg-amber-950/30 border-amber-500/40 text-amber-300 hover:border-amber-400"
+                      : "bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700"
+                  }`}
+                >
+                  {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
+                  <span className="font-mono text-[10px] opacity-80">{lesson.id}</span>
+                  <span>{lesson.title}</span>
+                  {isProposal && <span className="text-[9px] px-1 rounded bg-amber-500/20 text-amber-200">taklif</span>}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Active Lesson View with 4 Sequential Steps */}
@@ -377,20 +391,29 @@ export function DataScienceExplorer({
             <p className="text-xs sm:text-sm text-slate-300">{activeLesson.learningObjectiveUz}</p>
           </div>
 
-          {!activeLesson.isOptionalProposal && (
-            <button
-              type="button"
-              onClick={() => toggleMicroLessonCompleted(activeLesson.id)}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-md shrink-0 ${
-                isMicroLessonCompleted(activeLesson.id)
-                  ? "bg-sky-500 text-slate-950 hover:bg-sky-400"
-                  : "bg-slate-900 text-slate-200 border border-slate-700 hover:border-sky-500"
-              }`}
-            >
-              <CheckCircle2 className="w-4 h-4" />
-              <span>{isMicroLessonCompleted(activeLesson.id) ? "Tugatildi ✓" : "Darsni tugatish"}</span>
-            </button>
-          )}
+          <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <KnowledgeRelationshipsButton
+              entityId={activeLesson.id}
+              fallbackMeta={{
+                title: activeLesson.title,
+                summary: activeLesson.learningObjectiveUz,
+              }}
+            />
+            {!activeLesson.isOptionalProposal && (
+              <button
+                type="button"
+                onClick={() => toggleMicroLessonCompleted(activeLesson.id)}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shadow-md shrink-0 ${
+                  isMicroLessonCompleted(activeLesson.id)
+                    ? "bg-sky-500 text-slate-950 hover:bg-sky-400"
+                    : "bg-slate-900 text-slate-200 border border-slate-700 hover:border-sky-500"
+                }`}
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                <span>{isMicroLessonCompleted(activeLesson.id) ? "Tugatildi ✓" : "Darsni tugatish"}</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {activeLesson.isOptionalProposal ? (

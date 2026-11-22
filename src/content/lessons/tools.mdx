@@ -26,9 +26,32 @@ Tools (Vositalar) — [AI Agent](/learn/ai-agent) tizimlarida til modelining man
 ## 2. Nima uchun kerak?
 Til modeli o'z holicha faqat keyingi token ehtimolligini hisoblaydi (3Blue1Brown, 2024). Tashqi tizimlar bilan ishlash uchun Yao et al. (2022, arXiv:2210.03629) tomonidan taklif etilgan ReAct: Synergizing Reasoning and Acting in Language Models paradigmasi mulohaza va harakatni birlashtiradi.
 
-Izoh (Manba maqomi): Yao et al. (2022, arXiv:2210.03629) maqolasining bibliografik metama'lumoti tasdiqlangan; ammo tashqi tool calling, execution sandboxing va API sxemalari bo'yicha to'liq matn joriy manbalar to'plamida mavjud emasligi sababli Tasdiqlanmagan deb belgilandi.
+Izoh (Manba maqomi): Yao et al. (2022, arXiv:2210.03629) maqolasining bibliografik metama'lumoti tasdiqlangan; tool calling ijro xavfsizligi (sandboxing) esa tizim arxitekturasiga ko'ra alohida cheklovlar bilan boshqariladi.
 
-## 3. Bog'liq tushunchalar
+## 3. Python Amaliy Misoli: ReAct Tool Schema va Xavfsiz Dispatch
+
+```python
+from typing import Callable
+
+# 1. Ruxsat etilgan vositalar ro'yxati (Tool Registry / Whitelist)
+def calculate_l2_norm(values: list[float]) -> float:
+    return round(sum(v * v for v in values) ** 0.5, 4)
+
+ALLOWED_TOOLS: dict[str, Callable] = {
+    "calculate_l2_norm": calculate_l2_norm,
+}
+
+# 2. Model JSON chiqishini xavfsiz tekshirib bajarish
+def execute_tool_call(name: str, args: dict) -> dict:
+    if name not in ALLOWED_TOOLS:
+        return {"error": f"Taqiqlangan yoki noma'lum vosita: {name}"}
+    result = ALLOWED_TOOLS[name](**args)
+    return {"tool": name, "observation": result}
+
+print(execute_tool_call("calculate_l2_norm", {"values": [3.0, 4.0]}))
+```
+
+## 4. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [LLM](/learn/llm)
@@ -40,11 +63,8 @@ Keyingi mavzular:
 Bog'liq:
 
 [Memory](/learn/memory)
-## 4. Tekshirilgan manbalar
+## 5. Tekshirilgan manbalar
 Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629. (Bibliografik metama'lumot tasdiqlangan).
-Bo'lim D: Deep Learning Architectures
-Chuqur o'rganish arxitekturalarini o'rganishda tarixiy-ilmiy aniqlik juda muhimdir. Ko'plab zamonaviy darsliklarda LeCun va hammualliflarning 1998-yilgi LeNet-5 tarmog'i zamonaviy Max-Pooling va ReLU qatlamlari bilan noto'g'ri tasvirlanadi. Quyidagi vizual grafikda LeCun et al. (1998) maqolasidagi haqiqiy LeNet-5 qatlamlarining fazoviy o'lchamlari va o'rganiladigan parametrlari aniq sonlar bilan aks ettirilgan.
-
 
 ## Interaktiv Vizualizatsiya
 

@@ -3,7 +3,15 @@
  * in-browser search engine (client). No dependencies.
  */
 
-export type SearchDocumentKind = "lesson" | "section" | "glossary" | "visualization";
+export type SearchDocumentKind =
+  | "lesson"
+  | "section"
+  | "glossary"
+  | "visualization"
+  | "course"
+  | "concept"
+  | "paper"
+  | "practice";
 
 export interface SearchDocument {
   /** Unique id inside the index. */
@@ -59,7 +67,16 @@ interface PreparedDocument {
 }
 
 const FIELD_WEIGHTS = { titleExact: 12, titlePrefix: 8, tag: 6, description: 4, body: 1 } as const;
-const KIND_BOOST: Record<SearchDocumentKind, number> = { lesson: 1.2, glossary: 1.15, visualization: 1, section: 0.9 };
+const KIND_BOOST: Record<SearchDocumentKind, number> = {
+  lesson: 1.2,
+  course: 1.15,
+  glossary: 1.15,
+  concept: 1.1,
+  practice: 1.1,
+  paper: 1.05,
+  visualization: 1,
+  section: 0.9,
+};
 
 function prepare(document: SearchDocument): PreparedDocument {
   const body = normalizeText(document.body);

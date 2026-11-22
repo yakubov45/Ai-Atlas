@@ -2,9 +2,10 @@
   "id": "rag-pipeline-flow",
   "type": "flow-diagram",
   "title": "RAG quvuri oqim diagrammasi",
-  "description": "Sinov maydoni: Retrieval-Augmented Generation tizimining bosqichma-bosqich ishlash sxemasi.",
-  "status": "draft",
-  "synthetic": true,
+  "description": "Retrieval-Augmented Generation (RAG) va AI Agent tizimining bosqichma-bosqich qidiruv, kontekst boyitish va javob generatsiya oqim sxemasi.",
+  "status": "published",
+  "relatedLessons": ["rag", "ai-agent", "tools", "memory"],
+  "synthetic": false,
   "config": {
     "layout": "auto-horizontal",
     "stepDurationMs": 1800,

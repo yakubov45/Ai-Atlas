@@ -2,7 +2,19 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Search, X, BookOpen, FileText, Sparkles, Boxes, ChevronRight } from "lucide-react";
+import {
+  Search,
+  X,
+  BookOpen,
+  FileText,
+  Sparkles,
+  Boxes,
+  ChevronRight,
+  GraduationCap,
+  Network,
+  ScrollText,
+  Code2,
+} from "lucide-react";
 import { useSearch } from "@/hooks/use-search";
 import { uz } from "@/i18n/dictionaries/uz";
 import type { SearchDocumentKind, SearchResult } from "@/lib/search/core";
@@ -72,6 +84,10 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
     section: FileText,
     glossary: Sparkles,
     visualization: Boxes,
+    course: GraduationCap,
+    concept: Network,
+    paper: ScrollText,
+    practice: Code2,
   };
 
   return (
@@ -109,7 +125,19 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
 
         {/* Filter chips */}
         <div className="flex items-center gap-1.5 px-4 py-2 bg-slate-950/40 text-xs overflow-x-auto">
-          {(["all", "lesson", "section", "glossary", "visualization"] as const).map((kind) => {
+          {(
+            [
+              "all",
+              "lesson",
+              "course",
+              "concept",
+              "paper",
+              "practice",
+              "glossary",
+              "visualization",
+              "section",
+            ] as const
+          ).map((kind) => {
             const active = activeKind === kind;
             const label =
               kind === "all" ? uz.common.all : uz.search.kinds[kind as SearchDocumentKind];

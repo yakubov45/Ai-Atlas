@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
+import { KnowledgeRelationshipsButton } from "@/components/lessons/KnowledgeRelationshipsPanel";
 import {
   AlertTriangle,
   ArrowRight,
@@ -109,6 +110,7 @@ export function AiEngineerExplorer({
   const [activeLessonId, setActiveLessonId] = useState<string>(initialLessonId);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<"all" | "published" | "planned">("all");
+  const [showLessonList, setShowLessonList] = useState<boolean>(false);
 
   const savedProgress = state.lastMicroStep[activeLessonId];
   const [activeDepth, setActiveDepth] = useState<LearningDepth>(
@@ -591,8 +593,27 @@ export function AiEngineerExplorer({
       {/* TAB 1: GUIDED MICRO-LESSON PLAYER */}
       {activeTab === "player" && activeLookup && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Sidebar: Phase Micro-Lessons List */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Top Collapsible Course Outline Toggle Bar */}
+          <div className="lg:col-span-12 flex flex-wrap items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={() => setShowLessonList((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-200 cursor-pointer transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-violet-400" />
+              <span>
+                {showLessonList
+                  ? "Darslar ro'yxatini yopish"
+                  : `Darslar ro'yxati (Phase ${selectedPhaseId} • ${activeLookup.lesson.id})`}
+              </span>
+            </button>
+            <span className="text-xs font-mono text-slate-400">
+              {activeLookup.lesson.id} — {activeLookup.phase.title}
+            </span>
+          </div>
+
+          {/* Left Sidebar: Phase Micro-Lessons List (collapsed by default) */}
+          <div className={showLessonList ? "lg:col-span-4 space-y-4" : "hidden"}>
             <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-3">
               <div className="flex items-center justify-between gap-2">
                 <label
@@ -704,7 +725,7 @@ export function AiEngineerExplorer({
           </div>
 
           {/* Right Main Area: Guided Micro-Lesson Player */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className={showLessonList ? "lg:col-span-8 space-y-6" : "lg:col-span-12 space-y-6"}>
             <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 space-y-6">
               {/* Lesson Header & Metadata */}
               <div className="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-slate-800">
@@ -754,6 +775,12 @@ export function AiEngineerExplorer({
 
                 {/* Mark Known / Mark Micro-Lesson Completed / Share Link */}
                 <div className="flex flex-wrap items-center gap-2">
+                  <KnowledgeRelationshipsButton
+                    entityId={activeLookup.lesson.id}
+                    fallbackMeta={{
+                      title: activeLookup.lesson.title,
+                    }}
+                  />
                   <button
                     type="button"
                     onClick={handleShareLink}

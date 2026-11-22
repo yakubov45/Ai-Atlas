@@ -31,8 +31,25 @@ Markaziy AI Map (MOC) orqali barcha mavzularga to'g'ridan-to'g'ri yetib borishni
 Har bir konspektda Oldin o'rganish, Keyingi mavzular va Bog'liq tushunchalarni aniq ajratib, toza Obsidian Graph hosil qiladi.
 Izoh (Manba maqomi): Ushbu arxitekturaviy qoidalar joriy Obsidian audit talablari asosida tuzilgan; tashqi Zettelkasten metodologiyasi bo'yicha adabiyotlar joriy manbalar to'plamida mavjud emas (Tasdiqlanmagan).
 
-## 3. Bog'liq tushunchalar
+## 3. Python Misoli: Kanonik Dars Schemasini Tekshirish
+
+```python
+note = {
+    "id": "gradient-descent",
+    "title": "Gradient Descent",
+    "prerequisites": ["partial-derivative", "vector"],
+    "status": "published",
+}
+
+def validate_canonical_note(doc: dict) -> bool:
+    required = {"id", "title", "prerequisites", "status"}
+    return required.issubset(doc.keys()) and doc["id"] not in doc["prerequisites"]
+
+print("Atomar konspekt yaroqlimi?", validate_canonical_note(note))
+```
+
+## 4. Bog'liq tushunchalar
 Bog'liq:
 
-AI Map
-[Production-Ready ML Loyihasi Tuzilmasi](/learn/production-ready-ml-structure)
+- [AI Bilimlar Xaritasi (Graph)](/learn/map)
+- [Production-Ready ML Loyihasi Tuzilmasi](/learn/production-ready-ml-structure)

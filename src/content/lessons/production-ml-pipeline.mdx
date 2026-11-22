@@ -52,4 +52,21 @@ Bog'liq:
 ## 4. Tekshirilgan manbalar
 LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-Based Learning Applied to Document Recognition. Proceedings of the IEEE, 86(11), 2278–2324. DOI: 10.1109/5.726791.
 Ioffe, S., & Szegedy, C. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. ICML 2015, PMLR 37:448–456.
-Bo'lim H: Additional Learning Resources
+
+## 5. Python Amaliy Misoli: Deterministik Inference Tekshiruvi
+
+```python
+import torch
+import torch.nn as nn
+
+model = nn.Sequential(nn.Linear(4, 4), nn.BatchNorm1d(4), nn.ReLU())
+x = torch.randn(2, 4)
+_ = model(x)  # train rejimida running stats yangilanadi
+
+model.eval()  # Production inference uchun deterministik rejim
+with torch.no_grad():
+    out1 = model(x[:1])
+    out2 = model(x[:1])
+assert torch.allclose(out1, out2)
+print("Deterministik eval tekshiruvi muvaffaqiyatli:", out1.shape)
+```

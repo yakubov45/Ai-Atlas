@@ -33,9 +33,32 @@ Model-internal knowledge (Uzoq muddatli parametrik xotira): Hochreiter & Schmidh
 Short-term activations / Conversation context (Qisqa muddatli kontekst): Joriy kirish hodisalari va ketma-ketlik tokenlarining aktivatsiyalarida ([RNN](/learn/rnn)/[LSTM](/learn/lstm) ichki holati yoki [Transformers](/learn/transformers) kontekst oynasida) saqlanuvchi tezkor ma'lumot.
 External retrieval (Tashqi qidiruv): [RAG](/learn/rag) (Lewis et al., 2020) kabi bilimga asoslangan NLP vazifalarida tashqi manbalardan olinadigan ma'lumotlar.
 Persistent application memory va Tools: Tashqi ilova xotirasi va vositalar ([Tools](/learn/tools)).
-Izoh (Manba maqomi): Neyron tarmoqlarda qisqa muddatli aktivatsiyalar va uzoq muddatli vaznlar farqi (Hochreiter & Schmidhuber, 1997), ko'p modulli tizimlar (LeCun et al., 1998) hamda Yao et al. (2022, arXiv:2210.03629) va Lewis et al. (2020, arXiv:2005.11401) bibliografiyalari tasdiqlangan. Biroq arXiv:2210.03629 maqolasining to'liq matni va multi-agent hamda production xavfsizlik protokollari joriy qidiruv parchalarida keltirilmagani sababli, ushbu qo'shimcha tafsilotlar Tasdiqlanmagan deb belgilandi.
 
-## 4. Bog'liq tushunchalar
+## 4. Python Amaliy Misoli: ReAct Tsikli (Thought -> Action -> Observation)
+
+```python
+def search_kb(query: str) -> str:
+    kb = {
+        "resnet": "ResNet (2015) y = F(x) + x skip connection kiritdi.",
+        "rag": "RAG (2020) parametrli va tashqi qidiruv xotirasini birlashtiradi.",
+    }
+    return kb.get(query.lower(), "Manbada topilmadi.")
+
+def react_step(question: str, max_steps: int = 2) -> list[str]:
+    trace = [f"Savol: {question}"]
+    # 1-qadam: Agent qaror qabul qiladi va vositani chaqiradi
+    trace.append("Thought: ResNet haqidagi faktni bilim bazasidan tekshirish kerak.")
+    obs = search_kb("resnet")
+    trace.append(f"Action: search_kb('resnet') -> Observation: {obs}")
+    # 2-qadam: Kuzatuv asosida yakuniy javob
+    trace.append(f"Final Answer: {obs}")
+    return trace[: max_steps * 2]
+
+for line in react_step("ResNet nima yangilik kiritgan?"):
+    print(line)
+```
+
+## 5. Bog'liq tushunchalar
 Oldin o'rganish:
 
 [LLM](/learn/llm)

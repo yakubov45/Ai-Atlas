@@ -14,6 +14,7 @@ import { PythonBasicsLab } from "@/components/visualizations/PythonBasicsLab";
 import { PythonFunctionsLab } from "@/components/visualizations/PythonFunctionsLab";
 import { TransformerMicroPathView } from "./TransformerMicroPathView";
 import { LessonSidebar } from "./LessonSidebar";
+import { KnowledgeRelationshipsButton } from "./KnowledgeRelationshipsPanel";
 import { TableOfContents } from "@/components/layout/TableOfContents";
 import { BookmarkButton } from "./BookmarkButton";
 import { getLessonPractice } from "@/lib/practice/registry";
@@ -26,6 +27,8 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  Compass,
+  Copy,
   HelpCircle,
   Lightbulb,
   Eye,
@@ -128,6 +131,8 @@ export function LessonExperienceClient({
     isDepthCompleted,
     setDepthCompleted,
     setCompleted,
+    isConceptKnown,
+    toggleConceptKnown,
     recordVisit,
     setLastMicroStep,
     savePracticeSubmission,
@@ -138,6 +143,7 @@ export function LessonExperienceClient({
   const [viewMode, setViewMode] = useState<"guided" | "reference">("guided");
   const [stepIndex, setStepIndex] = useState<number>(0);
   const [hydratedStep, setHydratedStep] = useState<boolean>(false);
+  const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
   // Authored practice contract if available for this lesson & depth
   const practice = useMemo(
@@ -290,13 +296,13 @@ export function LessonExperienceClient({
     <div className="w-full">
       {/* Top Minimal Control Bar (Back to roadmap + Secondary/Tertiary actions) */}
       <div className="w-full mb-6 flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800/80">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/roadmap"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Yo&apos;nalish xaritasiga qaytish</span>
+            <span>Yo&apos;nalish xaritasi</span>
           </Link>
 
           {sidebarGroups.length > 0 && (
@@ -309,9 +315,17 @@ export function LessonExperienceClient({
               <span>Darslar ro&apos;yxati</span>
             </button>
           )}
+
+          <KnowledgeRelationshipsButton
+            entityId={slug}
+            fallbackMeta={{
+              title,
+              summary: description,
+            }}
+          />
         </div>
 
-        {/* Tertiary compact actions: Depth pill, Reference Mode toggle, Bookmark */}
+        {/* Tertiary compact actions: Depth pill, Known toggle, Reference Mode toggle, Copy, Bookmark */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Compact Depth Selector */}
           <div className="inline-flex items-center rounded-xl bg-slate-950 border border-slate-800 p-0.5 text-[11px]">
@@ -336,6 +350,20 @@ export function LessonExperienceClient({
             })}
           </div>
 
+          {/* Explicit "Allaqachon bilaman" Toggle */}
+          <button
+            type="button"
+            onClick={() => toggleConceptKnown(lessonId)}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium transition-colors cursor-pointer ${
+              isConceptKnown(lessonId)
+                ? "border-amber-500/60 bg-amber-500/15 text-amber-200"
+                : "border-slate-800 bg-slate-950 hover:bg-slate-900 text-slate-300"
+            }`}
+          >
+            <Check className="w-3.5 h-3.5 text-amber-400" />
+            <span>{isConceptKnown(lessonId) ? "Bilaman ✓" : "Allaqachon bilaman"}</span>
+          </button>
+
           {/* Secondary Action: "To'liq maqolani o'qish" */}
           <button
             type="button"
@@ -350,6 +378,22 @@ export function LessonExperienceClient({
                 ? "To'liq maqolani o'qish"
                 : "Qadamma-qadam rejimga qaytish"}
             </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof navigator !== "undefined" && navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                setCopiedLink(true);
+                setTimeout(() => setCopiedLink(false), 1800);
+              }
+            }}
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-slate-200 cursor-pointer"
+            title="Dars havolasini nusxalash"
+          >
+            <Copy className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{copiedLink ? "Nusxalandi" : "Havola"}</span>
           </button>
 
           <BookmarkButton id={lessonId} kind="lesson" />
@@ -372,8 +416,11 @@ export function LessonExperienceClient({
               <span>Yopish</span>
             </button>
           </div>
-          <div className="max-h-80 overflow-y-auto pr-1">
-            <LessonSidebar groups={sidebarGroups} />
+          <div className="max-h-96 overflow-y-auto pr-1">
+            <LessonSidebar
+              groups={sidebarGroups}
+              onNavigate={() => setShowLessonDrawer(false)}
+            />
           </div>
         </div>
       )}

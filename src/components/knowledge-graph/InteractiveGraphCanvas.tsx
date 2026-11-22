@@ -298,7 +298,7 @@ export function InteractiveGraphCanvas({
           const isDimmed = activeNodeId && !isSelf && !isIncoming && !isOutgoing;
 
           let borderClass = colors.border;
-          let shadowClass = colors.glow;
+          const shadowClass = colors.glow;
 
           if (isSelf) {
             borderClass = "border-white ring-2 ring-white/40";

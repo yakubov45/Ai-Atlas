@@ -18,6 +18,7 @@ import { TokenPaddingLab } from "@/components/visualizations/TokenPaddingLab";
 import { runPythonCode } from "@/lib/runner/python-runner";
 import type { TestCaseResult } from "@/lib/runner/types";
 import { getShuffledQuizOptions } from "@/lib/curriculum/quiz-utils";
+import { KnowledgeRelationshipsButton } from "@/components/lessons/KnowledgeRelationshipsPanel";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -83,6 +84,7 @@ export function HuggingFaceCourseExplorer({
   const [statusFilter, setStatusFilter] = useState<"all" | "published_only">(
     "all"
   );
+  const [showCourseOutline, setShowCourseOutline] = useState<boolean>(false);
 
   // Coding practice state
   const [studentCode, setStudentCode] = useState<string>("");
@@ -385,8 +387,23 @@ export function HuggingFaceCourseExplorer({
       {/* =================================================================== */}
       {viewTab === "lesson_player" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Sidebar: 13 Chapters & Micro-Lessons */}
-          <div className="lg:col-span-4 space-y-3">
+          {/* Top Collapsed Outline Toggle Bar */}
+          <div className="lg:col-span-12 flex flex-wrap items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={() => setShowCourseOutline((p) => !p)}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-200 cursor-pointer transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+              <span>{showCourseOutline ? "Darslar ro'yxatini yopish" : "Darslar ro'yxati (13 bob • 220 dars)"}</span>
+            </button>
+            <span className="text-xs font-mono text-slate-400">
+              {currentChapter.id} • {currentLesson.id}
+            </span>
+          </div>
+
+          {/* Left Sidebar: 13 Chapters & Micro-Lessons (collapsed by default) */}
+          <div className={showCourseOutline ? "lg:col-span-4 space-y-3" : "hidden"}>
             <div className="flex items-center justify-between px-1">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                 13 ta Bob (Chapters 0–12)
@@ -560,7 +577,7 @@ export function HuggingFaceCourseExplorer({
           </div>
 
           {/* Right Area: Active Chapter Header & Lesson Experience */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className={showCourseOutline ? "lg:col-span-8 space-y-6" : "lg:col-span-12 space-y-6"}>
             {/* Chapter Context & Track Overlay Bar */}
             <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
@@ -627,27 +644,36 @@ export function HuggingFaceCourseExplorer({
                   </h3>
                 </div>
 
-                {/* Shared Completion Indicator */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    const nextVal = !isCurrentLessonDone;
-                    setMicroLessonCompleted(currentLesson.id, nextVal);
-                    setCompleted(canonicalLessonId, nextVal);
-                  }}
-                  className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
-                    isCurrentLessonDone
-                      ? "bg-emerald-500 text-slate-950 border-emerald-400"
-                      : "bg-slate-950 text-slate-300 hover:text-white border-slate-800"
-                  }`}
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>
-                    {isCurrentLessonDone
-                      ? "O'zlashtirildi (Shared Progress)"
-                      : "Tugatildi deb belgilash"}
-                  </span>
-                </button>
+                <div className="flex flex-wrap items-center gap-2 shrink-0">
+                  <KnowledgeRelationshipsButton
+                    entityId={currentLesson.id}
+                    fallbackMeta={{
+                      title: currentLesson.title,
+                      summary: currentLesson.objective,
+                    }}
+                  />
+                  {/* Shared Completion Indicator */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const nextVal = !isCurrentLessonDone;
+                      setMicroLessonCompleted(currentLesson.id, nextVal);
+                      setCompleted(canonicalLessonId, nextVal);
+                    }}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                      isCurrentLessonDone
+                        ? "bg-emerald-500 text-slate-950 border-emerald-400"
+                        : "bg-slate-950 text-slate-300 hover:text-white border-slate-800"
+                    }`}
+                  >
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>
+                      {isCurrentLessonDone
+                        ? "O'zlashtirildi (Shared Progress)"
+                        : "Tugatildi deb belgilash"}
+                    </span>
+                  </button>
+                </div>
               </div>
 
               {/* Canonical Match Notice (if overlapping with an existing AI Atlas lesson) */}
