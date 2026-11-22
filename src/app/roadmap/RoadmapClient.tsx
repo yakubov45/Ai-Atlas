@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import {
   BarChart3,
+  Brain,
   Cpu,
   Database,
   List,
@@ -29,6 +30,7 @@ import { DataScienceExplorer } from "@/components/curriculum/DataScienceExplorer
 import { PythonDeveloperExplorer } from "@/components/curriculum/PythonDeveloperExplorer";
 import { DataEngineeringExplorer } from "@/components/curriculum/DataEngineeringExplorer";
 import { PromptEngineeringExplorer } from "@/components/curriculum/PromptEngineeringExplorer";
+import { DeepLearningArchitecturesRoadmap } from "@/components/visualizations/DeepLearningArchitecturesRoadmap";
 import {
   getLessonRoleInPath,
   SPECIALIZATION_PATHS,
@@ -46,6 +48,7 @@ type RoadmapTab =
   | "python-dev"
   | "data-eng"
   | "prompt-eng"
+  | "deep-learning"
   | "graph";
 
 const VALID_TABS = new Set<RoadmapTab>([
@@ -57,6 +60,7 @@ const VALID_TABS = new Set<RoadmapTab>([
   "python-dev",
   "data-eng",
   "prompt-eng",
+  "deep-learning",
   "graph",
 ]);
 
@@ -96,6 +100,8 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
         targetTab = "data-eng";
       } else if (tabParam === "prompt" || tabParam === "prompt-eng") {
         targetTab = "prompt-eng";
+      } else if (tabParam === "deep-learning" || tabParam === "dl" || tabParam === "architectures") {
+        targetTab = "deep-learning";
       } else if (VALID_TABS.has(tabParam as RoadmapTab)) {
         targetTab = tabParam as RoadmapTab;
       }
@@ -278,6 +284,19 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
 
           <button
             type="button"
+            onClick={() => handleTabChange("deep-learning")}
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-colors cursor-pointer ${
+              view === "deep-learning"
+                ? "bg-amber-500 text-slate-950 font-bold shadow-sm"
+                : "bg-slate-950 border border-slate-800 text-slate-300 hover:text-white"
+            }`}
+          >
+            <Brain className="w-4 h-4" />
+            <span>Deep Learning (16 Arxitektura • 6 Savol)</span>
+          </button>
+
+          <button
+            type="button"
             onClick={() => handleTabChange("python-dev")}
             className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-colors cursor-pointer ${
               view === "python-dev"
@@ -373,7 +392,9 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
         </Link>
       </div>
 
-      {view === "prompt-eng" ? (
+      {view === "deep-learning" ? (
+        <DeepLearningArchitecturesRoadmap />
+      ) : view === "prompt-eng" ? (
         <PromptEngineeringExplorer initialPhaseId={urlParams.phase} />
       ) : view === "data-eng" ? (
         <DataEngineeringExplorer initialPhaseId={urlParams.phase} />

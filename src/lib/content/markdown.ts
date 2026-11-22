@@ -117,6 +117,13 @@ const SCHEME_KIND: Record<string, ContentRefKind> = {
   ref: "reference",
 };
 
+const SPECIAL_LEARN_ROUTES = new Set([
+  "map",
+  "ds-ml-ai-12weeks",
+  "hugging-face-llm-course",
+  "deep-learning-architectures",
+]);
+
 /** Parses an internal href into a content reference, or null for external/other links. */
 export function parseInternalHref(href: string): Omit<ContentRefUse, "raw" | "line"> | null {
   const scheme = /^(lesson|glossary|viz|ref):([^#?\s]+)(?:#(.+))?$/.exec(href);
@@ -125,7 +132,10 @@ export function parseInternalHref(href: string): Omit<ContentRefUse, "raw" | "li
     return { kind, target: scheme[2] as string, ...(scheme[3] ? { anchor: scheme[3] } : {}) };
   }
   const learn = /^\/learn\/([^/#?]+)\/?(?:#(.+))?$/.exec(href);
-  if (learn) return { kind: "lesson", target: learn[1] as string, ...(learn[2] ? { anchor: learn[2] } : {}) };
+  if (learn) {
+    if (SPECIAL_LEARN_ROUTES.has(learn[1] as string)) return null;
+    return { kind: "lesson", target: learn[1] as string, ...(learn[2] ? { anchor: learn[2] } : {}) };
+  }
   const glossary = /^\/glossary\/?#(.+)$/.exec(href);
   if (glossary) return { kind: "glossary", target: glossary[1] as string };
   const viz = /^\/visual-lab\/([^/#?]+)\/?$/.exec(href);

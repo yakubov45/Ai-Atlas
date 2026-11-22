@@ -35,6 +35,7 @@ export function Header() {
   const navLinks = [
     { href: "/learn", label: uz.nav.learn, icon: BookOpen },
     { href: "/learn/hugging-face-llm-course", label: "HF LLM Course", icon: Sparkles },
+    { href: "/learn/deep-learning-architectures", label: "16 Arxitektura", icon: Network },
     { href: "/learn/ds-ml-ai-12weeks", label: "12 Haftalik Reja", icon: Calendar },
     { href: "/learn/map", label: "Bilimlar xaritasi", icon: Network },
     { href: "/videos", label: "Videolar", icon: Film },
@@ -49,6 +50,9 @@ export function Header() {
   const isLinkActive = (href: string) => {
     if (href === "/learn/hugging-face-llm-course") {
       return pathname.startsWith("/learn/hugging-face-llm-course");
+    }
+    if (href === "/learn/deep-learning-architectures") {
+      return pathname.startsWith("/learn/deep-learning-architectures");
     }
     if (href === "/learn/ds-ml-ai-12weeks") {
       return pathname === "/learn/ds-ml-ai-12weeks";
@@ -78,6 +82,7 @@ export function Header() {
       if (
         pathname === "/learn/map" ||
         pathname === "/learn/ds-ml-ai-12weeks" ||
+        pathname === "/learn/deep-learning-architectures" ||
         pathname.startsWith("/learn/hugging-face-llm-course")
       ) {
         return false;

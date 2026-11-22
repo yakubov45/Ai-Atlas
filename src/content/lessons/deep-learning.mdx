@@ -77,3 +77,33 @@ Transformer arxitekturasi va uning diqqat (attention) mexanizmi zamonaviy katta 
 
 <Visualization id="neural-network-explorer" />
 
+## 8. Deep Learning Tarixi: 16 Asosiy Arxitektura va 6 Fundamental Savol (1958–2023)
+
+Deep Learning sohasi sun'iy neyronlar rivojlanishi davomida 6 ta buyuk savol va 16 ta burilish nuqtasi bo'lgan ilmiy maqolalar orqali shakllandi:
+
+1. **Yakka neyron nimani o'rgana oladi? (1958–1986)**:
+   - **1. Perceptron (1958, Rosenblatt)** — bitta neyron va chiziqli chegaralovchi gipertekislik.
+   - **2. MLP (1986, Rumelhart, Hinton, Williams)** — ko'p qatlamlar va Backpropagation orqali chiziqli ajralmaydigan (XOR) vazifalarni yechish.
+2. **Tasvirga qanday qarash kerak? (1998–2015)**:
+   - **3. CNN (1998, LeCun et al.)** — konvolyutsiya, vaznlarni ulashish va lokal retseptiv maydonlar.
+   - **4. ResNet (2015, He et al.)** — $F(x) + x$ residual skip connection orqali gradient so'nishini yengib, 152+ qatlamli chuqur tarmoqlarni o'qitish.
+3. **Gapni qanday o'qish mumkin? (1990–2014)**:
+   - **5. Word Embeddings (2013, Mikolov et al.)** — Skip-Gram & CBOW bilan semantik so'z vektorlari.
+   - **6. RNN (1990, Elman)** — ichki yashirin xotira holati $h_t$.
+   - **7. LSTM (1997, Hochreiter & Schmidhuber)** — Forget, Input, Output eshiklari va Constant Error Carousel.
+   - **8. GRU (2014, Cho et al.)** — Reset va Update eshiklari orqali soddaroq va tezroq ketma-ketlik modelini yaratish.
+4. **Bir gapni boshqa gapga qanday aylantirish mumkin? (2014)**:
+   - **9. Seq2Seq (2014, Sutskever et al.)** — Encoder-Decoder arxitekturasi orqali ixtiyoriy uzunlikdagi ketma-ketliklarni tarjima qilish.
+   - **10. Additive Attention (2014, Bahdanau et al.)** — butun gapni bitta qattiq vektorga siqishdan qutulib, kerakli so'zlarga dinamik diqqat qaratish.
+5. **Agar har bir so'z bir vaqtda boshqa barcha so'zlarga qarasa-chi? (2017–2018)**:
+   - **11. Self-Attention (2017, Vaswani et al.)** — $Q, K, V$ proyeksiyalari orqali $O(1)$ parallel masofaviy bog'liqliklar.
+   - **12. Transformer (2017, Vaswani et al.)** — rekurrentlikdan butkul voz kechgan Stacked Encoder-Decoder arxitekturasi.
+   - **13. BERT (2018, Devlin et al.)** — Masked Language Modeling (MLM) bilan ikki tomonlama chuqur kontekstli tushunish.
+   - **14. GPT (2018, Radford et al.)** — Causal (autoregressive) Decoder orqali keyingi tokenni bashorat qilib matn generatsiya qilish.
+6. **Tarmoqni qanday kattalashtirish va cheksiz uzun kontekst o'qish mumkin? (2017–2023)**:
+   - **15. Mixture of Experts / MoE (2017, Shazeer et al.)** — Sparse gating orqali faqat Top-$k$ ekspertlarni faollashtirib, hisoblash quvvatini oshirmasdan yuzlab milliard parametrlarga kengayish.
+   - **16. Mamba / Selective SSM (2023, Gu & Dao)** — kirishga qarab filtr parametrlarini tanlovchi uzluksiz holatlar fazosi (Selective State Space) orqali $O(N)$ chiziqli murakkablikda millionlab tokenlarni qayta ishlash.
+
+👉 **Interaktiv Laboratoriya va Ilmiy Sxemalar**: [16 Arxitektura Xaritasi](/learn/deep-learning-architectures) yoki [Roadmap Deep Learning bo'limi](/roadmap?tab=deep-learning) orqali barcha 16 arxitekturaning interaktiv vektor sxemalari, original ilmiy maqolalari, matematik formulalari va jonli forward-pass simulyatoridan foydalanishingiz mumkin.
+
+
