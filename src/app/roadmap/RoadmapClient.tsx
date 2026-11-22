@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
+import Link from "next/link";
 import {
   BarChart3,
   Cpu,
@@ -340,6 +341,36 @@ export function RoadmapClient({ lessons }: { lessons: readonly LessonSummary[] }
             <span>{uz.roadmap.graphView}</span>
           </button>
         </div>
+      </div>
+
+      {/* Shared Course Module Callout: Hugging Face LLM Course */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/35 via-slate-900/90 to-violet-950/35 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-bold">
+              🤗 Shared Collection • Hugging Face LLM Course
+            </span>
+            <span className="text-slate-400 font-mono text-[11px]">
+              13 Bob • 99 Bo&apos;lim • 220 Mikro-Dars (6 ta mavjud yo&apos;nalish uchun umumiy modul)
+            </span>
+          </div>
+          <p className="text-xs text-slate-300">
+            Tanlangan kasbiy yo&apos;nalishga moslashtirilgan trackOverlay (Deep / Supporting / Overview), Tokenizer &amp; Padding Lab va kanonik progress integratsiyasi.
+          </p>
+        </div>
+        <Link
+          href={`/learn/hugging-face-llm-course?track=${
+            view === "data-scientist"
+              ? "data-sci"
+              : view === "list" || view === "graph" || view === "ml-ds"
+              ? "ai-engineer"
+              : view
+          }`}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shrink-0 self-start sm:self-auto transition-all"
+        >
+          <span>HF LLM Kursini Ko&apos;rish</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
 
       {view === "prompt-eng" ? (

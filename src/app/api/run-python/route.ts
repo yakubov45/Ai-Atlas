@@ -48,7 +48,16 @@ all_passed = True
 repl_output = ""
 
 # Execute user code in isolated global scope
-scope = {"__name__": "__main__"}
+def _expect_value_error(fn, *args, **kwargs):
+    try:
+        fn(*args, **kwargs)
+        return False
+    except ValueError:
+        return True
+    except Exception:
+        return False
+
+scope = {"__name__": "__main__", "_expect_value_error": _expect_value_error}
 
 try:
     # Try parsing AST to check if last statement is an expression

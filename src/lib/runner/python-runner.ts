@@ -270,6 +270,32 @@ function convertSimplePythonToJs(userCode: string) {
         return true;
       }
 
+      // 6. Hugging Face LLM Course: pad_batch(sequences, pad_id=0, max_length=None)
+      if (userCode.includes("def pad_batch")) {
+        if (
+          userCode.includes("pass") &&
+          !userCode.includes("return")
+        ) {
+          return false;
+        }
+        if (tc.id === "hf-pad-test-4-validation") {
+          return userCode.includes("ValueError");
+        }
+        return (
+          userCode.includes("return") &&
+          (userCode.includes("input_ids") || userCode.includes("attention_mask") || userCode.includes("[1]"))
+        );
+      }
+
+      // 7. Hugging Face LLM Course: bpe_merge_step / lora_layer_stats / compute_grpo_advantages
+      if (
+        userCode.includes("def bpe_merge_step") ||
+        userCode.includes("def lora_layer_stats") ||
+        userCode.includes("def compute_grpo_advantages")
+      ) {
+        return userCode.includes("return") && !userCode.trim().endsWith("pass");
+      }
+
       return true;
     },
   };
@@ -287,6 +313,15 @@ async function runInNodeCli(
     const cp = await import("node:child_process");
     const script = `
 import sys, json, math
+
+def _expect_value_error(fn, *args, **kwargs):
+    try:
+        fn(*args, **kwargs)
+        return False
+    except ValueError:
+        return True
+    except Exception:
+        return False
 
 ${userCode}
 
@@ -474,6 +509,15 @@ export async function runPythonCode(
         try {
           const testScript = `
 import math
+
+def _expect_value_error(fn, *args, **kwargs):
+    try:
+        fn(*args, **kwargs)
+        return False
+    except ValueError:
+        return True
+    except Exception:
+        return False
 
 ${userCode}
 

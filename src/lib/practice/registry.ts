@@ -10,6 +10,7 @@ import type { LearningDepth } from "@/lib/curriculum/paths";
 import { PYTHON_344_LESSONS_MAP } from "@/lib/curriculum/python-344-curriculum";
 import { getAi291LessonById } from "@/lib/curriculum/ai-engineering-291-dataset";
 import { getMlDs520LessonById } from "@/lib/curriculum/ml-ds-520-dataset";
+import { getHfLessonById } from "@/lib/curriculum/hf-llm-course";
 
 export const PUBLISHED_PRACTICES: LessonPractice[] = [
   // -------------------------------------------------------------------------
@@ -975,6 +976,40 @@ export function getLessonPractice(
         testRunnerCode: task.testCode,
       },
       status: "published",
+    };
+  }
+
+  const hfLesson = getHfLessonById(normalized);
+  if (hfLesson && hfLesson.publishStatus === "published" && hfLesson.publishedContent) {
+    const pub = hfLesson.publishedContent;
+    const activeDepth = _depth ?? "understand";
+    return {
+      id: `prac-${hfLesson.id}-${activeDepth}`,
+      lessonId: hfLesson.id,
+      depth: activeDepth,
+      objectiveUz: hfLesson.objective,
+      prerequisites: pub.prerequisitesUz,
+      theorySteps: [
+        {
+          id: `th-${hfLesson.id}-overview`,
+          title: pub.depths.overview.titleUz,
+          bodyMdx: pub.depths.overview.bodyUz,
+        },
+        {
+          id: `th-${hfLesson.id}-understand`,
+          title: pub.depths.understand.titleUz,
+          bodyMdx: pub.depths.understand.bodyUz,
+        },
+        {
+          id: `th-${hfLesson.id}-master`,
+          title: pub.depths.master.titleUz,
+          bodyMdx: pub.depths.master.bodyUz,
+        },
+      ],
+      examples: [pub.example1, pub.example2],
+      exercise: pub.exercise,
+      status: "published",
+      sourceRefs: [hfLesson.sourceAttribution.chapterUrl],
     };
   }
 

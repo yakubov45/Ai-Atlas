@@ -322,6 +322,47 @@ export function LearnCatalogClient({
         })}
       </div>
 
+      {/* Shared Course Module Callout: Hugging Face LLM Course (13 Chapters / 220 Micro-Lessons) */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-amber-950/40 via-slate-900/90 to-violet-950/40 border border-amber-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
+        <div className="space-y-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[11px] font-bold">
+              🤗 Shared Course Module • Apache-2.0
+            </span>
+            <span className="text-[11px] font-mono text-slate-400">
+              13 Bob (hf-00..hf-12) • 99 Bo&apos;lim • 220 Mikro-Dars • 6 ta Mavjud Yo&apos;nalish Overlayi
+            </span>
+          </div>
+          <h3 className="text-base sm:text-lg font-black text-white">
+            Hugging Face LLM Course — Umumiy (Shared) O&apos;quv To&apos;plami
+          </h3>
+          <p className="text-xs text-slate-300 max-w-3xl">
+            Yangi 7-yo&apos;nalish emas: mavjud 6 ta kasbiy yo&apos;nalish uchun moslashtirilgan Tokenizer, Padding &amp; Attention Mask interaktiv laboratoriyasi, BPE, LoRA/QLoRA va Open R1 (GRPO) amaliy darslari. Kanonik darslar progressi barcha yo&apos;nalishlarda umumiy saqlanadi.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <Link
+            href={`/learn/hugging-face-llm-course?track=${
+              activeTab === "data-scientist"
+                ? "data-sci"
+                : activeTab === "articles"
+                ? "ai-engineer"
+                : activeTab
+            }`}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black transition-all shadow-md"
+          >
+            <span>HF LLM Kursini Ochish</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href="/learn/hugging-face-llm-course?lesson=hf-02-05-01"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all"
+          >
+            <span>Tokenizer &amp; Padding Lab</span>
+          </Link>
+        </div>
+      </div>
+
       {/* Conditionally Render Track Explorer or General Articles Catalog */}
       {activeTab === "python-dev" ? (
         <div className="space-y-6">
