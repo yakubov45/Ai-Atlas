@@ -243,8 +243,7 @@ export function HuggingFaceCourseExplorer({
               13 Bob (0–12) • 99 Bo‘lim • 220 Reja Tuguni
             </span>
             <span className="px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-bold">
-              {auditReport.publishedLessonsCount} ta To‘liq Nashr Etilgan
-              Vertical Slice
+              {auditReport.publishedLessonsCount} / {auditReport.totalMicroLessonsCount} ta Dars To‘liq Nashr Etilgan (100% Published)
             </span>
           </div>
         </div>
@@ -347,16 +346,22 @@ export function HuggingFaceCourseExplorer({
             </button>
           </div>
 
-          {/* Quick Jump to Published Vertical Slices */}
+          {/* Quick Jump to Chapters */}
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-[11px] font-bold text-emerald-400 mr-1">
-              Tayyor Amaliy Darslar:
+              Asosiy Boblarga Sakrash:
             </span>
             {[
-              { id: "hf-02-05-01", label: "Ch.2 Padding & Mask" },
+              { id: "hf-00-01-01", label: "Ch.0 Setup" },
+              { id: "hf-01-01-01", label: "Ch.1 Models" },
+              { id: "hf-02-05-01", label: "Ch.2 Padding" },
+              { id: "hf-03-01-01", label: "Ch.3 Fine-tune" },
+              { id: "hf-05-01-01", label: "Ch.5 Datasets" },
               { id: "hf-06-06-02", label: "Ch.6 BPE Merge" },
-              { id: "hf-11-04-02", label: "Ch.11 LoRA Rank" },
-              { id: "hf-12-04-02", label: "Ch.12 GRPO Reward" },
+              { id: "hf-07-01-01", label: "Ch.7 NLP" },
+              { id: "hf-09-01-01", label: "Ch.9 Gradio" },
+              { id: "hf-11-04-02", label: "Ch.11 LoRA" },
+              { id: "hf-12-04-02", label: "Ch.12 GRPO" },
             ].map((item) => (
               <button
                 key={item.id}
@@ -400,8 +405,8 @@ export function HuggingFaceCourseExplorer({
                 }`}
               >
                 {statusFilter === "published_only"
-                  ? "Faqat Published (7)"
-                  : "Barchasi (220)"}
+                  ? `Faqat Published (${auditReport.publishedLessonsCount})`
+                  : `Barchasi (${auditReport.totalMicroLessonsCount})`}
               </button>
             </div>
 
