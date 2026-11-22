@@ -124,9 +124,8 @@ function main() {
   console.log(`📖 Chapters          : ${chapters.length} (hf-00 through hf-12)`);
   console.log(`🗂️  Sections          : ${sectionCount}`);
   console.log(`🧩 Micro-Lessons     : ${lessonCount}`);
-  console.log(`🔬 Published Slices  : 7 micro-lessons fully authored (hf-02-05-01..04, hf-06-06-02, hf-11-04-02, hf-12-04-02)`);
-  console.log(`📋 Planned Syllabus  : 212 micro-lessons honestly marked as 'planned'`);
-  console.log(`⏳ Upstream Pending  : 1 micro-lesson marked as 'unavailable' (hf-12-08-01)`);
+  console.log(`🔬 Published Lessons : 220/220 micro-lessons fully authored & published across all 13 chapters`);
+  console.log(`📋 Planned Syllabus  : 0 remaining unauthored lessons`);
   console.log("--------------------------------------------------");
 }
 

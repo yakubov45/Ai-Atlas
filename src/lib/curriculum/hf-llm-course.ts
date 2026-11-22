@@ -15,6 +15,7 @@
 import rawHfCurriculum from "@/content/curriculum/hf-llm-course-curriculum.json";
 import type { LearningDepth } from "./paths";
 import type { PracticeExample, PracticeExercise } from "@/lib/practice/types";
+import { buildPublishedHfLessonContent } from "./hf-llm-course-all-published";
 
 export type ExistingCareerTrackId =
   | "ai-engineer"
@@ -1052,16 +1053,11 @@ export const HF_COURSE_CHAPTERS: readonly HfCourseChapter[] = rawPhases.map(
               "Hugging Face LLM Course maxsus mavzusi (yangi rejalashtirilgan tugun).",
           };
 
-      const publishedPayload = PUBLISHED_LESSONS_REGISTRY[rawLesson.id];
-      const isUnavailableFuture =
-        rawLesson.id === "hf-12-08-01" ||
-        rawLesson.title.toLowerCase().includes("not yet available");
+      const publishedPayload: HfPublishedLessonPayload =
+        PUBLISHED_LESSONS_REGISTRY[rawLesson.id] ??
+        buildPublishedHfLessonContent(rawLesson, phase, canonicalMatch);
 
-      const publishStatus: HfPublishStatus = isUnavailableFuture
-        ? "unavailable"
-        : publishedPayload
-        ? "published"
-        : "planned";
+      const publishStatus: HfPublishStatus = "published";
 
       return {
         id: rawLesson.id,

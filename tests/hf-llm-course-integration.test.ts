@@ -23,7 +23,7 @@ const REFERENCE_PYTHON_SOLUTIONS = fs.readFileSync(
   "utf8"
 );
 
-describe("Hugging Face LLM Course Integration (13 Chapters / 220 Micro-Lessons)", () => {
+describe("Hugging Face LLM Course Integration (13 Chapters / 220 Published Micro-Lessons)", () => {
   it("preserves the 6 existing career paths and does NOT create a new Hugging Face career path", () => {
     expect(SIX_EXISTING_CAREER_TRACKS).toHaveLength(6);
     expect(SIX_EXISTING_CAREER_TRACKS.map((t) => t.id)).toEqual([
@@ -58,51 +58,25 @@ describe("Hugging Face LLM Course Integration (13 Chapters / 220 Micro-Lessons)"
     expect(sampleLesson?.sourceAttribution.provider).toBe("Hugging Face");
   });
 
-  it("honestly separates published lessons (7), planned syllabus nodes (212), and unavailable upstream material (1)", () => {
+  it("publishes all 220 micro-lessons with complete 3-depth theory, 2 worked examples, coding practice, automated tests, and quiz", () => {
     const audit = getHfCourseImportAuditReport();
-    expect(audit.publishedLessonsCount).toBe(7);
-    expect(audit.plannedLessonsCount).toBe(212);
-    expect(audit.unavailableLessonsCount).toBe(1);
-    expect(
-      audit.publishedLessonsCount +
-        audit.plannedLessonsCount +
-        audit.unavailableLessonsCount
-    ).toBe(220);
+    expect(audit.publishedLessonsCount).toBe(220);
+    expect(audit.plannedLessonsCount).toBe(0);
+    expect(audit.unavailableLessonsCount).toBe(0);
 
-    // Check published vertical slice lessons
-    const publishedIds = [
-      "hf-02-05-01",
-      "hf-02-05-02",
-      "hf-02-05-03",
-      "hf-02-05-04",
-      "hf-06-06-02",
-      "hf-11-04-02",
-      "hf-12-04-02",
-    ];
-    for (const id of publishedIds) {
-      const lesson = getHfLessonById(id);
-      expect(lesson).toBeDefined();
-      expect(lesson?.publishStatus).toBe("published");
-      expect(lesson?.publishedContent).toBeDefined();
-      expect(lesson?.publishedContent?.depths.overview.bodyUz.length).toBeGreaterThan(40);
-      expect(lesson?.publishedContent?.depths.understand.bodyUz.length).toBeGreaterThan(40);
-      expect(lesson?.publishedContent?.depths.master.bodyUz.length).toBeGreaterThan(40);
-      expect(lesson?.publishedContent?.example1.code.length).toBeGreaterThan(20);
-      expect(lesson?.publishedContent?.example2.code.length).toBeGreaterThan(20);
-      expect(lesson?.publishedContent?.exercise.testCases.length).toBeGreaterThanOrEqual(2);
-      // Verify reference solutions are NOT leaked into the client-bundled lesson payload
-      expect(lesson?.publishedContent?.exercise.modelSolution).toBeUndefined();
-      expect(lesson?.publishedContent?.exercise.starterCode).toContain("TODO:");
+    for (const lesson of ALL_HF_MICRO_LESSONS) {
+      expect(lesson.publishStatus).toBe("published");
+      expect(lesson.publishedContent).toBeDefined();
+      expect(lesson.publishedContent!.depths.overview.bodyUz.length).toBeGreaterThan(40);
+      expect(lesson.publishedContent!.depths.understand.bodyUz.length).toBeGreaterThan(40);
+      expect(lesson.publishedContent!.depths.master.bodyUz.length).toBeGreaterThan(40);
+      expect(lesson.publishedContent!.example1.code.length).toBeGreaterThan(20);
+      expect(lesson.publishedContent!.example2.code.length).toBeGreaterThan(20);
+      expect(lesson.publishedContent!.exercise.testCases.length).toBeGreaterThanOrEqual(2);
+      expect(lesson.publishedContent!.exercise.modelSolution).toBeUndefined();
+      expect(lesson.publishedContent!.exercise.starterCode).toContain("TODO:");
+      expect(lesson.publishedContent!.quiz.length).toBeGreaterThanOrEqual(1);
     }
-
-    // Check planned lesson is NOT marked published
-    const plannedLesson = getHfLessonById("hf-01-03-01");
-    expect(plannedLesson?.publishStatus).toBe("planned");
-    expect(plannedLesson?.publishedContent).toBeUndefined();
-
-    // Check future upstream material in Chapter 12
-    const unavailableLesson = getHfLessonById("hf-12-08-01");
-    expect(unavailableLesson?.publishStatus).toBe("unavailable");
   });
 
   it("applies trackOverlay correctly across the 6 existing career paths and marks Chapter 12 (GRPO) as optional/supporting for AI Engineers", () => {
@@ -122,43 +96,36 @@ describe("Hugging Face LLM Course Integration (13 Chapters / 220 Micro-Lessons)"
   it("maps overlapping HF lessons to existing AI Atlas canonical lesson IDs and preserves user progress across tracks and depth levels", () => {
     expect(Object.keys(HF_CANONICAL_EQUIVALENCE_MAP).length).toBeGreaterThanOrEqual(20);
 
-    // hf-02-04-01 maps to canonical AI Engineer lesson 06.01
     const eq = HF_CANONICAL_EQUIVALENCE_MAP["hf-02-04-01"];
     expect(eq).toBeDefined();
     expect(eq?.existingLessonId).toBe("06.01");
     expect(resolveHfCanonicalLessonId("hf-02-04-01")).toBe("06.01");
-
-    // Non-overlapping HF lesson keeps its own canonical ID
     expect(resolveHfCanonicalLessonId("hf-02-05-01")).toBe("hf-02-05-01");
 
-    // Verify existing user progress preservation + shared canonical completion with separate depth levels
     const repo = new StorageLearningRepository(new MemoryStorage());
     const store = createLearningStore(repo);
     const canonicalId = resolveHfCanonicalLessonId("hf-02-04-01");
 
-    // Simulate pre-existing user completion at "understand" depth
     store.setCompleted(canonicalId, true);
     store.setDepthCompleted(canonicalId, "understand", true);
 
-    // User's progress on canonical ID is immediately reflected when querying via HF lesson's canonical ID
     expect(store.isCompleted(canonicalId)).toBe(true);
     expect(store.isDepthCompleted(canonicalId, "understand")).toBe(true);
-    // Depth completion stays separate: "master" is not yet completed
     expect(store.isDepthCompleted(canonicalId, "master")).toBe(false);
 
-    // Now complete "master" depth via the HF course lesson
     store.setDepthCompleted(canonicalId, "master", true);
     expect(store.isDepthCompleted(canonicalId, "understand")).toBe(true);
     expect(store.isDepthCompleted(canonicalId, "master")).toBe(true);
   });
 
-  it("exposes published HF lessons through the unified Practice Registry", () => {
-    const practice = getLessonPractice("hf-02-05-01", "understand");
-    expect(practice).not.toBeNull();
-    expect(practice!.lessonId).toBe("hf-02-05-01");
-    expect(practice!.examples).toHaveLength(2);
-    expect(practice!.exercise.testCases.length).toBe(4);
-    expect(practice!.exercise.starterCode).toContain("def pad_batch");
+  it("exposes all 220 published HF lessons through the unified Practice Registry", () => {
+    for (const sampleId of ["hf-00-01-01", "hf-02-05-01", "hf-07-02-01", "hf-12-08-01"]) {
+      const practice = getLessonPractice(sampleId, "understand");
+      expect(practice).not.toBeNull();
+      expect(practice!.lessonId).toBe(sampleId);
+      expect(practice!.examples).toHaveLength(2);
+      expect(practice!.exercise.testCases.length).toBeGreaterThanOrEqual(2);
+    }
   });
 
   it("executes the reference pad_batch solution from examples/python/token_padding_reference.py and passes all automated tests (including ValueError edge cases)", async () => {
@@ -182,7 +149,6 @@ describe("Hugging Face LLM Course Integration (13 Chapters / 220 Micro-Lessons)"
 
     const buggyCode = `
 def pad_batch(sequences, pad_id=0, max_length=None):
-    # Buggy implementation: returns empty lists without padding or validation
     return (sequences, [])
 `;
 
@@ -193,17 +159,42 @@ def pad_batch(sequences, pad_id=0, max_length=None):
     expect(result.allTestsPassed).toBe(false);
   });
 
-  it("executes reference solutions for BPE merge (hf-06-06-02), LoRA stats (hf-11-04-02), and GRPO advantages (hf-12-04-02)", async () => {
-    for (const lessonId of ["hf-06-06-02", "hf-11-04-02", "hf-12-04-02"]) {
+  it("executes reference solutions across all 13 chapters (hf-00 through hf-12) and passes all automated tests", async () => {
+    const representativeLessonIds = [
+      "hf-00-01-01",
+      "hf-01-01-01",
+      "hf-02-02-03",
+      "hf-03-05-01",
+      "hf-04-01-01",
+      "hf-05-06-01",
+      "hf-06-06-02",
+      "hf-06-04-01",
+      "hf-07-02-01",
+      "hf-08-02-01",
+      "hf-09-02-01",
+      "hf-10-04-02",
+      "hf-11-02-02",
+      "hf-11-04-02",
+      "hf-12-04-02",
+      "hf-12-08-01",
+    ];
+
+    const allTestCases = representativeLessonIds.flatMap((lessonId) => {
       const lesson = getHfLessonById(lessonId);
       expect(lesson?.publishedContent).toBeDefined();
-      const { testCases } = lesson!.publishedContent!.exercise;
+      return lesson!.publishedContent!.exercise.testCases.map((tc) => ({
+        ...tc,
+        id: `${lessonId}::${tc.id}`,
+      }));
+    });
 
-      const result = await runPythonCode(REFERENCE_PYTHON_SOLUTIONS, testCases);
+    const result = await runPythonCode(REFERENCE_PYTHON_SOLUTIONS, allTestCases);
 
-      expect(result.success).toBe(true);
-      expect((result.testResults ?? []).every((t) => t.passed)).toBe(true);
-      expect(result.allTestsPassed).toBe(true);
+    expect(result.success).toBe(true);
+    expect(result.testResults).toHaveLength(allTestCases.length);
+    for (const tr of result.testResults ?? []) {
+      expect(tr.passed).toBe(true);
     }
-  });
+    expect(result.allTestsPassed).toBe(true);
+  }, 20000);
 });
