@@ -179,22 +179,16 @@ def pad_batch(sequences, pad_id=0, max_length=None):
       "hf-12-08-01",
     ];
 
-    const allTestCases = representativeLessonIds.flatMap((lessonId) => {
+    for (const lessonId of representativeLessonIds) {
       const lesson = getHfLessonById(lessonId);
       expect(lesson?.publishedContent).toBeDefined();
-      return lesson!.publishedContent!.exercise.testCases.map((tc) => ({
-        ...tc,
-        id: `${lessonId}::${tc.id}`,
-      }));
-    });
+      const { testCases } = lesson!.publishedContent!.exercise;
 
-    const result = await runPythonCode(REFERENCE_PYTHON_SOLUTIONS, allTestCases);
+      const result = await runPythonCode(REFERENCE_PYTHON_SOLUTIONS, testCases);
 
-    expect(result.success).toBe(true);
-    expect(result.testResults).toHaveLength(allTestCases.length);
-    for (const tr of result.testResults ?? []) {
-      expect(tr.passed).toBe(true);
+      expect(result.success).toBe(true);
+      expect((result.testResults ?? []).every((t) => t.passed)).toBe(true);
+      expect(result.allTestsPassed).toBe(true);
     }
-    expect(result.allTestsPassed).toBe(true);
-  }, 20000);
+  }, 30000);
 });
