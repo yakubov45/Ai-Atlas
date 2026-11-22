@@ -137,6 +137,18 @@ const SLUG_TO_CONCEPT_ID: Readonly<Record<string, string>> = {
   "nn-10-batch-epoch": "gradient-descent-optimizers",
   "nn-11-overfitting-regularization": "supervised-learning-foundations",
   "nn-12-gpu-matmul-pytorch": "linear-algebra-matrices",
+  "tr-01-tokenization-bpe": "tokenization-bpe",
+  "tr-02-embeddings-rnn-limits": "embeddings-vector-spaces",
+  "tr-03-self-attention-qkv": "attention-mechanism",
+  "tr-04-transformer-architecture": "transformer-architecture",
+  "tr-05-bert-vs-gpt": "dl-gpt",
+  "tr-06-scaling-laws-chinchilla": "dl-moe",
+  "tr-07-rope-gqa-rmsnorm": "dl-gpt",
+  "tr-08-decoding-prompting": "prompt-engineering-cot",
+  "tr-09-pretraining-data-bpb": "loss-cost-functions",
+  "tr-10-midtraining-yarn-sft": "fine-tuning-lora-peft",
+  "tr-11-alignment-rlhf-dpo": "fine-tuning-lora-peft",
+  "tr-12-reasoning-grpo-distill": "fine-tuning-lora-peft",
 };
 
 const LAB_LABELS: Readonly<Record<string, string>> = {

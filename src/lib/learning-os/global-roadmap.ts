@@ -57,7 +57,7 @@ export interface GlobalRoadmapNode {
     id: string;
     label: string;
     href: string;
-    source: "mdx" | "python-dev" | "ai-eng" | "ml-ds" | "hf-llm" | "dl-16" | "nn-learn" | "data-eng" | "prompt-eng";
+    source: "mdx" | "python-dev" | "ai-eng" | "ml-ds" | "hf-llm" | "dl-16" | "nn-learn" | "stanford-cme295" | "data-eng" | "prompt-eng";
   }>;
   relatedLabs: Array<{
     id: string;
@@ -514,6 +514,10 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "transformers", label: "Transformers (MDX • 20 mikro-qadam)", href: "/learn/transformers", source: "mdx" },
       { id: "hf-01-04-02", label: "HF Ch.1 Attention & Transformer", href: "/learn/hugging-face-llm-course?lesson=hf-01-04-02", source: "hf-llm" },
       { id: "dl-16-transformer", label: "Self-Attention, Transformer, BERT, GPT", href: "/learn/deep-learning-architectures", source: "dl-16" },
+      { id: "tr-03-self-attention-qkv", label: "Q/K/V Self-Attention (CME 295)", href: "/learn/transformers-cme295?lesson=tr-03-self-attention-qkv", source: "stanford-cme295" },
+      { id: "tr-04-transformer-architecture", label: "Encoder-Decoder & Multi-Head (CME 295)", href: "/learn/transformers-cme295?lesson=tr-04-transformer-architecture", source: "stanford-cme295" },
+      { id: "tr-05-bert-vs-gpt", label: "BERT vs GPT (CME 295)", href: "/learn/transformers-cme295?lesson=tr-05-bert-vs-gpt", source: "stanford-cme295" },
+      { id: "tr-07-rope-gqa-rmsnorm", label: "RoPE, GQA & RMSNorm (CME 295)", href: "/learn/transformers-cme295?lesson=tr-07-rope-gqa-rmsnorm", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "self-attention-explorer", titleUz: "Q/K/V Self-Attention Heatmap Lab", href: "/visual-lab/self-attention-explorer" },
@@ -540,6 +544,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "tokenization", label: "Tokenization (MDX)", href: "/learn/tokenization", source: "mdx" },
       { id: "hf-02-05-01", label: "HF Ch.2 Padding & Attention Mask", href: "/learn/hugging-face-llm-course?lesson=hf-02-05-01", source: "hf-llm" },
       { id: "hf-06-06-02", label: "HF Ch.6 BPE Merge Algorithm", href: "/learn/hugging-face-llm-course?lesson=hf-06-06-02", source: "hf-llm" },
+      { id: "tr-01-tokenization-bpe", label: "Tokenization & BPE Tradeoff (CME 295)", href: "/learn/transformers-cme295?lesson=tr-01-tokenization-bpe", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "token-padding-lab", titleUz: "Tokenizer & Attention Mask Lab", href: "/learn/hugging-face-llm-course?lesson=hf-02-05-01" },
@@ -563,6 +568,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
     associatedLessons: [
       { id: "embeddings", label: "Embeddings (MDX)", href: "/learn/embeddings", source: "mdx" },
       { id: "13.01", label: "Vektor Bazalari (AI Eng Phase 13)", href: "/roadmap?tab=ai-engineer&phase=13", source: "ai-eng" },
+      { id: "tr-02-embeddings-rnn-limits", label: "Embeddings, Word2Vec & RNN Limits (CME 295)", href: "/learn/transformers-cme295?lesson=tr-02-embeddings-rnn-limits", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "cosine-similarity-explorer", titleUz: "Embedding Space & Cosine Lab", href: "/visual-lab/cosine-similarity-explorer" },
@@ -587,6 +593,10 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "hf-03-01-01", label: "HF Ch.3 Trainer Fine-Tuning", href: "/learn/hugging-face-llm-course?lesson=hf-03-01-01", source: "hf-llm" },
       { id: "hf-11-04-02", label: "HF Ch.11 LoRA & QLoRA", href: "/learn/hugging-face-llm-course?lesson=hf-11-04-02", source: "hf-llm" },
       { id: "hf-12-04-02", label: "HF Ch.12 Open R1 GRPO", href: "/learn/hugging-face-llm-course?lesson=hf-12-04-02", source: "hf-llm" },
+      { id: "tr-09-pretraining-data-bpb", label: "Pre-Training, Teacher Forcing & BPB (CME 295)", href: "/learn/transformers-cme295?lesson=tr-09-pretraining-data-bpb", source: "stanford-cme295" },
+      { id: "tr-10-midtraining-yarn-sft", label: "Mid-Training YaRN & SFT/LoRA (CME 295)", href: "/learn/transformers-cme295?lesson=tr-10-midtraining-yarn-sft", source: "stanford-cme295" },
+      { id: "tr-11-alignment-rlhf-dpo", label: "RLHF (Bradley-Terry) & DPO (CME 295)", href: "/learn/transformers-cme295?lesson=tr-11-alignment-rlhf-dpo", source: "stanford-cme295" },
+      { id: "tr-12-reasoning-grpo-distill", label: "Reasoning GRPO & On-Policy Distillation (CME 295)", href: "/learn/transformers-cme295?lesson=tr-12-reasoning-grpo-distill", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "lora-rank-lab", titleUz: "LoRA Rank & Parameter Savings Lab", href: "/learn/hugging-face-llm-course?lesson=hf-11-04-02" },
@@ -612,6 +622,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
     associatedLessons: [
       { id: "prompt-engineering", label: "Prompt Engineering (MDX)", href: "/learn/prompt-engineering", source: "mdx" },
       { id: "pe-06-06", label: "Temperature/Top-K/Top-P (pe-06-06)", href: "/roadmap?tab=prompt-eng&phase=pe-06", source: "prompt-eng" },
+      { id: "tr-08-decoding-prompting", label: "Decoding, Batch Invariance & CoT (CME 295)", href: "/learn/transformers-cme295?lesson=tr-08-decoding-prompting", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "sampling-playground", titleUz: "Sampling Playground (T / Top-K / Top-P)", href: "/roadmap?tab=prompt-eng&phase=pe-06" },
@@ -684,6 +695,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
     relatedConcepts: ["gn-mlops-prod"],
     associatedLessons: [
       { id: "dl-16-moe-mamba", label: "MoE & Mamba (16 Arxitektura)", href: "/learn/deep-learning-architectures", source: "dl-16" },
+      { id: "tr-06-scaling-laws-chinchilla", label: "Scaling Laws, Chinchilla & Sparse MoE (CME 295)", href: "/learn/transformers-cme295?lesson=tr-06-scaling-laws-chinchilla", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "dl-16-map", titleUz: "MoE Top-2 Router & Mamba S6 Simulyatori", href: "/learn/deep-learning-architectures" },

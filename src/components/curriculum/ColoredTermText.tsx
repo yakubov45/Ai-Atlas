@@ -1,28 +1,30 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import {
-  NN_COLORED_TERMS,
-  TERM_FAMILY_STYLES,
-  splitTextWithColoredTerms,
-  type ColoredTermMeta,
-  type TermColorFamily,
-} from "@/lib/curriculum/how-neural-learn-terms";
+import { NN_TERM_DICTIONARY } from "@/lib/curriculum/how-neural-learn-terms";
+import type {
+  ColoredTermDictionary,
+  GenericColoredTerm,
+} from "@/lib/curriculum/colored-terms-engine";
 import { BookOpen, Search, X } from "lucide-react";
 
 interface ColoredTermTextProps {
   text: string;
   className?: string;
+  dictionary?: ColoredTermDictionary<string>;
 }
 
 /**
- * Matn ichidagi asosiy neyron tarmoq terminlarini o'z semantik oilasiga mos
- * ajratilgan rangli badge bilan ko'rsatadi. Ustiga bosilganda qisqa o'zbekcha
- * izoh chiqadi.
+ * Matn ichidagi texnik terminlarni o'z semantik oilasiga mos ajratilgan
+ * rangli badge bilan ko'rsatadi. Ustiga bosilganda o'zbekcha izohi ochiladi.
  */
-export function ColoredTermText({ text, className = "" }: ColoredTermTextProps) {
-  const tokens = useMemo(() => splitTextWithColoredTerms(text), [text]);
-  const [activeTerm, setActiveTerm] = useState<ColoredTermMeta | null>(null);
+export function ColoredTermText({
+  text,
+  className = "",
+  dictionary = NN_TERM_DICTIONARY as unknown as ColoredTermDictionary<string>,
+}: ColoredTermTextProps) {
+  const tokens = useMemo(() => dictionary.tokenize(text), [dictionary, text]);
+  const [activeTerm, setActiveTerm] = useState<GenericColoredTerm<string> | null>(null);
 
   return (
     <span className={className}>
@@ -31,7 +33,10 @@ export function ColoredTermText({ text, className = "" }: ColoredTermTextProps) 
           return <React.Fragment key={idx}>{chunk.text}</React.Fragment>;
         }
         const meta = chunk.meta;
-        const style = TERM_FAMILY_STYLES[meta.family];
+        const style = dictionary.styles[meta.family];
+        if (!style) {
+          return <React.Fragment key={idx}>{chunk.text}</React.Fragment>;
+        }
         return (
           <button
             key={idx}
@@ -47,12 +52,12 @@ export function ColoredTermText({ text, className = "" }: ColoredTermTextProps) 
           </button>
         );
       })}
-      {activeTerm ? (
+      {activeTerm && dictionary.styles[activeTerm.family] ? (
         <span className="mt-2 flex items-start justify-between gap-2 rounded-lg border border-white/15 bg-black/50 px-3 py-2 text-xs text-neutral-200">
           <span>
             <strong className="font-semibold text-white">{activeTerm.term}</strong>{" "}
             <span className="text-neutral-400">
-              ({TERM_FAMILY_STYLES[activeTerm.family].labelUz})
+              ({dictionary.styles[activeTerm.family]?.labelUz})
             </span>
             : {activeTerm.meaningUz}
           </span>
@@ -70,16 +75,24 @@ export function ColoredTermText({ text, className = "" }: ColoredTermTextProps) 
   );
 }
 
+interface ColoredTermsLegendProps {
+  dictionary?: ColoredTermDictionary<string>;
+  titleUz?: string;
+}
+
 /**
- * 5 ta termin rang oilasi va barcha rangli atamalar lug'atini ko'rsatuvchi panel.
+ * Terminlarning barcha rang oilalari va qidiriladigan izohli lug'atini ko'rsatadi.
  */
-export function ColoredTermsLegend() {
-  const [selectedFamily, setSelectedFamily] = useState<TermColorFamily | "all">("all");
+export function ColoredTermsLegend({
+  dictionary = NN_TERM_DICTIONARY as unknown as ColoredTermDictionary<string>,
+  titleUz = "Terminlar Rang Kodlari (bosib izohni o'qing)",
+}: ColoredTermsLegendProps) {
+  const [selectedFamily, setSelectedFamily] = useState<string>("all");
   const [query, setQuery] = useState("");
 
   const filteredTerms = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return NN_COLORED_TERMS.filter((item) => {
+    return dictionary.terms.filter((item) => {
       if (selectedFamily !== "all" && item.family !== selectedFamily) return false;
       if (!q) return true;
       return (
@@ -87,14 +100,16 @@ export function ColoredTermsLegend() {
         item.meaningUz.toLowerCase().includes(q)
       );
     });
-  }, [selectedFamily, query]);
+  }, [dictionary, selectedFamily, query]);
+
+  const familyKeys = Object.keys(dictionary.styles);
 
   return (
     <div className="rounded-xl border border-white/10 bg-[#0b101b] p-4">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-sm font-semibold text-white">
           <BookOpen className="h-4 w-4 text-cyan-400" />
-          <span>Terminlar Rang Kodlari (bosib izohni o&apos;qing)</span>
+          <span>{titleUz}</span>
         </div>
         <div className="relative w-full sm:w-56">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-500" />
@@ -108,7 +123,7 @@ export function ColoredTermsLegend() {
         </div>
       </div>
 
-      {/* 5 rang oilasi tugmalari */}
+      {/* Rang oilalari tugmalari */}
       <div className="mb-3 flex flex-wrap gap-1.5">
         <button
           type="button"
@@ -119,10 +134,11 @@ export function ColoredTermsLegend() {
               : "border-white/10 bg-white/5 text-neutral-400 hover:text-white"
           }`}
         >
-          Hammasi ({NN_COLORED_TERMS.length})
+          Hammasi ({dictionary.terms.length})
         </button>
-        {(Object.keys(TERM_FAMILY_STYLES) as TermColorFamily[]).map((fam) => {
-          const st = TERM_FAMILY_STYLES[fam];
+        {familyKeys.map((fam) => {
+          const st = dictionary.styles[fam];
+          if (!st) return null;
           const active = selectedFamily === fam;
           return (
             <button
@@ -145,10 +161,11 @@ export function ColoredTermsLegend() {
       {/* Terminlar ro'yxati */}
       <div className="grid max-h-60 gap-2 overflow-y-auto pr-1 sm:grid-cols-2">
         {filteredTerms.map((item) => {
-          const st = TERM_FAMILY_STYLES[item.family];
+          const st = dictionary.styles[item.family];
+          if (!st) return null;
           return (
             <div
-              key={item.term}
+              key={`${item.family}-${item.term}`}
               className="rounded-lg border border-white/10 bg-white/[0.02] p-2.5 text-xs"
             >
               <div className="mb-1 flex items-center justify-between gap-2">

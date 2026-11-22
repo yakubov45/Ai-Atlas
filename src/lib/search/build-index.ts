@@ -4,6 +4,7 @@ import { buildLearningLibraryCatalog } from "@/lib/learning-os/catalog";
 import { CANONICAL_CONCEPTS } from "@/lib/knowledge-graph/concepts";
 import { SIXTEEN_ARCHITECTURES } from "@/lib/curriculum/deep-learning-16-architectures";
 import { HOW_NEURAL_LEARN_LESSONS } from "@/lib/curriculum/how-neural-learn";
+import { TRANSFORMER_CME295_LESSONS } from "@/lib/curriculum/transformers-cme295";
 import { PUBLISHED_PRACTICES } from "@/lib/practice/registry";
 import type { SearchDocument, SearchIndex } from "./core";
 
@@ -174,12 +175,24 @@ export function buildSearchIndex(
     category: "deep-learning",
   }));
 
+  const transformerLessonDocs: SearchDocument[] = TRANSFORMER_CME295_LESSONS.map((tr) => ({
+    id: `lesson:${tr.id}`,
+    kind: "lesson" as const,
+    title: tr.titleUz,
+    description: `${tr.subtitleEn} — ${tr.analogyUz}`,
+    tags: ["transformers", "llm", "stanford-cme295", `lecture-${tr.lectureNumber}`, tr.canonicalConceptId],
+    body: [...tr.theoryParagraphsUz, tr.keyInsightUz.explanationUz].join(" "),
+    url: `/learn/transformers-cme295?lesson=${tr.id}`,
+    category: "llms-rag",
+  }));
+
   return {
     version: 1,
     generatedAt,
     documents: [
       ...repository.lessons.flatMap(lessonDocuments),
       ...nnLessonDocs,
+      ...transformerLessonDocs,
       ...repository.glossary.map(glossaryDocument),
       ...repository.visualizations.map(visualizationDocument),
       ...courseDocs,

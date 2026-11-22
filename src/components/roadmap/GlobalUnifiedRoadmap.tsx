@@ -45,6 +45,7 @@ const SOURCE_BADGE: Readonly<Record<string, string>> = {
   "hf-llm": "HF LLM",
   "dl-16": "16 DL Arx",
   "nn-learn": "NN Asoslari",
+  "stanford-cme295": "CME 295",
   "data-eng": "Data Eng",
   "prompt-eng": "Prompt Eng",
 };

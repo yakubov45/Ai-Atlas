@@ -18,17 +18,18 @@ export type TermColorFamily =
   | "optimizer"
   | "systems";
 
-export interface ColoredTermMeta {
-  term: string;
-  family: TermColorFamily;
-  meaningUz: string;
-}
+import {
+  buildTermDictionary,
+  type ColoredTermDictionary,
+  type GenericColoredTerm,
+  type GenericTextSegment,
+  type TermFamilyStyle,
+} from "./colored-terms-engine";
+
+export type ColoredTermMeta = GenericColoredTerm<TermColorFamily>;
 
 export const TERM_FAMILY_STYLES: Readonly<
-  Record<
-    TermColorFamily,
-    { labelUz: string; badgeCls: string; dotCls: string; legendCls: string }
-  >
+  Record<TermColorFamily, TermFamilyStyle>
 > = {
   structure: {
     labelUz: "Tuzilma va Parametrlar",
@@ -133,43 +134,11 @@ export const NN_COLORED_TERMS: readonly ColoredTermMeta[] = [
   { term: "CPU", family: "systems", meaningUz: "Har xil ketma-ket mantiqiy vazifalarni bajaruvchi markaziy protsessor" },
 ];
 
-export const TERM_LOOKUP = new Map<string, ColoredTermMeta>(
-  NN_COLORED_TERMS.map((t) => [t.term.toLowerCase(), t]),
-);
+export type TextSegment = GenericTextSegment<TermColorFamily>;
 
-// Sorted longest-first so multi-word phrases ("Gradient Descent") match before single words ("Gradient")
-export const TERM_REGEX = new RegExp(
-  `\\b(${[...NN_COLORED_TERMS]
-    .sort((a, b) => b.term.length - a.term.length)
-    .map((t) => t.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-    .join("|")})\\b`,
-  "g",
-);
-
-export interface TextSegment {
-  text: string;
-  meta: ColoredTermMeta | null;
-}
+export const NN_TERM_DICTIONARY: ColoredTermDictionary<TermColorFamily> =
+  buildTermDictionary(NN_COLORED_TERMS, TERM_FAMILY_STYLES);
 
 export function splitTextWithColoredTerms(input: string): TextSegment[] {
-  const segments: TextSegment[] = [];
-  let lastIdx = 0;
-
-  TERM_REGEX.lastIndex = 0;
-  let match: RegExpExecArray | null;
-  while ((match = TERM_REGEX.exec(input)) !== null) {
-    if (match.index > lastIdx) {
-      segments.push({ text: input.slice(lastIdx, match.index), meta: null });
-    }
-    const matchedWord = match[0];
-    const meta = TERM_LOOKUP.get(matchedWord.toLowerCase()) ?? null;
-    segments.push({ text: matchedWord, meta });
-    lastIdx = TERM_REGEX.lastIndex;
-  }
-
-  if (lastIdx < input.length) {
-    segments.push({ text: input.slice(lastIdx), meta: null });
-  }
-
-  return segments;
+  return NN_TERM_DICTIONARY.tokenize(input);
 }

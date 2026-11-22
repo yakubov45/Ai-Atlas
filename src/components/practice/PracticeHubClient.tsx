@@ -158,6 +158,29 @@ export function PracticeHubClient({ visualizations }: PracticeHubClientProps) {
             </Link>
           </div>
 
+          {/* Stanford CME 295 Transformers Interactive Practice Card */}
+          <div className="rounded-2xl border border-violet-500/35 bg-gradient-to-r from-violet-950/30 via-slate-900 to-slate-950 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-violet-300 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5" />
+                <span>Stanford CME 295 • Transformers &amp; LLMs • 12 Ta Pyodide Lab</span>
+              </span>
+              <h3 className="text-base sm:text-lg font-extrabold text-white">
+                Transformers &amp; LLMs — 3 Ma&apos;ruza va 12 Interaktiv Kodlash Laboratoriyasi
+              </h3>
+              <p className="text-xs text-slate-300 max-w-2xl">
+                BPE Merge, Q/K/V Scaled Dot-Product Attention, Causal Mask, Chinchilla/MoE, RoPE 2D Rotation, Temperature Softmax, BPB, LoRA, Bradley-Terry va GRPO mashqlari.
+              </p>
+            </div>
+            <Link
+              href="/learn/transformers-cme295"
+              className="inline-flex items-center gap-2 rounded-xl bg-violet-500 hover:bg-violet-400 px-4 py-2 text-xs font-extrabold text-white shrink-0 transition-colors"
+            >
+              <span>CME 295 Modulini Ochish</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           {/* Canonical Coding Labs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {PUBLISHED_PRACTICES.map((prac) => {
