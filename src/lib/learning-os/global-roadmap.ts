@@ -518,6 +518,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "tr-04-transformer-architecture", label: "Encoder-Decoder & Multi-Head (CME 295)", href: "/learn/transformers-cme295?lesson=tr-04-transformer-architecture", source: "stanford-cme295" },
       { id: "tr-05-bert-vs-gpt", label: "BERT vs GPT (CME 295)", href: "/learn/transformers-cme295?lesson=tr-05-bert-vs-gpt", source: "stanford-cme295" },
       { id: "tr-07-rope-gqa-rmsnorm", label: "RoPE, GQA & RMSNorm (CME 295)", href: "/learn/transformers-cme295?lesson=tr-07-rope-gqa-rmsnorm", source: "stanford-cme295" },
+      { id: "tr-16-flashattention-hbm-sram", label: "FlashAttention & HBM/SRAM (CME 295)", href: "/learn/transformers-cme295?lesson=tr-16-flashattention-hbm-sram", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "self-attention-explorer", titleUz: "Q/K/V Self-Attention Heatmap Lab", href: "/visual-lab/self-attention-explorer" },
@@ -597,6 +598,9 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "tr-10-midtraining-yarn-sft", label: "Mid-Training YaRN & SFT/LoRA (CME 295)", href: "/learn/transformers-cme295?lesson=tr-10-midtraining-yarn-sft", source: "stanford-cme295" },
       { id: "tr-11-alignment-rlhf-dpo", label: "RLHF (Bradley-Terry) & DPO (CME 295)", href: "/learn/transformers-cme295?lesson=tr-11-alignment-rlhf-dpo", source: "stanford-cme295" },
       { id: "tr-12-reasoning-grpo-distill", label: "Reasoning GRPO & On-Policy Distillation (CME 295)", href: "/learn/transformers-cme295?lesson=tr-12-reasoning-grpo-distill", source: "stanford-cme295" },
+      { id: "tr-13-rl-policy-gradient", label: "RL Policy Gradient & Importance Sampling (CME 295)", href: "/learn/transformers-cme295?lesson=tr-13-rl-policy-gradient", source: "stanford-cme295" },
+      { id: "tr-14-ppo-vs-grpo", label: "PPO vs GRPO/DAPO Clip & KL (CME 295)", href: "/learn/transformers-cme295?lesson=tr-14-ppo-vs-grpo", source: "stanford-cme295" },
+      { id: "tr-15-on-policy-distillation", label: "Reverse KL & On-Policy Distillation (CME 295)", href: "/learn/transformers-cme295?lesson=tr-15-on-policy-distillation", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "lora-rank-lab", titleUz: "LoRA Rank & Parameter Savings Lab", href: "/learn/hugging-face-llm-course?lesson=hf-11-04-02" },
@@ -646,6 +650,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
     associatedLessons: [
       { id: "rag", label: "RAG (MDX)", href: "/learn/rag", source: "mdx" },
       { id: "14.06", label: "RAG Quvuri & Hit@k (14.06)", href: "/roadmap?tab=ai-engineer&lesson=14.06", source: "ai-eng" },
+      { id: "tr-19-rag-hybrid-rerank", label: "Hybrid RAG, Cross-Encoder & NDCG (CME 295)", href: "/learn/transformers-cme295?lesson=tr-19-rag-hybrid-rerank", source: "stanford-cme295" },
     ],
     relatedLabs: [
       { id: "rag-sandbox-explorer", titleUz: "RAG Chunking & Hit@k Sandbox", href: "/visual-lab/rag-sandbox-explorer" },
@@ -673,6 +678,8 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "memory", label: "Memory (MDX)", href: "/learn/memory", source: "mdx" },
       { id: "17.05", label: "ReAct Loop (17.05)", href: "/roadmap?tab=ai-engineer&lesson=17.05", source: "ai-eng" },
       { id: "19.01", label: "MCP Protokoli (Phase 19)", href: "/roadmap?tab=ai-engineer&phase=19", source: "ai-eng" },
+      { id: "tr-20-tools-mcp-caching", label: "Tool Calling, MCP & Prompt Caching (CME 295)", href: "/learn/transformers-cme295?lesson=tr-20-tools-mcp-caching", source: "stanford-cme295" },
+      { id: "tr-21-harness-react-memory", label: "Agent Harness, ReAct & Compaction (CME 295)", href: "/learn/transformers-cme295?lesson=tr-21-harness-react-memory", source: "stanford-cme295" },
     ],
     relatedLabs: [],
     associatedProjects: ["Custom FastMCP Server + ReAct Agent"],
@@ -720,6 +727,11 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "production-ready-ml-structure", label: "Production ML Tuzilmasi (MDX)", href: "/learn/production-ready-ml-structure", source: "mdx" },
       { id: "production-ml-pipeline", label: "Real Production Pipeline (MDX)", href: "/learn/production-ml-pipeline", source: "mdx" },
       { id: "12weeks-d12", label: "12-Haftalik Capstone & Runbook", href: "/learn/ds-ml-ai-12weeks", source: "mdx" },
+      { id: "tr-17-5d-parallelism", label: "5D GPU Parallelism (CME 295)", href: "/learn/transformers-cme295?lesson=tr-17-5d-parallelism", source: "stanford-cme295" },
+      { id: "tr-18-inference-roofline-speculative", label: "Roofline, PagedAttention & Speculative Decoding (CME 295)", href: "/learn/transformers-cme295?lesson=tr-18-inference-roofline-speculative", source: "stanford-cme295" },
+      { id: "tr-22-metrics-passk-bleu", label: "Cohen's Kappa & Pass@K Evals (CME 295)", href: "/learn/transformers-cme295?lesson=tr-22-metrics-passk-bleu", source: "stanford-cme295" },
+      { id: "tr-23-llm-as-judge-biases", label: "LLM-as-a-Judge & Bias Mitigation (CME 295)", href: "/learn/transformers-cme295?lesson=tr-23-llm-as-judge-biases", source: "stanford-cme295" },
+      { id: "tr-24-agent-debugging-benchmarks", label: "Agent Debug, Bench Maxing & Goodhart's Law (CME 295)", href: "/learn/transformers-cme295?lesson=tr-24-agent-debugging-benchmarks", source: "stanford-cme295" },
     ],
     relatedLabs: [],
     associatedProjects: ["Portfolio #3: End-to-End Baholangan & Himoyalangan Servis"],

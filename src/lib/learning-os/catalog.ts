@@ -15,7 +15,10 @@ import { getPromptEngineeringSummaryStats } from "@/lib/curriculum/prompt-engine
 import { getHfCourseImportAuditReport } from "@/lib/curriculum/hf-llm-course";
 import { SIXTEEN_ARCHITECTURES } from "@/lib/curriculum/deep-learning-16-architectures";
 import { HOW_NEURAL_LEARN_LESSONS } from "@/lib/curriculum/how-neural-learn";
-import { TRANSFORMER_CME295_LESSONS } from "@/lib/curriculum/transformers-cme295";
+import {
+  STANFORD_CME295_LECTURES,
+  TRANSFORMER_CME295_LESSONS,
+} from "@/lib/curriculum/transformers-cme295";
 import { ALL_INTENSIVE_LESSONS, INTENSIVE_12_WEEKS } from "@/lib/curriculum/ds-ml-ai-12weeks";
 import { CANONICAL_CONCEPTS } from "@/lib/knowledge-graph/concepts";
 
@@ -301,19 +304,19 @@ export function buildLearningLibraryCatalog(): LibraryCourseItem[] {
     {
       id: "transformers-cme295",
       titleUz: "Stanford CME 295: Transformers & Large Language Models",
-      subtitleUz: "3 ta Ma'ruza • 12 mikro-dars • Q/K/V, RoPE, GQA, MoE, SFT, RLHF/DPO & GRPO",
+      subtitleUz: `${STANFORD_CME295_LECTURES.length} ta Ma'ruza • ${TRANSFORMER_CME295_LESSONS.length} mikro-dars • Q/K/V, PPO/GRPO, FlashAttention, RAG/MCP & Evals`,
       subjectGroup: "generative-ai",
       href: "/learn/transformers-cme295",
       roadmapHref: "/roadmap?tab=llm-engineer",
       kind: "special-module",
-      phasesOrChapters: 3,
+      phasesOrChapters: STANFORD_CME295_LECTURES.length,
       totalItems: TRANSFORMER_CME295_LESSONS.length,
       publishedItems: TRANSFORMER_CME295_LESSONS.length,
       plannedOrDraftItems: 0,
       accent: "violet",
       canonicalCategoryIds: ["llms-rag", "architectures"],
-      descriptionUz: "Afshine va Shervin Amidi ma'ruzalari asosida Tokenization/BPE, Q/K/V Self-Attention, BERT vs GPT, Scaling Laws, Sparse MoE, RoPE/GQA/RMSNorm, Pre-Training (BPB), Mid-Training (YaRN), SFT/LoRA va GRPO On-Policy Distillation.",
-      honestStatusNoteUz: `Barcha ${TRANSFORMER_CME295_LESSONS.length} ta interaktiv mikro-dars, rangli terminlar va Python amaliyotlari to'liq nashr etilgan; video joylari tayyor.`,
+      descriptionUz: "Afshine va Shervin Amidi ning 1–7 ma'ruzalari: BPE, Self-Attention, MoE, RoPE/GQA, PPO/GRPO/Distillation, FlashAttention, 5D Parallelism, Speculative Decoding, Hybrid RAG, MCP, ReAct Harness va LLM-as-a-Judge.",
+      honestStatusNoteUz: `Barcha ${STANFORD_CME295_LECTURES.length} ta video ma'ruza va ${TRANSFORMER_CME295_LESSONS.length} ta interaktiv mikro-dars nashr etilgan.`,
     },
     {
       id: "ai-engineer",

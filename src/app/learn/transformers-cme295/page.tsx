@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { TransformersCme295Explorer } from "@/components/curriculum/TransformersCme295Explorer";
 
 export const metadata: Metadata = {
-  title: "Stanford CME 295: Transformers & Large Language Models (12 Dars) | AI Atlas",
+  title: "Stanford CME 295: Transformers & Large Language Models (7 Ma'ruza / 24 Dars) | AI Atlas",
   description:
-    "3 ta Stanford CME 295 ma'ruzasi asosida: Tokenization/BPE, Q/K/V Self-Attention, BERT vs GPT, Scaling Laws/Chinchilla, Sparse MoE, RoPE/GQA/RMSNorm, Temperature/CoT, Pre-Training/BPB, SFT/LoRA, RLHF/DPO va GRPO/On-Policy Distillation.",
+    "7 ta Stanford CME 295 ma'ruzasi asosida: Tokenization/BPE, Self-Attention, BERT/GPT, MoE, RoPE/GQA, Pre-Training/SFT, PPO/GRPO/On-Policy Distillation, FlashAttention/5D Parallelism/Speculative Decoding, Hybrid RAG/MCP/Harness hamda Pass@K/LLM-as-a-Judge/Bench Maxing.",
 };
 
 export default function TransformersCme295Page() {

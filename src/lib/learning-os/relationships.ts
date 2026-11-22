@@ -149,6 +149,18 @@ const SLUG_TO_CONCEPT_ID: Readonly<Record<string, string>> = {
   "tr-10-midtraining-yarn-sft": "fine-tuning-lora-peft",
   "tr-11-alignment-rlhf-dpo": "fine-tuning-lora-peft",
   "tr-12-reasoning-grpo-distill": "fine-tuning-lora-peft",
+  "tr-13-rl-policy-gradient": "fine-tuning-lora-peft",
+  "tr-14-ppo-vs-grpo": "fine-tuning-lora-peft",
+  "tr-15-on-policy-distillation": "fine-tuning-lora-peft",
+  "tr-16-flashattention-hbm-sram": "attention-mechanism",
+  "tr-17-5d-parallelism": "linear-algebra-matrices",
+  "tr-18-inference-roofline-speculative": "production-mlops-serving",
+  "tr-19-rag-hybrid-rerank": "rag-retrieval-augmented",
+  "tr-20-tools-mcp-caching": "model-context-protocol",
+  "tr-21-harness-react-memory": "ai-agents-react-loop",
+  "tr-22-metrics-passk-bleu": "model-evaluation-metrics",
+  "tr-23-llm-as-judge-biases": "model-evaluation-metrics",
+  "tr-24-agent-debugging-benchmarks": "production-mlops-serving",
 };
 
 const LAB_LABELS: Readonly<Record<string, string>> = {

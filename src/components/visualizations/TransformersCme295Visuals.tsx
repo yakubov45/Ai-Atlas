@@ -44,6 +44,30 @@ export function TransformersCme295Visuals({
       return <RlhfVsDpoVisual />;
     case "grpo-onpolicy-distill":
       return <GrpoOnPolicyDistillVisual />;
+    case "rl-policy-gradient":
+      return <RlPolicyGradientVisual />;
+    case "ppo-grpo-clip":
+      return <PpoGrpoClipVisual />;
+    case "distill-reverse-kl":
+      return <DistillReverseKlVisual />;
+    case "flash-attention-tiling":
+      return <FlashAttentionTilingVisual />;
+    case "parallelism-5d":
+      return <Parallelism5dVisual />;
+    case "roofline-speculative":
+      return <RooflineSpeculativeVisual />;
+    case "rag-hybrid-ndcg":
+      return <RagHybridNdcgVisual />;
+    case "mcp-prompt-caching":
+      return <McpPromptCachingVisual />;
+    case "react-harness-memory":
+      return <ReactHarnessMemoryVisual />;
+    case "kappa-passk-metrics":
+      return <KappaPasskMetricsVisual />;
+    case "llm-judge-biases":
+      return <LlmJudgeBiasesVisual />;
+    case "benchmax-pareto":
+      return <BenchmaxParetoVisual />;
   }
 }
 
@@ -850,6 +874,546 @@ function GrpoOnPolicyDistillVisual() {
             <div className="text-emerald-100/90">Ikkalasining eng yaxshisi: On-Policy (model o&apos;zi yozadi) + Dense (ustoz har tokenda baholaydi)!</div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 13. RL Policy Gradient Baseline & Importance Sampling (Lect 4)             */
+/* -------------------------------------------------------------------------- */
+
+function RlPolicyGradientVisual() {
+  const [useBaseline, setUseBaseline] = useState(true);
+  const [rho, setRho] = useState(1.1);
+  const rewards = [101.0, 100.0];
+  const avg = 100.5;
+  const effA = useBaseline ? rewards.map((r) => r - avg) : rewards;
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <button
+          type="button"
+          onClick={() => setUseBaseline((b) => !b)}
+          className={`rounded-lg border px-3 py-1.5 font-semibold ${
+            useBaseline
+              ? "border-emerald-400 bg-emerald-500/20 text-emerald-200"
+              : "border-rose-400 bg-rose-500/15 text-rose-200"
+          }`}
+        >
+          {useBaseline ? "Baseline = 100.5 yoqilgan (+0.5 / -0.5)" : "Baselinesiz (+101 / +100 shovqin!)"}
+        </button>
+        <label className="flex items-center gap-2">
+          <span>Ratio ρ = π_θ / π_old: <strong className="text-amber-300 font-mono">{rho.toFixed(2)}</strong></span>
+          <input type="range" min={0.5} max={1.6} step={0.05} value={rho} onChange={(e) => setRho(Number(e.target.value))} className="w-24 accent-amber-400" />
+        </label>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-3 rounded-xl border border-white/10 bg-[#080d17] p-4 font-mono">
+        <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/30 p-3">
+          <div className="text-emerald-300 font-bold">Yaxshi javob (R=101)</div>
+          <div className="text-white mt-1">Qadam kuchi: {(rho * (effA[0] ?? 0)).toFixed(2)} (↑ ehtimol)</div>
+        </div>
+        <div className="rounded-lg bg-rose-500/10 border border-rose-500/30 p-3">
+          <div className="text-rose-300 font-bold">Yomon javob (R=100)</div>
+          <div className="text-white mt-1">Qadam kuchi: {(rho * (effA[1] ?? 0)).toFixed(2)} {useBaseline ? "(↓ kamayadi!)" : "(↑ XATO oshiryapti!)"}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 14. PPO Clipping & GRPO Length Normalization (Lect 4)                      */
+/* -------------------------------------------------------------------------- */
+
+function PpoGrpoClipVisual() {
+  const [rho, setRho] = useState(1.1);
+  const [advSign, setAdvSign] = useState<1 | -1>(1);
+  const eps = 0.2;
+  const unclipped = rho * advSign;
+  const clippedVal = Math.max(1 - eps, Math.min(1 + eps, rho)) * advSign;
+  const ppoVal = Math.min(unclipped, clippedVal);
+  const isClipped = ppoVal !== unclipped;
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2 text-xs">
+      <div className="rounded-xl border border-amber-500/25 bg-[#080d17] p-3.5 space-y-2.5">
+        <div className="flex justify-between">
+          <span className="font-bold text-amber-300">PPO Clipping (ε = 0.2)</span>
+          <button
+            type="button"
+            onClick={() => setAdvSign((s) => (s === 1 ? -1 : 1))}
+            className="rounded border border-white/15 bg-white/10 px-2 py-0.5 font-mono"
+          >
+            Advantage: {advSign === 1 ? "+1 (Musbat)" : "-1 (Manfiy)"}
+          </button>
+        </div>
+        <label className="block">
+          <div className="flex justify-between mb-1">
+            <span>Importance Sampling Ratio ρ:</span>
+            <span className="font-mono">{rho.toFixed(2)}</span>
+          </div>
+          <input type="range" min={0.5} max={1.6} step={0.05} value={rho} onChange={(e) => setRho(Number(e.target.value))} className="w-full accent-amber-400" />
+        </label>
+        <div className="rounded-lg bg-black/40 p-2.5 font-mono space-y-1">
+          <div>Kesilmagan: {unclipped.toFixed(2)} | <strong className="text-emerald-300">PPO: {ppoVal.toFixed(2)}</strong></div>
+          <div className={isClipped ? "text-amber-300 font-bold" : "text-neutral-400"}>
+            {isClipped ? "✂️ Chegaraga urildi — gradient=0 (katta sakrash to'xtatildi)" : "Aktiv zona [0.8, 1.2] ichida"}
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-violet-500/25 bg-[#080d17] p-3.5 space-y-2">
+        <div className="font-bold text-violet-300">GRPO 1/|o_i| Uzunlik Tuzog&apos;i (vs DAPO)</div>
+        <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
+          <div className="rounded-lg border border-rose-400/40 bg-rose-500/10 p-2">
+            <div className="font-bold text-rose-200">Qisqa Xato (20 tok)</div>
+            <div>Har token zarbasi: -(1/20) = <strong>-0.050</strong></div>
+          </div>
+          <div className="rounded-lg border border-amber-400/40 bg-amber-500/10 p-2">
+            <div className="font-bold text-amber-200">Uzun Xato (200 tok)</div>
+            <div>Har token zarbasi: -(1/200) = <strong>-0.005</strong></div>
+          </div>
+        </div>
+        <p className="text-[11px] text-neutral-300">
+          Model xato javoblarda kichikroq jarima olish uchun matnni cho&apos;zib yuboradi; DAPO buni umumiy token normallashtirishi bilan tuzatadi.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 15. Reverse KL Mode-Seeking Distillation (Lect 4)                          */
+/* -------------------------------------------------------------------------- */
+
+function DistillReverseKlVisual() {
+  const [studentW, setStudentW] = useState(0.7);
+  const teacherW = 0.9;
+  const rkl =
+    studentW * Math.log(studentW / teacherW) +
+    (1 - studentW) * Math.log((1 - studentW) / (1 - teacherW));
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-4 space-y-3">
+        <div className="flex flex-wrap justify-between gap-2">
+          <span className="font-bold text-amber-300">On-Policy Reverse KL(Student || Teacher)</span>
+          <span className="font-mono text-white">Teacher to&apos;g&apos;ri tokenga: 90% | Reverse KL = <strong className="text-emerald-300">{rkl.toFixed(3)}</strong></span>
+        </div>
+        <label className="block">
+          <div className="flex justify-between mb-1">
+            <span>Talaba ehtimoli s (maqsad 90%):</span>
+            <span className="font-mono">{(studentW * 100).toFixed(0)}%</span>
+          </div>
+          <input type="range" min={0.1} max={0.95} step={0.05} value={studentW} onChange={(e) => setStudentW(Number(e.target.value))} className="w-full accent-amber-400" />
+        </label>
+        <p className="text-neutral-300">
+          <ColoredTermText text="Talaba o'zi yaratgan noto'g'ri tokenga katta ehtimol (s katta, T=10%) bersa Reverse KL keskin portlab o'sha tokenda tuzatadi!" dictionary={TR_DICT} />
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 16. FlashAttention HBM vs SRAM Online Softmax (Lect 5)                     */
+/* -------------------------------------------------------------------------- */
+
+function FlashAttentionTilingVisual() {
+  const [tileIdx, setTileIdx] = useState<1 | 2 | 3>(3);
+  const scores = [1.0, 3.0, 2.0];
+  const values = [10, 20, 30];
+
+  const sim = useMemo(() => {
+    let m = -Infinity;
+    let D = 0;
+    let N = 0;
+    for (let i = 0; i < tileIdx; i++) {
+      const s = scores[i] ?? 0;
+      const v = values[i] ?? 0;
+      const mNew = Math.max(m, s);
+      const scale = m === -Infinity ? 0 : Math.exp(m - mNew);
+      const w = Math.exp(s - mNew);
+      D = D * scale + w;
+      N = N * scale + w * v;
+      m = mNew;
+    }
+    return { m, D, out: N / D };
+  }, [tileIdx]);
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex gap-1.5">
+          {([1, 2, 3] as const).map((k) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => setTileIdx(k)}
+              className={`rounded-lg border px-2.5 py-1 font-mono font-bold ${
+                tileIdx === k ? "border-emerald-400 bg-emerald-500/20 text-emerald-200" : "border-white/10 bg-white/5 text-neutral-400"
+              }`}
+            >
+              SRAM Blok 1..{k}
+            </button>
+          ))}
+        </div>
+        <span className="text-cyan-300 font-mono">HBM (~1 TB/s, 141GB) vs SRAM (~10+ TB/s, ~100MB)</span>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-4 grid sm:grid-cols-3 gap-3 font-mono text-center">
+        <div className="rounded-lg bg-black/40 p-2.5">
+          <div className="text-neutral-400">Joriy Max (m_t)</div>
+          <div className="text-lg font-bold text-amber-300">{sim.m.toFixed(1)}</div>
+        </div>
+        <div className="rounded-lg bg-black/40 p-2.5">
+          <div className="text-neutral-400">Online Denominator D_t</div>
+          <div className="text-lg font-bold text-cyan-300">{sim.D.toFixed(3)}</div>
+        </div>
+        <div className="rounded-lg bg-emerald-500/15 border border-emerald-500/30 p-2.5">
+          <div className="text-emerald-200">Aniq Natija (N_t / D_t)</div>
+          <div className="text-lg font-bold text-white">{sim.out.toFixed(3)}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 17. 5D Parallelism Topology (Lect 5)                                       */
+/* -------------------------------------------------------------------------- */
+
+function Parallelism5dVisual() {
+  const [kind, setKind] = useState<"zero" | "tensor" | "pipeline" | "context" | "expert">("pipeline");
+
+  const info = {
+    zero: {
+      title: "Data Parallelism + ZeRO",
+      detail: "Batch GPU larga bo'linadi; ZeRO vazn, gradient va Adam holatlarini dublikat qilmay GPU lar aro bo'ladi (sharding).",
+    },
+    tensor: {
+      title: "Tensor Parallelism",
+      detail: "Multi-Head Attention boshlari va FFN matritsalari bitta qatlam ichida bir necha GPU ga taqsimlanadi.",
+    },
+    pipeline: {
+      title: "Pipeline Parallelism (va Bubble)",
+      detail: "Model qatlamlari ketma-ket GPU 0 -> GPU 1 -> GPU 2 ga joylanadi; navbat kutish 'Bubble' bo'sh vaqtini keltirib chiqaradi.",
+    },
+    context: {
+      title: "Context Parallelism",
+      detail: "Juda uzun Sequence Length GPU larga bo'linib, Key/Value bloklari halqa bo'ylab o'zaro uzatiladi.",
+    },
+    expert: {
+      title: "Expert Parallelism (MoE)",
+      detail: "Har bir MoE eksperti alohida GPU da turadi; Router tokenni kerakli GPU dagi ekspertga yuboradi.",
+    },
+  }[kind];
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap gap-1.5">
+        {(["zero", "tensor", "pipeline", "context", "expert"] as const).map((k) => (
+          <button
+            key={k}
+            type="button"
+            onClick={() => setKind(k)}
+            className={`rounded-lg border px-2.5 py-1.5 font-semibold ${
+              kind === k ? "border-violet-400 bg-violet-500/20 text-white" : "border-white/10 bg-white/5 text-neutral-400"
+            }`}
+          >
+            {k.toUpperCase()}
+          </button>
+        ))}
+      </div>
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-4 space-y-1.5">
+        <div className="font-bold text-violet-300">{info.title}</div>
+        <p className="text-neutral-200 leading-relaxed">
+          <ColoredTermText text={info.detail} dictionary={TR_DICT} />
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 18. Roofline, PagedAttention & Speculative Decoding (Lect 5)               */
+/* -------------------------------------------------------------------------- */
+
+function RooflineSpeculativeVisual() {
+  const [phase, setPhase] = useState<"prefill" | "decode">("decode");
+  const draftP = 0.6;
+  const targetP = 0.8;
+  const acceptProb = Math.min(1, targetP / draftP);
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2 text-xs">
+      <div className="rounded-xl border border-emerald-500/25 bg-[#080d17] p-3.5 space-y-2.5">
+        <div className="flex justify-between">
+          <span className="font-bold text-emerald-300">Roofline Model</span>
+          <div className="flex gap-1">
+            <button type="button" onClick={() => setPhase("prefill")} className={`rounded px-2 py-0.5 ${phase === "prefill" ? "bg-cyan-500/25 text-cyan-200" : "bg-white/5 text-neutral-400"}`}>Prefill</button>
+            <button type="button" onClick={() => setPhase("decode")} className={`rounded px-2 py-0.5 ${phase === "decode" ? "bg-violet-500/25 text-violet-200" : "bg-white/5 text-neutral-400"}`}>Decode</button>
+          </div>
+        </div>
+        <div className="rounded-lg bg-black/40 p-2.5 text-neutral-200">
+          {phase === "prefill"
+            ? "Compute-Bound (Ridge Point o'ngi): hamma prompt tokenlari parallel hisoblanadi — TTFT tez."
+            : "Memory-Bound (Ridge Point chapi): har 1 tokenga barcha model vaznlari HBM dan tashiladi — TPOT sekin & 5x qimmat!"}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-fuchsia-500/25 bg-[#080d17] p-3.5 space-y-2">
+        <div className="font-bold text-fuchsia-300">Speculative Decoding (Draft vs Target)</div>
+        <div className="font-mono text-[11px] bg-black/40 p-2.5 rounded-lg">
+          D(x)={draftP}, T(x)={targetP} → T &gt;= D bo&apos;lgani uchun Qabul = <strong className="text-emerald-300">{(acceptProb * 100).toFixed(0)}%</strong>
+        </div>
+        <p className="text-[11px] text-neutral-300">
+          Target Model K ta draft tokenni birga tekshiradi va bepul bitta bonus token ham chiqaradi!
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 19. Hybrid RAG & NDCG (Lect 6)                                             */
+/* -------------------------------------------------------------------------- */
+
+function RagHybridNdcgVisual() {
+  const [mode, setMode] = useState<"semantic" | "bm25" | "hybrid">("hybrid");
+
+  const ranked = {
+    semantic: ["1. Huggy likes to work downstairs", "2. Where is Paris located?", "3. Cuddly spends days with books ✓"],
+    bm25: ["1. He was in a cuddly mood", "2. Cuddly spends days with books ✓", "3. Huggy likes to work downstairs"],
+    hybrid: ["1. Cuddly spends days with books ✓ (Ikkisida ham bor!)", "2. He was in a cuddly mood", "3. Huggy likes to work downstairs"],
+  }[mode];
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="text-neutral-300">So&apos;rov: <strong className="text-white">&quot;Where is Cuddly?&quot;</strong></span>
+        <div className="flex gap-1.5">
+          {(["semantic", "bm25", "hybrid"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              className={`rounded-lg border px-2.5 py-1 font-semibold ${
+                mode === m ? "border-fuchsia-400 bg-fuchsia-500/20 text-white" : "border-white/10 bg-white/5 text-neutral-400"
+              }`}
+            >
+              {m === "semantic" ? "Faqat Vector" : m === "bm25" ? "Faqat BM25" : "Hybrid (BM25 + Vector) ★"}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-3.5 space-y-1.5 font-mono">
+        {ranked.map((r) => (
+          <div key={r} className={`rounded px-2.5 py-1.5 ${r.includes("✓") ? "bg-emerald-500/15 text-emerald-200 font-bold" : "bg-black/40 text-neutral-300"}`}>
+            {r}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 20. MCP & Prompt Caching Message Ordering (Lect 6)                         */
+/* -------------------------------------------------------------------------- */
+
+function McpPromptCachingVisual() {
+  const [goodOrder, setGoodOrder] = useState(true);
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={() => setGoodOrder(true)}
+          className={`rounded-lg border px-3 py-1.5 font-semibold ${goodOrder ? "border-emerald-400 bg-emerald-500/20 text-emerald-200" : "border-white/10 bg-white/5 text-neutral-400"}`}
+        >
+          To&apos;g&apos;ri tartib (Tools tepada)
+        </button>
+        <button
+          type="button"
+          onClick={() => setGoodOrder(false)}
+          className={`rounded-lg border px-3 py-1.5 font-semibold ${!goodOrder ? "border-rose-400 bg-rose-500/15 text-rose-200" : "border-white/10 bg-white/5 text-neutral-400"}`}
+        >
+          Xato tartib (Vaqt/Prompt tepada)
+        </button>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-4 space-y-2">
+        <div className="grid sm:grid-cols-3 gap-2 font-mono text-[11px]">
+          {(goodOrder
+            ? ["1. Fixed Tools (CACHED 0.1x ✓)", "2. User Context (Vaqt o'zgaradi)", "3. User Prompt (Yangi)"]
+            : ["1. User Context (O'zgaradi! ✗)", "2. User Prompt (O'zgaradi!)", "3. Fixed Tools (KESH BUZILDI 1.0x!)"]
+          ).map((block) => (
+            <div key={block} className={`rounded-lg border p-2.5 ${block.includes("✓") ? "border-emerald-400/50 bg-emerald-500/15 text-emerald-200" : "border-white/10 bg-black/40 text-neutral-300"}`}>
+              {block}
+            </div>
+          ))}
+        </div>
+        <div className="text-neutral-300">
+          Kutilayotgan narx (1000 tool + 50 user token):{" "}
+          <strong className={goodOrder ? "text-emerald-300" : "text-rose-300"}>
+            {goodOrder ? "150 birlik (kesh ishladi!)" : "1,050 birlik (keshdan mahrum!)"}
+          </strong>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 21. ReAct Loop & Compaction (Lect 6)                                       */
+/* -------------------------------------------------------------------------- */
+
+function ReactHarnessMemoryVisual() {
+  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
+  const steps = [
+    "1. OBSERVE: Foydalanuvchi «Ayiqcham sovqotyapti» dedi.",
+    "2. PLAN + ACT: `get_temperature()` tool chaqirildi → 16°C (sovuq).",
+    "3. PLAN + ACT: `increase_temperature(+5)` bajarildi.",
+    "4. OBSERVE & JAVOB: Harorat 21°C ga ko'tarildi, foydalanuvchiga xabar berildi ✓",
+  ];
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="rounded-xl border border-fuchsia-500/25 bg-[#080d17] p-4 space-y-2.5">
+        <div className="font-mono text-white font-semibold">{steps[step]}</div>
+        <div className="flex gap-1.5">
+          {[0, 1, 2, 3].map((i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setStep(i as 0 | 1 | 2 | 3)}
+              className={`rounded px-2.5 py-1 font-semibold ${step === i ? "bg-fuchsia-500 text-white" : "bg-white/10 text-neutral-300"}`}
+            >
+              Qadam {i + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 22. Cohen's Kappa & Pass@K Metrics (Lect 7)                                */
+/* -------------------------------------------------------------------------- */
+
+function KappaPasskMetricsVisual() {
+  const [c, setC] = useState(3);
+  const [k, setK] = useState(5);
+  const n = 10;
+
+  const comb = (nn: number, rr: number): number => {
+    if (rr < 0 || rr > nn) return 0;
+    let res = 1;
+    for (let i = 1; i <= rr; i++) res = (res * (nn - rr + i)) / i;
+    return res;
+  };
+
+  const passK = n - c < k ? 1 : 1 - comb(n - c, k) / comb(n, k);
+
+  return (
+    <div className="grid gap-4 md:grid-cols-2 text-xs">
+      <div className="rounded-xl border border-fuchsia-500/25 bg-[#080d17] p-3.5 space-y-2">
+        <div className="font-bold text-fuchsia-300">Unbiased Pass@K (N = {n} urinish)</div>
+        <label className="block">
+          <div className="flex justify-between"><span>To&apos;g&apos;ri urinishlar (c):</span><span className="font-mono">{c}</span></div>
+          <input type="range" min={1} max={8} value={c} onChange={(e) => setC(Number(e.target.value))} className="w-full accent-emerald-400" />
+        </label>
+        <label className="block">
+          <div className="flex justify-between"><span>Tanlangan urinish (k):</span><span className="font-mono">{k}</span></div>
+          <input type="range" min={1} max={8} value={k} onChange={(e) => setK(Number(e.target.value))} className="w-full accent-fuchsia-400" />
+        </label>
+        <div className="rounded-lg bg-black/40 p-2.5 font-mono">
+          Pass@{k} ehtimoli: <strong className="text-emerald-300">{(passK * 100).toFixed(1)}%</strong>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-3.5 space-y-2">
+        <div className="font-bold text-white">Cohen&apos;s Kappa: Tasodifni Tozalash</div>
+        <p className="text-neutral-300 leading-relaxed">
+          <ColoredTermText text="Alis va Bob tasodifan 50% 'Pass' aytsa ham 50% mos kelib qoladi (p_e=0.50). Cohen's Kappa haqiqiy p_o=0.90 dan 0.50 ni ayirib kappa=(0.9-0.5)/(1-0.5)=0.80 (kuchli kelishuv) chiqaradi!" dictionary={TR_DICT} />
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 23. LLM-as-a-Judge Biases (Lect 7)                                         */
+/* -------------------------------------------------------------------------- */
+
+function LlmJudgeBiasesVisual() {
+  const [swapped, setSwapped] = useState(false);
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-neutral-300">Position Bias &amp; Verbosity Bias tekshiruvi:</span>
+        <button
+          type="button"
+          onClick={() => setSwapped((s) => !s)}
+          className="rounded-lg border border-fuchsia-400/50 bg-fuchsia-500/20 px-3 py-1 font-semibold text-fuchsia-200"
+        >
+          {swapped ? "Tartib: (B, A) — Almashtirildi" : "Tartib: (A, B) — Boshlang'ich"}
+        </button>
+      </div>
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-3.5 grid sm:grid-cols-2 gap-2.5 font-mono text-[11px]">
+        <div className="rounded border border-emerald-500/30 bg-emerald-500/10 p-2.5">
+          <strong>{(swapped ? "Javob B (Uzun va Xato)" : "Javob A (Qisqa va To'g'ri)")}</strong>
+          <div className="text-amber-300 mt-1">1-o&apos;rin tanlandi! → Agar hakam doim 1-o&apos;rinni tanlasa = Position Bias!</div>
+        </div>
+        <div className="rounded border border-white/10 bg-black/40 p-2.5 text-neutral-300">
+          Yechim: Binary Pass/Fail + Rationale FIRST (sababni balldan oldin yozdirish) + A/B almashtirib tekshirish.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* 24. Bench Maxing & Pareto Frontier (Lect 7)                                */
+/* -------------------------------------------------------------------------- */
+
+function BenchmaxParetoVisual() {
+  const [formatChanged, setFormatChanged] = useState(false);
+
+  return (
+    <div className="space-y-3 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="font-bold text-fuchsia-300">Max Bench Tajribasi (Bench Maxing Diagnostikasi)</span>
+        <button
+          type="button"
+          onClick={() => setFormatChanged((f) => !f)}
+          className="rounded-lg border border-amber-400/50 bg-amber-500/20 px-3 py-1 font-semibold text-amber-200"
+        >
+          {formatChanged ? "Format: Zulu / lowercase (O'zgartirildi)" : "Format: PT / Standard (Ommaviy benchmark)"}
+        </button>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-[#080d17] p-4 space-y-2 font-mono">
+        <div className="flex justify-between">
+          <span>Model X (Yodlagan):</span>
+          <span className={formatChanged ? "text-rose-400 font-bold" : "text-emerald-300 font-bold"}>
+            {formatChanged ? "38% (Quladi!)" : "91% (Top-1!)"}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span>Model Y (Haqiqiy tushunadi):</span>
+          <span className="text-emerald-300 font-bold">{formatChanged ? "86% (Barqaror ✓)" : "88%"}</span>
+        </div>
+        <p className="font-sans text-neutral-300 text-[11px] pt-1">
+          <ColoredTermText text="Goodhart's Law sababli faqat ommaviy benchmarkga intilmay, yopiq ZDR private baholar va Pareto Frontier ni kuzating." dictionary={TR_DICT} />
+        </p>
       </div>
     </div>
   );

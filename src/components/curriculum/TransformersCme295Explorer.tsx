@@ -121,7 +121,7 @@ export function TransformersCme295Explorer({
     }
   };
 
-  const selectLectureFirstLesson = (lectureNum: 1 | 2 | 3) => {
+  const selectLectureFirstLesson = (lectureNum: 1 | 2 | 3 | 4 | 5 | 6 | 7) => {
     const first = TRANSFORMER_CME295_LESSONS.find(
       (l) => l.lectureNumber === lectureNum,
     );
@@ -154,7 +154,7 @@ export function TransformersCme295Explorer({
           <div className="space-y-1.5 max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-300">
               <Layers className="h-3.5 w-3.5" />
-              <span>Stanford CME 295 • 3 Ta Ma&apos;ruza • 12 Mikro-dars</span>
+              <span>Stanford CME 295 • 7 Ta Ma&apos;ruza • 24 Mikro-dars</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
               Transformers &amp; Large Language Models
@@ -162,7 +162,7 @@ export function TransformersCme295Explorer({
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
               <ColoredTermText
                 dictionary={TR_DICT}
-                text="Afshine va Shervin Amidi ning Stanford ma'ruzalari asosida: Tokenization va BPE, Q/K/V Self-Attention, BERT vs GPT, Scaling Laws, Sparse MoE, RoPE / GQA / RMSNorm, Temperature, Pre-Training / BPB, Mid-Training / YaRN, SFT / LoRA, RLHF / DPO hamda GRPO / On-Policy Distillation — barchasi ajratilgan rangli terminlar va interaktiv mashqlar bilan."
+                text="Afshine va Shervin Amidi ning Stanford 1–7 ma'ruzalari asosida: Tokenization va BPE, Self-Attention, BERT vs GPT, Scaling Laws, MoE, RoPE/GQA/RMSNorm, Pre-Training (BPB), SFT/LoRA, PPO/GRPO/DAPO va On-Policy Distillation, FlashAttention/5D Parallelism/Speculative Decoding, Hybrid RAG/MCP/Harness hamda Pass@K/LLM-as-a-Judge/Bench Maxing — barchasi ajratilgan rangli terminlar va interaktiv mashqlar bilan."
               />
             </p>
           </div>
@@ -185,10 +185,13 @@ export function TransformersCme295Explorer({
           </div>
         </div>
 
-        {/* 3 Lecture Switcher Pills */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+        {/* 7 Lecture Switcher Pills */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {STANFORD_CME295_LECTURES.map((lec) => {
             const active = lec.lectureNumber === lesson.lectureNumber;
+            const countInLecture = TRANSFORMER_CME295_LESSONS.filter(
+              (l) => l.lectureNumber === lec.lectureNumber,
+            ).length;
             return (
               <button
                 key={lec.lectureNumber}
@@ -201,7 +204,7 @@ export function TransformersCme295Explorer({
                 }`}
               >
                 <div className="text-[10px] font-mono uppercase tracking-wider text-violet-300">
-                  {lec.lectureNumber}-Ma&apos;ruza • 4 ta dars
+                  {lec.lectureNumber}-Ma&apos;ruza • {countInLecture} ta dars
                 </div>
                 <div className="text-xs font-bold mt-0.5 line-clamp-1">
                   {lec.titleUz.replace(/^\d+-Ma'ruza:\s*/, "")}
@@ -219,7 +222,7 @@ export function TransformersCme295Explorer({
             className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/90 px-3.5 py-2 text-xs font-semibold text-white hover:border-cyan-400/50 transition-colors cursor-pointer"
           >
             <BookOpen className="h-4 w-4 text-cyan-400" />
-            <span>Darslar ro&apos;yxati (12 mikro-dars)</span>
+            <span>Darslar ro&apos;yxati ({TRANSFORMER_CME295_LESSONS.length} mikro-dars)</span>
             {outlineOpen ? (
               <ChevronUp className="h-3.5 w-3.5 text-slate-400" />
             ) : (
@@ -609,7 +612,7 @@ export function TransformersCme295Explorer({
           ) : (
             <div className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 px-4 py-2 text-xs font-bold text-emerald-200">
               <CheckCircle2 className="h-4 w-4" />
-              <span>Stanford CME 295 (3 Ma&apos;ruza / 12 Dars) yakunlandi!</span>
+              <span>Stanford CME 295 ({STANFORD_CME295_LECTURES.length} Ma&apos;ruza / {TRANSFORMER_CME295_LESSONS.length} Dars) yakunlandi!</span>
             </div>
           )}
         </div>

@@ -42,7 +42,7 @@ const MODULE_LINKS = [
   { href: "/learn/hugging-face-llm-course", label: "Hugging Face LLM Course", badge: "220 dars", icon: Layers },
   { href: "/learn/deep-learning-architectures", label: "Deep Learning: 16 Arxitektura", badge: "16 maqola", icon: Network },
   { href: "/learn/how-neural-networks-learn", label: "Neyron Tarmoqlar Qanday O'rganadi?", badge: "12 dars", icon: Brain },
-  { href: "/learn/transformers-cme295", label: "Stanford Transformers & LLM (CME 295)", badge: "12 dars", icon: Layers },
+  { href: "/learn/transformers-cme295", label: "Stanford Transformers & LLM (CME 295)", badge: "24 dars", icon: Layers },
   { href: "/practice/python-30-days", label: "30 Days of Python", badge: "Pyodide", icon: Code2 },
   { href: "/visual-lab", label: "Vizual Laboratoriya", badge: "Desmos", icon: FlaskConical },
   { href: "/videos", label: "Video Darslar Katalogi", badge: "97 video", icon: Video },

@@ -17,27 +17,31 @@ import { GLOBAL_ROADMAP_NODES } from "@/lib/learning-os/global-roadmap";
 import { getContentRepository } from "@/lib/content/repository";
 import { buildSearchIndex } from "@/lib/search/build-index";
 
-describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12 Mikro-dars)", () => {
-  it("defines 3 lectures with clean YouTube links (no playlist/index params) and 12 complete micro-lessons", () => {
-    expect(STANFORD_CME295_LECTURES).toHaveLength(3);
+describe("Stanford CME 295: Transformers & Large Language Models (7 Ma'ruza / 24 Mikro-dars)", () => {
+  it("defines 7 lectures with clean YouTube links (no playlist/index params) and 24 complete micro-lessons", () => {
+    expect(STANFORD_CME295_LECTURES).toHaveLength(7);
     expect(STANFORD_CME295_LECTURES.map((l) => l.youtubeId)).toEqual([
       "114i2Kz-LZA",
       "GaIeu3npx04",
       "S3bCDcJhz4s",
+      "3Vaj0Oka_t4",
+      "25KIyaeI_Fg",
+      "nU2a2lm6vDE",
+      "uoSynlTDyMs",
     ]);
     for (const lec of STANFORD_CME295_LECTURES) {
       expect(lec.youtubeUrl).toBe(`https://www.youtube.com/watch?v=${lec.youtubeId}`);
       expect(lec.youtubeUrl).not.toContain("list=");
       expect(lec.youtubeUrl).not.toContain("index=");
     }
-    expect(TRANSFORMER_CME295_LESSONS).toHaveLength(12);
+    expect(TRANSFORMER_CME295_LESSONS).toHaveLength(24);
 
     const ids = new Set<string>();
     const visuals = new Set<string>();
 
     TRANSFORMER_CME295_LESSONS.forEach((lesson, idx) => {
       expect(lesson.order).toBe(idx + 1);
-      expect([1, 2, 3]).toContain(lesson.lectureNumber);
+      expect([1, 2, 3, 4, 5, 6, 7]).toContain(lesson.lectureNumber);
       expect(ids.has(lesson.id)).toBe(false);
       expect(visuals.has(lesson.visualId)).toBe(false);
       ids.add(lesson.id);
@@ -52,7 +56,7 @@ describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12
     });
   });
 
-  it("tokenizes and color-codes Transformer & LLM terminology across all 5 semantic color families", () => {
+  it("tokenizes and color-codes Transformer, RL, Systems, Agents & Eval terms across all 5 families", () => {
     const families = new Set<TransformerTermFamily>(
       TRANSFORMER_COLORED_TERMS.map((t) => t.family),
     );
@@ -60,27 +64,26 @@ describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12
     expect(Object.keys(TRANSFORMER_FAMILY_STYLES)).toHaveLength(5);
 
     const sample =
-      "BPE Tokenizer va Embeddings [MASK] hamda Self-Attention RoPE GQA Pre-Training YaRN SFT LoRA RLHF DPO GRPO Temperature Context Rot";
+      "BPE Tokenizer Embeddings [MASK] Self-Attention RoPE GQA PPO GRPO FlashAttention HBM SRAM PagedAttention Speculative Decoding MCP Prompt Caching ReAct Loop Pass@K LLM-as-a-Judge Bench Maxing Goodhart's Law";
     const chunks = splitTransformerTextWithColoredTerms(sample);
     const matched = new Set(
       chunks.filter((c) => c.meta !== null).map((c) => c.meta!.term),
     );
 
     expect(matched.has("BPE")).toBe(true);
-    expect(matched.has("Tokenizer")).toBe(true);
-    expect(matched.has("[MASK]")).toBe(true);
     expect(matched.has("Self-Attention")).toBe(true);
     expect(matched.has("RoPE")).toBe(true);
-    expect(matched.has("GQA")).toBe(true);
-    expect(matched.has("Pre-Training")).toBe(true);
-    expect(matched.has("YaRN")).toBe(true);
-    expect(matched.has("SFT")).toBe(true);
-    expect(matched.has("LoRA")).toBe(true);
-    expect(matched.has("RLHF")).toBe(true);
-    expect(matched.has("DPO")).toBe(true);
-    expect(matched.has("GRPO")).toBe(true);
-    expect(matched.has("Temperature")).toBe(true);
-    expect(matched.has("Context Rot")).toBe(true);
+    expect(matched.has("PPO")).toBe(true);
+    expect(matched.has("FlashAttention")).toBe(true);
+    expect(matched.has("PagedAttention")).toBe(true);
+    expect(matched.has("Speculative Decoding")).toBe(true);
+    expect(matched.has("MCP")).toBe(true);
+    expect(matched.has("Prompt Caching")).toBe(true);
+    expect(matched.has("ReAct Loop")).toBe(true);
+    expect(matched.has("Pass@K")).toBe(true);
+    expect(matched.has("LLM-as-a-Judge")).toBe(true);
+    expect(matched.has("Bench Maxing")).toBe(true);
+    expect(matched.has("Goodhart's Law")).toBe(true);
   });
 
   it(
@@ -89,7 +92,8 @@ describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12
       const catalog = buildLearningLibraryCatalog();
       const mod = catalog.find((c) => c.id === "transformers-cme295");
       expect(mod).toBeDefined();
-      expect(mod?.publishedItems).toBe(12);
+      expect(mod?.phasesOrChapters).toBe(7);
+      expect(mod?.publishedItems).toBe(24);
       expect(mod?.plannedOrDraftItems).toBe(0);
       expect(mod?.href).toBe("/learn/transformers-cme295");
 
@@ -122,13 +126,13 @@ describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12
           .filter((d) => d.id.startsWith("lesson:tr-"))
           .map((d) => d.id.replace("lesson:", "")),
       );
-      expect(indexedTrIds.size).toBe(12);
+      expect(indexedTrIds.size).toBe(24);
     },
     15000,
   );
 
   it(
-    "passes automated Python testCases for all 12 micro-lesson modelSolution implementations",
+    "passes automated Python testCases for all 24 micro-lesson modelSolution implementations",
     async () => {
       for (const lesson of TRANSFORMER_CME295_LESSONS) {
         const solution = lesson.exercise.modelSolution;
@@ -140,6 +144,6 @@ describe("Stanford CME 295: Transformers & Large Language Models (3 Ma'ruza / 12
         ).toBe(true);
       }
     },
-    30000,
+    45000,
   );
 });

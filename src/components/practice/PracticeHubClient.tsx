@@ -163,13 +163,13 @@ export function PracticeHubClient({ visualizations }: PracticeHubClientProps) {
             <div className="space-y-1">
               <span className="text-[11px] font-bold uppercase tracking-wider text-violet-300 flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5" />
-                <span>Stanford CME 295 • Transformers &amp; LLMs • 12 Ta Pyodide Lab</span>
+                <span>Stanford CME 295 • Transformers &amp; LLMs • 24 Ta Pyodide Lab</span>
               </span>
               <h3 className="text-base sm:text-lg font-extrabold text-white">
-                Transformers &amp; LLMs — 3 Ma&apos;ruza va 12 Interaktiv Kodlash Laboratoriyasi
+                Transformers &amp; LLMs — 7 Ma&apos;ruza va 24 Interaktiv Kodlash Laboratoriyasi
               </h3>
               <p className="text-xs text-slate-300 max-w-2xl">
-                BPE Merge, Q/K/V Scaled Dot-Product Attention, Causal Mask, Chinchilla/MoE, RoPE 2D Rotation, Temperature Softmax, BPB, LoRA, Bradley-Terry va GRPO mashqlari.
+                BPE, Q/K/V Attention, RoPE, PPO/GRPO/Reverse KL, Online Softmax (FlashAttention), Speculative Decoding, NDCG, Prompt Caching, Compaction, Pass@K va Pareto Frontier mashqlari.
               </p>
             </div>
             <Link

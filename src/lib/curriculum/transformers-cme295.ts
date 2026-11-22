@@ -22,10 +22,22 @@ export type TransformerVisualId =
   | "pretrain-bpb-collapse"
   | "yarn-sft-lora"
   | "rlhf-vs-dpo"
-  | "grpo-onpolicy-distill";
+  | "grpo-onpolicy-distill"
+  | "rl-policy-gradient"
+  | "ppo-grpo-clip"
+  | "distill-reverse-kl"
+  | "flash-attention-tiling"
+  | "parallelism-5d"
+  | "roofline-speculative"
+  | "rag-hybrid-ndcg"
+  | "mcp-prompt-caching"
+  | "react-harness-memory"
+  | "kappa-passk-metrics"
+  | "llm-judge-biases"
+  | "benchmax-pareto";
 
 export interface TransformerLectureMeta {
-  lectureNumber: 1 | 2 | 3;
+  lectureNumber: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   titleUz: string;
   subtitleEn: string;
   speakers: string;
@@ -70,12 +82,56 @@ export const STANFORD_CME295_LECTURES: readonly TransformerLectureMeta[] = [
     placeholderNoteUz:
       "3-Ma'ruza: Pre-Training, BPB, Mid-Training, SFT, LoRA, RLHF/DPO va GRPO Distillation videosi.",
   },
+  {
+    lectureNumber: 4,
+    titleUz: "4-Ma'ruza: RL Matematikasi, PPO vs GRPO va On-Policy Distillation",
+    subtitleEn: "Lecture 4: Policy Gradients, Importance Sampling, Clipping/KL & Reverse KL",
+    speakers: "Afshine Amidi & Shervin Amidi • Stanford CME 295",
+    sourceFile: "transformer4.md",
+    youtubeId: "3Vaj0Oka_t4",
+    youtubeUrl: "https://www.youtube.com/watch?v=3Vaj0Oka_t4",
+    placeholderNoteUz:
+      "4-Ma'ruza: REINFORCE, Importance Sampling, PPO, GRPO/DAPO va On-Policy Distillation videosi.",
+  },
+  {
+    lectureNumber: 5,
+    titleUz: "5-Ma'ruza: LLM Tizimlari — FlashAttention, 5D Parallelism va Inference",
+    subtitleEn: "Lecture 5: HBM/SRAM, 5D Parallelism, Roofline, PagedAttention, MLA & Speculative Decoding",
+    speakers: "Afshine Amidi & Shervin Amidi • Stanford CME 295",
+    sourceFile: "lecture5.md",
+    youtubeId: "25KIyaeI_Fg",
+    youtubeUrl: "https://www.youtube.com/watch?v=25KIyaeI_Fg",
+    placeholderNoteUz:
+      "5-Ma'ruza: GPU xotira, FlashAttention, 5D Parallelism, Roofline, PagedAttention & Speculative Decoding.",
+  },
+  {
+    lectureNumber: 6,
+    titleUz: "6-Ma'ruza: AI Agentlar — RAG, Tools, MCP, Prompt Caching & Harness",
+    subtitleEn: "Lecture 6: Hybrid RAG/NDCG, Tool Calling, MCP, ReAct, Compaction, Memory & Swarms",
+    speakers: "Afshine Amidi & Shervin Amidi • Stanford CME 295",
+    sourceFile: "lecture6.md",
+    youtubeId: "nU2a2lm6vDE",
+    youtubeUrl: "https://www.youtube.com/watch?v=nU2a2lm6vDE",
+    placeholderNoteUz:
+      "6-Ma'ruza: Hybrid RAG, Re-Ranking, Tools, MCP, Prompt Caching, ReAct Harness va Coding Agents.",
+  },
+  {
+    lectureNumber: 7,
+    titleUz: "7-Ma'ruza: LLM & Agent Baholash — Pass@K, LLM-as-a-Judge & Bench Maxing",
+    subtitleEn: "Lecture 7: Kappa, Pass@K, Judge Biases, Agent Failures, Benchmarks & Goodhart's Law",
+    speakers: "Afshine Amidi & Shervin Amidi • Stanford CME 295",
+    sourceFile: "lecture7.md",
+    youtubeId: "uoSynlTDyMs",
+    youtubeUrl: "https://www.youtube.com/watch?v=uoSynlTDyMs",
+    placeholderNoteUz:
+      "7-Ma'ruza: Cohen's Kappa, Pass@K, LLM-as-a-Judge biaslari, Agent debug, Pareto va Bench Maxing.",
+  },
 ];
 
 export interface TransformerMicroLesson {
   id: string;
   order: number;
-  lectureNumber: 1 | 2 | 3;
+  lectureNumber: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   titleUz: string;
   subtitleEn: string;
   canonicalConceptId: string;
@@ -987,6 +1043,850 @@ def grpo_advantages(rewards: list[float]) -> list[float]:
       ],
       correctIndex: 0,
       explanationUz: "GRPO On-Policy lekin faqat oxirida siyrak mukofot beradi; SFT/DPO zich signal bersa ham Off-Policy. On-Policy Distillation ikkalasining eng yaxshisini birlashtiradi.",
+    },
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* MA'RUZA 4 (transformer4.md)                                            */
+  /* ---------------------------------------------------------------------- */
+  {
+    id: "tr-13-rl-policy-gradient",
+    order: 13,
+    lectureNumber: 4,
+    titleUz: "13. RL Asoslari, Policy Gradient & Importance Sampling",
+    subtitleEn: "Lecture 4 • REINFORCE Log-Derivative, Generation vs Evaluation va Variance Reduction",
+    canonicalConceptId: "fine-tuning-lora-peft",
+    estimatedMinutes: 16,
+    analogyUz:
+      "Tasavvur qiling, o'quvchi har safar imtihon topshirganda +101 yoki +100 ball oladi: ikkisi ham katta musbat son bo'lgani uchun ustoz qaysi javobni kuchaytirib, qaysinisini kamaytirishda adashib shovqin qiladi! O'rtacha 100.5 ni ayirib (+0.5 vs -0.5) solishtirsangiz — gradient darhol tiniqlashadi!",
+    theoryParagraphsUz: [
+      "Reinforcement Learning (RL) da LLM bu Agent, uning keyingi token tanlash ehtimoli esa Policy (pi_theta). Bizning maqsadimiz kutilayotgan mukofotni (Reward) maksimal qilish — shuning uchun Gradient Descent emas, Gradient Ascent (theta + alpha * grad) qilamiz. Log-Derivative formulasi orqali gradient R * grad(log pi_theta) ko'rinishiga keladi: mukofot musbat bo'lsa action ehtimolini oshiradi, manfiy bo'lsa pasaytiradi.",
+      "Ammo har bir qadamda LLM ga noldan avtoregressiv javob yozdirish (Rollout / Generation) juda sekin, tayyor javob ehtimolini baholash (Evaluation) esa Teacher Forcing tufayli parallel va arzon! Shu sababli eski siyosat (pi_old) bitta batch yaratadi va yangi siyosat bir necha qadam yangilanadi — farqni tuzatish uchun Importance Sampling Ratio rho = pi_theta / pi_old ishlatiladi.",
+      "Vanil Policy Gradient ning 3 katta muammosi bor: 1) Absolyut mukofotlar (101 vs 100) gradient dispersiyasini shovqinli qiladi -> Baseline (o'rtacha kutilgan mukofot) kerak; 2) Yakuniy Reward butun javobga bir xil berilgani uchun oraliqdagi xato qadamlar ajratilmaydi; 3) Model SFT reference holatidan uzoqlashib Reward Hacking ga tushmasligi uchun cheklov zarur.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Maqola o'qishda 3 ta belgi chalkashuvidan ehtiyot bo'ling:",
+      explanationUz:
+        "Ko'p RL maqolalarida L deb belgilangan kattalik aslida minimallashtiriladigan Loss emas, maksimallashtiriladigan Objective bo'ladi; R esa Reward emas, ba'zan ehtimolliklar nisbati (Importance Sampling Ratio, bu darsda rho) ni bildiradi!",
+    },
+    formulaLatex: "\\nabla_\\theta J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_{\\text{old}}}\\!\\left[ \\frac{\\pi_\\theta(\\tau)}{\\pi_{\\text{old}}(\\tau)} (R(\\tau) - b) \\nabla_\\theta \\log \\pi_\\theta(\\tau) \\right]",
+    formulaNoteUz: "Baseline b ayirilganda Advantage musbat/manfiy bo'lib gradient shovqini keskin kamayadi; pi_theta / pi_old esa bir batchni ko'p marta ishlatishga ruxsat beradi.",
+    visualId: "rl-policy-gradient",
+    visualTitleUz: "Baseline Shovqin Kamaytirish (+101/+100 vs +0.5/-0.5) & Importance Sampling",
+    pytorchSnippet: `import torch
+
+# Policy Gradient: musbat advantage ehtimolni oshiradi, manfiy pasaytiradi
+log_probs = torch.tensor([-0.5, -1.2], requires_grad=True)
+rewards = torch.tensor([101.0, 100.0])
+advantages = rewards - rewards.mean()  # [+0.5, -0.5] baseline bilan!
+objective = (advantages * log_probs).mean()
+objective.backward()
+print("Gradient (baseline bilan):", log_probs.grad.tolist())`,
+    exercise: {
+      id: "ex-tr-13",
+      titleUz: "Amaliy mashq: Importance Sampling Ratio va Baseline bilan Policy Objective hisoblash",
+      instructionsUz:
+        "`policy_step_score(p_new: float, p_old: float, reward: float, baseline: float) -> float` funksiyasini yozing: `rho = p_new / p_old`, `adv = reward - baseline` bo'lib `rho * adv` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def policy_step_score(p_new: float, p_old: float, reward: float, baseline: float) -> float:
+    # Importance Sampling nisbati * (reward - baseline)
+    pass`,
+      expectedBehaviorUz: "Reweight qilingan ustunlik qiymatini qaytaradi.",
+      hintsUz: ["return (p_new / p_old) * (reward - baseline)"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Baseline bilan +0.5 ustunlik va rho=1.2 -> 0.6", assertionCode: "abs(policy_step_score(0.6, 0.5, 101.0, 100.5) - 0.6) < 1e-6" },
+        { id: "tc2", descriptionUz: "Yomon javobda manfiy natija", assertionCode: "abs(policy_step_score(0.4, 0.5, 100.0, 100.5) - (-0.4)) < 1e-6" },
+      ],
+      modelSolution: `def policy_step_score(p_new: float, p_old: float, reward: float, baseline: float) -> float:
+    rho = p_new / p_old
+    adv = reward - baseline
+    return rho * adv`,
+      solutionExplanationUz: "Importance Sampling nisbati eski rollout batchidan xavfsiz yangilanish olish imkonini beradi.",
+    },
+    quiz: {
+      questionUz: "Nima uchun on-policy RL da eski batchdan (pi_old) bir necha yangilanish olish foydali?",
+      options: [
+        "Chunki avtoregressiv matn yaratish (Rollout) juda sekin, tayyor matn ehtimollarini parallel baholash (Evaluation) esa arzon",
+        "Chunki Teacher Forcing faqat SFT da ishlaydi",
+        "Chunki pi_old gradientni nolga aylantiradi",
+      ],
+      correctIndex: 0,
+      explanationUz: "Tokenma-token generatsiya qimmat bo'lgani uchun bir marta olingan rollout ustidan Importance Sampling bilan bir nechta gradient qadami tashlanadi.",
+    },
+  },
+  {
+    id: "tr-14-ppo-vs-grpo",
+    order: 14,
+    lectureNumber: 4,
+    titleUz: "14. PPO (Value Function + Clipping + KL) vs GRPO & DAPO Tuzatishlari",
+    subtitleEn: "Lecture 4 • PPO 3 Siyosat, GAE, GRPO Uzunlik Bias (1/|o_i|) & Clip Chegaralari",
+    canonicalConceptId: "fine-tuning-lora-peft",
+    estimatedMinutes: 16,
+    analogyUz:
+      "PPO da sizning yoningizda har bir so'zdan keyin «hozircha necha ball olishga ketyapsan?» deb bashorat qiluvchi qimmat maslahatchi (Value Function) yuradi. GRPO esa bu maslahatchini olib tashlab, shunchaki 4 ta urinish qilib bir-biriga solishtiradi!",
+    theoryParagraphsUz: [
+      "PPO (Proximal Policy Optimization) ikkita qurol bilan barqarorlik beradi: 1) Har token darajasida kutilayotgan mukofotni taxmin qilib Advantage hisoblaydigan Value Function (va GAE); 2) Siyosat rho = pi_theta / pi_old ning [1-eps, 1+eps] dan chiqib ketishini kesuvchi Clipping + reference modeldan uzoqlashmaslik uchun KL Divergence jarimasi. Bunda 3 ta siyosat qatnashadi: pi_theta (o'qitilayotgan), pi_old (batch yaratgan) va pi_ref (muzlatilgan SFT asos).",
+      "Biroq PPO Value Function ni policy bilan birga GPU xotirasida o'qitishni talab qilgani uchun juda og'ir. GRPO Value Function dan butunlay voz kechib, bir promptdan G ta javob chiqaradi va guruh o'rtachasiga nisbatan Advantage oladi.",
+      "Lekin GRPO formulasi ham muammosiz emas! Har bir javob o_i ning uzunligiga 1/|o_i| ga bo'lingani uchun, model yomon (manfiy advantage) javob chiqarganda jarimani kichraytirish uchun javobni sun'iy ravishda cho'zib yuboradi (xato javob uzunlashaveradi, aniqlik esa platoga chiqadi)! DAPO va Dr. GRPO buni umumiy token soniga normallashtirib hamda kam ehtimolli kashfiyot tokenlariga ruxsat berish uchun yuqori/pastki Clipping epsilonini assimetrik qilib tuzatadi.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Nima uchun GRPO da aniqlik to'xtaganida ham javob uzunligi o'sishda davom etgan?",
+      explanationUz:
+        "1/|o_i| normallashtirish tufayli qisqa xato javob katta manfiy zarba oladi, uzun xato javob esa kichikroq zarba oladi — natijada model noto'g'ri chiqqan paytda uzunroq yozishni afzal ko'rib qoladi (DAPO shuni tuzatadi).",
+    },
+    formulaLatex: "J_{\\text{clip}}(\\theta) = \\min\\Big(\\rho_t A_t,\\; \\text{clip}(\\rho_t, 1-\\epsilon, 1+\\epsilon) A_t\\Big) - \\beta\\, \\text{KL}(\\pi_\\theta \\| \\pi_{\\text{ref}})",
+    formulaNoteUz: "Clipping rho ni [1-eps, 1+eps] tashqarisida tekislab gradientni nolga tushiradi va keskin sakrashni to'xtatadi.",
+    visualId: "ppo-grpo-clip",
+    visualTitleUz: "PPO Clipping Egri Chizig'i va GRPO 1/|o_i| Uzunlik Ta'siri",
+    pytorchSnippet: `import torch
+
+rho = torch.tensor([0.7, 1.0, 1.4])
+adv = torch.tensor([1.0, 1.0, 1.0])
+eps = 0.2
+clipped = torch.clamp(rho, 1 - eps, 1 + eps)
+ppo_obj = torch.minimum(rho * adv, clipped * adv)
+print("PPO Clipped objective:", ppo_obj.tolist())`,
+    exercise: {
+      id: "ex-tr-14",
+      titleUz: "Amaliy mashq: PPO Clipped Surrogate Objective ni hisoblash",
+      instructionsUz:
+        "`ppo_clip_term(rho: float, advantage: float, eps: float = 0.2) -> float` funksiyasini yozing: `clipped_rho = max(1 - eps, min(1 + eps, rho))` va `min(rho * advantage, clipped_rho * advantage)` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def ppo_clip_term(rho: float, advantage: float, eps: float = 0.2) -> float:
+    # Clipped surrogate qoidasini yozing
+    pass`,
+      expectedBehaviorUz: "Musbat va manfiy advantage uchun xavfsiz minimal surrogate qaytaradi.",
+      hintsUz: ["clipped = max(1.0 - eps, min(1.0 + eps, rho))"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Advantage > 0 da rho=1.5 bo'lsa 1.2 * A ga kesiladi", assertionCode: "abs(ppo_clip_term(1.5, 2.0, 0.2) - 2.4) < 1e-6" },
+        { id: "tc2", descriptionUz: "Advantage < 0 da rho=0.5 bo'lsa 0.8 * A ga kesiladi", assertionCode: "abs(ppo_clip_term(0.5, -2.0, 0.2) - (-1.6)) < 1e-6" },
+      ],
+      modelSolution: `def ppo_clip_term(rho: float, advantage: float, eps: float = 0.2) -> float:
+    clipped = max(1.0 - eps, min(1.0 + eps, rho))
+    return min(rho * advantage, clipped * advantage)`,
+      solutionExplanationUz: "Musbat ustunlikda 1+eps dan yuqoriga, manfiy ustunlikda 1-eps dan pastga sakrashni cheklaydi.",
+    },
+    quiz: {
+      questionUz: "PPO dagi 3 ta siyosat (pi_theta, pi_old, pi_ref) dan qaysi biri butun RL bosqichi davomida o'zgarmas (muzlatilgan) bo'lib qoladi?",
+      options: [
+        "pi_ref (Reference / SFT asos modeli) — KL divergence orqali asosiy til qobiliyatini yo'qotmaslik uchun",
+        "pi_theta — yangilanayotgan siyosat",
+        "pi_old — har yangi batchda yangilanadi",
+      ],
+      correctIndex: 0,
+      explanationUz: "pi_old har batchda yangilanadi, pi_theta har gradient qadamida yangilanadi; faqat pi_ref boshlang'ich tayanch sifatida doim sobit turadi.",
+    },
+  },
+  {
+    id: "tr-15-on-policy-distillation",
+    order: 15,
+    lectureNumber: 4,
+    titleUz: "15. Outcome vs Process Supervision, Reverse KL & On-Policy Distillation",
+    subtitleEn: "Lecture 4 • Muhrlangan Quti Mantiqi, Mode-Seeking KL & O'z-O'zini O'qitish",
+    canonicalConceptId: "fine-tuning-lora-peft",
+    estimatedMinutes: 15,
+    analogyUz:
+      "Muhrlangan qutidagi o'yinchoq ayiqcha oshxonaga ko'chirilsa: talaba «1-qadam: ayiqcha qutidan chiqib oshxonaga yurdi -> Javob: oshxona» desa, oxirgi javob to'g'ri, lekin 1-qadam mantiqsiz! GRPO hammasini maqtaydi; On-Policy Distillation da esa ustoz aynan «chiqib» so'zida qizil chiziq tortadi!",
+    theoryParagraphsUz: [
+      "RLVR / GRPO Outcome Supervision beradi — faqat yakuniy javob to'g'ri bo'lsa, oraliqdagi xato fikrlash qadamlariga ham bir xil mukofot tegadi. Process Supervision da har bir qadamni alohida belgilash esa juda qimmat va yana alohida model talab qiladi.",
+      "On-Policy Distillation mukammal muvozanat topadi: talaba (Student) o'zi javob yozadi (On-Policy), kuchli Ustoz (Teacher) esa har bir yaratilgan tokenda o'z taqsimotini ko'rsatadi. Bu yerda oddiy Forward KL(T||S) o'rniga Reverse KL(S||T) ishlatiladi — u Mode-Seeking xususiyatiga ega bo'lib, kichikroq talaba ustozning barcha tarqoq variantlarini emas, eng kuchli va ishonchli cho'qqilarini o'zlashtiradi.",
+      "Agar sizda tashqi katta ustoz bo'lmasa-chi? Teacher Forcing hiylasi bilan On-Policy Self-Distillation ishlaydi: model o'ziga prompt bilan birga haqiqiy yakuniy javobni ham ko'rsatib teacher distribution oladi, so'ng oddiy promptdagi o'zini o'sha taqsimotga moslaydi! Yoki matematika, kod va agentlik bo'yicha alohida mutaxassis o'qituvchilardan Multi-Teacher Distillation qilinadi.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Reverse KL(S || T) da nega talaba xato tokenga katta jarima oladi?",
+      explanationUz:
+        "Chunki yig'indi Student ehtimoli s_i bilan tortilgan: agar Student noto'g'ri tokenga yuqori s_i bersa (s_i > 0, t_i ≈ 0), log(s_i / t_i) juda kattalashib darhol o'sha xatoni yo'q qiladi.",
+    },
+    formulaLatex: "\\text{Reverse KL}(S \\| T) = \\sum_{i} S(i) \\log \\frac{S(i)}{T(i)}",
+    formulaNoteUz: "S(i) og'irlik sifatida turadi: talaba yaratgan (S katta) lekin ustoz ma'qullamagan (T kichik) tokenlar kuchli jazolanadi.",
+    visualId: "distill-reverse-kl",
+    visualTitleUz: "Reverse KL (Mode-Seeking) va On-Policy Token Darajali Jarima",
+    pytorchSnippet: `import torch
+
+# Reverse KL(Student || Teacher): talaba taqsimoti ustozning cho'qqisiga intiladi
+p_student = torch.tensor([0.6, 0.4])
+p_teacher = torch.tensor([0.9, 0.1])
+reverse_kl = torch.sum(p_student * torch.log(p_student / p_teacher))
+print("Reverse KL:", round(reverse_kl.item(), 4))`,
+    exercise: {
+      id: "ex-tr-15",
+      titleUz: "Amaliy mashq: Forward KL va Reverse KL divergence ni hisoblash",
+      instructionsUz:
+        "`reverse_kl(p_student: list[float], p_teacher: list[float]) -> float` funksiyasini yozing: `sum(s * math.log(s / t) for s, t in zip(p_student, p_teacher) if s > 0)` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `import math
+
+def reverse_kl(p_student: list[float], p_teacher: list[float]) -> float:
+    # sum(s * log(s / t)) ni hisoblang
+    pass`,
+      expectedBehaviorUz: "Student va Teacher taqsimotlari orasidagi Reverse KL qiymatini qaytaradi.",
+      hintsUz: ["return sum(s * math.log(s / t) for s, t in zip(p_student, p_teacher) if s > 0)"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Bir xil taqsimotda KL = 0.0", assertionCode: "abs(reverse_kl([0.7, 0.3], [0.7, 0.3])) < 1e-6" },
+        { id: "tc2", descriptionUz: "Talaba noto'g'ri tokenga katta ehtimol bersa Reverse KL yuqori chiqadi", assertionCode: "reverse_kl([0.2, 0.8], [0.9, 0.1]) > 1.0" },
+      ],
+      modelSolution: `import math
+
+def reverse_kl(p_student: list[float], p_teacher: list[float]) -> float:
+    return float(sum(s * math.log(s / t) for s, t in zip(p_student, p_teacher) if s > 0.0))`,
+      solutionExplanationUz: "Reverse KL talaba yaratgan xato tokenlarda kuchli signal berib, modelni ustozning asosiy modasiga yo'naltiradi.",
+    },
+    quiz: {
+      questionUz: "On-Policy Self-Distillation da tashqi kattaroq ustoz modelisiz zich token signali qanday olinadi?",
+      options: [
+        "Xuddi o'sha modelga prompt bilan birga haqiqiy yakuniy javobni ham qo'shib berib, Teacher Forcing bilan ehtimollik olinadi",
+        "Random tokenlardan foydalanib",
+        "Faqat Zero-Shot bilan",
+      ],
+      correctIndex: 0,
+      explanationUz: "Modelga to'g'ri yechimni kontekstga qo'shib bersak, u to'g'ri yo'l bo'ylab yaxshiroq token ehtimollarini beradi — keyin talaba (javobsiz) o'zini shunga moslaydi.",
+    },
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* MA'RUZA 5 (lecture5.md)                                                */
+  /* ---------------------------------------------------------------------- */
+  {
+    id: "tr-16-flashattention-hbm-sram",
+    order: 16,
+    lectureNumber: 5,
+    titleUz: "16. GPU Xotira Ierarxiyasi (HBM vs SRAM) & FlashAttention",
+    subtitleEn: "Lecture 5 • Online Softmax, N×N Matritsadan Qochish & Aniq Qayta Hisoblash",
+    canonicalConceptId: "attention-mechanism",
+    estimatedMinutes: 16,
+    analogyUz:
+      "HBM (141 GB) — katta lekin ko'chadan narigi ombor; SRAM (100 MB) — ustaxonadagi stolingizning o'zi (10x tezroq)! Oddiy Attention har safar ulkan N×N qog'ozni omborga tashib yuradi. FlashAttention esa mayda bo'laklarni to'g'ridan-to'g'ri stolda (SRAM) online softmax bilan hisoblab ketadi!",
+    theoryParagraphsUz: [
+      "100B parametrli modelning o'zi FP16 (2 bayt/parametr) da 200 GB joy oladi — bu esa bitta eng kuchli H200 GPU (141 GB HBM) ga ham sig'maydi! Bundan tashqari, N=10,000 uzunlikdagi oddiy Self-Attention da N×N = 100M katakli matritsani sekin HBM ga yozib-o'qish eng katta to'siqdir.",
+      "FlashAttention buni xotira ierarxiyasi bilan yechadi: HBM katta, ammo sekin (~TB/s); on-chip SRAM esa kichik (~100 MB), lekin o'ta tezkor (~10x tezroq). Softmax ning mahalliy emasligi (butun qator yig'indisini kutish) muammosi Online Softmax hiylasi bilan hal qilinadi: numerator N_t va denominator D_t ketma-ket bo'laklarda yangilanib, sonli barqarorlik uchun joriy maksimal qiymat m_t bo'yicha exp(m_prev - m_curr) ga qayta masshtablanadi.",
+      "Qizig'i shundaki, FlashAttention taxminiy EMAS — matematik jihatdan 100% ANIQ (exact) natija beradi! Va Backward pass da ulkan N×N matritsani HBM dan o'qishdan ko'ra uni SRAM da qayta hisoblash (Recomputation) ko'proq GFLOP ishlatsa ham, umumiy vaqtni sezilarli tezlashtiradi (FlashAttention-2/3/4 Hopper va Blackwell GPU lariga moslangan).",
+    ],
+    keyInsightUz: {
+      highlightUz: "Ko'proq hisoblash qilib, qanday qilib tezroq ishlash mumkin?",
+      explanationUz:
+        "Chunki zamonaviy GPU larda hisoblash emas, HBM xotirasidan ma'lumot tashish sekin! FlashAttention HBM ga o'qish-yozishni keskin kamaytirgani uchun qayta hisoblash bilan ham umumiy vaqt ancha qisqaradi.",
+    },
+    formulaLatex: "m_t = \\max(m_{t-1}, S_t), \\quad D_t = D_{t-1} e^{m_{t-1}-m_t} + e^{S_t - m_t}, \\quad N_t = N_{t-1} e^{m_{t-1}-m_t} + e^{S_t - m_t} V_t",
+    formulaNoteUz: "Online Softmax har bir yangi token blokida maksimal m_t ni yangilab, avvalgi yig'indini e^{m_{t-1}-m_t} ga ko'paytirish bilan N×N matritsasiz aniq Attention beradi.",
+    visualId: "flash-attention-tiling",
+    visualTitleUz: "HBM vs SRAM & Online Softmax Qadamba-Qadam Simulyatori",
+    pytorchSnippet: `import torch
+import torch.nn.functional as F
+
+q = torch.randn(1, 8, 512, 64, device="cpu", dtype=torch.float32)
+k = torch.randn(1, 8, 512, 64)
+v = torch.randn(1, 8, 512, 64)
+# PyTorch SDPA mos apparatda avtomatik FlashAttention kernelini ishlatadi
+out = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+print("SDPA / FlashAttention natija:", out.shape)`,
+    exercise: {
+      id: "ex-tr-16",
+      titleUz: "Amaliy mashq: FlashAttention Online Softmax (N_t, D_t) ketma-ket yangilash",
+      instructionsUz:
+        "`online_softmax_attention(scores: list[float], values: list[float]) -> float` funksiyasini yozing: butun ro'yxat max ini oldindan ko'rmasdan, faqat `m`, `D`, `N` o'zgaruvchilarini siklda `exp(m_old - m_new)` rescaling bilan yangilab oxirida `N / D` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "core",
+      assessment: "deterministic",
+      starterCode: `import math
+
+def online_softmax_attention(scores: list[float], values: list[float]) -> float:
+    m = -float("inf")
+    D = 0.0
+    N = 0.0
+    for s, v in zip(scores, values):
+        # m_new, rescale = math.exp(m - m_new) (agar m != -inf) ni hisoblang
+        pass
+    return N / D`,
+      expectedBehaviorUz: "Oddiy softmax(scores) * values bilan 100% bir xil aniq javob qaytaradi.",
+      hintsUz: [
+        "m_new = max(m, s); rescale = 0.0 if m == -float('inf') else math.exp(m - m_new)",
+        "add_w = math.exp(s - m_new); D = D * rescale + add_w; N = N * rescale + add_w * v; m = m_new",
+      ],
+      testCases: [
+        { id: "tc1", descriptionUz: "Online hisob oddiy softmax bilan aynan mos keladi", assertionCode: "abs(online_softmax_attention([1.0, 3.0, 2.0], [10.0, 20.0, 30.0]) - ((__import__('math').exp(1)*10 + __import__('math').exp(3)*20 + __import__('math').exp(2)*30)/(__import__('math').exp(1)+__import__('math').exp(3)+__import__('math').exp(2)))) < 1e-6" },
+        { id: "tc2", descriptionUz: "Katta sonlarda (1000.0) overflow bermaydi", assertionCode: "abs(online_softmax_attention([1000.0, 1000.0], [4.0, 6.0]) - 5.0) < 1e-6" },
+      ],
+      modelSolution: `import math
+
+def online_softmax_attention(scores: list[float], values: list[float]) -> float:
+    m = -float("inf")
+    D = 0.0
+    N = 0.0
+    for s, v in zip(scores, values):
+        m_new = max(m, s)
+        rescale = 0.0 if m == -float("inf") else math.exp(m - m_new)
+        w = math.exp(s - m_new)
+        D = D * rescale + w
+        N = N * rescale + w * v
+        m = m_new
+    return N / D`,
+      solutionExplanationUz: "FlashAttention ning yuragi: butun qatorni kutmasdan, barqaror Online Softmax orqali oqimli hisob qildik.",
+    },
+    quiz: {
+      questionUz: "FlashAttention klassik Attention ga nisbatan taxminiy (approximation) natija beradimi?",
+      options: [
+        "Yo'q — FlashAttention matematik jihatdan 100% aniq (exact) natija beradi, faqat HBM/SRAM xotira harakatini optimallashtiradi",
+        "Ha, softmax ni taxminiy chiziqli qiladi",
+        "Ha, yarim tokenlarni tashlab yuboradi",
+      ],
+      correctIndex: 0,
+      explanationUz: "Online Softmax numerator va denominatorini aynan saqlab qolgani uchun yakuniy natija klassik formula bilan bir xil chiqadi.",
+    },
+  },
+  {
+    id: "tr-17-5d-parallelism",
+    order: 17,
+    lectureNumber: 5,
+    titleUz: "17. 5D Parallelism: Data (ZeRO), Tensor, Pipeline, Context & Expert",
+    subtitleEn: "Lecture 5 • 4 Xotira Iste'molchisi & Ko'p GPU da Treningni Taqsimlash",
+    canonicalConceptId: "linear-algebra-matrices",
+    estimatedMinutes: 16,
+    analogyUz:
+      "Ulkan zavodda bitta mashina (1 GPU) yetmasa 5 xil taqsimot qilasiz: har kimga har xil buyurtma berish (Data), bitta og'ir stanokni ikkiga bo'lish (Tensor), konveyerni qavatlarga bo'lish (Pipeline), uzun lentani bo'laklash (Context) va ixtisoslashgan ustalarni alohida xonaga qo'yish (Expert)!",
+    theoryParagraphsUz: [
+      "Treningda GPU xotirasini 4 narsa yeydi: Model parametrlari, Forward Activations (sequence length va batchga proporsional), Gradientlar va Adam optimizer holatlari. Buni sig'dirish va tezlatish uchun 5D Parallelism qo'llaniladi.",
+      "1) Data Parallelism + ZeRO: batch GPU larga bo'linadi; ZeRO parametr, gradient va optimizer holatlarini dublikat qilmay GPU larga taqsimlaydi (shard) — evaziga aloqa xarajati (communication) qo'shiladi. 2) Tensor Parallelism: bitta qatlam ichidagi Attention boshlari va FFN matritsa ko'paytmalari GPU larga bo'linadi.",
+      "3) Pipeline Parallelism: ketma-ket qatlamlar turli GPU larga qo'yiladi (bunda oldingi/keyingi GPU ni kutish paytida Bubble bo'sh vaqti paydo bo'ladi). 4) Context Parallelism: juda uzun Sequence Length bo'linib, Key/Value bloklari GPU lar aro aylanib o'tadi. 5) Expert Parallelism: MoE ekspertlari alohida GPU larda saqlanib, tokenlar mos GPU ga yuboriladi.",
+    ],
+    keyInsightUz: {
+      highlightUz: "ZeRO Data Parallelism nimaga Model Parallelism emas?",
+      explanationUz:
+        "Chunki ZeRO xotirani tejash uchun parametrlarni taqsimlasa ham, berilgan micro-batch ustidagi to'liq model hisoblashining barchasi o'sha bitta GPU ning o'zida bajariladi (kerakli vaznlar tarmoqdan chaqirib olinadi).",
+    },
+    formulaLatex: "\\text{Mem}_{\\text{FP16 Weights}} \\approx 2 \\cdot P \\text{ bytes}, \\qquad \\text{Trening Jami} \\gg \\text{Weights} \\;(\\text{+ Grads + Adam + Activations})",
+    formulaNoteUz: "100B parametrli modelning o'zi FP16 da ~200 GB; Adam va Activations qo'shilganda terabaytlarga chiqadi.",
+    visualId: "parallelism-5d",
+    visualTitleUz: "5D Parallelism Topologiyasi & Pipeline Bubble Interaktiv Sxemasi",
+    pytorchSnippet: `# 100B model uchun oddiy xotira bahosi (bytes)
+params = 100e9
+fp16_weights_gb = (params * 2) / 1e9  # 200 GB
+# ZeRO bilan 8 GPU ga sharding: har bir GPU ga ~25 GB og'irlik + holat qismi tushadi
+print("Jami FP16 vaznlar (GB):", fp16_weights_gb, "| 8 GPU ZeRO per GPU:", fp16_weights_gb / 8)`,
+    exercise: {
+      id: "ex-tr-17",
+      titleUz: "Amaliy mashq: Model xotirasini hisoblash va ZeRO sharding bo'yicha GPU sonini topish",
+      instructionsUz:
+        "`min_gpus_for_weights(params_billions: float, gpu_mem_gb: float, bytes_per_param: int = 2) -> int` funksiyasini yozing: `math.ceil((params_billions * bytes_per_param) / gpu_mem_gb)` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `import math
+
+def min_gpus_for_weights(params_billions: float, gpu_mem_gb: float, bytes_per_param: int = 2) -> int:
+    # Kamida nechta GPU kerakligini math.ceil bilan toping
+    pass`,
+      expectedBehaviorUz: "Berilgan model hajmi uchun minimal GPU sonini butun son sifatida qaytaradi.",
+      hintsUz: ["return math.ceil((params_billions * bytes_per_param) / gpu_mem_gb)"],
+      testCases: [
+        { id: "tc1", descriptionUz: "100B FP16 (200GB) -> 141GB H200 dan kamida 2 ta kerak", assertionCode: "min_gpus_for_weights(100.0, 141.0, 2) == 2" },
+        { id: "tc2", descriptionUz: "70B FP16 (140GB) -> 1 ta H200 (141GB) ga sig'adi", assertionCode: "min_gpus_for_weights(70.0, 141.0, 2) == 1" },
+      ],
+      modelSolution: `import math
+
+def min_gpus_for_weights(params_billions: float, gpu_mem_gb: float, bytes_per_param: int = 2) -> int:
+    return math.ceil((params_billions * bytes_per_param) / gpu_mem_gb)`,
+      solutionExplanationUz: "Faqat vaznlarni saqlashning o'zi uchun minimal GPU sonini hisobladik; real treningda activation va Adam uchun yana bir necha barobar ko'proq kerak bo'ladi.",
+    },
+    quiz: {
+      questionUz: "Pipeline Parallelism da «Bubble» deganda nima tushuniladi?",
+      options: [
+        "Bir GPU keyingi yoki oldingi bosqichni kutish davomida bekor (idle) turib qolishi",
+        "KV Cache ning bloklarga bo'linishi",
+        "MoE routerining barcha ekspertni tanlashi",
+      ],
+      correctIndex: 0,
+      explanationUz: "Ketma-ket GPU bosqichlarida oldingi bosqichlar orqaga qaytish (backward pass) navbatini kutib bekor qolishi Pipeline Bubble deyiladi.",
+    },
+  },
+  {
+    id: "tr-18-inference-roofline-speculative",
+    order: 18,
+    lectureNumber: 5,
+    titleUz: "18. Inference Tezlashtirish: Roofline, PagedAttention, MLA & Speculative Decoding",
+    subtitleEn: "Lecture 5 • Prefill Compute-Bound vs Decode Memory-Bound, B=16 Blok & Draft-Target Isbot",
+    canonicalConceptId: "production-mlops-serving",
+    estimatedMinutes: 17,
+    analogyUz:
+      "Speculative Decoding — kichik yordamchi (Draft Model) tezda 4 ta so'zni yozib beradi, professor (Target Model) esa barcha 4 so'zni BITTADA parallel tekshiradi! Agar 3 tasi to'g'ri chiqsa, 1 qadamda 3–4 token tayyor — va eng ajablanarlisi, matematika yakuniy taqsimotni 100% saqlaydi!",
+    theoryParagraphsUz: [
+      "Inference da 3 metrika muhim: TTFT (Time To First Token = Queue + Prefill), TPOT (har bir output token vaqti) va TTLT. Nima uchun 10K kirish + 10 chiqish tez, 10 kirish + 10K chiqish sekin (va output ~5x qimmat)? Chunki Prefill barcha promptni parallel qayta ishlab Compute-Bound bo'ladi; Decode esa bitta token chiqarish uchun ham barcha vaznlarni HBM dan tashib o'tgani uchun Memory Bandwidth ga bog'liq (Roofline Model da Ridge Point dan chapda — Memory-Bound!).",
+      "Xotira isrofini yo'qotish uchun PagedAttention max output o'rnini oldindan band qilmay, KV Cache ni B=16 o'lchamli kichik bloklarga bo'lib fragmentation ni bartaraf etadi. Vazn/KV sonini qisqartirishda esa GQA (masalan G=2 / H=24 => 91% kam xotira!) va yanada ilg'or Multi-Latent Attention (MLA — barcha K/V larni bitta umumiy siqilgan latent vektorda saqlash) qo'llanadi.",
+      "Nihoyat, avtoregressiv sekinlikni sindirish uchun Speculative Decoding ishlatiladi: Draft Model K ta token taklif qiladi, Target Model hammasini bir o'tishda tekshiradi (Rejection Sampling: T >= D bo'lsa qabul, aks holda T/D ehtimol bilan qabul; rad etilsa qoldiq taqsimotdan tanlash => min(D,T) + max(0, T-D) = T, ya'ni 100% asl taqsimot!). Draft uchun alohida model o'rniga bitta modelga K ta qo'shimcha bosh qo'yish (Multi-Token Prediction) ham mumkin.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Speculative Decoding javob sifatini pasaytirmasligining matematik kafolati:",
+      explanationUz:
+        "Acceptance min(D(x), T(x)) ga Rejection qoldiq taqsimoti max(0, T(x) - D(x)) qo'shilganda aynan T(x) chiqadi — ya'ni chiqish taqsimoti katta Target Model bilan 100% bir xil!",
+    },
+    formulaLatex: "\\min(D(x), T(x)) + \\max(0, T(x) - D(x)) = T(x), \\qquad \\text{GQA Tejash} = 1 - \\frac{G}{H}",
+    formulaNoteUz: "Rejection sampling va qoldiq taqsimot yig'indisi har doim Target taqsimot T(x) ga teng bo'ladi.",
+    visualId: "roofline-speculative",
+    visualTitleUz: "Roofline Model, PagedAttention (B=16) va Speculative Decoding Tekshiruvi",
+    pytorchSnippet: `# Speculative Decoding ehtimol saqlanishini tekshirish
+D = [0.5, 0.3, 0.2]
+T = [0.7, 0.1, 0.2]
+p_reject = 1.0 - sum(min(d, t) for d, t in zip(D, T))
+recovered = [min(d, t) + max(0.0, t - d) for d, t in zip(D, T)]
+print("Tiklangan T:", recovered, "Asl T:", T)`,
+    exercise: {
+      id: "ex-tr-18",
+      titleUz: "Amaliy mashq: Speculative Decoding taqsimot saqlanishi va GQA xotira tejashini hisoblash",
+      instructionsUz:
+        "`speculative_acceptance_rate(draft_probs: list[float], target_probs: list[float]) -> float` funksiyasini yozing: `sum(min(d, t) for d, t in zip(draft_probs, target_probs))` umumiy qabul qilish ehtimolini qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def speculative_acceptance_rate(draft_probs: list[float], target_probs: list[float]) -> float:
+    # Qabul qilish ehtimoli sum(min(d, t)) ni qaytaring
+    pass`,
+      expectedBehaviorUz: "Draft va Target taqsimotlari qancha mos bo'lsa, qabul qilish darajasi shuncha 1.0 ga yaqin chiqadi.",
+      hintsUz: ["return float(sum(min(d, t) for d, t in zip(draft_probs, target_probs)))"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Bir xil taqsimot -> 1.0 qabul", assertionCode: "abs(speculative_acceptance_rate([0.5, 0.3, 0.2], [0.5, 0.3, 0.2]) - 1.0) < 1e-6" },
+        { id: "tc2", descriptionUz: "[0.5, 0.5] va [0.7, 0.3] -> min(0.5,0.7)+min(0.5,0.3)=0.8", assertionCode: "abs(speculative_acceptance_rate([0.5, 0.5], [0.7, 0.3]) - 0.8) < 1e-6" },
+      ],
+      modelSolution: `def speculative_acceptance_rate(draft_probs: list[float], target_probs: list[float]) -> float:
+    return float(sum(min(d, t) for d, t in zip(draft_probs, target_probs)))`,
+      solutionExplanationUz: "Draft va Target taqsimotlari qanchalik yaqin bo'lsa (Knowledge Distillation orqali), Speculative Decoding shunchalik tez ishlaydi!",
+    },
+    quiz: {
+      questionUz: "Nima uchun LLM da bitta token generatsiya qilish (Decode) Roofline modelda Memory-Bound bo'ladi?",
+      options: [
+        "Har bir yangi token chiqarish uchun modelning barcha milliardlab vaznlarini HBM dan tashib o'tish kerak, hisoblash esa atigi 1 tokenlik",
+        "Chunki SRAM hajmi 1000 GB",
+        "Chunki PagedAttention bloklari cheksiz katta",
+      ],
+      correctIndex: 0,
+      explanationUz: "Arithmetic Intensity (FLOP / Byte) juda past bo'lgani uchun vaqtni GPU hisob tezligi emas, HBM -> SRAM xotira o'tkazish tezligi belgilaydi.",
+    },
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* MA'RUZA 6 (lecture6.md)                                                */
+  /* ---------------------------------------------------------------------- */
+  {
+    id: "tr-19-rag-hybrid-rerank",
+    order: 19,
+    lectureNumber: 6,
+    titleUz: "19. RAG Arxitekturasi, Hybrid Search (BM25+Vector), Cross-Encoder & NDCG",
+    subtitleEn: "Lecture 6 • Bi-Encoder vs Cross-Encoder, Contextual Retrieval, NDCG/MRR va Coding da grep",
+    canonicalConceptId: "rag-retrieval-augmented",
+    estimatedMinutes: 16,
+    analogyUz:
+      "Millionlab kitobli kutubxonada avval tezkor Bi-Encoder + BM25 katalogi bilan ~100 ta eng o'xshash kitobni stolga keltirasiz (Recall). Keyin sinchkov Cross-Encoder Re-Ranker har birini savol bilan yonma-yon o'qib, eng to'g'ri Top-K sahifani LLM ga uzatadi!",
+    theoryParagraphsUz: [
+      "Oddiy LLM 3 chegara bilan to'qnashadi: Knowledge Cutoff (yangi va xususiy kodlarni bilmaydi), Context Rot (katta kontekstda fakt yo'qoladi) va Token narxi. Yechim — RAG (Retrieve, Augment, Generate): hujjatlar yuzlab tokenli qismlarga Chunking qilinadi (~10% overlap bilan gap ma'nosi uzilib qolmasligi uchun) va Contextual Retrieval bilan kontekst qo'shiladi.",
+      "Qidiruv 2 bosqichli bo'ladi: 1) Nomzod yig'ish (Recall maksimal qilish) — Bi-Encoder semantik qidiruvi + BM25 aniq so'z qidiruvini birlashtiruvchi Hybrid Search (ba'zan HyDE yoki query rewriting bilan). Masalan «Where is Cuddly?» so'rovida vektor «Huggy» ga adashsa, BM25 «Cuddly» so'zini ushlaydi! 2) Re-Ranker: top-100 nomzod endi Cross-Encoder ga savol bilan bitta ketma-ketlikda kiritilib [CLS] orqali aniq tartiblanadi («qizil sharfli ko'k paypoq» nozik farqlarini ajratadi).",
+      "Sifat NDCG@K, MRR (1/rank), Precision@K va Recall@K bilan o'lchanadi. Lekin muhim istisno: Coding Agents ko'pincha vektorli RAG o'rniga to'g'ridan-to'g'ri `grep` (regex aniq qidiruvi) ni ishlatadi — chunki kodda funksiya va o'zgaruvchi nomini aniq topish semantik o'xshashlikdan ancha tez va aniq!",
+    ],
+    keyInsightUz: {
+      highlightUz: "Qachon Vector RAG o'rniga `grep` kuchliroq ishlaydi?",
+      explanationUz:
+        "Tabiiy tilda «ayiqcha yumshoq» ≈ «teddy is soft» deya turlicha aytilgani uchun Embedding/Hybrid RAG kerak; lekin dasturiy kodda `compute_loss` kabi aniq identifikatorlarni izlashda `grep` tezroq va xatosiz!",
+    },
+    formulaLatex: "\\text{NDCG}@K = \\frac{\\text{DCG}@K}{\\text{IDCG}@K}, \\qquad \\text{DCG}@K = \\sum_{i=1}^{K} \\frac{\\text{rel}_i}{\\log_2(i + 1)}",
+    formulaNoteUz: "To'g'ri hujjat ro'yxat boshida (kichik i) tursa log_2(i+1) kichik bo'lib NDCG 1.0 ga yaqinlashadi.",
+    visualId: "rag-hybrid-ndcg",
+    visualTitleUz: "Bi-Encoder vs BM25 Hybrid Search & NDCG@K Kalkulyatori",
+    pytorchSnippet: `# Hybrid RAG g'oyasi: Reciprocal Rank Fusion + DCG hisoblash
+import math
+
+rels = [1, 0, 1, 0]  # Top-4 natijada 1- va 3-o'rin kerakli
+dcg = sum(r / math.log2(i + 2) for i, r in enumerate(rels))
+idcg = sum(r / math.log2(i + 2) for i, r in enumerate(sorted(rels, reverse=True)))
+print("NDCG@4:", round(dcg / idcg, 4))`,
+    exercise: {
+      id: "ex-tr-19",
+      titleUz: "Amaliy mashq: Retrieval sifati uchun NDCG@K metrikasini hisoblash",
+      instructionsUz:
+        "`ndcg_at_k(relevances: list[float]) -> float` funksiyasini yozing: `dcg = sum(rel / math.log2(i + 2) for i, rel in enumerate(relevances))` va ideal tartib `sorted(relevances, reverse=True)` bo'yicha `idcg` ni toping; `idcg == 0` bo'lsa `0.0`, aks holda `dcg / idcg` qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "core",
+      assessment: "deterministic",
+      starterCode: `import math
+
+def ndcg_at_k(relevances: list[float]) -> float:
+    # DCG / IDCG ni hisoblang
+    pass`,
+      expectedBehaviorUz: "Ideal tartibda 1.0, noto'g'ri tartibda 0..1 oralig'ida ball qaytaradi.",
+      hintsUz: ["i=0 uchun maxraj math.log2(0 + 2) = math.log2(2) = 1.0."],
+      testCases: [
+        { id: "tc1", descriptionUz: "Mukammal tartib [1, 1, 0] -> 1.0", assertionCode: "abs(ndcg_at_k([1.0, 1.0, 0.0]) - 1.0) < 1e-6" },
+        { id: "tc2", descriptionUz: "Hech qanday mos hujjat bo'lmasa 0.0", assertionCode: "ndcg_at_k([0.0, 0.0, 0.0]) == 0.0" },
+        { id: "tc3", descriptionUz: "Kerakli hujjat pastda [0, 1] bo'lsa < 1.0", assertionCode: "ndcg_at_k([0.0, 1.0]) < 0.7" },
+      ],
+      modelSolution: `import math
+
+def ndcg_at_k(relevances: list[float]) -> float:
+    dcg = sum(rel / math.log2(i + 2) for i, rel in enumerate(relevances))
+    ideal = sorted(relevances, reverse=True)
+    idcg = sum(rel / math.log2(i + 2) for i, rel in enumerate(ideal))
+    if idcg == 0.0:
+        return 0.0
+    return float(dcg / idcg)`,
+      solutionExplanationUz: "NDCG eng kerakli hujjatlarni Top-K ning boshiga chiqargan tizimlarga yuqori ball beradi.",
+    },
+    quiz: {
+      questionUz: "Nima uchun Cross-Encoder barcha 1 million hujjatda emas, faqat Re-Ranking bosqichidagi ~100 nomzodda ishlatiladi?",
+      options: [
+        "Chunki har bir juftlikni (Query + Chunk) birga modeldan o'tkazish oldindan saqlab bo'lmaydigan qimmat hisob talab qiladi",
+        "Chunki Cross-Encoder faqat rasmlarda ishlaydi",
+        "Chunki Vector Database faqat Cross-Encoder saqlaydi",
+      ],
+      correctIndex: 0,
+      explanationUz: "Bi-Encoder da hujjat vektorlari oldindan hisoblanadi; Cross-Encoder esa har savol bilan qayta Self-Attention qilgani uchun faqat kichik Top-N to'plamda qo'llanadi.",
+    },
+  },
+  {
+    id: "tr-20-tools-mcp-caching",
+    order: 20,
+    lectureNumber: 6,
+    titleUz: "20. Tool Calling, MCP (Server/Client), Prompt Tartibi & Caching",
+    subtitleEn: "Lecture 6 • 3-Bosqichli Tool Loop, Tool Selection, MCP 3 Quti & 10x Prompt Caching",
+    canonicalConceptId: "model-context-protocol",
+    estimatedMinutes: 15,
+    analogyUz:
+      "Prompt Caching xuddi har dars boshida o'sha qalin qo'llanmani stol ustida qoldirishga o'xshaydi! Agar o'zgaruvchan «Hozirgi vaqt: 17:55» ni eng tepaga qo'ysangiz — har safar kesh buziladi! O'zgarmas Tool ta'riflarini tepaga qo'ysangiz, har bir so'rov ~10 barobar arzonlashadi!",
+    theoryParagraphsUz: [
+      "LLM faqat javob yozadi — real dunyoda harakat qilish (GPS olish, veb qidiruv, kalkulyator, kod ishga tushirish, email yuborish) uchun Tool Calling 3 bosqichda ishlaydi: 1) LLM API ta'riflari/docstring asosida funksiya + argumentlarni bashorat qiladi; 2) Tashqi backend deterministik tarzda bajarib tuzilgan javob (masalan Enum/JSON) qaytaradi; 3) LLM shu javobdan foydalanuvchiga yakuniy gapni tuzadi.",
+      "Kontekstga birdaniga yuzlab tool qo'yilsa ikkita falokat yuz beradi: Conflict Risk (bir nechta o'xshash tool o'zaro urishadi) va Context Rot. Shuning uchun avval yengil router orqali Tool Selection (tarix, profil va ruxsatlarga qarab kerakli kichik to'plam) tanlanadi. Turli modellarga bitta yozilgan tool ni ulash uchun esa MCP (Model Context Protocol) standart 3 ta tushuncha beradi: MCP Server / Client ichida Tools, Prompts va Resources.",
+      "Uzoq Tool ta'riflari har so'rovda token yeyishini hal qilish uchun Prompt Caching ishlatiladi (~10x arzonroq, TTL masalan 5 daqiqa yoki 1 soat). Qat'iy qoida: doimiy o'zgarmas qism (System + Tool Definitions) ENG TEPADA, o'zgaruvchan User Context (sana/vaqt) va User Prompt esa PASTDA turishi shart!",
+    ],
+    keyInsightUz: {
+      highlightUz: "Prompt Caching ning oltin tartib qoidasi:",
+      explanationUz:
+        "[Fixed System + Tool Definitions] -> [User Context (date/time)] -> [User Prompt]. Agar o'zgaruvchi vaqtni birinchi qatorga qo'ysangiz, prefix mos kelmay kesh 0% ishlaydi!",
+    },
+    formulaLatex: "\\text{Cache Hit} \\iff \\text{Prefix}_{t} = \\text{Prefix}_{t-1}, \\qquad \\text{Cost}_{\\text{cached}} \\approx 0.1 \\times \\text{Cost}_{\\text{input}}",
+    formulaNoteUz: "Prefiks boshidan boshlab bir xil bo'lgan tokenlargina kesh narxida (~10x arzon) hisoblanadi.",
+    visualId: "mcp-prompt-caching",
+    visualTitleUz: "Prompt Caching Tartib O'yini & MCP (Tools / Prompts / Resources)",
+    pytorchSnippet: `# Prompt tartibining kesh narxiga ta'siri (1000 tool token + 50 dinamik token)
+tool_tokens, dynamic_tokens = 1000, 50
+bad_order_cost = (tool_tokens + dynamic_tokens) * 1.0          # Hammasi to'liq narxda!
+good_order_cost = (tool_tokens * 0.1) + (dynamic_tokens * 1.0) # Toollar 10x arzon keshda!
+print("Yomon vs Yaxshi tartib narxi:", bad_order_cost, "vs", good_order_cost)`,
+    exercise: {
+      id: "ex-tr-20",
+      titleUz: "Amaliy mashq: Prompt Caching bilan xabar tartibi xarajatini hisoblash",
+      instructionsUz:
+        "`prompt_cache_cost(fixed_tokens: int, dynamic_tokens: int, fixed_first: bool) -> float` funksiyasini yozing: `fixed_first=True` bo'lsa `fixed_tokens * 0.1 + dynamic_tokens * 1.0`, aks holda `(fixed_tokens + dynamic_tokens) * 1.0` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def prompt_cache_cost(fixed_tokens: int, dynamic_tokens: int, fixed_first: bool) -> float:
+    # O'zgarmas qism boshida tursa 0.1x narx, bo'lmasa 1.0x
+    pass`,
+      expectedBehaviorUz: "Prefix caching to'g'ri tartiblanganda xarajatni keskin kamaytiradi.",
+      hintsUz: ["if fixed_first: return fixed_tokens * 0.1 + dynamic_tokens * 1.0"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Fixed tepada: 1000*0.1 + 50 = 150.0", assertionCode: "abs(prompt_cache_cost(1000, 50, True) - 150.0) < 1e-6" },
+        { id: "tc2", descriptionUz: "Dinamik vaqt tepada: kesh buziladi = 1050.0", assertionCode: "abs(prompt_cache_cost(1000, 50, False) - 1050.0) < 1e-6" },
+      ],
+      modelSolution: `def prompt_cache_cost(fixed_tokens: int, dynamic_tokens: int, fixed_first: bool) -> float:
+    if fixed_first:
+        return fixed_tokens * 0.1 + dynamic_tokens * 1.0
+    return (fixed_tokens + dynamic_tokens) * 1.0`,
+      solutionExplanationUz: "O'zgarmas tool va tizim ko'rsatmalarini eng boshida saqlash kesh urishini kafolatlaydi.",
+    },
+    quiz: {
+      questionUz: "MCP (Model Context Protocol) da Server va Client o'rtasida uchta asosiy standart nima?",
+      options: [
+        "Tools (bajariladigan amallar), Prompts (tayyor workflow shablonlari) va Resources (kontekst uchun ma'lumotlar)",
+        "Pre-Training, Mid-Training va SFT",
+        "HBM, SRAM va Cache",
+      ],
+      correctIndex: 0,
+      explanationUz: "MCP Server har qanday LLM Client ga standart ko'rinishda Tools, Prompts va Resources taqdim etadi.",
+    },
+  },
+  {
+    id: "tr-21-harness-react-memory",
+    order: 21,
+    lectureNumber: 6,
+    titleUz: "21. Agent Harness, ReAct Loop, Context Compaction, Memory & Swarms",
+    subtitleEn: "Lecture 6 • Engine+Harness, A2A, Pi Compaction, AGENTS.md, Skills & Sub-Agents",
+    canonicalConceptId: "ai-agents-react-loop",
+    estimatedMinutes: 16,
+    analogyUz:
+      "LLM — bu kuchli dvigatel, lekin dvigatelning o'zi bilan yo'lga chiqa olmaysiz! Rul, g'ildiraklar, tormoz va yo'l xaritasi — bu Harness. Kontekst to'lganda esa hamma cheklarni cho'ntakda olib yurmay, qisqa xulosa daftarchaga (Context Compaction) ko'chirib yurasiz!",
+    theoryParagraphsUz: [
+      "Model qanchalik kuchli bo'lmasin, uning atrofidagi Harness (tool lar, xotira, siqish, promptlash, bajarish muhiti) bo'lmasa u haqiqiy agent bo'la olmaydi — xuddi dvigatel va mashina korpusidek ikkisi ham zarur. Agentlar ReAct (Reason + Act) siklida ishlaydi: Observe (holatni ko'rish) -> Plan -> Act (Tool chaqirish) -> Observe (natijani tekshirish), to maqsad bajarilguncha; ko'p agentlar o'zaro muloqotda A2A protokolidan foydalanadi.",
+      "Uzoq sessiyada Context Window to'lib qolganda 3 ta Context Compaction usuli qo'llanadi: 1) Eski keraksiz tool natijalarini o'chirish; 2) Vaqt bo'yicha Sliding Window; 3) Pi agentidagi kabi joriy taraqqiyot va qolgan ishlarni qisqacha strukturalangan bo'limlarga jamlash (Structured Summarization). Sessiyadan tashqarida esa Short-Term Memory (kontekst oynasi) dan tashqari Long-Term Memory (RAG yoki maxsus saqlash tooli) ishlatiladi.",
+      "Zamonaviy Coding Agents muhitida esa: har harakatni tasdiqlash o'rniga yengil xavfsizlik modeli (Auto-Approval), RAG o'rniga tezkor regex `grep`, loyiha qoidalarini saqlovchi `AGENTS.md`, takroriy jarayonlar uchun `Skills`, ekran boshqaruvi (`Computer Use` — skrinshotlar sabab hozircha sekin), hamda vazifalarni bo'lishuvchi Sub-Agents va Agent Swarms (xavfsizlik nazorati bilan!) keng qo'llaniladi.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Kodlash agentlarida Context Rot va Sub-Agent narxi muvozanati:",
+      explanationUz:
+        "Minimalist harness (masalan Pi) keraksiz sub-agent ochish va uzun kontekst shishirishdan qochadi — chunki har bir yangi sub-agent butun kontekstni noldan qayta to'ldirib qo'shimcha token xarajatini keltirib chiqaradi.",
+    },
+    formulaLatex: "\\text{Agent} = \\text{Model (Engine)} + \\text{Harness (Tools + Loop + Compaction + Memory)}",
+    formulaNoteUz: "Zaif model + kuchli harness ham, kuchli model + yomon harness ham optimal natija bermaydi; ikkisi bir-birini to'ldiradi.",
+    visualId: "react-harness-memory",
+    visualTitleUz: "ReAct Termostat Sikli & Context Compaction (Siqish) Simulyatori",
+    pytorchSnippet: `# Oddiy sliding-window vs structured summary context compaction
+messages = ["sys", "t1", "tool_huge_log", "t2", "tool_huge_log2", "user_now"]
+# Keraksiz katta tool loglarni tozalab va xulosa qo'shib siqish
+compacted = ["sys", "[Summary: t1..t2 bajarildi]", "user_now"]
+print("Asl vs Siqilgan token bloklari:", len(messages), "->", len(compacted))`,
+    exercise: {
+      id: "ex-tr-21",
+      titleUz: "Amaliy mashq: Context Compaction bilan token chegarasini saqlash",
+      instructionsUz:
+        "`compact_history(messages: list[str], keep_last: int) -> list[str]` funksiyasini yozing: agar `len(messages) <= keep_last + 1` bo'lsa `list(messages)` ni, aks holda `[messages[0], '[SUMMARY]'] + messages[-keep_last:]` (1-tizim xabarini saqlab, o'rtani `[SUMMARY]` bilan almashtirib oxirgi `keep_last` ta xabarni) qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def compact_history(messages: list[str], keep_last: int) -> list[str]:
+    # Boshi (system) va oxirgi keep_last xabarni saqlab o'rtani siqing
+    pass`,
+      expectedBehaviorUz: "System prompt va oxirgi xabarlarni saqlab, eski oraliq tarixni [SUMMARY] ga siqadi.",
+      hintsUz: ["if len(messages) <= keep_last + 1: return list(messages)"],
+      testCases: [
+        { id: "tc1", descriptionUz: "6 xabardan oxirgi 2 tasini qoldirib siqish", assertionCode: "compact_history(['sys', 'a', 'b', 'c', 'd', 'e'], 2) == ['sys', '[SUMMARY]', 'd', 'e']" },
+        { id: "tc2", descriptionUz: "Qisqa tarix o'zgarishsiz qoladi", assertionCode: "compact_history(['sys', 'a', 'b'], 2) == ['sys', 'a', 'b']" },
+      ],
+      modelSolution: `def compact_history(messages: list[str], keep_last: int) -> list[str]:
+    if len(messages) <= keep_last + 1:
+        return list(messages)
+    return [messages[0], "[SUMMARY]"] + messages[-keep_last:]`,
+      solutionExplanationUz: "Context Compaction uzoq ReAct sessiyasida boshlang'ich tizim qoidalarini yo'qotmasdan kontekstni toza saqlaydi.",
+    },
+    quiz: {
+      questionUz: "Agent ekotizimida `AGENTS.md` va `Skills` ning asosiy vazifasi nima?",
+      options: [
+        "`AGENTS.md` loyiha qoidalari va uslubini saqlaydi, `Skills` esa takroriy ish oqimlarini ko'rsatma/skript sifatida avtomatlashtiradi",
+        "Ikkalasi GPU dagi FlashAttention blokini o'chiradi",
+        "Ular faqat Temperature=0 ni yoqadi",
+      ],
+      correctIndex: 0,
+      explanationUz: "Codlash agentlari `AGENTS.md` orqali doimiy loyiha kontekstini, `Skills` orqali esa ko'p bosqichli qayta ishlanadigan retseptlarni oladi.",
+    },
+  },
+
+  /* ---------------------------------------------------------------------- */
+  /* MA'RUZA 7 (lecture7.md)                                                */
+  /* ---------------------------------------------------------------------- */
+  {
+    id: "tr-22-metrics-passk-bleu",
+    order: 22,
+    lectureNumber: 7,
+    titleUz: "22. Kelishuv (Cohen's Kappa), Verifiable (Pass@K) & Klassik NLP Metrikalar",
+    subtitleEn: "Lecture 7 • Random Baseline vs Kappa, Pass@K Isboti, Consensus@K & BLEU/METEOR",
+    canonicalConceptId: "model-evaluation-metrics",
+    estimatedMinutes: 16,
+    analogyUz:
+      "Ikki hakam tanga tashlab tasodifan «o'tdi/yiqildi» desa ham 50% kelishib qolishi mumkin! Shu sababli oddiy foiz emas, tasodifni ayiruvchi Cohen's Kappa ishlatiladi. Kodda esa 10 urinishdan kamida bittasi testdan o'tishi ehtimoli Pass@K bilan xolis o'lchanadi!",
+    theoryParagraphsUz: [
+      "Subyektiv sifatni (masalan, foydalilik) insonlar baholaganda oddiy kelishuv foizi aldaydi: agar Alis va Bob 50% tasodifiy «Pass» aytsa, ular baribir 50% bir xil fikrda chiqadi! Cohen's Kappa kuzatilgan kelishuv (p_o) ni tasodifiy kutilgan kelishuv (p_e) ga solishtirib (-1..1, yaxshi chegara >= 0.8) o'lchaydi. Ammo insoniy baholash sekin va qimmat.",
+      "Kod va matematika kabi aniq tekshiriladigan vazifalarda Pass@K — K ta urinishdan kamida 1 tasi barcha testdan o'tish ehtimoli o'lchanadi: N ta urinish chiqarib C ta to'g'risini sanasak, xolis baho `1 - C(N-C, K) / C(N, K)`. Temperature=0 da barcha urinish bir xil bo'lgani uchun Pass@K oshmaydi; T ~ 0.6–0.8 da esa xilma-xillik tufayli ko'tariladi! Matematika kabi test yo'q paytda esa Consensus@K (ko'pchilik ovozi) qo'llanadi.",
+      "Tabiiy til tarjimasida BLEU (n-gram precision + qisqa javob jarimasi Brevity Penalty) va METEOR (recall + sinonimlar + bo'laklar tartibi penalty) keng tarqalgan. Biroq ularning katta kamchiligi: bitta fikrni boshqa so'zlar bilan chiroyli ifodalagan javoblarni tanimaydi va inson yozgan reference talab qiladi.",
+    ],
+    keyInsightUz: {
+      highlightUz: "Pass@K da nima uchun (N-C)/N ning K-darajasi emas, kombinatorika `C(N-C, K)/C(N, K)` ishlatiladi?",
+      explanationUz:
+        "Chunki generatsiya qilingan N ta urinish ichidan K tasini qaytarmasdan (without replacement) tanlaymiz — har bir xato urinish tanlanganda qolgan xato urinishlar soni 1 taga kamayib boradi!",
+    },
+    formulaLatex: "\\kappa = \\frac{p_o - p_e}{1 - p_e}, \\qquad \\text{pass}@k = 1 - \\frac{\\binom{n - c}{k}}{\\binom{n}{k}}",
+    formulaNoteUz: "Cohen's Kappa >= 0.8 kuchli kelishuvni bildiradi; Pass@K binom koeffitsiyentlari bilan xolis baholanadi.",
+    visualId: "kappa-passk-metrics",
+    visualTitleUz: "Cohen's Kappa & Unbiased Pass@K Kombinatorika Kalkulyatori",
+    pytorchSnippet: `import math
+
+# Unbiased Pass@K: n=10 urinishdan c=3 tasi to'g'ri, k=5 da pass@5 qancha?
+n, c, k = 10, 3, 5
+pass_at_k = 1.0 - (math.comb(n - c, k) / math.comb(n, k))
+print(f"Pass@{k}: {pass_at_k:.4f}")`,
+    exercise: {
+      id: "ex-tr-22",
+      titleUz: "Amaliy mashq: Cohen's Kappa va Unbiased Pass@K hisoblash",
+      instructionsUz:
+        "`pass_at_k(n: int, c: int, k: int) -> float` funksiyasini yozing: agar `n - c < k` bo'lsa `1.0` (chunki albatta kamida 1 ta to'g'ri urinish ichiga tushadi), aks holda `1.0 - math.comb(n - c, k) / math.comb(n, k)` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `import math
+
+def pass_at_k(n: int, c: int, k: int) -> float:
+    # Unbiased pass@k formulasini yozing
+    pass`,
+      expectedBehaviorUz: "Berilgan n, c, k uchun xolis pass@k ehtimolini qaytaradi.",
+      hintsUz: ["if n - c < k: return 1.0"],
+      testCases: [
+        { id: "tc1", descriptionUz: "k=1 bo'lganda oddiy c/n nisbati chiqadi", assertionCode: "abs(pass_at_k(10, 4, 1) - 0.4) < 1e-6" },
+        { id: "tc2", descriptionUz: "n-c < k bo'lganda albatta 1.0", assertionCode: "pass_at_k(5, 3, 4) == 1.0" },
+        { id: "tc3", descriptionUz: "n=10, c=2, k=5 -> ~0.7778", assertionCode: "abs(pass_at_k(10, 2, 5) - (1.0 - 21 / 252)) < 1e-6" },
+      ],
+      modelSolution: `import math
+
+def pass_at_k(n: int, c: int, k: int) -> float:
+    if n - c < k:
+        return 1.0
+    return 1.0 - (math.comb(n - c, k) / math.comb(n, k))`,
+      solutionExplanationUz: "Pass@K kombinatorika formulasi k=1 da oddiy to'g'ri javoblar ulushiga aylanadi va k katta bo'lganda ham xolis baho beradi.",
+    },
+    quiz: {
+      questionUz: "Agar Alis va Bob tasodifan 50/50 ga o'tdi/yiqildi deb javob bersa, Cohen's Kappa qiymati nechaga teng chiqadi?",
+      options: [
+        "0.0 ga teng (chunki kuzatilgan 50% kelishuv tasodifiy kutilgan 50% bilan bir xil)",
+        "1.0 ga teng",
+        "0.5 ga teng",
+      ],
+      correctIndex: 0,
+      explanationUz: "po = 0.5 va pe = 0.5 bo'lganda (po - pe)/(1 - pe) = 0 bo'ladi — shuning uchun Kappa tasodifiy mos kelishni fosh qiladi.",
+    },
+  },
+  {
+    id: "tr-23-llm-as-judge-biases",
+    order: 23,
+    lectureNumber: 7,
+    titleUz: "23. LLM-as-a-Judge, Structured Outputs & Biaslarni Yengish",
+    subtitleEn: "Lecture 7 • Hill-Climbing Loop, Position / Verbosity / Self-Enhancement Bias & Eng Yaxshi Amaliyotlar",
+    canonicalConceptId: "model-evaluation-metrics",
+    estimatedMinutes: 15,
+    analogyUz:
+      "LLM-as-a-Judge — xuddi qat'iy qo'llanma olgan yordamchi hakam! Lekin ehtiyot bo'ling: hakam har doim 1-o'rindagi varaqni yoqtirishi (Position Bias), uzun yozilgan inshoga uchishi (Verbosity Bias) yoki o'z dastxatini maqtashi (Self-Enhancement Bias) mumkin!",
+    theoryParagraphsUz: [
+      "Ochiq javoblarni (reference siz, turli uslubda) baholash uchun LLM-as-a-Judge ishlatiladi: u nafaqat ball, balki asosli izoh (Rationale) beradi. Hakam prompti qo'lda bir marta yozilmaydi: avval ~10+ namuna inson tomonidan belgilanadi -> baseline prompt qilinadi -> xato joylar tahlil qilinib agent sikli orqali prompt Hill-Climbing bilan sayqallanadi; chiqish esa Structured Outputs (Guided Decoding JSON) orqali kafolatlanadi.",
+      "Hakam LLM ning 3 mashhur xatoligi (Bias): 1) Position Bias — A va B orasidan sifatidan qat'i nazar A ni (yoki oxirgini) tanlash -> o'rinlarini almashtirib 2 marta so'rash bilan aniqlanadi; 2) Verbosity Bias — qisqa to'g'ri javobdan ko'ra uzun cho'zilgan javobni ma'qullash -> promptda uzunlik mezon emasligini aniq aytish; 3) Self-Enhancement Bias — model o'zi yaratgan javobni afzal ko'rishi -> hakam sifatida boshqa kuchliroq model ishlatish.",
+      "Eng yaxshi amaliyotlar: 1–10 shkalasi o'rniga aniq Binary Pass/Fail tanlang; balldan OLDIN Rationale yozdiring (fikrlash imkoni); doim inson baholari bilan kalibrlang va Temperature ni tushirib/Self-Consistency qo'llang. Yangi yo'nalish — kalibrlangan ehtimol beruvchi Decision Models (masalan Jev).",
+    ],
+    keyInsightUz: {
+      highlightUz: "Nima uchun LLM hakamdan avval Rationale (izoh), keyin Score (ball) so'raladi?",
+      explanationUz:
+        "Chunki avtoregressiv model ballni birinchi token qilib chiqarsa, hali tahlil qilmasdan qaror qabul qilgan bo'ladi! Avval sababni yozdirish Chain-of-Thought kabi to'g'ri xulosaga olib keladi.",
+    },
+    formulaLatex: "\\text{Judge}_{\\text{swap-safe}}(A, B) = \\Big(\\text{Judge}(A, B) = A\\Big) \\land \\Big(\\text{Judge}(B, A) = A\\Big)",
+    formulaNoteUz: "Position Bias ni aniqlash va neytrallashtirish uchun A/B juftlik o'rni almashtirilib ikki marta tekshiriladi.",
+    visualId: "llm-judge-biases",
+    visualTitleUz: "LLM-as-a-Judge Bias Tekshirgichi (Position / Verbosity / Binary)",
+    pytorchSnippet: `# Position Bias ni aniqlash uchun juftlik o'rnini almashtirib tekshirish
+def consistent_pairwise(pick_ab: str, pick_ba: str) -> str:
+    # Agar ikkala tartibda ham bir xil nomzod yutsa -> barqaror
+    return pick_ab if pick_ab == pick_ba else "TIE_BIAS_DETECTED"
+
+print(consistent_pairwise("Model_A", "Model_B"))`,
+    exercise: {
+      id: "ex-tr-23",
+      titleUz: "Amaliy mashq: Position Bias tekshiruvchi juftli hakam qarori",
+      instructionsUz:
+        "`position_bias_check(ab_winner: str, ba_winner: str) -> str` funksiyasini yozing: agar `ab_winner == ba_winner` bo'lsa g'olib nomini, aks holda (o'rin almashganda hakam fikri o'zgarsa) `'BIAS_CONFLICT'` ni qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "starter",
+      assessment: "deterministic",
+      starterCode: `def position_bias_check(ab_winner: str, ba_winner: str) -> str:
+    # Hakam qarori o'rin almashganda ham saqlanadimi?
+    pass`,
+      expectedBehaviorUz: "Barqaror g'olibni yoki position bias aniqlanganda BIAS_CONFLICT qaytaradi.",
+      hintsUz: ["return ab_winner if ab_winner == ba_winner else 'BIAS_CONFLICT'"],
+      testCases: [
+        { id: "tc1", descriptionUz: "Ikkala tartibda ham A yutsa -> 'A'", assertionCode: "position_bias_check('A', 'A') == 'A'" },
+        { id: "tc2", descriptionUz: "Doim 1-turgan nomzod yutsa (A, keyin B) -> 'BIAS_CONFLICT'", assertionCode: "position_bias_check('A', 'B') == 'BIAS_CONFLICT'" },
+      ],
+      modelSolution: `def position_bias_check(ab_winner: str, ba_winner: str) -> str:
+    return ab_winner if ab_winner == ba_winner else "BIAS_CONFLICT"`,
+      solutionExplanationUz: "O'rin almashtirish testi LLM-as-a-Judge dagi yashirin Position Bias ni avtomatik tutadi.",
+    },
+    quiz: {
+      questionUz: "LLM-as-a-Judge qurishda 1–10 ball o'rniga Binary (Pass/Fail) baholash nima uchun afzal?",
+      options: [
+        "Insonlar ham 5 vs 6 orasida qiynalgani uchun 1–10 shkalasi shovqin beradi; Binary Pass/Fail aniq kalibrlanadi",
+        "Chunki JSON faqat 0 va 1 qabul qiladi",
+        "Chunki Binary baholashda Rationale kerak emas",
+      ],
+      correctIndex: 0,
+      explanationUz: "Noaniq 1–10 ballar insoniy kelishuvni pasaytirib modelga shovqin o'tkazadi; Binary mezonlar barqaror va aniqroq.",
+    },
+  },
+  {
+    id: "tr-24-agent-debugging-benchmarks",
+    order: 24,
+    lectureNumber: 7,
+    titleUz: "24. Agent Nosozliklari, Benchmarks, Bench Maxing & Goodhart's Law",
+    subtitleEn: "Lecture 7 • ReAct 3-Bosqich Debug, METR Horizon, Pareto Frontier & Eval-Driven Development",
+    canonicalConceptId: "production-mlops-serving",
+    estimatedMinutes: 17,
+    analogyUz:
+      "Imtihon savollarini oldindan yodlab olib 100 ball olgan talabaga «PT o'rniga GMT vaqtida yoz» desangiz yiqiladi — mana shu Bench Maxing! Goodhart qonuni aytganidek: o'lchov ko'rsatkichi maqsadga aylansa, u sifatni o'lchamay qo'yadi!",
+    theoryParagraphsUz: [
+      "Agent javob bermasa muammo 3 joydan birida bo'ladi: 1) Tool bashoratida (router toolni qo'shmadi, model yo'q toolni gallyutsinatsiya qildi, noto'g'ri tool/argument berdi -> API nomini/tavsifini tushunarli qiling yoki modelni kuchaytiring); 2) Backend bajarishida (ValueError tashlash yoki hech narsa qaytarmaslik -> har doim modelga tushunarli strukturalangan natija qaytaring); 3) Yakuniy sintezda (tool 50KB axlat qaytardi va Context Rot yuz berdi -> chiqishni ixchamlang!).",
+      "Model intellekti Artificial Analysis da 4 teng bo'lakda o'lchanadi: General, Knowledge Work, Coding (Terminal Bench) va Science. Ammo ommaviy benchmarklarda modellar Bench Maxing (yodlash) qilib qolishi mumkin: Max Bench sinovida shartni atigi ozgina o'zgartirish (masalan, sanani PT dan Zulu ga yoki katta harfni kichikka o'tkazish) reytingdagi «top» modellarni qulatib yuborgan! Shu sababli ZDR (Zero Data Retention) bilan yopiq private benchmarklar, sifatni xarajatsiz solishtiruvchi Pareto Frontier va Bench Guard tekshiruvlari hamda Text Arena ishlatiladi.",
+      "Xulosa tamoyili: Goodhart's Law («o'lchov nishonga aylansa, yaxshi mezon bo'lmaydi») ni eslab, Eval-Driven Development qiling: agentingiz uchun eng muhim mezonlarni ajrating va iloji boricha LLM hakamdan ko'ra aniq Heuristik/Test tekshiruvlariga tayaning!",
+    ],
+    keyInsightUz: {
+      highlightUz: "Agent Tool xato qilganda hech qachon jim xato yoki Stack Trace tashlamang!",
+      explanationUz:
+        "Backend Python Exception tashlasa yoki bo'sh javob bersa, LLM «ichki xato» deb taxmin qiladi yoki gallyutsinatsiya to'qiydi. Tool doim tushunarli strukturalangan holat qaytarishi shart.",
+    },
+    formulaLatex: "\\text{Goodhart's Law:} \\; \\text{Measure} \\to \\text{Target} \\implies \\neg\\text{Good Measure}; \\qquad \\text{Pareto: } \\max_{\\text{cost} \\le C} \\text{Quality}",
+    formulaNoteUz: "Berilgan byudjet C da eng yuqori sifat beruvchi modellar Pareto Frontier chizig'ida yotadi.",
+    visualId: "benchmax-pareto",
+    visualTitleUz: "Pareto Frontier, Bench Maxing Tushishi & Agent 3-Bosqich Debugger",
+    pytorchSnippet: `# Pareto-optimal modellarni filtrlash (cost kamroq va quality yuqoriroq bo'lsa ustun)
+models = [("FastMini", 1.0, 72), ("Overpriced", 8.0, 70), ("FrontierBest", 5.0, 91)]
+pareto = [
+    m for m in models
+    if not any(o[1] <= m[1] and o[2] >= m[2] and (o[1] < m[1] or o[2] > m[2]) for o in models)
+]
+print("Pareto Frontier modellari:", pareto)`,
+    exercise: {
+      id: "ex-tr-24",
+      titleUz: "Amaliy mashq: Modellar ro'yxatidan Pareto Frontier ni aniqlash",
+      instructionsUz:
+        "`pareto_front(models: list[tuple[str, float, float]]) -> list[str]` funksiyasini yozing: har bir element `(name, cost, quality)` bo'lib, undan ham arzonroq (yoki teng narxda) hamda sifatliroq (qattiy ustun) boshqa model bo'lmagan Pareto-optimal modellar nomlarini kirish tartibida qaytarsin.",
+      language: "python",
+      runtime: "pyodide",
+      difficulty: "core",
+      assessment: "deterministic",
+      starterCode: `def pareto_front(models: list[tuple[str, float, float]]) -> list[str]:
+    # Dominatsiya qilinmagan (cost <= va quality >=, kamida bittasida qat'iy yaxshi) modellarni qaytaring
+    pass`,
+      expectedBehaviorUz: "Qimmat va past sifatli modellarni chiqarib tashlab, Pareto chegarasidagi nomlarni qaytaradi.",
+      hintsUz: [
+        "Agar boshqa o uchun o_cost <= m_cost and o_qual >= m_qual and (o_cost < m_cost or o_qual > m_qual) bo'lsa, m Pareto emas.",
+      ],
+      testCases: [
+        { id: "tc1", descriptionUz: "Qimmat va sifatsiz 'Overpriced' chiqib ketadi", assertionCode: "pareto_front([('Mini', 1.0, 72), ('Overpriced', 8.0, 70), ('Pro', 5.0, 91)]) == ['Mini', 'Pro']" },
+        { id: "tc2", descriptionUz: "Bir xil narxda sifatlirog'i yutadi", assertionCode: "pareto_front([('A', 2.0, 80), ('B', 2.0, 85)]) == ['B']" },
+      ],
+      modelSolution: `def pareto_front(models: list[tuple[str, float, float]]) -> list[str]:
+    result: list[str] = []
+    for name, cost, qual in models:
+        dominated = any(
+            oc <= cost and oq >= qual and (oc < cost or oq > qual)
+            for _, oc, oq in models
+        )
+        if not dominated:
+            result.append(name)
+    return result`,
+      solutionExplanationUz: "Pareto Frontier narx va sifat o'rtasidagi eng samarali modellarni tanlash imkonini beradi.",
+    },
+    quiz: {
+      questionUz: "Max Bench eksperimentida ommaviy coding benchmarklarda faqat sana formati (PT -> Zulu) o'zgartirilganda ba'zi modellarning bali keskin tushishi nimadan dalolat beradi?",
+      options: [
+        "Bench Maxing — model vazifani chuqur tushunmagan, balki ommaviy benchmark shablonlarini yodlab olgan bo'lishi mumkin",
+        "GPU SRAM sig'imi tugagan",
+        "Tokenization BPE o'chib qolgan",
+      ],
+      correctIndex: 0,
+      explanationUz: "Kichik format o'zgarishida sifatning qulashi modelning benchmark savollariga haddan ziyod moslashib (Bench Maxing) qolganini ko'rsatadi.",
     },
   },
 ];
