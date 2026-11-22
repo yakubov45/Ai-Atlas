@@ -57,7 +57,7 @@ export interface GlobalRoadmapNode {
     id: string;
     label: string;
     href: string;
-    source: "mdx" | "python-dev" | "ai-eng" | "ml-ds" | "hf-llm" | "dl-16" | "data-eng" | "prompt-eng";
+    source: "mdx" | "python-dev" | "ai-eng" | "ml-ds" | "hf-llm" | "dl-16" | "nn-learn" | "data-eng" | "prompt-eng";
   }>;
   relatedLabs: Array<{
     id: string;
@@ -211,6 +211,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "matrix", label: "Matrix (MDX)", href: "/learn/matrix", source: "mdx" },
       { id: "matrix-operations", label: "Matrix Operations (MDX)", href: "/learn/matrix-operations", source: "mdx" },
       { id: "tensor", label: "Tensor (MDX)", href: "/learn/tensor", source: "mdx" },
+      { id: "nn-12-gpu-matmul-pytorch", label: "GPU & Matrix Multiplication (nn-12)", href: "/learn/how-neural-networks-learn?lesson=nn-12-gpu-matmul-pytorch", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "function-explorer", titleUz: "Desmos & Funksiya Explorer", href: "/visual-lab/function-explorer" },
@@ -237,6 +238,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "gradient", label: "Gradient (MDX)", href: "/learn/gradient", source: "mdx" },
       { id: "chain-rule", label: "Chain Rule (MDX)", href: "/learn/chain-rule", source: "mdx" },
       { id: "mlds-11-04", label: "Hosila (mlds-11-04)", href: "/roadmap?tab=ml-engineer&lesson=mlds-11-04", source: "ml-ds" },
+      { id: "nn-06-derivatives-chain-rule", label: "Derivatives & Chain Rule (nn-06)", href: "/learn/how-neural-networks-learn?lesson=nn-06-derivatives-chain-rule", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "function-explorer", titleUz: "Funksiya va Hosila Grafigi", href: "/visual-lab/function-explorer" },
@@ -353,6 +355,8 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "machine-learning", label: "Machine Learning (MDX)", href: "/learn/machine-learning", source: "mdx" },
       { id: "loss-functions", label: "Loss Functions (MDX)", href: "/learn/loss-functions", source: "mdx" },
       { id: "mlds-01-01", label: "AI / ML / DL (mlds-01-01)", href: "/roadmap?tab=ml-engineer&lesson=mlds-01-01", source: "ml-ds" },
+      { id: "nn-05-loss-functions", label: "Loss Functions: MSE & Cross-Entropy (nn-05)", href: "/learn/how-neural-networks-learn?lesson=nn-05-loss-functions", source: "nn-learn" },
+      { id: "nn-11-overfitting-regularization", label: "Overfitting & Early Stopping (nn-11)", href: "/learn/how-neural-networks-learn?lesson=nn-11-overfitting-regularization", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "regression-lab", titleUz: "Regression & Threshold Lab", href: "/roadmap?tab=ml-engineer&phase=mle-08" },
@@ -379,6 +383,9 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "sgd", label: "SGD (MDX)", href: "/learn/sgd", source: "mdx" },
       { id: "adam", label: "Adam / AdamW (MDX)", href: "/learn/adam", source: "mdx" },
       { id: "mlds-11-13", label: "Gradient Descent (mlds-11-13)", href: "/roadmap?tab=ml-engineer&lesson=mlds-11-13", source: "ml-ds" },
+      { id: "nn-08-gradient-descent-optimizers", label: "Gradient Descent & Optimizers (nn-08)", href: "/learn/how-neural-networks-learn?lesson=nn-08-gradient-descent-optimizers", source: "nn-learn" },
+      { id: "nn-09-learning-rate", label: "Learning Rate (nn-09)", href: "/learn/how-neural-networks-learn?lesson=nn-09-learning-rate", source: "nn-learn" },
+      { id: "nn-10-batch-epoch", label: "Batch, Mini-Batch & Epoch (nn-10)", href: "/learn/how-neural-networks-learn?lesson=nn-10-batch-epoch", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "gradient-descent-1d", titleUz: "1D Gradient Descent Lab", href: "/visual-lab/gradient-descent-1d" },
@@ -405,6 +412,7 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
       { id: "deep-learning", label: "Deep Learning (MDX)", href: "/learn/deep-learning", source: "mdx" },
       { id: "backpropagation", label: "Backpropagation (MDX)", href: "/learn/backpropagation", source: "mdx" },
       { id: "batch-normalization", label: "Batch Normalization (MDX)", href: "/learn/batch-normalization", source: "mdx" },
+      { id: "nn-07-backpropagation", label: "Backpropagation vs Optimizer (nn-07)", href: "/learn/how-neural-networks-learn?lesson=nn-07-backpropagation", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "neural-network-explorer", titleUz: "Neyron Tarmoq Forward Pass Lab", href: "/visual-lab/neural-network-explorer" },
@@ -429,6 +437,10 @@ export const GLOBAL_ROADMAP_NODES: readonly GlobalRoadmapNode[] = [
     relatedConcepts: ["gn-cnn-resnet", "gn-seq-models"],
     associatedLessons: [
       { id: "dl-16-perceptron", label: "Perceptron & MLP (16 Arxitektura)", href: "/learn/deep-learning-architectures", source: "dl-16" },
+      { id: "nn-01-neuron-weight-bias", label: "Artificial Neuron: Weight & Bias (nn-01)", href: "/learn/how-neural-networks-learn?lesson=nn-01-neuron-weight-bias", source: "nn-learn" },
+      { id: "nn-02-activation-functions", label: "Activation: ReLU, Sigmoid, Tanh (nn-02)", href: "/learn/how-neural-networks-learn?lesson=nn-02-activation-functions", source: "nn-learn" },
+      { id: "nn-03-architecture-layers", label: "Neural Network Layers (nn-03)", href: "/learn/how-neural-networks-learn?lesson=nn-03-architecture-layers", source: "nn-learn" },
+      { id: "nn-04-forward-pass", label: "Forward Propagation & Softmax (nn-04)", href: "/learn/how-neural-networks-learn?lesson=nn-04-forward-pass", source: "nn-learn" },
     ],
     relatedLabs: [
       { id: "dl-16-map", titleUz: "16 Arxitektura Interaktiv Xaritasi", href: "/learn/deep-learning-architectures" },

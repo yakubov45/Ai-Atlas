@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   Network,
   ListFilter,
   Target,
   Search,
-  BookOpen,
-  Boxes,
-  Sparkles,
-  Layers,
+  Compass,
 } from "lucide-react";
 import type { ConceptDomain, KnowledgeConcept } from "@/lib/knowledge-graph/types";
 import { useLearning } from "@/hooks/use-learning";
 import { getConceptById } from "@/lib/knowledge-graph/concepts";
+import { CAREER_BRANCHES, type CareerBranchId } from "@/lib/learning-os/global-roadmap";
 import { InteractiveGraphCanvas } from "./InteractiveGraphCanvas";
 import { StructuredListView } from "./StructuredListView";
 import { LearningPathView } from "./LearningPathView";
@@ -25,16 +23,30 @@ export function KnowledgeMapClient() {
 
   const [activeTab, setActiveTab] = useState<"graph" | "list" | "path">("graph");
   const [selectedDomain, setSelectedDomain] = useState<ConceptDomain | "all">("all");
+  const [selectedCareerTrack, setSelectedCareerTrack] = useState<CareerBranchId>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedConcept, setSelectedConcept] = useState<KnowledgeConcept | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const conceptParam = params.get("concept");
+    if (conceptParam) {
+      const found = getConceptById(conceptParam);
+      if (found) setSelectedConcept(found);
+    }
+  }, []);
 
   const knownConceptIds = useMemo(
     () => Object.keys(state.knownConcepts ?? {}),
     [state.knownConcepts]
   );
   const completedLessonIds = useMemo(
-    () => Object.keys(state.completedMicroLessons ?? {}),
-    [state.completedMicroLessons]
+    () => [
+      ...Object.keys(state.completed ?? {}),
+      ...Object.keys(state.completedMicroLessons ?? {}),
+    ],
+    [state.completed, state.completedMicroLessons]
   );
 
   const domains: Array<{ id: ConceptDomain | "all"; labelUz: string }> = [
@@ -58,9 +70,7 @@ export function KnowledgeMapClient() {
           AI Knowledge Map — Umumiy bilimlar xaritasi
         </h1>
         <p className="text-sm sm:text-base text-slate-300 max-w-4xl leading-relaxed">
-          Python, AI Engineering, Machine Learning va Data Science bo&apos;yicha 4 ta
-          akademiyadagi 1,600 dan ortiq mikro-darslarni bog&apos;lovchi interaktiv bilimlar grafigi
-          va shaxsiy o&apos;quv yo&apos;li generatori.
+          O&apos;z kasbiy yo&apos;nalishingiz yoki fan sohangizni tanlang — har bir mavzuning ichiga kirsangiz, bundan oldin nechta mavzu o&apos;rganish kerakligi, zarur bilimlar va aniq mavzular ro&apos;yxati to&apos;liq ko&apos;rsatiladi.
         </p>
       </div>
 
@@ -72,6 +82,7 @@ export function KnowledgeMapClient() {
         {/* View Switcher Tabs */}
         <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl text-xs font-medium self-start">
           <button
+            type="button"
             onClick={() => setActiveTab("graph")}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer ${
               activeTab === "graph"
@@ -84,6 +95,7 @@ export function KnowledgeMapClient() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab("list")}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer ${
               activeTab === "list"
@@ -96,6 +108,7 @@ export function KnowledgeMapClient() {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab("path")}
             className={`flex items-center gap-2 px-3.5 py-2 rounded-lg transition-all cursor-pointer ${
               activeTab === "path"
@@ -123,22 +136,48 @@ export function KnowledgeMapClient() {
         )}
       </div>
 
-      {/* Domain Filters (For Graph and List views) */}
+      {/* Career Track & Domain Filters (For Graph and List views) */}
       {activeTab !== "path" && (
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
-          {domains.map((dom) => (
-            <button
-              key={dom.id}
-              onClick={() => setSelectedDomain(dom.id)}
-              className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-all cursor-pointer font-medium ${
-                selectedDomain === dom.id
-                  ? "bg-slate-100 text-slate-950 font-semibold shadow"
-                  : "bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800/80"
-              }`}
-            >
-              {dom.labelUz}
-            </button>
-          ))}
+        <div className="space-y-2.5">
+          {/* Career Track Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-cyan-300 shrink-0 pr-1">
+              <Compass className="w-3.5 h-3.5" />
+              Yo&apos;nalish:
+            </span>
+            {CAREER_BRANCHES.map((b) => (
+              <button
+                key={b.id}
+                type="button"
+                onClick={() => setSelectedCareerTrack(b.id)}
+                className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-all cursor-pointer font-medium ${
+                  selectedCareerTrack === b.id
+                    ? "bg-cyan-500 text-slate-950 font-bold shadow"
+                    : "bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800"
+                }`}
+              >
+                {b.shortLabel}
+              </button>
+            ))}
+          </div>
+
+          {/* Domain Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar">
+            {domains.map((dom) => (
+              <button
+                key={dom.id}
+                type="button"
+                onClick={() => setSelectedDomain(dom.id)}
+                className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-all cursor-pointer font-medium ${
+                  selectedDomain === dom.id
+                    ? "bg-slate-100 text-slate-950 font-semibold shadow"
+                    : "bg-slate-900/80 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800/80"
+                }`}
+              >
+                {dom.labelUz}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -147,7 +186,9 @@ export function KnowledgeMapClient() {
         <InteractiveGraphCanvas
           onSelectConcept={setSelectedConcept}
           knownConceptIds={knownConceptIds}
+          completedLessonIds={completedLessonIds}
           selectedDomain={selectedDomain}
+          selectedCareerTrack={selectedCareerTrack}
           searchQuery={searchQuery}
         />
       )}
@@ -171,7 +212,7 @@ export function KnowledgeMapClient() {
         />
       )}
 
-      {/* Concept Details Modal */}
+      {/* Concept Details Modal (Full syllabus, prerequisites count & details) */}
       <ConceptDetailsModal
         concept={selectedConcept}
         onClose={() => setSelectedConcept(null)}
@@ -181,6 +222,8 @@ export function KnowledgeMapClient() {
         }}
         isKnown={selectedConcept ? knownConceptIds.includes(selectedConcept.id) : false}
         onToggleKnown={toggleConceptKnown}
+        knownConceptIds={knownConceptIds}
+        completedLessonIds={completedLessonIds}
       />
     </div>
   );

@@ -14,6 +14,7 @@ import { getDataEngineeringSummaryStats } from "@/lib/curriculum/data-engineerin
 import { getPromptEngineeringSummaryStats } from "@/lib/curriculum/prompt-engineering";
 import { getHfCourseImportAuditReport } from "@/lib/curriculum/hf-llm-course";
 import { SIXTEEN_ARCHITECTURES } from "@/lib/curriculum/deep-learning-16-architectures";
+import { HOW_NEURAL_LEARN_LESSONS } from "@/lib/curriculum/how-neural-learn";
 import { ALL_INTENSIVE_LESSONS, INTENSIVE_12_WEEKS } from "@/lib/curriculum/ds-ml-ai-12weeks";
 import { CANONICAL_CONCEPTS } from "@/lib/knowledge-graph/concepts";
 
@@ -261,6 +262,23 @@ export function buildLearningLibraryCatalog(): LibraryCourseItem[] {
       canonicalCategoryIds: ["architectures", "deep-learning"],
       descriptionUz: "16 ta burilish nuqtasi bo'lgan ilmiy maqola, vektorli SVG sxemalar, tensor o'lchamlari, PyTorch/Python kodlar va taqqoslashlar.",
       honestStatusNoteUz: "Barcha 16 ta arxitektura va 6 ta savol xaritasi to'liq ishlaydi.",
+    },
+    {
+      id: "how-neural-learn",
+      titleUz: "Neyron Tarmoqlar Qanday O'rganadi? (Training Fundamentals)",
+      subtitleUz: "12 mikro-dars • Sodda tushuntirish, rangli terminlar, 12 vizualizatsiya & Pyodide",
+      subjectGroup: "artificial-intelligence",
+      href: "/learn/how-neural-networks-learn",
+      roadmapHref: "/roadmap?tab=ml-engineer",
+      kind: "special-module",
+      phasesOrChapters: 1,
+      totalItems: HOW_NEURAL_LEARN_LESSONS.length,
+      publishedItems: HOW_NEURAL_LEARN_LESSONS.length,
+      plannedOrDraftItems: 0,
+      accent: "cyan",
+      canonicalCategoryIds: ["deep-learning", "fundamentals"],
+      descriptionUz: "Sun'iy neyron, Weight/Bias, Activation Functions, Forward Pass, Loss, Chain Rule, Backpropagation vs Optimizer, Gradient Descent, Learning Rate, Batch/Epoch, Overfitting va GPU Matrix Multiplication.",
+      honestStatusNoteUz: `Barcha ${HOW_NEURAL_LEARN_LESSONS.length} ta interaktiv mikro-dars va 12 ta Python amaliyoti to'liq nashr etilgan.`,
     },
     {
       id: "hf-llm-course",

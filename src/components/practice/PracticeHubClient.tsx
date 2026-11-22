@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
+  Brain,
   Calculator,
   CheckCircle2,
   Code2,
@@ -130,6 +131,29 @@ export function PracticeHubClient({ visualizations }: PracticeHubClientProps) {
               className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-4 py-2.5 text-xs font-extrabold text-slate-950 shrink-0 transition-colors"
             >
               <span>30 Kunlik Mashqqa O&apos;tish</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* How Neural Networks Learn Interactive Practice Card */}
+          <div className="rounded-2xl border border-cyan-500/35 bg-gradient-to-r from-cyan-950/30 via-slate-900 to-slate-950 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-300 flex items-center gap-1.5">
+                <Brain className="w-3.5 h-3.5" />
+                <span>Neural Network Training Fundamentals • 12 Ta Pyodide Lab</span>
+              </span>
+              <h3 className="text-base sm:text-lg font-extrabold text-white">
+                Neyron Tarmoqlar Qanday O&apos;rganadi? — 12 Interaktiv Dars &amp; Amaliyot
+              </h3>
+              <p className="text-xs text-slate-300 max-w-2xl">
+                Weight/Bias, ReLU/Sigmoid, Forward Pass, Cross-Entropy Loss, Chain Rule, Backpropagation, Gradient Descent va PyTorch loop mashqlari.
+              </p>
+            </div>
+            <Link
+              href="/learn/how-neural-networks-learn"
+              className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 px-4 py-2 text-xs font-extrabold text-slate-950 shrink-0 transition-colors"
+            >
+              <span>12 Mikro-darsni Ochish</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

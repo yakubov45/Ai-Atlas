@@ -3,6 +3,7 @@ import type { GlossaryTerm, Lesson, VisualizationInstance } from "@/lib/content/
 import { buildLearningLibraryCatalog } from "@/lib/learning-os/catalog";
 import { CANONICAL_CONCEPTS } from "@/lib/knowledge-graph/concepts";
 import { SIXTEEN_ARCHITECTURES } from "@/lib/curriculum/deep-learning-16-architectures";
+import { HOW_NEURAL_LEARN_LESSONS } from "@/lib/curriculum/how-neural-learn";
 import { PUBLISHED_PRACTICES } from "@/lib/practice/registry";
 import type { SearchDocument, SearchIndex } from "./core";
 
@@ -159,11 +160,26 @@ export function buildSearchIndex(
     })),
   ];
 
+  const nnLessonDocs: SearchDocument[] = HOW_NEURAL_LEARN_LESSONS.map((nn) => ({
+    id: `lesson:${nn.id}`,
+    kind: "lesson" as const,
+    title: nn.titleUz,
+    description: `${nn.subtitleEn} — ${nn.analogyUz}`,
+    tags: ["deep-learning", "neural-network", "training", nn.canonicalConceptId],
+    body: [
+      ...nn.theoryParagraphsUz,
+      nn.scientificCorrectionUz?.truthUz ?? "",
+    ].join(" "),
+    url: `/learn/how-neural-networks-learn?lesson=${nn.id}`,
+    category: "deep-learning",
+  }));
+
   return {
     version: 1,
     generatedAt,
     documents: [
       ...repository.lessons.flatMap(lessonDocuments),
+      ...nnLessonDocs,
       ...repository.glossary.map(glossaryDocument),
       ...repository.visualizations.map(visualizationDocument),
       ...courseDocs,

@@ -19,8 +19,14 @@ import {
 } from "@/lib/curriculum/deep-learning-16-enrichment";
 import { SIXTEEN_ARCHITECTURES } from "@/lib/curriculum/deep-learning-16-architectures";
 import { detectPrerequisiteCycles } from "@/lib/knowledge-graph/learning-paths";
+import { computeConceptDepths } from "@/lib/knowledge-graph/layout";
 import { getContentRepository } from "@/lib/content/repository";
 import { buildSearchIndex } from "@/lib/search/build-index";
+import {
+  getGlobalNodeFullBreakdown,
+  getKgConceptFullBreakdown,
+  getKgConceptSubsetForCareer,
+} from "@/lib/learning-os/node-details";
 
 describe("AI Atlas Learning OS Restructuring", () => {
   it("groups courses honestly across 6 Subject Groups without inflating planned counts", () => {
@@ -113,5 +119,34 @@ describe("AI Atlas Learning OS Restructuring", () => {
     expect(kinds.has("concept")).toBe(true);
     expect(kinds.has("paper")).toBe(true);
     expect(kinds.has("practice")).toBe(true);
+  }, 15000);
+
+  it("computes full transitive prerequisites, requirements, and explicit topics for Global & KG nodes", () => {
+    const ragGlobal = getGlobalNodeFullBreakdown("gn-rag-systems", EMPTY_LEARNING_STATE);
+    expect(ragGlobal).not.toBeNull();
+    expect(ragGlobal!.totalPrereqCount).toBeGreaterThanOrEqual(5);
+    expect(ragGlobal!.requirementsUz.length).toBeGreaterThan(0);
+    expect(ragGlobal!.topicsCoveredUz.length).toBeGreaterThanOrEqual(4);
+
+    const ragKg = getKgConceptFullBreakdown("rag-retrieval-augmented", [], []);
+    expect(ragKg).not.toBeNull();
+    expect(ragKg!.totalPrereqCount).toBeGreaterThanOrEqual(4);
+    expect(ragKg!.requirementsUz.length).toBeGreaterThan(0);
+    expect(ragKg!.topicsCoveredUz.length).toBeGreaterThanOrEqual(3);
+
+    // Career track subgraph filtering on Knowledge Graph
+    for (const branch of CAREER_BRANCHES) {
+      if (branch.id !== "all") {
+        const subset = getKgConceptSubsetForCareer(branch.id);
+        expect(subset).not.toBeNull();
+        expect(subset!.size).toBeGreaterThan(2);
+      }
+    }
+
+    // Visual layout column depths respect EXTENDS & ALTERNATIVE_TO ordering
+    const depths = computeConceptDepths();
+    expect(depths.get("dl-resnet")!).toBeGreaterThan(depths.get("dl-cnn")!);
+    expect(depths.get("dl-lstm")!).toBeGreaterThan(depths.get("dl-rnn")!);
+    expect(depths.get("dl-mamba")!).toBeGreaterThan(depths.get("transformer-architecture")!);
   });
 });

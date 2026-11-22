@@ -125,6 +125,18 @@ const SLUG_TO_CONCEPT_ID: Readonly<Record<string, string>> = {
   gpt: "dl-gpt",
   moe: "dl-moe",
   mamba: "dl-mamba",
+  "nn-01-neuron-weight-bias": "neural-networks-perceptrons",
+  "nn-02-activation-functions": "neural-networks-perceptrons",
+  "nn-03-architecture-layers": "neural-networks-perceptrons",
+  "nn-04-forward-pass": "neural-networks-perceptrons",
+  "nn-05-loss-functions": "loss-cost-functions",
+  "nn-06-derivatives-chain-rule": "backpropagation-autograd",
+  "nn-07-backpropagation": "backpropagation-autograd",
+  "nn-08-gradient-descent-optimizers": "gradient-descent-optimizers",
+  "nn-09-learning-rate": "gradient-descent-optimizers",
+  "nn-10-batch-epoch": "gradient-descent-optimizers",
+  "nn-11-overfitting-regularization": "supervised-learning-foundations",
+  "nn-12-gpu-matmul-pytorch": "linear-algebra-matrices",
 };
 
 const LAB_LABELS: Readonly<Record<string, string>> = {

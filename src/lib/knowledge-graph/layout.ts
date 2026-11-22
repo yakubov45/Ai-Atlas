@@ -80,9 +80,25 @@ export const DOMAIN_TITLES_UZ: Record<ConceptDomain, string> = {
   "ai-engineering": "AI Engineering & LLM",
 };
 
-/** Compute depth from roots (longest path from foundation) */
+/** Compute depth from roots (longest path from foundation across structural & evolutionary edges) */
 export function computeConceptDepths(): Map<string, number> {
   const { prereqsOf } = buildPrerequisiteAdjacency(true);
+  // Also advance column depth for EXTENDS and ALTERNATIVE_TO so evolved architectures
+  // (ResNet, LSTM, BERT, GPT, MoE, Mamba, XGBoost) sit after their predecessors in the visual layout.
+  const structuralParents = new Map<string, string[]>();
+  for (const [id, parents] of prereqsOf.entries()) {
+    structuralParents.set(id, [...parents]);
+  }
+  for (const rel of CONCEPT_RELATIONS) {
+    if (rel.type === "EXTENDS" || rel.type === "ALTERNATIVE_TO") {
+      const list = structuralParents.get(rel.target) ?? [];
+      if (!list.includes(rel.source)) {
+        list.push(rel.source);
+        structuralParents.set(rel.target, list);
+      }
+    }
+  }
+
   const depths = new Map<string, number>();
   const visiting = new Set<string>();
 
@@ -92,7 +108,7 @@ export function computeConceptDepths(): Map<string, number> {
     visiting.add(id);
 
     let maxDepth = 0;
-    for (const parent of prereqsOf.get(id) ?? []) {
+    for (const parent of structuralParents.get(id) ?? []) {
       maxDepth = Math.max(maxDepth, getDepth(parent) + 1);
     }
 
@@ -111,8 +127,8 @@ export function computeConceptDepths(): Map<string, number> {
 /** Compute node positions in layered grid */
 export function computeGraphLayout(
   filteredConceptIds?: Set<string>,
-  colGap = 320,
-  rowGap = 140
+  colGap = 350,
+  rowGap = 175
 ): {
   nodes: GraphLayoutNode[];
   bounds: CanvasDimensions;

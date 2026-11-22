@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import Link from "next/link";
 import { ZoomIn, ZoomOut, Maximize, ArrowRight } from "lucide-react";
 import type { LessonSummary } from "@/lib/content/types";
@@ -19,6 +19,8 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const dragOriginRef = useRef({ x: 0, y: 0 });
+  const didDragRef = useRef(false);
   const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
 
   // Lesson Map
@@ -47,8 +49,8 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
     const nodeIds = lessons.map((l) => l.id);
     return layeredLayout(nodeIds, edges, {
       direction: "horizontal",
-      layerGap: 260,
-      nodeGap: 120,
+      layerGap: 280,
+      nodeGap: 125,
     });
   }, [lessons, edges]);
 
@@ -70,8 +72,8 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
     return {
       minX: minX - 160,
       minY: minY - 100,
-      width: maxX - minX + 320,
-      height: maxY - minY + 200,
+      width: maxX - minX + 340,
+      height: maxY - minY + 220,
     };
   }, [nodePositions]);
 
@@ -79,11 +81,18 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return;
     setIsDragging(true);
+    didDragRef.current = false;
+    dragOriginRef.current = { x: e.clientX, y: e.clientY };
     setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
+    if (
+      Math.hypot(e.clientX - dragOriginRef.current.x, e.clientY - dragOriginRef.current.y) > 5
+    ) {
+      didDragRef.current = true;
+    }
     setPan({
       x: e.clientX - dragStart.x,
       y: e.clientY - dragStart.y,
@@ -101,7 +110,7 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
   const selectedLesson = selectedLessonId ? lessonMap.get(selectedLessonId) : null;
 
   return (
-    <div className="relative w-full h-[600px] border border-slate-800 rounded-2xl bg-slate-950/90 shadow-xl overflow-hidden select-none">
+    <div className="relative w-full h-[640px] border border-slate-800 rounded-2xl bg-slate-950/90 shadow-xl overflow-hidden select-none">
       {/* Zoom / Pan controls */}
       <div className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg p-1 shadow-md">
         <button
@@ -127,23 +136,56 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
         </button>
       </div>
 
-      {/* Selected Lesson Preview Drawer */}
+      {/* Selected Lesson Preview Drawer (Full untruncated info + prerequisites count) */}
       {selectedLesson && (
-        <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-10 bg-slate-900/95 backdrop-blur-md border border-violet-500/50 rounded-xl p-4 shadow-xl text-xs text-slate-200 animate-in slide-in-from-bottom-2">
-          <div className="flex items-center justify-between gap-2 mb-2">
-            <DifficultyBadge difficulty={selectedLesson.difficulty} />
+        <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-lg max-h-[65%] overflow-y-auto z-10 bg-slate-900/95 backdrop-blur-md border border-violet-500/50 rounded-2xl p-4 sm:p-5 shadow-2xl text-xs text-slate-200 animate-in slide-in-from-bottom-2 space-y-3">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <DifficultyBadge difficulty={selectedLesson.difficulty} />
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                Bundan oldin: {selectedLesson.prerequisites.length} ta dars
+              </span>
+            </div>
             <button
               onClick={() => setSelectedLessonId(null)}
-              className="text-slate-400 hover:text-white text-xs"
+              className="text-slate-400 hover:text-white text-sm px-1.5 py-0.5 cursor-pointer"
+              aria-label="Yopish"
             >
               &times;
             </button>
           </div>
-          <h4 className="font-semibold text-sm text-slate-100">{selectedLesson.title}</h4>
-          <p className="text-slate-400 text-[11px] mt-1 line-clamp-2 leading-relaxed">
+
+          <h4 className="font-bold text-sm sm:text-base text-white leading-snug">
+            {selectedLesson.title}
+          </h4>
+          <p className="text-slate-300 text-xs leading-relaxed">
             {selectedLesson.description}
           </p>
-          <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-slate-800">
+
+          {selectedLesson.prerequisites.length > 0 && (
+            <div className="space-y-1.5 pt-1">
+              <span className="text-[11px] font-semibold text-amber-300 block">
+                Oldin o&apos;rganish kerak bo&apos;lgan mavzular:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {selectedLesson.prerequisites.map((pid) => {
+                  const pLesson = lessonMap.get(pid);
+                  return (
+                    <button
+                      key={pid}
+                      type="button"
+                      onClick={() => setSelectedLessonId(pid)}
+                      className="px-2 py-1 rounded-lg bg-slate-950 border border-slate-700 text-[11px] text-slate-200 hover:border-amber-400 cursor-pointer"
+                    >
+                      {pLesson?.title ?? pid}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center justify-between pt-2.5 border-t border-slate-800">
             <span className="text-[11px] text-slate-400">
               {selectedLesson.readingMinutes} {uz.common.minutes}
             </span>
@@ -195,9 +237,9 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
               const tPos = nodePositions.get(edge.target);
               if (!sPos || !tPos) return null;
 
-              const sx = sPos.x + 85;
+              const sx = sPos.x + 107;
               const sy = sPos.y;
-              const tx = tPos.x - 85;
+              const tx = tPos.x - 107;
               const ty = tPos.y;
 
               const dx = tx - sx;
@@ -222,8 +264,8 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
               const pos = nodePositions.get(lesson.id) ?? { x: 0, y: 0 };
               const completed = isCompleted(lesson.id);
               const isSelected = selectedLessonId === lesson.id;
-              const nodeWidth = 170;
-              const nodeHeight = 60;
+              const nodeWidth = 214;
+              const nodeHeight = 64;
 
               return (
                 <g
@@ -231,6 +273,7 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
                   transform={`translate(${pos.x - nodeWidth / 2}, ${pos.y - nodeHeight / 2})`}
                   onClick={(e) => {
                     e.stopPropagation();
+                    if (didDragRef.current) return;
                     setSelectedLessonId(lesson.id);
                   }}
                   className="cursor-pointer transition-transform duration-150 hover:scale-105"
@@ -286,7 +329,7 @@ export function RoadmapGraph({ lessons }: { lessons: readonly LessonSummary[] })
                     fontWeight="600"
                     className="font-sans"
                   >
-                    {lesson.title.length > 18 ? lesson.title.slice(0, 17) + "…" : lesson.title}
+                    {lesson.title.length > 26 ? lesson.title.slice(0, 25) + "…" : lesson.title}
                   </text>
                 </g>
               );

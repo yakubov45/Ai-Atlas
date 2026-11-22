@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   BookMarked,
   BookOpen,
+  Brain,
   ChevronDown,
   Code2,
   Compass,
@@ -40,6 +41,7 @@ const MODULE_LINKS = [
   { href: "/learn/ds-ml-ai-12weeks", label: "12-Haftalik Intensiv Reja", badge: "42 dars", icon: GraduationCap },
   { href: "/learn/hugging-face-llm-course", label: "Hugging Face LLM Course", badge: "220 dars", icon: Layers },
   { href: "/learn/deep-learning-architectures", label: "Deep Learning: 16 Arxitektura", badge: "16 maqola", icon: Network },
+  { href: "/learn/how-neural-networks-learn", label: "Neyron Tarmoqlar Qanday O'rganadi?", badge: "12 dars", icon: Brain },
   { href: "/practice/python-30-days", label: "30 Days of Python", badge: "Pyodide", icon: Code2 },
   { href: "/visual-lab", label: "Vizual Laboratoriya", badge: "Desmos", icon: FlaskConical },
   { href: "/videos", label: "Video Darslar Katalogi", badge: "97 video", icon: Video },
